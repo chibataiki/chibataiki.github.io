@@ -6,18 +6,18 @@
     <description>Recent content in Posts on Jian&#39;s Life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Jun 2019 17:24:30 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 29 Jun 2019 09:50:51 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Pursuit</title>
-      <link>http://example.org/post/pursuit/</link>
-      <pubDate>Wed, 26 Jun 2019 17:24:30 +0800</pubDate>
+      <title>Demo</title>
+      <link>http://example.org/post/demo/</link>
+      <pubDate>Sat, 29 Jun 2019 09:50:51 +0800</pubDate>
       
-      <guid>http://example.org/post/pursuit/</guid>
-      <description>某种意义上，我是个没有追求的人。 追求太多，付出太少</description>
+      <guid>http://example.org/post/demo/</guid>
+      <description>this is a test</description>
     </item>
     
   </channel>
