@@ -13,10 +13,10 @@
     
     <item>
       <title>Mac OSX下使用soundflower将音频输出转为输入</title>
-      <link>http://example.org/mac-osx-%E5%B0%86%E9%9F%B3%E9%A2%91%E7%94%B1%E8%BE%93%E5%87%BA%E8%BD%AC%E4%B8%BA%E8%BE%93%E5%85%A5/</link>
+      <link>http://example.org/post/mac-osx-%E5%B0%86%E9%9F%B3%E9%A2%91%E7%94%B1%E8%BE%93%E5%87%BA%E8%BD%AC%E4%B8%BA%E8%BE%93%E5%85%A5/</link>
       <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
       
-      <guid>http://example.org/mac-osx-%E5%B0%86%E9%9F%B3%E9%A2%91%E7%94%B1%E8%BE%93%E5%87%BA%E8%BD%AC%E4%B8%BA%E8%BE%93%E5%85%A5/</guid>
+      <guid>http://example.org/post/mac-osx-%E5%B0%86%E9%9F%B3%E9%A2%91%E7%94%B1%E8%BE%93%E5%87%BA%E8%BD%AC%E4%B8%BA%E8%BE%93%E5%85%A5/</guid>
       <description>因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
 工具： Soundflower
  安装 打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项 chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音  </description>

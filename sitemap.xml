@@ -9,8 +9,14 @@
   </url>
   
   <url>
-    <loc>http://example.org/mac-osx-%E5%B0%86%E9%9F%B3%E9%A2%91%E7%94%B1%E8%BE%93%E5%87%BA%E8%BD%AC%E4%B8%BA%E8%BE%93%E5%85%A5/</loc>
+    <loc>http://example.org/post/mac-osx-%E5%B0%86%E9%9F%B3%E9%A2%91%E7%94%B1%E8%BE%93%E5%87%BA%E8%BD%AC%E4%B8%BA%E8%BE%93%E5%85%A5/</loc>
     <lastmod>2020-02-22T21:43:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/post/</loc>
+    <lastmod>2020-02-22T21:43:36+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
