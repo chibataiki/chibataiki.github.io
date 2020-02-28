@@ -10,7 +10,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2020-02-27T14:03:02&#43;08:00"/>
+<meta property="og:updated_time" content="2020-02-28T13:58:13&#43;08:00"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jian&#39;s Life"/>
 <meta name="twitter:description" content=""/>
@@ -58,8 +58,41 @@
 				Recent posts
 			</h2>
 			<div class="posts"><div class="post">
+					<div class="meta">Feb 28, 2020</div>
+					<a class="title" href="/post/macos-%E5%A4%9A%E7%89%88%E6%9C%ACjava%E7%AE%A1%E7%90%86/">MacOS 多版本java管理</a> &mdash;
+					<span class="description">
+						
+							
+之前安装 Burpsuite的时候,需要的版本是JDK1.8,这次ghida则需要新版本
+
+    linux 可以使用`sudo update-alternatives --config java` 进行java版本的选择
+
+
+
+mac...
+						
+					</span>
+				</div><div class="post">
+					<div class="meta">Feb 28, 2020</div>
+					<a class="title" href="/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/">Qemu User Mode 配置</a> &mdash;
+					<span class="description">
+						
+							
+
+
+qemu 虚拟机里的安装的debian是wheey 版本
+
+
+添加源   nano /etc/apt/source    
+
+deb http://archive.debian.org/debian wheezy main
+
+安装qe...
+						
+					</span>
+				</div><div class="post">
 					<div class="meta">Feb 27, 2020</div>
-					<a class="title" href="/post/qemu_emulator_env/">QEMU系统模式仿真嵌入式设备</a> &mdash;
+					<a class="title" href="/post/qemu-system-mode-setting/">QEMU系统模式仿真</a> &mdash;
 					<span class="description">
 						
 							
@@ -75,8 +108,27 @@
 						
 					</span>
 				</div><div class="post">
+					<div class="meta">Feb 27, 2020</div>
+					<a class="title" href="/post/netcore_igdmptd_backdoor_analysis/">Netcore-igdmptd-后门漏洞分析</a> &mdash;
+					<span class="description">
+						
+							
+
+磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 
+后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.
+
+知道了这些之后,进行分析
+
+仿真:
+
+使用qemu 系统模式作为测试环境
+
+固件...
+						
+					</span>
+				</div><div class="post">
 					<div class="meta">Feb 25, 2020</div>
-					<a class="title" href="/post/vim%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">Vim配置问题</a> &mdash;
+					<a class="title" href="/post/vim-markdown-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/">Vim-Markdown-插件安装</a> &mdash;
 					<span class="description">
 						
 							
@@ -88,6 +140,24 @@ vim: macvim
     mkdir ~/.vim
     mv .vimrc ~/.vim/vimrc
 vim的初始化环境在macOS上最初是～/.vimrc...
+						
+					</span>
+				</div><div class="post">
+					<div class="meta">Feb 24, 2020</div>
+					<a class="title" href="/post/macos_catalina_burpsuite%E5%AE%89%E8%A3%85/">MacOS Catalina BurpSuite 安装</a> &mdash;
+					<span class="description">
+						
+							
+### JDK安装
+
+burpsuite是java程序，所以需要安装JDK
+
+JDK分为Oracle和OpenJDK，不做赘述，选择OpenJDK
+
+下载安装比较麻烦，所以选择`homebrew`安装
+
+
+ ~~brew cask ins...
 						
 					</span>
 				</div><div class="post">

@@ -6,17 +6,32 @@
     <description>Recent content in IoT on Jian&#39;s Life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Feb 2020 14:03:02 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 13:28:16 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/tags/iot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>QEMU系统模式仿真嵌入式设备</title>
-      <link>http://example.org/post/qemu_emulator_env/</link>
+      <title>Qemu User Mode 配置</title>
+      <link>http://example.org/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 28 Feb 2020 13:28:16 +0800</pubDate>
+      
+      <guid>http://example.org/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/</guid>
+      <description>qemu 虚拟机里的安装的debian是wheey 版本
+添加源 nano /etc/apt/source
+deb http://archive.debian.org/debian wheezy main
+安装qemu-mips-static/qemu-mipsel-static/qemu-arm-static
+sudo apt-get install qemu-user-static
+运行二进制程序:
+chroot . ./qemu-[arch]-static [-g port] [binary_name]  </description>
+    </item>
+    
+    <item>
+      <title>QEMU系统模式仿真</title>
+      <link>http://example.org/post/qemu-system-mode-setting/</link>
       <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
       
-      <guid>http://example.org/post/qemu_emulator_env/</guid>
+      <guid>http://example.org/post/qemu-system-mode-setting/</guid>
       <description>主要是对MIPS ARM架构的嵌入式设备进行仿真
 系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
 0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
@@ -38,6 +53,27 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
 [] TODO
 ttyx 终端设备文件
 ttysx 串口设备文件</description>
+    </item>
+    
+    <item>
+      <title>Netcore-igdmptd-后门漏洞分析</title>
+      <link>http://example.org/post/netcore_igdmptd_backdoor_analysis/</link>
+      <pubDate>Thu, 27 Feb 2020 13:53:04 +0800</pubDate>
+      
+      <guid>http://example.org/post/netcore_igdmptd_backdoor_analysis/</guid>
+      <description>磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.
+知道了这些之后,进行分析
+仿真:
+使用qemu 系统模式作为测试环境
+固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
+bind:
+ int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);`  addr =[family][ip][port] = 0xa5d00002
+0xd05a = 53413 :端口号
+0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
+0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
+这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.
+/* Socket types. */ #define SOCK_STREAM	1	/* stream (connection) socket	*/ #define SOCK_DGRAM	2	/* datagram (conn.</description>
     </item>
     
   </channel>

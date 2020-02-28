@@ -6,17 +6,48 @@
     <description>Recent content in Posts on Jian&#39;s Life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Feb 2020 14:03:02 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 13:58:13 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>QEMU系统模式仿真嵌入式设备</title>
-      <link>http://example.org/post/qemu_emulator_env/</link>
+      <title>MacOS 多版本java管理</title>
+      <link>http://example.org/post/macos-%E5%A4%9A%E7%89%88%E6%9C%ACjava%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
+      
+      <guid>http://example.org/post/macos-%E5%A4%9A%E7%89%88%E6%9C%ACjava%E7%AE%A1%E7%90%86/</guid>
+      <description>之前安装 Burpsuite的时候,需要的版本是JDK1.8,这次ghida则需要新版本
+linux 可以使用`sudo update-alternatives --config java` 进行java版本的选择  macOS下则使用homebrew
+brew tap homebrew/cask-versions brew install jenv  显示java 环境
+/usr/libexec/java_home -v  结果类似于
+13.0.2, x86_64:	&amp;quot;OpenJDK 13.0.2&amp;quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;quot;Java SE 8&amp;quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home  添加 jdk ,路径就是上面的结果
+jenv add &amp;lt;jdk_path&amp;gt;  显示java版本信息:
+jenv versions jenv -version  设置java环境:
+jenv global [jdk version] jenv local [jdk version]  参考: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</description>
+    </item>
+    
+    <item>
+      <title>Qemu User Mode 配置</title>
+      <link>http://example.org/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 28 Feb 2020 13:28:16 +0800</pubDate>
+      
+      <guid>http://example.org/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/</guid>
+      <description>qemu 虚拟机里的安装的debian是wheey 版本
+添加源 nano /etc/apt/source
+deb http://archive.debian.org/debian wheezy main
+安装qemu-mips-static/qemu-mipsel-static/qemu-arm-static
+sudo apt-get install qemu-user-static
+运行二进制程序:
+chroot . ./qemu-[arch]-static [-g port] [binary_name]  </description>
+    </item>
+    
+    <item>
+      <title>QEMU系统模式仿真</title>
+      <link>http://example.org/post/qemu-system-mode-setting/</link>
       <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
       
-      <guid>http://example.org/post/qemu_emulator_env/</guid>
+      <guid>http://example.org/post/qemu-system-mode-setting/</guid>
       <description>主要是对MIPS ARM架构的嵌入式设备进行仿真
 系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
 0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
@@ -41,19 +72,57 @@ ttysx 串口设备文件</description>
     </item>
     
     <item>
-      <title>Vim配置问题</title>
-      <link>http://example.org/post/vim%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</link>
+      <title>Netcore-igdmptd-后门漏洞分析</title>
+      <link>http://example.org/post/netcore_igdmptd_backdoor_analysis/</link>
+      <pubDate>Thu, 27 Feb 2020 13:53:04 +0800</pubDate>
+      
+      <guid>http://example.org/post/netcore_igdmptd_backdoor_analysis/</guid>
+      <description>磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.
+知道了这些之后,进行分析
+仿真:
+使用qemu 系统模式作为测试环境
+固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
+bind:
+ int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);`  addr =[family][ip][port] = 0xa5d00002
+0xd05a = 53413 :端口号
+0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
+0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
+这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.
+/* Socket types. */ #define SOCK_STREAM	1	/* stream (connection) socket	*/ #define SOCK_DGRAM	2	/* datagram (conn.</description>
+    </item>
+    
+    <item>
+      <title>Vim-Markdown-插件安装</title>
+      <link>http://example.org/post/vim-markdown-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
       
-      <guid>http://example.org/post/vim%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://example.org/post/vim-markdown-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/</guid>
       <description> 环境： macOS catalina vim: macvim
 设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
 需要将
-&amp;quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &amp;quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行PlugInstall 就可以安装配置中的插件
+&amp;quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &amp;quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
 安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim
 在vimrc Plug区域添加
 call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
 :MarkdownPreview :MarkdownPreviewStop  </description>
+    </item>
+    
+    <item>
+      <title>MacOS Catalina BurpSuite 安装</title>
+      <link>http://example.org/post/macos_catalina_burpsuite%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 24 Feb 2020 23:10:28 +0800</pubDate>
+      
+      <guid>http://example.org/post/macos_catalina_burpsuite%E5%AE%89%E8%A3%85/</guid>
+      <description>JDK安装 burpsuite是java程序，所以需要安装JDK
+JDK分为Oracle和OpenJDK，不做赘述，选择OpenJDK
+下载安装比较麻烦，所以选择homebrew安装
+brew cask install java 安装最新java会导致burpsuite安装失败
+brew cask install java11  burpsuite 安装 下载burp-loader-keygen.jar 和 burpsuite_pro{version}.jar.
+如果看到出现: -Xbootclasspath/p 说明java版本太新,java8之后这个参数就移除了.
+解决方法一是使用旧版本JDK,二是自行对keygen进行patch.
+安装完java8 之后, 发现mac的keygen的license在每次切换窗口后都会变化,所以我就在虚拟机中运行了keygen程序,成功激活.
+参考链接: https://www.52pojie.cn/thread-1038295-1-1.html</description>
     </item>
     
     <item>
