@@ -226,18 +226,16 @@ fi
 
 echo &quot;[!]Start building bridge... &quot;
 dhclient -r ens33           # 释放ip
-sleep 0.1
-$ip addr flush ens33        # 清除 ip 
-sleep 0.1
+ip addr flush ens33        # 清除 ip 
 #确认ens3 刷新
-$ip link set dev ens33 down 
-$ip link set dev ens33 up   
+ip link set dev ens33 down 
+ip link set dev ens33 up   
 
-$ip link add  name br0 type bridge   #建立网桥
-$brctl addif br0 ens33      # 连接ens33 到bridge
-$ip link set dev br0 up      
+ip link add  name br0 type bridge   #建立网桥
+brctl addif br0 ens33      # 连接ens33 到bridge
+ip link set dev br0 up      
 dhclient br0   #
-
+ip addr flush ens33
 echo &quot;[!] Finisted bridge setting!&quot;
 </code></pre>
 
@@ -278,24 +276,42 @@ btctl delif br0 $1
 ip link delete dev $1
 </code></pre>
 
-<p>运行完的网络情况:
-<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcbhccfhb1j311604a3yy.jpg" alt="" />
-然后qemu里的虚拟网卡和tap0相连接</p>
+<ol>
+<li><p>初步网络设置
+sudo ./build-bridge.sh</p></li>
 
-<p>Q&amp;A:
+<li><p>启动qemu</p>
+
+<pre><code>sudo qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0' -nographic -net nic, -net tap
+</code></pre></li>
+</ol>
+
+<p>运行完的网络情况:
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcc10gmqgrj319q0ecjuw.jpg" alt="" /></p>
+
+<p>br0和ens33  tap0:
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcbhccfhb1j311604a3yy.jpg" alt="" /></p>
+
+<p>qemu虚拟机里网络:
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcc11utrztj30v40fmacu.jpg" alt="" /></p>
+
+<p>网络测试
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcc13uq0hwj30q20duju2.jpg" alt="" /></p>
+
+<p>Q&amp;A:<br />
 man qemu 中建议使用 netdev ,但是devtype 是什么没说
 -net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
                 old way to create a new NIC and connect it to VLAN &lsquo;n&rsquo;
                 (use the &lsquo;-device devtype,netdev=str&rsquo; option if possible instead)</p>
 
 <p>A: -net nic表示添加设备
-可以使用model=xxxx 指定添加设备的类型</p>
+可以使用model=xxxx 指定添加设备的类型
+<a href="https://en.wikibooks.org/wiki/QEMU/Devices/Network">https://en.wikibooks.org/wiki/QEMU/Devices/Network</a></p>
 
 <p>参考链接<br />
 <a href="https://people.debian.org/~aurel32/qemu/mipsel/README.txt">https://people.debian.org/~aurel32/qemu/mipsel/README.txt</a><br />
 <a href="https://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html">https://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html</a><br />
 <a href="https://wiki.qemu.org/Documentation/Networking#Tap">https://wiki.qemu.org/Documentation/Networking#Tap</a>
-<a href="https://en.wikibooks.org/wiki/QEMU/Devices/Network">https://en.wikibooks.org/wiki/QEMU/Devices/Network</a>
 <a href="https://odkq.com/qemukvmtap">https://odkq.com/qemukvmtap</a></p>
 
 		</div><div id="disqus_thread"></div>
