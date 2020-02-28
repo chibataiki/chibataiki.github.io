@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IoT on Jian&#39;s Life</title>
+    <link>http://example.org/tags/iot/</link>
+    <description>Recent content in IoT on Jian&#39;s Life</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Feb 2020 14:03:02 +0800</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>QEMU系统模式仿真嵌入式设备</title>
+      <link>http://example.org/post/qemu_emulator_env/</link>
+      <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
+      
+      <guid>http://example.org/post/qemu_emulator_env/</guid>
+      <description>主要是对MIPS ARM架构的嵌入式设备进行仿真
+系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
+1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
+2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
+3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
+这里选择第3种.
+0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y
+(这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化)
+0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/
+一些默认设置:
+Root password: root
+User account: user
+User password: user
+0x03启动qemu 最基础的命令:
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;ldquo;root=/dev/sda1 console=ttyS0&amp;rdquo;
+不想使用图形模式: -nographic
+默认内存128 可以设置 -m 256M
+[] TODO
+ttyx 终端设备文件
+ttysx 串口设备文件</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>QEMU系统模式仿真嵌入式设备 - Jian&#39;s Life</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="QEMU系统模式仿真嵌入式设备" />
+<meta property="og:description" content="主要是对MIPS ARM架构的嵌入式设备进行仿真
+系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
+1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
+2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
+3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
+这里选择第3种.
+0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y
+(这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化)
+0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/
+一些默认设置:
+Root password: root
+User account: user
+User password: user
+0x03启动qemu 最基础的命令:
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &ldquo;root=/dev/sda1 console=ttyS0&rdquo;
+不想使用图形模式: -nographic
+默认内存128 可以设置 -m 256M
+[] TODO
+ttyx 终端设备文件
+ttysx 串口设备文件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/qemu_emulator_env/" />
+<meta property="article:published_time" content="2020-02-27T14:03:02&#43;08:00"/>
+<meta property="article:modified_time" content="2020-02-27T14:03:02&#43;08:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="QEMU系统模式仿真嵌入式设备"/>
+<meta name="twitter:description" content="主要是对MIPS ARM架构的嵌入式设备进行仿真
+系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
+1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
+2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
+3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
+这里选择第3种.
+0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y
+(这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化)
+0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/
+一些默认设置:
+Root password: root
+User account: user
+User password: user
+0x03启动qemu 最基础的命令:
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &ldquo;root=/dev/sda1 console=ttyS0&rdquo;
+不想使用图形模式: -nographic
+默认内存128 可以设置 -m 256M
+[] TODO
+ttyx 终端设备文件
+ttysx 串口设备文件"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">Jian&#39;s Life</h1>
+	<div class="site-description"><h2>new life</h2><nav class="nav social">
+			<ul class="flat"></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/post">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">QEMU系统模式仿真嵌入式设备</h1>
+			<div class="meta">Posted at &mdash; Feb 27, 2020</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<p>主要是对MIPS ARM架构的嵌入式设备进行仿真</p>
+
+<p>系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件</p>
+
+<h3 id="0x00-qemu-系统模式的仿真方式">0x00 QEMU 系统模式的仿真方式</h3>
+
+<p>系统模式下的引导需要提供内核,文件系统,文件系统使用<code>binwalk</code>等工具可以相对方便的获取,
+但是内核比较麻烦. 所以大致有三种系统仿真方式</p>
+
+<p>1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动.  这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.<br />
+2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动.  相对容易,但是让仿真成功进行也比较麻烦.<br />
+3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现</p>
+
+<p>这里选择第3种.</p>
+
+<h3 id="0x01-安装qemu">0x01 安装qemu</h3>
+
+<p>sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y</p>
+
+<p>(这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x,
+里面一些manual 手册内容也发生了变化)</p>
+
+<h3 id="0x02下载预编译的kernel和系统文件镜像">0x02下载预编译的kernel和系统文件镜像</h3>
+
+<p>下载链接: <a href="https://people.debian.org/~aurel32/qemu/">https://people.debian.org/~aurel32/qemu/</a></p>
+
+<p>一些默认设置:<br />
+   Root password:  root<br />
+   User account:   user<br />
+   User password:  user</p>
+
+<h3 id="0x03启动qemu">0x03启动qemu</h3>
+
+<p>最基础的命令:<br />
+    qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta
+    -hda debian_wheezy_mipsel_standard.qcow2 -append &ldquo;root=/dev/sda1 console=ttyS0&rdquo;</p>
+
+<p>不想使用图形模式: <code>-nographic</code></p>
+
+<p>默认内存128 可以设置 -m 256M</p>
+
+<p>[] TODO<br />
+ttyx 终端设备文件<br />
+ttysx 串口设备文件</p>
+
+<h3 id="0x04-网络配置">0x04 网络配置</h3>
+
+<p>netdev 可以设置usr,tap,bridge,l2tp,socket等类型的网络</p>
+
+<p>! net 参数不提倡,QEMU建议使用netdev</p>
+
+<h4 id="1-用户模式-slirp">1.用户模式- SLIRP</h4>
+
+<p>不加任何参数时的默认模式就是用户模式<br />
+默认参数为 -net dev, -net nic</p>
+
+<p>网络如下图所示</p>
+
+<p><img src="https://tva1.sinaimg.cn/large/0082zybpgy1gcb2so398ij310w0p0dk7.jpg" alt="" /></p>
+
+<p>该模式允许客户机(qemu)和宿主机(ubuntu)进行有限的通讯</p>
+
+<p><code>-netdev user</code> 中有一些设置参数比如:<br />
+<code>net, host,dns,tftp,smb</code>等等<br />
+比较有用的是 hostfwd,允许进行数据转发<br />
+<code>hostfwd= [tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport</code></p>
+
+<p>例如宿主机通过ssh访问客户机:</p>
+
+<pre><code>qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta  
+-hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0'
+-nographic -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22    
+</code></pre>
+
+<p>其中<code>-device e1000</code> 创建虚拟网络设备</p>
+
+<p><code>-netdev user,id=net0,hostfwd=tcp::5555-:22</code> 创建user 模式的网络,将客户机所有端口22的数据重定向到宿主机端口5555上面</p>
+
+<p>在宿主机上ssh客户机就是:</p>
+
+<p><code>ssh [username]@localhost -p 5555</code></p>
+
+<p>其他服务端口的开启类似.</p>
+
+<p>使用方式比较简单,
+但是可用性和性能方面都有很有限.</p>
+
+<h4 id="tap-tun">TAP&amp; TUN</h4>
+
+<p>TAP等同于一个以太网设备，它操作第二层数据包(以太网数据帧)。<br />
+TUN 模拟了网络层设备,操作第三层数据包(IP数据)</p>
+
+<p>tap设备比user-mode 有更好的性能</p>
+
+<h5 id="进行网络设置">进行网络设置</h5>
+
+<p>先讲一下我的设备环境:</p>
+
+<pre><code>    宿主机: macOS catalina  
+    虚拟机: ubuntu 18.04.4 in VMware  
+    ubuntu 网络: 通过VMWare 的NAT接口连接  
+</code></pre>
+
+<ol>
+<li><p>设置 bridge<br />
+安装 bridge-utils:提供了<code>brctl</code> 进行bridge的管理<br />
+<code>sudo apt-get install bridge-utils</code></p></li>
+
+<li><p>开启ipv4转发<br />
+<code>sudo  sysctl net.ipv4.ip_forward=1</code></p></li>
+
+<li><p>qemu-ifup &amp;&amp; qemu-ifdown</p></li>
+</ol>
+
+<p>一些教程都是直接在 /network/interfaces 中直接修改的, 感觉方式不够优雅, 因为这些设置不是必须的,只有在仿真的时候才需要.<br />
+所以这里设置一个build-bridge脚本执行网桥的设置和连接,一个recover-nerwork 脚本恢复网络,而qemu-ifup qemu-ifdown 设置tap相关设备(可以优化,TODO)</p>
+
+<p>build-bridge</p>
+
+<pre><code> # 判是否root 权限
+if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
+   echo &quot;This script must be run as root&quot; 1&gt;&amp;2
+   exit 1
+fi
+
+echo &quot;[!]Start building bridge... &quot;
+dhclient -r ens33           # 释放ip
+sleep 0.1
+$ip addr flush ens33        # 清除 ip 
+sleep 0.1
+#确认ens3 刷新
+$ip link set dev ens33 down 
+$ip link set dev ens33 up   
+
+$ip link add  name br0 type bridge   #建立网桥
+$brctl addif br0 ens33      # 连接ens33 到bridge
+$ip link set dev br0 up      
+dhclient br0   #
+
+echo &quot;[!] Finisted bridge setting!&quot;
+</code></pre>
+
+<p>recover-bridge</p>
+
+<pre><code>判断root
+if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
+   echo &quot;This script must be run as root&quot; 1&gt;&amp;2
+   exit 1
+fi
+
+echo &quot;[!]Recover network setting ... &quot;    
+ip link set dev  br0 down
+
+# 解除连接
+brctl delif ens33 br0
+# 删除tap 和 br0
+
+ip link delete dev br0      
+dhclient ens33
+sleep 1
+ip link set dev ens33 up
+
+echo &quot;[!]Finished network setting!&quot;
+</code></pre>
+
+<p>qemu-ifup:</p>
+
+<pre><code>$ip addr add 0.0.0.0 dev $1
+$ip link set dev $1 up  
+$brctl addif br0 $1
+</code></pre>
+
+<p>qemu-ifdown</p>
+
+<pre><code>ip link set dev $1  down
+btctl delif br0 $1
+ip link delete dev $1
+</code></pre>
+
+<p>运行完的网络情况:
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcbhccfhb1j311604a3yy.jpg" alt="" />
+然后qemu里的虚拟网卡和tap0相连接</p>
+
+<p>Q&amp;A:
+man qemu 中建议使用 netdev ,但是devtype 是什么没说
+-net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
+                old way to create a new NIC and connect it to VLAN &lsquo;n&rsquo;
+                (use the &lsquo;-device devtype,netdev=str&rsquo; option if possible instead)</p>
+
+<p>A: -net nic表示添加设备
+可以使用model=xxxx 指定添加设备的类型</p>
+
+<p>参考链接<br />
+<a href="https://people.debian.org/~aurel32/qemu/mipsel/README.txt">https://people.debian.org/~aurel32/qemu/mipsel/README.txt</a><br />
+<a href="https://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html">https://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html</a><br />
+<a href="https://wiki.qemu.org/Documentation/Networking#Tap">https://wiki.qemu.org/Documentation/Networking#Tap</a>
+<a href="https://en.wikibooks.org/wiki/QEMU/Devices/Network">https://en.wikibooks.org/wiki/QEMU/Devices/Network</a>
+<a href="https://odkq.com/qemukvmtap">https://odkq.com/qemukvmtap</a></p>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = '';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+</body>
+</html>
