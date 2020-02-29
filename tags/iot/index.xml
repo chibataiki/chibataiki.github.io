@@ -23,7 +23,7 @@ deb http://archive.debian.org/debian wheezy main
 安装qemu-mips-static/qemu-mipsel-static/qemu-arm-static
 sudo apt-get install qemu-user-static
 运行二进制程序:
-chroot . ./qemu-[arch]-static [-g port] [binary_name]  </description>
+chroot . ./qemu-[arch]-static [-g port] [binary_name]</description>
     </item>
     
     <item>
@@ -38,21 +38,7 @@ chroot . ./qemu-[arch]-static [-g port] [binary_name]  </description>
 1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
 2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
 3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
-这里选择第3种.
-0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y
-(这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化)
-0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/
-一些默认设置:
-Root password: root
-User account: user
-User password: user
-0x03启动qemu 最基础的命令:
-qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;ldquo;root=/dev/sda1 console=ttyS0&amp;rdquo;
-不想使用图形模式: -nographic
-默认内存128 可以设置 -m 256M
-[] TODO
-ttyx 终端设备文件
-ttysx 串口设备文件</description>
+这里选择第3种.</description>
     </item>
     
     <item>
@@ -66,14 +52,7 @@ ttysx 串口设备文件</description>
 仿真:
 使用qemu 系统模式作为测试环境
 固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
-scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
-bind:
- int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);`  addr =[family][ip][port] = 0xa5d00002
-0xd05a = 53413 :端口号
-0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
-0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
-这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.
-/* Socket types. */ #define SOCK_STREAM	1	/* stream (connection) socket	*/ #define SOCK_DGRAM	2	/* datagram (conn.</description>
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot .</description>
     </item>
     
   </channel>

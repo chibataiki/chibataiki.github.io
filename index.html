@@ -3,27 +3,30 @@
 <head>
 	<meta name="generator" content="Hugo 0.55.6" />
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Jian&#39;s Life- new life</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Jian&#39;s Life - new life </title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="alternate" type="application/rss+xml" href="http://example.org/index.xml" title="Jian's Life" />
 	<meta property="og:title" content="Jian&#39;s Life" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2020-02-28T13:58:13&#43;08:00"/>
+<meta property="og:updated_time" content="2020-02-28T22:59:34&#43;08:00"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jian&#39;s Life"/>
 <meta name="twitter:description" content=""/>
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="/js/main.js"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/main.css" />
+
+	
+	<script src="http://example.org/js/main.js"></script>
 </head>
 
 <body>
 	<div class="container wrapper">
-		 <div class="header">
-	<h1 class="site-title">Jian&#39;s Life</h1>
+		<div class="header">
+	<h1 class="site-title"><a href="http://example.org/">Jian&#39;s Life</a></h1>
 	<div class="site-description"><h2>new life</h2><nav class="nav social">
 			<ul class="flat"></ul>
 		</nav>
@@ -57,145 +60,133 @@
 			<h2 class="section-header">
 				Recent posts
 			</h2>
-			<div class="posts"><div class="post">
+			<div class="posts">
+				
+				
+				
+				<div class="post">
 					<div class="meta">Feb 28, 2020</div>
 					<a class="title" href="/post/macos-%E5%A4%9A%E7%89%88%E6%9C%ACjava%E7%AE%A1%E7%90%86/">MacOS 多版本java管理</a> &mdash;
 					<span class="description">
 						
-							
-之前安装 Burpsuite的时候,需要的版本是JDK1.8,这次ghida则需要新版本
-
-    linux 可以使用`sudo update-alternatives --config java` 进行java版本的选择
-
-
-
-mac...
+						之前安装 Burpsuite的时候,需要的版本是JDK1.8,这次ghida则需要新版本
+linux 可以使用`sudo update-alternatives --config java` 进行java版本的选择 macOS下则使用homebrew
+brew tap homebrew/cask-versions brew install jenv  显示java 环境
+/usr/libexec/java_home -v 结果类似于&hellip;
 						
 					</span>
-				</div><div class="post">
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 28, 2020</div>
 					<a class="title" href="/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/">Qemu User Mode 配置</a> &mdash;
 					<span class="description">
 						
-							
-
-
-qemu 虚拟机里的安装的debian是wheey 版本
-
-
-添加源   nano /etc/apt/source    
-
+						qemu 虚拟机里的安装的debian是wheey 版本
+添加源 nano /etc/apt/source
 deb http://archive.debian.org/debian wheezy main
-
-安装qe...
+安装qemu-mips-static/qemu-mipsel-static/qemu-arm-static
+sudo apt-get install qemu-user-static
+运行二进制程序:
+chroot . ./qemu-[arch]-static [-g port] [binary_name]&hellip;
 						
 					</span>
-				</div><div class="post">
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 27, 2020</div>
 					<a class="title" href="/post/qemu-system-mode-setting/">QEMU系统模式仿真</a> &mdash;
 					<span class="description">
 						
-							
-主要是对MIPS ARM架构的嵌入式设备进行仿真
-
+						主要是对MIPS ARM架构的嵌入式设备进行仿真
 系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
-
-
-
-### 0x00 QEMU 系统模式的仿真方式
-
-系统模式下的引导需要提供内核,文件系统,文件系统使用`bin...
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
+1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
+2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
+3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
+这里选择第3种.&hellip;
 						
 					</span>
-				</div><div class="post">
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 27, 2020</div>
 					<a class="title" href="/post/netcore_igdmptd_backdoor_analysis/">Netcore-igdmptd-后门漏洞分析</a> &mdash;
 					<span class="description">
 						
-							
-
-磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 
-后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.
-
+						磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.
 知道了这些之后,进行分析
-
 仿真:
-
 使用qemu 系统模式作为测试环境
-
-固件...
+固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot .&hellip;
 						
 					</span>
-				</div><div class="post">
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 25, 2020</div>
 					<a class="title" href="/post/vim-markdown-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/">Vim-Markdown-插件安装</a> &mdash;
 					<span class="description">
 						
-							
-环境： macOS catalina
-vim: macvim
-
-
-### 设置vim初始化环境
-    mkdir ~/.vim
-    mv .vimrc ~/.vim/vimrc
-vim的初始化环境在macOS上最初是～/.vimrc...
+						环境： macOS catalina vim: macvim
+设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug&hellip;
 						
 					</span>
-				</div><div class="post">
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 24, 2020</div>
 					<a class="title" href="/post/macos_catalina_burpsuite%E5%AE%89%E8%A3%85/">MacOS Catalina BurpSuite 安装</a> &mdash;
 					<span class="description">
 						
-							
-### JDK安装
-
-burpsuite是java程序，所以需要安装JDK
-
+						JDK安装 burpsuite是java程序，所以需要安装JDK
 JDK分为Oracle和OpenJDK，不做赘述，选择OpenJDK
-
-下载安装比较麻烦，所以选择`homebrew`安装
-
-
- ~~brew cask ins...
+下载安装比较麻烦，所以选择homebrew安装
+brew cask install java 安装最新java会导致burpsuite安装失败
+brew cask install java11 burpsuite 安装 下载burp-loader-keygen.jar 和 burpsuite_pro{version}.jar.
+如果看到出现: -Xbootclasspath/p 说明java版本太新,java8之后这个参数就移除了.&hellip;
 						
 					</span>
-				</div><div class="post">
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 23, 2020</div>
 					<a class="title" href="/post/macos_catalina_ida%E5%AE%89%E8%A3%85/">MacOS Catalina下IDA安装问题</a> &mdash;
 					<span class="description">
 						
-							
-macOS catalina下安装IDA报错&#39;can&#39;t be open&#39;，进入ida包中运行&#39;installbuilder.sh&#39;报错显示&#39;bad CPU type in executable:&#39;，然后想到catalina已经不支持32...
+						macOS catalina下安装IDA报错&rsquo;can&rsquo;t be open&rsquo;，进入ida包中运行&rsquo;installbuilder.sh&rsquo;报错显示&rsquo;bad CPU type in executable:&lsquo;，然后想到catalina已经不支持32位了，
+解决方式： 在mojava下安装，copy到catalina中可以直接使用
+https://github.com/swfangzhang/IDA-pro-7-for-Catalina-OSX-15 https://www.52pojie.cn/thread-1063122-1-1.html&hellip;
 						
 					</span>
-				</div><div class="post">
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 22, 2020</div>
 					<a class="title" href="/post/macos_catalina%E9%9F%B3%E9%A2%91%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/">macOS下使用soundflower将音频输出转为输入</a> &mdash;
 					<span class="description">
 						
-							
-因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
-
-
-
-工具： Soundflower 
-
-
-1. 安装
-2. 打开audio midi setup
-   create Multi-Outp...
+						因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
+工具： Soundflower
+ 安装 打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项 chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音  &hellip;
 						
 					</span>
-				</div><a href="/posts">All articles →</a>
+				</div>
+				
+				
+
+
 			</div>
 		</div>
 	</div>
 	<div class="footer wrapper">
 	<nav class="nav">
-		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
 </div>
+
+
 
 
 </body>
