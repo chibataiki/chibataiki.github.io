@@ -10,7 +10,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2020-02-28T22:59:34&#43;08:00"/>
+<meta property="og:updated_time" content="2020-03-01T22:58:31&#43;08:00"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jian&#39;s Life"/>
 <meta name="twitter:description" content=""/>
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/main.css" />
 
-	
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	<script src="http://example.org/js/main.js"></script>
 </head>
 
@@ -28,7 +28,7 @@
 		<div class="header">
 	<h1 class="site-title"><a href="http://example.org/">Jian&#39;s Life</a></h1>
 	<div class="site-description"><h2>new life</h2><nav class="nav social">
-			<ul class="flat"></ul>
+			<ul class="flat"><a href="polaalemu@gmail.com" title="Gmail"><i data-feather="https://tva1.sinaimg.cn/large/00831rSTgy1gceukfgze0j303k0363ye.jpg"></i></a></ul>
 		</nav>
 	</div>
 
@@ -63,6 +63,30 @@
 			<div class="posts">
 				
 				
+				
+				<div class="post">
+					<div class="meta">Mar 1, 2020</div>
+					<a class="title" href="/post/burpsuite/">Burpsuite</a> &mdash;
+					<span class="description">
+						
+						使用 match/replace proxy-&gt;Options-&gt; March and Replace
+可以使用regex或者literal
+然后HTTP history 页面下方会多出一栏 Auto-modifided request, 点进去就可以看到修改过后的 request&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
+					<div class="meta">Mar 1, 2020</div>
+					<a class="title" href="/post/ida-note/">macOS下IDA插件安装</a> &mdash;
+					<span class="description">
+						
+						IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+ 将ida_fuzzy.py 文件放到 plugins 目录下
+ 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.&hellip;
+						
+					</span>
+				</div>
 				
 				<div class="post">
 					<div class="meta">Feb 28, 2020</div>
@@ -188,6 +212,6 @@ https://github.com/swfangzhang/IDA-pro-7-for-Catalina-OSX-15 https://www.52pojie
 
 
 
-
+<script>feather.replace()</script>
 </body>
 </html>

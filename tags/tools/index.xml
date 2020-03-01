@@ -6,10 +6,21 @@
     <description>Recent content in tools on Jian&#39;s Life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Feb 2020 13:58:13 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 14:30:18 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>macOS下IDA插件安装</title>
+      <link>http://example.org/post/ida-note/</link>
+      <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
+      
+      <guid>http://example.org/post/ida-note/</guid>
+      <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+ 将ida_fuzzy.py 文件放到 plugins 目录下
+ 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.</description>
+    </item>
     
     <item>
       <title>MacOS 多版本java管理</title>

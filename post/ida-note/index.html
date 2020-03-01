@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>macOS下IDA插件安装 - Jian&#39;s Life</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="macOS下IDA插件安装" />
+<meta property="og:description" content="IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+ 将ida_fuzzy.py 文件放到 plugins 目录下
+ 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/ida-note/" />
+<meta property="article:published_time" content="2020-03-01T14:30:18&#43;08:00"/>
+<meta property="article:modified_time" content="2020-03-01T14:30:18&#43;08:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="macOS下IDA插件安装"/>
+<meta name="twitter:description" content="IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+ 将ida_fuzzy.py 文件放到 plugins 目录下
+ 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="http://example.org/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://example.org/">Jian&#39;s Life</a></h1>
+	<div class="site-description"><h2>new life</h2><nav class="nav social">
+			<ul class="flat"><a href="polaalemu@gmail.com" title="Gmail"><i data-feather="https://tva1.sinaimg.cn/large/00831rSTgy1gceukfgze0j303k0363ye.jpg"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/post">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">macOS下IDA插件安装</h1>
+			<div class="meta">Posted at &mdash; Mar 1, 2020</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<ul>
+<li>IDAFuzzy : <a href="https://github.com/Ga-ryo/IDAFuzzy">https://github.com/Ga-ryo/IDAFuzzy</a>
+在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy</li>
+</ul>
+
+<h2 id="ida-pro-在macos下安装的坑">IDA pro 在macOS下安装的坑</h2>
+
+<p>和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步</p>
+
+<ol>
+<li>将ida_fuzzy.py 文件放到 plugins 目录下<br /></li>
+<li>将ida_fuzzy.py 所依赖的包放到 python 目录下</li>
+</ol>
+
+<p>可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">chibataiki@chibataikis-MBP MacOS % tree -d -L 1 .
+.
+├── cfg
+├── dbgsrv
+├── idc
+├── ids
+├── loaders
+├── plugins
+├── procs
+├── python
+├── sig
+└── til</pre></div>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcefuw2y7uj30og0naadv.jpg" alt="" /></p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/tools">tools</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>
