@@ -6,24 +6,38 @@
     <description>Recent content in IoT on Jian&#39;s Life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Feb 2020 13:28:16 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 12:38:39 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/tags/iot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Qemu User Mode 配置</title>
-      <link>http://example.org/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Fri, 28 Feb 2020 13:28:16 +0800</pubDate>
+      <title>Dlink Backdoor 分析记录</title>
+      <link>http://example.org/post/dlink-backdoor-analysis/</link>
+      <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
       
-      <guid>http://example.org/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/</guid>
-      <description>qemu 虚拟机里的安装的debian是wheey 版本
-添加源 nano /etc/apt/source
-deb http://archive.debian.org/debian wheezy main
-安装qemu-mips-static/qemu-mipsel-static/qemu-arm-static
-sudo apt-get install qemu-user-static
-运行二进制程序:
-chroot . ./qemu-[arch]-static [-g port] [binary_name]</description>
+      <guid>http://example.org/post/dlink-backdoor-analysis/</guid>
+      <description>受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.
+只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。
+该后门在路由器的web服务中实现.
+Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.
+首先查看web server 的型号: thttpd-alphanetworks/2.23应该是thttpd的修改版本,而alphanetworks是D-link的子公司.
+functions一栏里面很多alpha开头的函数,里面有个权限检查程序alpha_auth_check,可以分析一下.
+通过交叉引用搜索发现 alpha_httpd_parse_request调用了alpha_auth_check :</description>
+    </item>
+    
+    <item>
+      <title>MIPS/ARM 调试环境</title>
+      <link>http://example.org/post/dynamic-analysis-for-mips-arm/</link>
+      <pubDate>Sat, 29 Feb 2020 10:47:10 +0800</pubDate>
+      
+      <guid>http://example.org/post/dynamic-analysis-for-mips-arm/</guid>
+      <description>环境
+宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的debian(wheey)
+MIPS/ARM的程序调试方式: 1. 直接在宿主机上使用qemu 用户模式 2. 在对应架构的debian虚拟机上运行,使用qemu-[mips/arm]-static的调试模式或者gdbserver都行
+这里选择第二种
+2.1. 客户机安装qemu-user-static
+apt-get install qemu-user-static chroot .</description>
     </item>
     
     <item>
@@ -34,7 +48,7 @@ chroot . ./qemu-[arch]-static [-g port] [binary_name]</description>
       <guid>http://example.org/post/qemu-system-mode-setting/</guid>
       <description>主要是对MIPS ARM架构的嵌入式设备进行仿真
 系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
-0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 这里大致有三种系统仿真方式
 1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
 2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
 3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现

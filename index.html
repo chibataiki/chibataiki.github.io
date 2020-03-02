@@ -89,8 +89,39 @@
 				</div>
 				
 				<div class="post">
+					<div class="meta">Mar 1, 2020</div>
+					<a class="title" href="/post/dlink-backdoor-analysis/">Dlink Backdoor 分析记录</a> &mdash;
+					<span class="description">
+						
+						受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.
+只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。
+该后门在路由器的web服务中实现.
+Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.
+首先查看web server 的型号: thttpd-alphanetworks/2.23应该是thttpd的修改版本,而alphanetworks是D-link的子公司.
+functions一栏里面很多alpha开头的函数,里面有个权限检查程序alpha_auth_check,可以分析一下.
+通过交叉引用搜索发现 alpha_httpd_parse_request调用了alpha_auth_check :&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
+					<div class="meta">Feb 29, 2020</div>
+					<a class="title" href="/post/dynamic-analysis-for-mips-arm/">MIPS/ARM 调试环境</a> &mdash;
+					<span class="description">
+						
+						环境
+宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的debian(wheey)
+MIPS/ARM的程序调试方式: 1. 直接在宿主机上使用qemu 用户模式 2. 在对应架构的debian虚拟机上运行,使用qemu-[mips/arm]-static的调试模式或者gdbserver都行
+这里选择第二种
+2.1. 客户机安装qemu-user-static
+apt-get install qemu-user-static chroot .&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 28, 2020</div>
-					<a class="title" href="/post/macos-%E5%A4%9A%E7%89%88%E6%9C%ACjava%E7%AE%A1%E7%90%86/">MacOS 多版本java管理</a> &mdash;
+					<a class="title" href="/post/macos-multui-java-management/">MacOS 多版本java管理</a> &mdash;
 					<span class="description">
 						
 						之前安装 Burpsuite的时候,需要的版本是JDK1.8,这次ghida则需要新版本
@@ -102,29 +133,13 @@ brew tap homebrew/cask-versions brew install jenv  显示java 环境
 				</div>
 				
 				<div class="post">
-					<div class="meta">Feb 28, 2020</div>
-					<a class="title" href="/post/qemu-user-mode-%E9%85%8D%E7%BD%AE/">Qemu User Mode 配置</a> &mdash;
-					<span class="description">
-						
-						qemu 虚拟机里的安装的debian是wheey 版本
-添加源 nano /etc/apt/source
-deb http://archive.debian.org/debian wheezy main
-安装qemu-mips-static/qemu-mipsel-static/qemu-arm-static
-sudo apt-get install qemu-user-static
-运行二进制程序:
-chroot . ./qemu-[arch]-static [-g port] [binary_name]&hellip;
-						
-					</span>
-				</div>
-				
-				<div class="post">
 					<div class="meta">Feb 27, 2020</div>
 					<a class="title" href="/post/qemu-system-mode-setting/">QEMU系统模式仿真</a> &mdash;
 					<span class="description">
 						
 						主要是对MIPS ARM架构的嵌入式设备进行仿真
 系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
-0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 所以大致有三种系统仿真方式
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 这里大致有三种系统仿真方式
 1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
 2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
 3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
@@ -150,7 +165,7 @@ scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs
 				
 				<div class="post">
 					<div class="meta">Feb 25, 2020</div>
-					<a class="title" href="/post/vim-markdown-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/">Vim-Markdown-插件安装</a> &mdash;
+					<a class="title" href="/post/vim-markdown-plugin-install/">Vim-Markdown-插件安装</a> &mdash;
 					<span class="description">
 						
 						环境： macOS catalina vim: macvim
@@ -161,7 +176,7 @@ scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs
 				
 				<div class="post">
 					<div class="meta">Feb 24, 2020</div>
-					<a class="title" href="/post/macos_catalina_burpsuite%E5%AE%89%E8%A3%85/">MacOS Catalina BurpSuite 安装</a> &mdash;
+					<a class="title" href="/post/macos-burpsuite-install/">MacOS Catalina BurpSuite 安装</a> &mdash;
 					<span class="description">
 						
 						JDK安装 burpsuite是java程序，所以需要安装JDK
@@ -176,7 +191,7 @@ brew cask install java11 burpsuite 安装 下载burp-loader-keygen.jar 和 burps
 				
 				<div class="post">
 					<div class="meta">Feb 23, 2020</div>
-					<a class="title" href="/post/macos_catalina_ida%E5%AE%89%E8%A3%85/">MacOS Catalina下IDA安装问题</a> &mdash;
+					<a class="title" href="/post/macos_ida_install/">MacOS Catalina下IDA安装问题</a> &mdash;
 					<span class="description">
 						
 						macOS catalina下安装IDA报错&rsquo;can&rsquo;t be open&rsquo;，进入ida包中运行&rsquo;installbuilder.sh&rsquo;报错显示&rsquo;bad CPU type in executable:&lsquo;，然后想到catalina已经不支持32位了，
@@ -186,19 +201,18 @@ https://github.com/swfangzhang/IDA-pro-7-for-Catalina-OSX-15 https://www.52pojie
 					</span>
 				</div>
 				
-				<div class="post">
-					<div class="meta">Feb 22, 2020</div>
-					<a class="title" href="/post/macos_catalina%E9%9F%B3%E9%A2%91%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/">macOS下使用soundflower将音频输出转为输入</a> &mdash;
-					<span class="description">
-						
-						因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
-工具： Soundflower
- 安装 打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项 chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音  &hellip;
-						
-					</span>
-				</div>
 				
-				
+
+<ul class="pagination">
+	<li class="page-item page-prev">
+	
+	</li>
+	<li class="page-item page-next">
+	
+    <a href="/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">Next page →</span></a>
+	
+	</li>
+</ul>
 
 
 			</div>

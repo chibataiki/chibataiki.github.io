@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Dlink Backdoor 分析记录 - Jian&#39;s Life</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Dlink Backdoor 分析记录" />
+<meta property="og:description" content="受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.
+只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。
+该后门在路由器的web服务中实现.
+Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.
+首先查看web server 的型号: thttpd-alphanetworks/2.23应该是thttpd的修改版本,而alphanetworks是D-link的子公司.
+functions一栏里面很多alpha开头的函数,里面有个权限检查程序alpha_auth_check,可以分析一下.
+通过交叉引用搜索发现 alpha_httpd_parse_request调用了alpha_auth_check :" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/dlink-backdoor-analysis/" />
+<meta property="article:published_time" content="2020-03-01T12:38:39&#43;08:00"/>
+<meta property="article:modified_time" content="2020-03-01T12:38:39&#43;08:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dlink Backdoor 分析记录"/>
+<meta name="twitter:description" content="受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.
+只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。
+该后门在路由器的web服务中实现.
+Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.
+首先查看web server 的型号: thttpd-alphanetworks/2.23应该是thttpd的修改版本,而alphanetworks是D-link的子公司.
+functions一栏里面很多alpha开头的函数,里面有个权限检查程序alpha_auth_check,可以分析一下.
+通过交叉引用搜索发现 alpha_httpd_parse_request调用了alpha_auth_check :"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="http://example.org/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://example.org/">Jian&#39;s Life</a></h1>
+	<div class="site-description"><h2>new life</h2><nav class="nav social">
+			<ul class="flat"><a href="mailto:polaalemu@gmail.com" title="Gmail"><i data-feather="mail"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/post">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Dlink Backdoor 分析记录</h1>
+			<div class="meta">Posted at &mdash; Mar 1, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.</p>
+
+<p>只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。</p>
+
+<p>该后门在路由器的web服务中实现.</p>
+
+<p>Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.<br />
+首先查看web server 的型号:
+<code>thttpd-alphanetworks/2.23</code>应该是thttpd的修改版本,而alphanetworks是D-link的子公司.<br />
+functions一栏里面很多alpha开头的函数,里面有个权限检查程序<code>alpha_auth_check</code>,可以分析一下.</p>
+
+<p>通过交叉引用搜索发现 <code>alpha_httpd_parse_request</code>调用了<code>alpha_auth_check</code> :</p>
+
+<p><code>alpha_httpd_parse_request</code>调用部分:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">loc_41A420:
+move    $a0, $s2
+la      $t9, alpha_auth_check
+nop
+jalr    $t9 ; alpha_auth_check
+nop
+lw      $gp, 0x2830+var_2820($sp)
+li      $v1, 0xFFFFFFFF
+beq     $v0, $v1, loc_41A4B0
+li      $a0, 0xFFFFFFFF</pre></div>
+<p>分析一下参数:
+<code>alpha_auth_check</code>的传入参数<code>$a0</code>在<code>$s2</code>中,而 <code>alpha_auth_check</code>返回值存储在<code>$v0</code>中, 然后
+<code>$v0</code>和<code>$v1</code> (0xFFFFFFFF :-1)会进行比较, 相等就跳转到loc_41A4B0 结束函数.</p>
+
+<hr />
+
+<p><code>alpha_auth_check</code>内:<br />
+存在strstr,strcmp 和以及一个明显的硬编码字符串</p>
+
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gceisarj8lj30m20cg0un.jpg" alt="" /></p>
+
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gceifspvtjj30sk0e2tb3.jpg" alt="" /></p>
+
+<p>看一下strstr用法:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NAME
+       strstr, strcasestr - locate a substring
+DESCRIPTION
+       The  strstr()  function  finds  the  first  occurrence of the substring needle in the string
+       haystack.  The terminating null bytes (&#39;\0&#39;) are not compared.
+
+RETURN VALUE
+       These functions return a pointer to the beginning of the located substring, or NULL  if  the
+       substring is not found.</pre></div>
+<p>strstr参数:  <code>a1</code>分别是&rdquo;graphic/&ldquo;和&rdquo;public/&ldquo;,而<code>a0</code>来自于与<code>0xB8($s0)</code>,</p>
+
+<p>所以这里的操作:<br />
+1.<code>strstr(0xB8($s0),&quot;graphic/&quot;)</code><br />
+2.<code>strstr(0xB8($s0)&quot;public/&quot; )</code><br />
+3.<code>strcmp(0xD0($s0),&quot;xmlset_roodkcableoj28840ybtide)</code></p>
+
+<p>如果strcmp匹配,则直接结束函数,这里就绕过了认证.</p>
+
+<hr />
+
+<p>分析传入的字符串</p>
+
+<p><code>0xD0($s0)</code> -&gt; <code>httpd_parse_request $s0</code></p>
+
+<p>通过搜索0XD0 ,可以追溯到<code>httpd_parse_request</code>内:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">loc_41488C:
+loc_41488C:
+la      $a1, aNotPermitted  # &#34; not permitted.\n&#34;
+nop
+addiu   $a1, (aUserAgent - 0x470000)  # &#34;User-Agent:&#34;
+li      $a2, 0xB
+la      $t9, strncasecmp
+nop
+jalr    $t9 ; strncasecmp                                  # $v0 =strncasecmp(a0,a1=&#34;User-Agent:&#34;,a2=0xB)
+nop
+lw      $gp, 0x48+var_30($sp)
+bnez    $v0, loc_4148EC	                                   # if($v0!=0)	  jmp 	loc_4148EC					
+move    $a0, $s0
+
+...
+
+addiu   $s0, 0xB                                           # $s0 = $s0+0xB
+move    $a0, $s0                                           # MEM[$a0] = MEM[$s0]
+la      $a1, aNotPermitted  # &#34; not permitted.\n&#34;          # load address to a1?? [TODO]
+nop
+addiu   $a1, (asc_46EC10 - 0x470000)  # &#34; \t&#34;              # $a1 = &#34;\t&#34;
+la      $t9, strspn						
+nop
+jalr    $t9 ; strspn                                       #  $v0 = strspn(a0,a1)
+nop
+lw      $gp, 0x48+var_30($sp)				
+addu    $s0, $v0                                           #  $s0= $s0+ $v0
+b       loc_4150EC
+sw      $s0, 0xD0($s2)                                     # MEM[$s2+0xD0]:4 = $s0     </pre></div>
+<p>大概分析了下,如果User-Agent里带有xmlset_roodkcableoj28840ybtide, 那么就可以绕过验证</p>
+
+<p>shodan 关键词:  Server: thttpd-alphanetworks/2.23</p>
+
+<p>参考链接:</p>
+
+<p><a href="http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/">http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/</a></p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/iot">IoT</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>
