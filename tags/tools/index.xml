@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>tools on Home</title>
+    <link>http://example.org/tags/tools/</link>
+    <description>Recent content in tools on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
+    <webMaster>polaalemu@gmail.com (john)</webMaster>
+    <copyright>©{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 01 Mar 2020 23:25:03 +0800</lastBuildDate>
+    
+        <atom:link href="http://example.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>GDB 使用note</title>
+        <link>http://example.org/notes/gdb-user-note/</link>
+        <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Sun, 01 Mar 2020 23:25:03 +0800</atom:modified>
+        <guid>http://example.org/notes/gdb-user-note/</guid>
+        <description>gdb [program] [arguments] 反汇编 main函数 (gdb) disasseble main 修改汇编模</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>macOS下IDA插件安装</title>
+        <link>http://example.org/posts/ida-note/</link>
+        <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
+        <guid>http://example.org/posts/ida-note/</guid>
+        <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>MacOS 多版本java管理</title>
+        <link>http://example.org/posts/macos-multui-java-management/</link>
+        <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Fri, 28 Feb 2020 13:58:13 +0800</atom:modified>
+        <guid>http://example.org/posts/macos-multui-java-management/</guid>
+        <description>之前安装 Burpsuite的时候,需要的</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>常用的漏洞分析工具note</title>
+        <link>http://example.org/todo/normal-binary-analysis-tools/</link>
+        <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
+        <guid>http://example.org/todo/normal-binary-analysis-tools/</guid>
+        <description>IDA pro hopper radare2 ghidra burpsuite file strings objdump hexdump strace ltrace checksec binwalk firmadyne gdb 插件: pwngdb</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+            
+              <category>Reverse Engineering</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>QEMU系统模式仿真</title>
+        <link>http://example.org/posts/qemu-system-mode-setting/</link>
+        <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
+        <guid>http://example.org/posts/qemu-system-mode-setting/</guid>
+        <description>主要是对MIPS ARM架构的嵌入式设备进</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+            
+              <category>IoT</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Vim-Markdown-插件安装</title>
+        <link>http://example.org/posts/vim-markdown-plugin-install/</link>
+        <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Tue, 25 Feb 2020 00:23:10 +0800</atom:modified>
+        <guid>http://example.org/posts/vim-markdown-plugin-install/</guid>
+        <description>环境： macOS catalina vim: macvim 设置vim初始化环境 mkdir ~/.vim mv</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>MacOS Catalina BurpSuite 安装</title>
+        <link>http://example.org/posts/macos-burpsuite-install/</link>
+        <pubDate>Mon, 24 Feb 2020 23:10:28 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Mon, 24 Feb 2020 23:10:28 +0800</atom:modified>
+        <guid>http://example.org/posts/macos-burpsuite-install/</guid>
+        <description>JDK安装 burpsuite是java程</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>MacOS Catalina下IDA安装问题</title>
+        <link>http://example.org/posts/macos_ida_install/</link>
+        <pubDate>Sun, 23 Feb 2020 18:28:03 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Sun, 23 Feb 2020 18:28:03 +0800</atom:modified>
+        <guid>http://example.org/posts/macos_ida_install/</guid>
+        <description>macOS catalina下安装IDA报错&amp;rs</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>macOS下使用soundflower将音频输出转为输入</title>
+        <link>http://example.org/posts/macos_catalina_sound_redirection/</link>
+        <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Sat, 22 Feb 2020 21:43:36 +0800</atom:modified>
+        <guid>http://example.org/posts/macos_catalina_sound_redirection/</guid>
+        <description>因为有时候英文视频没有字幕，所以需要将视</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

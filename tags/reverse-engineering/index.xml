@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Reverse Engineering on Home</title>
+    <link>http://example.org/tags/reverse-engineering/</link>
+    <description>Recent content in Reverse Engineering on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
+    <webMaster>polaalemu@gmail.com (john)</webMaster>
+    <copyright>©{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Fri, 28 Feb 2020 13:29:32 +0800</lastBuildDate>
+    
+        <atom:link href="http://example.org/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>常用的漏洞分析工具note</title>
+        <link>http://example.org/todo/normal-binary-analysis-tools/</link>
+        <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
+        <guid>http://example.org/todo/normal-binary-analysis-tools/</guid>
+        <description>IDA pro hopper radare2 ghidra burpsuite file strings objdump hexdump strace ltrace checksec binwalk firmadyne gdb 插件: pwngdb</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+            
+              <category>Reverse Engineering</category>
+            
+          
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>
