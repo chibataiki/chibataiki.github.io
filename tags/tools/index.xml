@@ -6,10 +6,24 @@
     <description>Recent content in tools on Jian&#39;s Life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2020 14:30:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 23:25:03 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GDB 使用note</title>
+      <link>http://example.org/post/gdb-user-note/</link>
+      <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
+      
+      <guid>http://example.org/post/gdb-user-note/</guid>
+      <description>gdb [program] [arguments]
+反汇编 main函数
+(gdb) disasseble main
+修改汇编模式,可以自己选择AT&amp;amp;T或者Intel, 也可以在.gdbinit中修改
+(gdb) set disassembly-flavor intel
+(gdb) set disassembly-flavor at&amp;amp;t (gdb) show disassembly-flavor</description>
+    </item>
     
     <item>
       <title>macOS下IDA插件安装</title>

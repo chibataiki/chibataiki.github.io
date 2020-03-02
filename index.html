@@ -10,7 +10,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2020-03-01T22:58:31&#43;08:00"/>
+<meta property="og:updated_time" content="2020-03-01T23:25:03&#43;08:00"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jian&#39;s Life"/>
 <meta name="twitter:description" content=""/>
@@ -66,7 +66,22 @@
 				
 				<div class="post">
 					<div class="meta">Mar 1, 2020</div>
-					<a class="title" href="/post/burpsuite/">Burpsuite</a> &mdash;
+					<a class="title" href="/post/gdb-user-note/">GDB 使用note</a> &mdash;
+					<span class="description">
+						
+						gdb [program] [arguments]
+反汇编 main函数
+(gdb) disasseble main
+修改汇编模式,可以自己选择AT&amp;T或者Intel, 也可以在.gdbinit中修改
+(gdb) set disassembly-flavor intel
+(gdb) set disassembly-flavor at&amp;t (gdb) show disassembly-flavor&hellip;
+						
+					</span>
+				</div>
+				
+				<div class="post">
+					<div class="meta">Mar 1, 2020</div>
+					<a class="title" href="/post/burpsuite-note/">Burpsuite</a> &mdash;
 					<span class="description">
 						
 						使用 match/replace proxy-&gt;Options-&gt; March and Replace
@@ -185,18 +200,6 @@ JDK分为Oracle和OpenJDK，不做赘述，选择OpenJDK
 brew cask install java 安装最新java会导致burpsuite安装失败
 brew cask install java11 burpsuite 安装 下载burp-loader-keygen.jar 和 burpsuite_pro{version}.jar.
 如果看到出现: -Xbootclasspath/p 说明java版本太新,java8之后这个参数就移除了.&hellip;
-						
-					</span>
-				</div>
-				
-				<div class="post">
-					<div class="meta">Feb 23, 2020</div>
-					<a class="title" href="/post/macos_ida_install/">MacOS Catalina下IDA安装问题</a> &mdash;
-					<span class="description">
-						
-						macOS catalina下安装IDA报错&rsquo;can&rsquo;t be open&rsquo;，进入ida包中运行&rsquo;installbuilder.sh&rsquo;报错显示&rsquo;bad CPU type in executable:&lsquo;，然后想到catalina已经不支持32位了，
-解决方式： 在mojava下安装，copy到catalina中可以直接使用
-https://github.com/swfangzhang/IDA-pro-7-for-Catalina-OSX-15 https://www.52pojie.cn/thread-1063122-1-1.html&hellip;
 						
 					</span>
 				</div>
