@@ -7,7 +7,7 @@
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>Notes on Home</title>
-    <link>http://example.org/notes/</link>
+    <link>https://chibataiki.github.io/notes/</link>
     <description>Recent content in Notes on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -16,7 +16,7 @@
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Tue, 03 Mar 2020 14:49:53 +0800</lastBuildDate>
     
-        <atom:link href="http://example.org/notes/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://chibataiki.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     
@@ -24,11 +24,11 @@
       
       <item>
         <title>Grep Note</title>
-        <link>http://example.org/notes/grep-note/</link>
+        <link>https://chibataiki.github.io/notes/grep-note/</link>
         <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Tue, 03 Mar 2020 14:49:53 +0800</atom:modified>
-        <guid>http://example.org/notes/grep-note/</guid>
+        <guid>https://chibataiki.github.io/notes/grep-note/</guid>
         <description>在hugo上有些笔记被打了TODO标签,</description>
         
         <dc:creator>john</dc:creator>
@@ -48,11 +48,11 @@
       
       <item>
         <title>GDB 使用note</title>
-        <link>http://example.org/notes/gdb-user-note/</link>
+        <link>https://chibataiki.github.io/notes/gdb-user-note/</link>
         <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 23:25:03 +0800</atom:modified>
-        <guid>http://example.org/notes/gdb-user-note/</guid>
+        <guid>https://chibataiki.github.io/notes/gdb-user-note/</guid>
         <description>gdb [program] [arguments] 反汇编 main函数 (gdb) disasseble main 修改汇编模</description>
         
         <dc:creator>john</dc:creator>
@@ -72,11 +72,11 @@
       
       <item>
         <title>Burpsuite使用note</title>
-        <link>http://example.org/notes/burpsuite-note/</link>
+        <link>https://chibataiki.github.io/notes/burpsuite-note/</link>
         <pubDate>Sun, 01 Mar 2020 22:58:31 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 22:58:31 +0800</atom:modified>
-        <guid>http://example.org/notes/burpsuite-note/</guid>
+        <guid>https://chibataiki.github.io/notes/burpsuite-note/</guid>
         <description>使用 match/replace proxy-&amp;gt;Options-&amp;gt; March and Replace 可以使用regex或者li</description>
         
         <dc:creator>john</dc:creator>
@@ -90,17 +90,23 @@
       
       <item>
         <title>MIPS汇编note</title>
-        <link>http://example.org/notes/mips-assembly-note/</link>
+        <link>https://chibataiki.github.io/notes/mips-assembly-note/</link>
         <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 16:07:18 +0800</atom:modified>
-        <guid>http://example.org/notes/mips-assembly-note/</guid>
+        <guid>https://chibataiki.github.io/notes/mips-assembly-note/</guid>
         <description>特性 MIPS和ARM 一样是RISC精简指</description>
         
         <dc:creator>john</dc:creator>
         
         
         
+        
+          
+            
+              <category>assembly</category>
+            
+          
         
         
         

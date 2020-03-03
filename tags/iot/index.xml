@@ -7,7 +7,7 @@
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>IoT on Home</title>
-    <link>http://example.org/tags/iot/</link>
+    <link>https://chibataiki.github.io/tags/iot/</link>
     <description>Recent content in IoT on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -16,7 +16,7 @@
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Sun, 01 Mar 2020 12:38:39 +0800</lastBuildDate>
     
-        <atom:link href="http://example.org/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://chibataiki.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml" />
     
     
     
@@ -24,11 +24,11 @@
       
       <item>
         <title>Dlink Backdoor 分析记录</title>
-        <link>http://example.org/posts/dlink-backdoor-analysis/</link>
+        <link>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</link>
         <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 12:38:39 +0800</atom:modified>
-        <guid>http://example.org/posts/dlink-backdoor-analysis/</guid>
+        <guid>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</guid>
         <description>受漏洞影响的是D-link 路由器的一些型</description>
         
         <dc:creator>john</dc:creator>
@@ -48,11 +48,11 @@
       
       <item>
         <title>MIPS/ARM 调试环境</title>
-        <link>http://example.org/posts/dynamic-analysis-for-mips-arm/</link>
+        <link>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</link>
         <pubDate>Sat, 29 Feb 2020 10:47:10 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Sat, 29 Feb 2020 10:47:10 +0800</atom:modified>
-        <guid>http://example.org/posts/dynamic-analysis-for-mips-arm/</guid>
+        <guid>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</guid>
         <description>环境 宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的</description>
         
         <dc:creator>john</dc:creator>
@@ -72,11 +72,11 @@
       
       <item>
         <title>QEMU系统模式仿真</title>
-        <link>http://example.org/posts/qemu-system-mode-setting/</link>
+        <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
         <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
-        <guid>http://example.org/posts/qemu-system-mode-setting/</guid>
+        <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
         <description>主要是对MIPS ARM架构的嵌入式设备进</description>
         
         <dc:creator>john</dc:creator>
@@ -100,11 +100,11 @@
       
       <item>
         <title>Netcore-igdmptd-后门漏洞分析</title>
-        <link>http://example.org/posts/netcore_igdmptd_backdoor_analysis/</link>
+        <link>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</link>
         <pubDate>Thu, 27 Feb 2020 13:53:04 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Thu, 27 Feb 2020 13:53:04 +0800</atom:modified>
-        <guid>http://example.org/posts/netcore_igdmptd_backdoor_analysis/</guid>
+        <guid>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</guid>
         <description>磊科路由器中内置了一个IGDMPTD的程</description>
         
         <dc:creator>john</dc:creator>
@@ -124,11 +124,11 @@
       
       <item>
         <title>交叉编译工具链</title>
-        <link>http://example.org/todo/cross-compilation-tool-chain/</link>
+        <link>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</link>
         <pubDate>Wed, 26 Feb 2020 14:59:16 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Wed, 26 Feb 2020 14:59:16 +0800</atom:modified>
-        <guid>http://example.org/todo/cross-compilation-tool-chain/</guid>
+        <guid>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</guid>
         <description>交叉编译工具链 在一个系统上运行编译器,为</description>
         
         <dc:creator>john</dc:creator>
@@ -148,11 +148,11 @@
       
       <item>
         <title>嵌入式设备boot过程</title>
-        <link>http://example.org/todo/embedded-device-boot-process/</link>
+        <link>https://chibataiki.github.io/todo/embedded-device-boot-process/</link>
         <pubDate>Wed, 26 Feb 2020 14:07:32 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Wed, 26 Feb 2020 14:07:32 +0800</atom:modified>
-        <guid>http://example.org/todo/embedded-device-boot-process/</guid>
+        <guid>https://chibataiki.github.io/todo/embedded-device-boot-process/</guid>
         <description>bootloader bootloader 是设备供电或者充值后执行的一段程序.</description>
         
         <dc:creator>john</dc:creator>
@@ -172,11 +172,11 @@
       
       <item>
         <title>Glitching Attack 故障注入攻击</title>
-        <link>http://example.org/todo/glitching_attack/</link>
+        <link>https://chibataiki.github.io/todo/glitching_attack/</link>
         <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
-        <guid>http://example.org/todo/glitching_attack/</guid>
+        <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
         <description>glitching 攻击的目标一般是硬件设备，通过注入故障</description>
         
         <dc:creator>john</dc:creator>

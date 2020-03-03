@@ -6,30 +6,30 @@
   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>linux on Home</title>
-    <link>https://chibataiki.github.io/tags/linux/</link>
-    <description>Recent content in linux on Home</description>
+    <title>assembly on Home</title>
+    <link>https://chibataiki.github.io/tags/assembly/</link>
+    <description>Recent content in assembly on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>polaalemu@gmail.com (john)</managingEditor>
     <webMaster>polaalemu@gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 03 Mar 2020 14:49:53 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 16:07:18 +0800</lastBuildDate>
     
-        <atom:link href="https://chibataiki.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://chibataiki.github.io/tags/assembly/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
       
       <item>
-        <title>Grep Note</title>
-        <link>https://chibataiki.github.io/notes/grep-note/</link>
-        <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
+        <title>MIPS汇编note</title>
+        <link>https://chibataiki.github.io/notes/mips-assembly-note/</link>
+        <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Tue, 03 Mar 2020 14:49:53 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/notes/grep-note/</guid>
-        <description>在hugo上有些笔记被打了TODO标签,</description>
+        <atom:modified>Sun, 01 Mar 2020 16:07:18 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/notes/mips-assembly-note/</guid>
+        <description>特性 MIPS和ARM 一样是RISC精简指</description>
         
         <dc:creator>john</dc:creator>
         
@@ -38,7 +38,7 @@
         
           
             
-              <category>linux</category>
+              <category>assembly</category>
             
           
         

@@ -7,7 +7,7 @@
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>Tags on Home</title>
-    <link>http://example.org/tags/</link>
+    <link>https://chibataiki.github.io/tags/</link>
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -16,7 +16,7 @@
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Tue, 03 Mar 2020 14:49:53 +0800</lastBuildDate>
     
-        <atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://chibataiki.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     
@@ -24,11 +24,11 @@
       
       <item>
         <title>linux</title>
-        <link>http://example.org/tags/linux/</link>
+        <link>https://chibataiki.github.io/tags/linux/</link>
         <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         
-        <guid>http://example.org/tags/linux/</guid>
+        <guid>https://chibataiki.github.io/tags/linux/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -42,11 +42,29 @@
       
       <item>
         <title>tools</title>
-        <link>http://example.org/tags/tools/</link>
+        <link>https://chibataiki.github.io/tags/tools/</link>
         <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         
-        <guid>http://example.org/tags/tools/</guid>
+        <guid>https://chibataiki.github.io/tags/tools/</guid>
+        <description></description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>assembly</title>
+        <link>https://chibataiki.github.io/tags/assembly/</link>
+        <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        
+        <guid>https://chibataiki.github.io/tags/assembly/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -60,11 +78,11 @@
       
       <item>
         <title>IoT</title>
-        <link>http://example.org/tags/iot/</link>
+        <link>https://chibataiki.github.io/tags/iot/</link>
         <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         
-        <guid>http://example.org/tags/iot/</guid>
+        <guid>https://chibataiki.github.io/tags/iot/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -78,11 +96,11 @@
       
       <item>
         <title>Reverse Engineering</title>
-        <link>http://example.org/tags/reverse-engineering/</link>
+        <link>https://chibataiki.github.io/tags/reverse-engineering/</link>
         <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         
-        <guid>http://example.org/tags/reverse-engineering/</guid>
+        <guid>https://chibataiki.github.io/tags/reverse-engineering/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>

@@ -7,7 +7,7 @@
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>Galleries on Home</title>
-    <link>http://example.org/gallery/</link>
+    <link>https://chibataiki.github.io/gallery/</link>
     <description>Recent content in Galleries on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -16,7 +16,7 @@
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Tue, 03 Mar 2020 06:11:24 +0800</lastBuildDate>
     
-        <atom:link href="http://example.org/gallery/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://chibataiki.github.io/gallery/index.xml" rel="self" type="application/rss+xml" />
     
     
     
@@ -24,11 +24,11 @@
       
       <item>
         <title>Temp</title>
-        <link>http://example.org/gallery/temp/</link>
+        <link>https://chibataiki.github.io/gallery/temp/</link>
         <pubDate>Tue, 03 Mar 2020 06:11:24 +0800</pubDate>
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Tue, 03 Mar 2020 06:11:24 +0800</atom:modified>
-        <guid>http://example.org/gallery/temp/</guid>
+        <guid>https://chibataiki.github.io/gallery/temp/</guid>
         <description>404 now</description>
         
         <dc:creator>john</dc:creator>
