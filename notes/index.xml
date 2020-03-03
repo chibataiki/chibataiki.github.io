@@ -14,13 +14,37 @@
     <managingEditor>polaalemu@gmail.com (john)</managingEditor>
     <webMaster>polaalemu@gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 01 Mar 2020 23:25:03 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2020 14:49:53 +0800</lastBuildDate>
     
         <atom:link href="http://example.org/notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>Grep Note</title>
+        <link>http://example.org/notes/grep-note/</link>
+        <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Tue, 03 Mar 2020 14:49:53 +0800</atom:modified>
+        <guid>http://example.org/notes/grep-note/</guid>
+        <description>在hugo上有些笔记被打了TODO标签,</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>linux</category>
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>GDB 使用note</title>
@@ -54,6 +78,24 @@
         <atom:modified>Sun, 01 Mar 2020 22:58:31 +0800</atom:modified>
         <guid>http://example.org/notes/burpsuite-note/</guid>
         <description>使用 match/replace proxy-&amp;gt;Options-&amp;gt; March and Replace 可以使用regex或者li</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>MIPS汇编note</title>
+        <link>http://example.org/notes/mips-assembly-note/</link>
+        <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Sun, 01 Mar 2020 16:07:18 +0800</atom:modified>
+        <guid>http://example.org/notes/mips-assembly-note/</guid>
+        <description>特性 MIPS和ARM 一样是RISC精简指</description>
         
         <dc:creator>john</dc:creator>
         

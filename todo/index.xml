@@ -6,9 +6,9 @@
   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>TODOs on Home</title>
+    <title>Todos on Home</title>
     <link>http://example.org/todo/</link>
-    <description>Recent content in TODOs on Home</description>
+    <description>Recent content in Todos on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>polaalemu@gmail.com (john)</managingEditor>
@@ -29,7 +29,7 @@
         <author>polaalemu@gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>http://example.org/todo/normal-binary-analysis-tools/</guid>
-        <description>IDA pro hopper radare2 ghidra burpsuite file strings objdump hexdump strace ltrace checksec binwalk firmadyne gdb 插件: pwngdb</description>
+        <description>IDA pro: hopper: 适用于macOS和Linux的逆向</description>
         
         <dc:creator>john</dc:creator>
         
@@ -117,24 +117,6 @@
               <category>IoT</category>
             
           
-        
-        
-        
-      </item>
-      
-      <item>
-        <title></title>
-        <link>http://example.org/todo/todo/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        
-        <guid>http://example.org/todo/todo/</guid>
-        <description>确定目标 然后尽可能的获取更多的信息 (路由</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
         
         
         
