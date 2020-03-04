@@ -14,13 +14,35 @@
     <managingEditor>polaalemu@gmail.com (john)</managingEditor>
     <webMaster>polaalemu@gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Fri, 28 Feb 2020 13:29:32 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Mar 2020 18:37:45 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/todo/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>模糊测试工具</title>
+        <link>https://chibataiki.github.io/todo/fuzzing-tools/</link>
+        <pubDate>Wed, 04 Mar 2020 18:37:45 +0800</pubDate>
+        <author>polaalemu@gmail.com (john)</author>
+        <atom:modified>Wed, 04 Mar 2020 18:37:45 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/fuzzing-tools/</guid>
+        <description>netzob 可以对通讯协议逆向,建模并模糊测试</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>常用的漏洞分析工具note</title>
