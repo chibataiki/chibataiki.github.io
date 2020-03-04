@@ -1615,9 +1615,9 @@
     <article class="single__contents" data-dir="ltr" data-ani="true">
       
       <p>受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.</p>
-<p>只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。</p>
+<p>只需要将浏览器User-Agent标志修改为：<code>xmlset_roodkcableoj28840ybtide</code>，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。</p>
 <p>该后门在路由器的web服务中实现.</p>
-<p>Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.<br />
+<p>Craig Heffner 进行分析的时候,就首先将<code> /bin/webs</code> 拖进IDA进行分析.<br />
 首先查看web server 的型号:<br />
 <code>thttpd-alphanetworks/2.23</code>应该是thttpd的修改版本,而alphanetworks是D-link的子公司.<br />
 functions一栏里面很多alpha开头的函数,里面有个权限检查程序<code>alpha_auth_check</code>,可以分析一下.</p>
