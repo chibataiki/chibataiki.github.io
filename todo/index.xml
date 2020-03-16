@@ -11,10 +11,10 @@
     <description>Recent content in Todos on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
-    <webMaster>polaalemu@gmail.com (john)</webMaster>
+    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
+    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Wed, 04 Mar 2020 18:37:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2020 22:46:32 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/todo/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,13 +23,37 @@
 
       
       <item>
+        <title>Simple_key_validation</title>
+        <link>https://chibataiki.github.io/todo/simple_key_validation/</link>
+        <pubDate>Sat, 14 Mar 2020 22:46:32 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Sat, 14 Mar 2020 22:46:32 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/simple_key_validation/</guid>
+        <description>一种简单的密码加密机制: #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>liveoverflow</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
         <title>模糊测试工具</title>
         <link>https://chibataiki.github.io/todo/fuzzing-tools/</link>
         <pubDate>Wed, 04 Mar 2020 18:37:45 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 04 Mar 2020 18:37:45 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/fuzzing-tools/</guid>
-        <description>netzob 可以对通讯协议逆向,建模并模糊测试</description>
+        <description>netzob 可以对通讯协议逆向,建模并模糊测试 clusterfuzz 可</description>
         
         <dc:creator>john</dc:creator>
         
@@ -45,10 +69,28 @@
       </item>
       
       <item>
+        <title>Unix-like 手册</title>
+        <link>https://chibataiki.github.io/todo/manual-pages/</link>
+        <pubDate>Mon, 02 Mar 2020 18:06:35 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Mon, 02 Mar 2020 18:06:35 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/manual-pages/</guid>
+        <description>man 命令 看命令,或者函数的用法的时候往往会</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
         <title>常用的漏洞分析工具note</title>
         <link>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</link>
         <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</guid>
         <description>IDA pro: hopper: 适用于macOS和Linux的逆向</description>
@@ -76,7 +118,7 @@
         <title>交叉编译工具链</title>
         <link>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</link>
         <pubDate>Wed, 26 Feb 2020 14:59:16 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 26 Feb 2020 14:59:16 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</guid>
         <description>交叉编译工具链 在一个系统上运行编译器,为</description>
@@ -100,7 +142,7 @@
         <title>嵌入式设备boot过程</title>
         <link>https://chibataiki.github.io/todo/embedded-device-boot-process/</link>
         <pubDate>Wed, 26 Feb 2020 14:07:32 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 26 Feb 2020 14:07:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/embedded-device-boot-process/</guid>
         <description>bootloader bootloader 是设备供电或者充值后执行的一段程序.</description>
@@ -124,7 +166,7 @@
         <title>Glitching Attack 故障注入攻击</title>
         <link>https://chibataiki.github.io/todo/glitching_attack/</link>
         <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
         <description>glitching 攻击的目标一般是硬件设备，通过注入故障</description>

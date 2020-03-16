@@ -11,10 +11,10 @@
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
-    <webMaster>polaalemu@gmail.com (john)</webMaster>
+    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
+    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Wed, 04 Mar 2020 13:48:11 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2020 22:46:32 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,10 +23,28 @@
 
       
       <item>
+        <title>liveoverflow</title>
+        <link>https://chibataiki.github.io/tags/liveoverflow/</link>
+        <pubDate>Sat, 14 Mar 2020 22:46:32 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        
+        <guid>https://chibataiki.github.io/tags/liveoverflow/</guid>
+        <description></description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
         <title>IoT</title>
         <link>https://chibataiki.github.io/tags/iot/</link>
         <pubDate>Wed, 04 Mar 2020 13:48:11 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/iot/</guid>
         <description></description>
@@ -44,7 +62,7 @@
         <title>linux</title>
         <link>https://chibataiki.github.io/tags/linux/</link>
         <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/linux/</guid>
         <description></description>
@@ -62,7 +80,7 @@
         <title>tools</title>
         <link>https://chibataiki.github.io/tags/tools/</link>
         <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/tools/</guid>
         <description></description>
@@ -80,7 +98,7 @@
         <title>assembly</title>
         <link>https://chibataiki.github.io/tags/assembly/</link>
         <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/assembly/</guid>
         <description></description>
@@ -98,7 +116,7 @@
         <title>Reverse Engineering</title>
         <link>https://chibataiki.github.io/tags/reverse-engineering/</link>
         <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/reverse-engineering/</guid>
         <description></description>

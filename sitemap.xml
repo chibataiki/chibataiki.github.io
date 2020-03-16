@@ -3,8 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chibataiki.github.io/tags/liveoverflow/</loc>
+    <lastmod>2020-03-14T22:46:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/todo/simple_key_validation/</loc>
+    <lastmod>2020-03-14T22:46:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/</loc>
+    <lastmod>2020-03-14T22:46:32+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chibataiki.github.io/todo/</loc>
-    <lastmod>2020-03-04T18:37:45+08:00</lastmod>
+    <lastmod>2020-03-14T22:46:32+08:00</lastmod>
   </url>
   
   <url>
@@ -28,12 +43,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/tags/</loc>
-    <lastmod>2020-03-04T13:48:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/notes/grep-note/</loc>
+    <loc>https://chibataiki.github.io/note/grep-note/</loc>
     <lastmod>2020-03-03T14:49:53+08:00</lastmod>
   </url>
   
@@ -43,7 +53,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/notes/</loc>
+    <loc>https://chibataiki.github.io/note/</loc>
     <lastmod>2020-03-03T14:49:53+08:00</lastmod>
   </url>
   
@@ -63,7 +73,12 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/notes/gdb-user-note/</loc>
+    <loc>https://chibataiki.github.io/todo/manual-pages/</loc>
+    <lastmod>2020-03-02T18:06:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/note/gdb-user-note/</loc>
     <lastmod>2020-03-01T23:25:03+08:00</lastmod>
   </url>
   
@@ -73,7 +88,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/notes/burpsuite-note/</loc>
+    <loc>https://chibataiki.github.io/note/burpsuite-note/</loc>
     <lastmod>2020-03-01T22:58:31+08:00</lastmod>
   </url>
   
@@ -83,7 +98,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/notes/mips-assembly-note/</loc>
+    <loc>https://chibataiki.github.io/note/mips-assembly-note/</loc>
     <lastmod>2020-03-01T16:07:18+08:00</lastmod>
   </url>
   

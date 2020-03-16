@@ -11,8 +11,8 @@
     <description>Recent content on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
-    <webMaster>polaalemu@gmail.com (john)</webMaster>
+    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
+    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Fri, 28 Feb 2020 22:59:34 +0800</lastBuildDate>
     
@@ -44,13 +44,37 @@
 
       
       <item>
+        <title>Simple_key_validation</title>
+        <link>https://chibataiki.github.io/todo/simple_key_validation/</link>
+        <pubDate>Sat, 14 Mar 2020 22:46:32 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Sat, 14 Mar 2020 22:46:32 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/simple_key_validation/</guid>
+        <description>一种简单的密码加密机制: #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>liveoverflow</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
         <title>模糊测试工具</title>
         <link>https://chibataiki.github.io/todo/fuzzing-tools/</link>
         <pubDate>Wed, 04 Mar 2020 18:37:45 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 04 Mar 2020 18:37:45 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/fuzzing-tools/</guid>
-        <description>netzob 可以对通讯协议逆向,建模并模糊测试</description>
+        <description>netzob 可以对通讯协议逆向,建模并模糊测试 clusterfuzz 可</description>
         
         <dc:creator>john</dc:creator>
         
@@ -69,7 +93,7 @@
         <title>Netgear-命令注入漏洞分析</title>
         <link>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</link>
         <pubDate>Wed, 04 Mar 2020 13:48:11 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 04 Mar 2020 13:48:11 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</guid>
         <description>netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相</description>
@@ -91,11 +115,11 @@
       
       <item>
         <title>Grep Note</title>
-        <link>https://chibataiki.github.io/notes/grep-note/</link>
+        <link>https://chibataiki.github.io/note/grep-note/</link>
         <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Tue, 03 Mar 2020 14:49:53 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/notes/grep-note/</guid>
+        <guid>https://chibataiki.github.io/note/grep-note/</guid>
         <description>在hugo上有些笔记被打了TODO标签,</description>
         
         <dc:creator>john</dc:creator>
@@ -114,12 +138,30 @@
       </item>
       
       <item>
+        <title>Unix-like 手册</title>
+        <link>https://chibataiki.github.io/todo/manual-pages/</link>
+        <pubDate>Mon, 02 Mar 2020 18:06:35 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Mon, 02 Mar 2020 18:06:35 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/manual-pages/</guid>
+        <description>man 命令 看命令,或者函数的用法的时候往往会</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
         <title>GDB 使用note</title>
-        <link>https://chibataiki.github.io/notes/gdb-user-note/</link>
+        <link>https://chibataiki.github.io/note/gdb-user-note/</link>
         <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 23:25:03 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/notes/gdb-user-note/</guid>
+        <guid>https://chibataiki.github.io/note/gdb-user-note/</guid>
         <description>gdb [program] [arguments] 反汇编 main函数 (gdb) disasseble main 修改汇编模</description>
         
         <dc:creator>john</dc:creator>
@@ -139,11 +181,11 @@
       
       <item>
         <title>Burpsuite使用note</title>
-        <link>https://chibataiki.github.io/notes/burpsuite-note/</link>
+        <link>https://chibataiki.github.io/note/burpsuite-note/</link>
         <pubDate>Sun, 01 Mar 2020 22:58:31 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 22:58:31 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/notes/burpsuite-note/</guid>
+        <guid>https://chibataiki.github.io/note/burpsuite-note/</guid>
         <description>使用 match/replace proxy-&amp;gt;Options-&amp;gt; March and Replace 可以使用regex或者li</description>
         
         <dc:creator>john</dc:creator>
@@ -157,11 +199,11 @@
       
       <item>
         <title>MIPS汇编note</title>
-        <link>https://chibataiki.github.io/notes/mips-assembly-note/</link>
+        <link>https://chibataiki.github.io/note/mips-assembly-note/</link>
         <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 16:07:18 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/notes/mips-assembly-note/</guid>
+        <guid>https://chibataiki.github.io/note/mips-assembly-note/</guid>
         <description>特性 MIPS和ARM 一样是RISC精简指</description>
         
         <dc:creator>john</dc:creator>
@@ -183,7 +225,7 @@
         <title>macOS下IDA插件安装</title>
         <link>https://chibataiki.github.io/posts/ida-note/</link>
         <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/ida-note/</guid>
         <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>
@@ -207,7 +249,7 @@
         <title>Dlink Backdoor 分析记录</title>
         <link>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</link>
         <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 12:38:39 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</guid>
         <description>受漏洞影响的是D-link 路由器的一些型</description>
@@ -231,7 +273,7 @@
         <title>MIPS/ARM 调试环境</title>
         <link>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</link>
         <pubDate>Sat, 29 Feb 2020 10:47:10 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sat, 29 Feb 2020 10:47:10 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</guid>
         <description>环境 宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的</description>
@@ -255,7 +297,7 @@
         <title>MacOS 多版本java管理</title>
         <link>https://chibataiki.github.io/tool/macos-multui-java-management/</link>
         <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:58:13 +0800</atom:modified>
         <guid>https://chibataiki.github.io/tool/macos-multui-java-management/</guid>
         <description>之前安装 Burpsuite的时候,需要的</description>
@@ -279,7 +321,7 @@
         <title>常用的漏洞分析工具note</title>
         <link>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</link>
         <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</guid>
         <description>IDA pro: hopper: 适用于macOS和Linux的逆向</description>
@@ -307,7 +349,7 @@
         <title>QEMU系统模式仿真</title>
         <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
         <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
         <description>主要是对MIPS ARM架构的嵌入式设备进</description>
@@ -335,7 +377,7 @@
         <title>Netcore-igdmptd-后门漏洞分析</title>
         <link>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</link>
         <pubDate>Thu, 27 Feb 2020 13:53:04 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Thu, 27 Feb 2020 13:53:04 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</guid>
         <description>磊科路由器中内置了一个IGDMPTD的程</description>
@@ -359,7 +401,7 @@
         <title>交叉编译工具链</title>
         <link>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</link>
         <pubDate>Wed, 26 Feb 2020 14:59:16 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 26 Feb 2020 14:59:16 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</guid>
         <description>交叉编译工具链 在一个系统上运行编译器,为</description>
@@ -383,7 +425,7 @@
         <title>嵌入式设备boot过程</title>
         <link>https://chibataiki.github.io/todo/embedded-device-boot-process/</link>
         <pubDate>Wed, 26 Feb 2020 14:07:32 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 26 Feb 2020 14:07:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/embedded-device-boot-process/</guid>
         <description>bootloader bootloader 是设备供电或者充值后执行的一段程序.</description>
@@ -407,7 +449,7 @@
         <title>Vim-Markdown-插件安装</title>
         <link>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</link>
         <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Tue, 25 Feb 2020 00:23:10 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</guid>
         <description>环境： macOS catalina vim: macvim 设置vim初始化环境 mkdir ~/.vim mv</description>
@@ -431,7 +473,7 @@
         <title>MacOS Catalina BurpSuite 安装</title>
         <link>https://chibataiki.github.io/tool/macos-burpsuite-install/</link>
         <pubDate>Mon, 24 Feb 2020 23:10:28 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 24 Feb 2020 23:10:28 +0800</atom:modified>
         <guid>https://chibataiki.github.io/tool/macos-burpsuite-install/</guid>
         <description>JDK安装 burpsuite是java程</description>
@@ -455,7 +497,7 @@
         <title>Glitching Attack 故障注入攻击</title>
         <link>https://chibataiki.github.io/todo/glitching_attack/</link>
         <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
         <description>glitching 攻击的目标一般是硬件设备，通过注入故障</description>
@@ -479,7 +521,7 @@
         <title>MacOS Catalina下IDA安装问题</title>
         <link>https://chibataiki.github.io/tool/macos_ida_install/</link>
         <pubDate>Sun, 23 Feb 2020 18:28:03 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 23 Feb 2020 18:28:03 +0800</atom:modified>
         <guid>https://chibataiki.github.io/tool/macos_ida_install/</guid>
         <description>macOS catalina下安装IDA报错&amp;rs</description>
@@ -503,7 +545,7 @@
         <title>macOS下使用soundflower将音频输出转为输入</title>
         <link>https://chibataiki.github.io/tool/macos_catalina_sound_redirection/</link>
         <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sat, 22 Feb 2020 21:43:36 +0800</atom:modified>
         <guid>https://chibataiki.github.io/tool/macos_catalina_sound_redirection/</guid>
         <description>因为有时候英文视频没有字幕，所以需要将视</description>

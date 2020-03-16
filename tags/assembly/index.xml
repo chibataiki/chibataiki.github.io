@@ -11,8 +11,8 @@
     <description>Recent content in assembly on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
-    <webMaster>polaalemu@gmail.com (john)</webMaster>
+    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
+    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Sun, 01 Mar 2020 16:07:18 +0800</lastBuildDate>
     
@@ -24,11 +24,11 @@
       
       <item>
         <title>MIPS汇编note</title>
-        <link>https://chibataiki.github.io/notes/mips-assembly-note/</link>
+        <link>https://chibataiki.github.io/note/mips-assembly-note/</link>
         <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 16:07:18 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/notes/mips-assembly-note/</guid>
+        <guid>https://chibataiki.github.io/note/mips-assembly-note/</guid>
         <description>特性 MIPS和ARM 一样是RISC精简指</description>
         
         <dc:creator>john</dc:creator>

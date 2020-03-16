@@ -11,8 +11,8 @@
     <description>Recent content in Posts on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
-    <webMaster>polaalemu@gmail.com (john)</webMaster>
+    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
+    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Wed, 04 Mar 2020 13:48:11 +0800</lastBuildDate>
     
@@ -26,7 +26,7 @@
         <title>Netgear-命令注入漏洞分析</title>
         <link>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</link>
         <pubDate>Wed, 04 Mar 2020 13:48:11 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Wed, 04 Mar 2020 13:48:11 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</guid>
         <description>netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相</description>
@@ -50,7 +50,7 @@
         <title>macOS下IDA插件安装</title>
         <link>https://chibataiki.github.io/posts/ida-note/</link>
         <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/ida-note/</guid>
         <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>
@@ -74,7 +74,7 @@
         <title>Dlink Backdoor 分析记录</title>
         <link>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</link>
         <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 12:38:39 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</guid>
         <description>受漏洞影响的是D-link 路由器的一些型</description>
@@ -98,7 +98,7 @@
         <title>MIPS/ARM 调试环境</title>
         <link>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</link>
         <pubDate>Sat, 29 Feb 2020 10:47:10 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sat, 29 Feb 2020 10:47:10 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</guid>
         <description>环境 宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的</description>
@@ -122,7 +122,7 @@
         <title>QEMU系统模式仿真</title>
         <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
         <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
         <description>主要是对MIPS ARM架构的嵌入式设备进</description>
@@ -150,7 +150,7 @@
         <title>Netcore-igdmptd-后门漏洞分析</title>
         <link>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</link>
         <pubDate>Thu, 27 Feb 2020 13:53:04 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Thu, 27 Feb 2020 13:53:04 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</guid>
         <description>磊科路由器中内置了一个IGDMPTD的程</description>
@@ -174,7 +174,7 @@
         <title>Vim-Markdown-插件安装</title>
         <link>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</link>
         <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
+        <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Tue, 25 Feb 2020 00:23:10 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</guid>
         <description>环境： macOS catalina vim: macvim 设置vim初始化环境 mkdir ~/.vim mv</description>
