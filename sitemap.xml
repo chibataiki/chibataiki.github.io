@@ -3,17 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chibataiki.github.io/tags/note/</loc>
+    <lastmod>2020-03-29T23:46:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/note/</loc>
+    <lastmod>2020-03-29T23:46:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/note/shodan/</loc>
+    <lastmod>2020-03-29T23:46:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/</loc>
+    <lastmod>2020-03-29T23:46:15+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chibataiki.github.io/tags/liveoverflow/</loc>
     <lastmod>2020-03-14T22:46:32+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://chibataiki.github.io/todo/simple_key_validation/</loc>
-    <lastmod>2020-03-14T22:46:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/</loc>
     <lastmod>2020-03-14T22:46:32+08:00</lastmod>
   </url>
   
@@ -49,11 +64,6 @@
   
   <url>
     <loc>https://chibataiki.github.io/tags/linux/</loc>
-    <lastmod>2020-03-03T14:49:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/note/</loc>
     <lastmod>2020-03-03T14:49:53+08:00</lastmod>
   </url>
   
