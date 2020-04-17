@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>shodan – Home</title>
+    <title>shodan usage – Home</title>
     
 
 
@@ -1216,7 +1216,7 @@
 
 
 <meta property="og:site_name" content="Home">
-<meta property="og:title" content="shodan">
+<meta property="og:title" content="shodan usage">
 <meta property="og:url" content="https://chibataiki.github.io/note/shodan/">
 <meta property="og:type" content="article">
 <meta property="og:description" content="binary security,Embedded security">
@@ -1244,7 +1244,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "shodan",
+    "headline": "shodan usage",
     "datePublished": "2020-03-29T23:46:15+08:00",
     "dateModified": "2020-03-29T23:46:15+08:00",
     "url" : "https://chibataiki.github.io/note/shodan/",
@@ -1615,7 +1615,7 @@
   
   <li  class="is-active" >
     
-      <span>shodan</span>
+      <span>shodan usage</span>
     
   </li>
   
@@ -1627,7 +1627,7 @@
   <div class="single ">
     <div class="single__nojs">This page looks best with JavaScript enabled</div>
     <script>document.querySelector('.single').classList.remove('hide'); document.querySelector('.single__nojs').classList.add('hide');</script>
-    <h2 class="single__title" data-ani="true">shodan</h2>
+    <h2 class="single__title" data-ani="true">shodan usage</h2>
     <div class="single__meta">
       
 <div class="single__infos">
@@ -1659,12 +1659,14 @@ filtername:&ldquo;value&rdquo;</p>
 <h4 id="filter-hash">Filter: hash</h4>
 <p>hash值为shodan data域的hash</p>
 <p>banner text为空的时候,hash值为0</p>
-<p><code>hash:0</code></p>
-<h4 id="filter-httphtml_hash">Filter: http.html_hash</h4>
-<p>html的hash<br />
-很多header存在Date值,存在漏报,可以考虑采用http.html的hash值过滤</p>
-<p><code>http.html_hash:[hash value]</code></p>
-<h4 id="calculate-httpfaviconhash">Calculate http.favicon.hash</h4>
+<pre><code>hash:0
+</code></pre><h4 id="filter-httphtml_hash">Filter: http.html_hash</h4>
+<p>html的hash</p>
+<p>很多header存在Date值,此时使用hash值进行过滤就存在<br />
+漏报,可以采用http.html的hash值进行过滤</p>
+<pre><code>http.html_hash:[hash value]
+</code></pre><p>其他过滤规则类似,可以看raw数据进行筛选</p>
+<h4 id="favicon-hash值的计算">favicon hash值的计算</h4>
 <pre><code>import mmh3
 import requests
 
