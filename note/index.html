@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head prefix="og: http://ogp.me/ns#">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Notes – Home</title>
@@ -529,12 +529,20 @@
           }
         }
 
-        var utterances = document.querySelector('iframe');
+        var utterances = document.getElementById('utterances');
         if (utterances) {
-          utterances.contentWindow.postMessage({
+          utterances.querySelector('iframe').contentWindow.postMessage({
             type: 'set-theme',
             theme: selectedThemeVariant === "dark" || selectedThemeVariant === "hacker" ? 'photon-dark' : selectedThemeVariant === 'kimbie' ? 'github-dark-orange' : 'github-light',
           }, 'https://utteranc.es');
+        }
+
+        var twitterCards = document.querySelectorAll('.twitter-timeline');
+        if (twitterCards) {
+          window.postMessage({
+            type: 'set-twitter-theme',
+            theme: selectedThemeVariant === 'light' || selectedThemeVariant === 'solarized' ? 'light' : 'dark',
+          });
         }
       });
     }) : null;
@@ -1198,7 +1206,8 @@
 <link rel="alternate" type="application/rss&#43;xml" title="RSS" href="https://chibataiki.github.io/note/index.xml">
 
 <meta name="description" content="binary security,Embedded security" />
-<meta name="keywords" content="">
+
+
 <meta name="created" content="2020-04-07T22:56:58&#43;0800">
 <meta name="modified" content="2020-04-07T22:56:58&#43;0800">
 <meta property="article:published_time" content="2020-04-07T22:56:58&#43;0800">
@@ -1272,6 +1281,11 @@
     </script>
     <div id="container">
         
+
+
+
+
+
         <div class="wrapper" data-type="note" data-kind="section">
             <nav class="navbar" role="navigation" aria-label="main navigation" data-dir="ltr">
   <div class="navbar__brand">
@@ -1600,7 +1614,7 @@
             <h5 class="list__header--title capitalize h5">Notes</h5>
         </header>
 
-        <div class="list__header--desc p2">
+        <div class="list__header--desc single__contents p2">
             
         </div>
 
@@ -1616,7 +1630,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/note/embedded_device_filesystem_analyze/'> 嵌入式设备文件系统分析工具</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Apr 7, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Apr 7, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1643,7 +1662,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/note/shodan/'> shodan</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Mar 29, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Mar 29, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1670,7 +1694,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/note/grep-note/'> Grep Note</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Mar 3, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Mar 3, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1697,7 +1726,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/note/gdb-user-note/'> GDB 使用note</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Mar 1, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Mar 1, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1724,7 +1758,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/note/burpsuite-note/'> Burpsuite使用note</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Mar 1, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Mar 1, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1751,7 +1790,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/note/mips-assembly-note/'> MIPS汇编note</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Mar 1, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Mar 1, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1970,6 +2014,7 @@
         gridSmall = 'r';
         gridBig = 'lm'
     }
+
     enquire.register("screen and (max-width: 769px)", {
         match: function () {
             if (enableSidebar) {
@@ -1987,6 +2032,7 @@
                     listSideElem.classList.add('hide');
                 }
             }
+
         },
         unmatch: function () {
             if (enableSidebar) {
@@ -2012,14 +2058,19 @@
                 navCollapse.style.maxHeight = 0;
                 navCollapseBtn.classList.remove('is-active');
             }
-            document.getElementsByClassName('navbar__menu')[0].classList.remove('is-active');
-            document.getElementsByClassName('mobile-search')[0].classList.add('hide');
+            if (document.getElementsByClassName('navbar__menu')[0]) {
+                document.getElementsByClassName('navbar__menu')[0].classList.remove('is-active');
+            }
+            if (document.getElementsByClassName('mobile-search')[0]) {
+                document.getElementsByClassName('mobile-search')[0].classList.add('hide');
+            }
         },
         setup: function () { },
         deferSetup: true,
         destroy: function () { },
     });
 </script>
+
 
 
             
@@ -2057,7 +2108,12 @@
 </footer>
         </div>
         
-<div class="wrapper__right hide" dir="ltr">
+
+
+
+
+
+<div class="wrapper__right hide" data-pad="false" dir="ltr">
   <script>document.querySelector('.wrapper__right').classList.remove('hide')</script>
   
 </div>

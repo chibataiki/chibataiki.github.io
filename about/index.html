@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head prefix="og: http://ogp.me/ns#">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>About – Home</title>
@@ -529,12 +529,20 @@
           }
         }
 
-        var utterances = document.querySelector('iframe');
+        var utterances = document.getElementById('utterances');
         if (utterances) {
-          utterances.contentWindow.postMessage({
+          utterances.querySelector('iframe').contentWindow.postMessage({
             type: 'set-theme',
             theme: selectedThemeVariant === "dark" || selectedThemeVariant === "hacker" ? 'photon-dark' : selectedThemeVariant === 'kimbie' ? 'github-dark-orange' : 'github-light',
           }, 'https://utteranc.es');
+        }
+
+        var twitterCards = document.querySelectorAll('.twitter-timeline');
+        if (twitterCards) {
+          window.postMessage({
+            type: 'set-twitter-theme',
+            theme: selectedThemeVariant === 'light' || selectedThemeVariant === 'solarized' ? 'light' : 'dark',
+          });
         }
       });
     }) : null;
@@ -1196,7 +1204,8 @@
 
     
 <meta name="description" content="binary security,Embedded security" />
-<meta name="keywords" content="">
+
+
 <meta name="created" content="2020-02-28T22:59:34&#43;0800">
 <meta name="modified" content="2020-02-28T22:59:34&#43;0800">
 <meta property="article:published_time" content="2020-02-28T22:59:34&#43;0800">
@@ -1237,7 +1246,7 @@
     "datePublished": "2020-02-28T22:59:34+08:00",
     "dateModified": "2020-02-28T22:59:34+08:00",
     "url" : "https://chibataiki.github.io/about/",
-    "description": "Past Think much, action little.   Now:\u2028A journey of a thousand miles begins with a single step.",
+    "description": " Past Think much, action little.   Now:\u2028Knowledge as action  ",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://chibataiki.github.io/"
@@ -1272,6 +1281,11 @@
     </script>
     <div id="container">
         
+
+
+
+
+
         <div class="wrapper" data-type="about" data-kind="page">
             <nav class="navbar" role="navigation" aria-label="main navigation" data-dir="ltr">
   <div class="navbar__brand">
@@ -1583,7 +1597,7 @@
 </blockquote>
 <blockquote>
 <p>Now: <br />
-A journey of a thousand miles begins with a single step.</p>
+Knowledge as action</p>
 </blockquote>
 
   </article>
@@ -1642,7 +1656,12 @@ A journey of a thousand miles begins with a single step.</p>
 </footer>
         </div>
         
-<div class="wrapper__right hide" dir="ltr">
+
+
+
+
+
+<div class="wrapper__right hide" data-pad="false" dir="ltr">
   <script>document.querySelector('.wrapper__right').classList.remove('hide')</script>
   
 </div>

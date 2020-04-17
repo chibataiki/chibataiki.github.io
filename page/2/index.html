@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head prefix="og: http://ogp.me/ns#">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Home</title>
@@ -529,12 +529,20 @@
           }
         }
 
-        var utterances = document.querySelector('iframe');
+        var utterances = document.getElementById('utterances');
         if (utterances) {
-          utterances.contentWindow.postMessage({
+          utterances.querySelector('iframe').contentWindow.postMessage({
             type: 'set-theme',
             theme: selectedThemeVariant === "dark" || selectedThemeVariant === "hacker" ? 'photon-dark' : selectedThemeVariant === 'kimbie' ? 'github-dark-orange' : 'github-light',
           }, 'https://utteranc.es');
+        }
+
+        var twitterCards = document.querySelectorAll('.twitter-timeline');
+        if (twitterCards) {
+          window.postMessage({
+            type: 'set-twitter-theme',
+            theme: selectedThemeVariant === 'light' || selectedThemeVariant === 'solarized' ? 'light' : 'dark',
+          });
         }
       });
     }) : null;
@@ -1200,7 +1208,8 @@
 <link rel="alternate" type="application/json" title="JSON" href="https://chibataiki.github.io/index.json">
 
 <meta name="description" content="binary security,Embedded security" />
-<meta name="keywords" content="">
+
+
 <meta name="created" content="2020-02-28T22:59:34&#43;0800">
 <meta name="modified" content="2020-02-28T22:59:34&#43;0800">
 <meta property="article:published_time" content="2020-02-28T22:59:34&#43;0800">
@@ -1274,6 +1283,11 @@
     </script>
     <div id="container">
         
+
+
+
+
+
         <div class="wrapper" data-type="page" data-kind="home">
             <nav class="navbar" role="navigation" aria-label="main navigation" data-dir="ltr">
   <div class="navbar__brand">
@@ -1602,7 +1616,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/'> MIPS/ARM 调试环境</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 29, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 29, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1629,7 +1648,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/tool/macos-multui-java-management/'> MacOS 多版本java管理</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 28, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 28, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1656,7 +1680,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/todo/normal-binary-analysis-tools/'> 常用的漏洞分析工具note</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 28, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 28, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1683,7 +1712,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/posts/qemu-system-mode-setting/'> QEMU系统模式仿真</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 27, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 4 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 27, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;4&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1710,7 +1744,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/'> Netcore-igdmptd-后门漏洞分析</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 27, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 27, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1737,7 +1776,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/todo/cross-compilation-tool-chain/'> 交叉编译工具链</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 26, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 26, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1764,7 +1808,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/todo/embedded-device-boot-process/'> 嵌入式设备boot过程</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 26, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 26, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1791,7 +1840,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/posts/vim-markdown-plugin-install/'> Vim-Markdown-插件安装</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 25, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 25, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1818,7 +1872,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/tool/macos-burpsuite-install/'> MacOS Catalina BurpSuite 安装</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 24, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 24, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1845,12 +1904,17 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/todo/glitching_attack/'> Glitching Attack 故障注入攻击</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 24, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 24, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
           
-            glitching 攻击的目标一般是硬件设备，通过注入故障
+            glitching 攻击的目标一般是硬件设备 通过注入故障，
           
         </div>
       </div>
@@ -1872,7 +1936,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/tool/macos_ida_install/'> MacOS Catalina下IDA安装问题</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 23, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 23, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -1899,7 +1968,12 @@
     <div class="summary-classic__content">
       <header>
         <h5 class="title h5"><a href='https://chibataiki.github.io/tool/macos_catalina_sound_redirection/'> macOS下使用soundflower将音频输出转为输入</a> </h5>
-        <h6 class="subtitle caption"><time title="Written At" dir="ltr">📅 Feb 22, 2020 </time>  <span title="Reading Time" dir="ltr"> &middot; ☕ 1 min read </span></h6>
+        <h6 class="subtitle caption">
+          <time title="Written At" dir="ltr">📅&nbsp;Feb 22, 2020 </time>
+          
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          
+        </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
@@ -2270,7 +2344,7 @@
     var sidebarPosition = JSON.parse("\"left\"");
     
     var enableSidebar = JSON.parse("true");
-    
+
     var listMainElem = document.querySelector('.list__main');
     var listSideElem = document.querySelector('.list__sidebar');
 
@@ -2300,7 +2374,7 @@
                     listSideElem.classList.add('hide');
                 }
             }
-            
+
         },
         unmatch: function () {
             if (enableSidebar) {
@@ -2338,6 +2412,7 @@
         destroy: function () { },
     });
 </script>
+
 <script>
   window.onload = function() {
     
@@ -2387,7 +2462,12 @@
 </footer>
         </div>
         
-<div class="wrapper__right hide" dir="ltr">
+
+
+
+
+
+<div class="wrapper__right hide" data-pad="true" dir="ltr">
   <script>document.querySelector('.wrapper__right').classList.remove('hide')</script>
   
 </div>
