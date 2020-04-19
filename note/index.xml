@@ -71,30 +71,6 @@
       </item>
       
       <item>
-        <title>Grep Note</title>
-        <link>https://chibataiki.github.io/note/grep-note/</link>
-        <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Tue, 03 Mar 2020 14:49:53 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/grep-note/</guid>
-        <description>在hugo上有些笔记被打了TODO标签,</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>linux</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>GDB 使用note</title>
         <link>https://chibataiki.github.io/note/gdb-user-note/</link>
         <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>

@@ -116,28 +116,6 @@
       </item>
       
       <item>
-        <title>模糊测试工具</title>
-        <link>https://chibataiki.github.io/todo/fuzzing-tools/</link>
-        <pubDate>Wed, 04 Mar 2020 18:37:45 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Wed, 04 Mar 2020 18:37:45 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/fuzzing-tools/</guid>
-        <description>netzob 可以对通讯协议逆向,建模并模糊测试 clusterfuzz 可</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>Netgear-命令注入漏洞分析</title>
         <link>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</link>
         <pubDate>Wed, 04 Mar 2020 13:48:11 +0800</pubDate>
@@ -162,37 +140,13 @@
       </item>
       
       <item>
-        <title>Grep Note</title>
-        <link>https://chibataiki.github.io/note/grep-note/</link>
-        <pubDate>Tue, 03 Mar 2020 14:49:53 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Tue, 03 Mar 2020 14:49:53 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/grep-note/</guid>
-        <description>在hugo上有些笔记被打了TODO标签,</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>linux</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>Unix-like 手册</title>
         <link>https://chibataiki.github.io/todo/manual-pages/</link>
         <pubDate>Mon, 02 Mar 2020 18:06:35 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 02 Mar 2020 18:06:35 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/manual-pages/</guid>
-        <description>man 命令 看命令,或者函数的用法的时候往往会</description>
+        <description>man 命令 看命令,函数的用法的时,可以使用m</description>
         
         <dc:creator>john</dc:creator>
         
@@ -343,11 +297,11 @@
       
       <item>
         <title>MacOS 多版本java管理</title>
-        <link>https://chibataiki.github.io/tool/macos-multui-java-management/</link>
+        <link>https://chibataiki.github.io/macos/macos-multui-java-management/</link>
         <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:58:13 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos-multui-java-management/</guid>
+        <guid>https://chibataiki.github.io/macos/macos-multui-java-management/</guid>
         <description>之前安装 Burpsuite的时候,需要的</description>
         
         <dc:creator>john</dc:creator>
@@ -372,7 +326,7 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</guid>
-        <description>IDA pro: hopper: 适用于macOS和Linux的逆向</description>
+        <description>IDA pro: 最强大的反汇编软件 hopper: 适用于macOS</description>
         
         <dc:creator>john</dc:creator>
         
@@ -446,54 +400,6 @@
       </item>
       
       <item>
-        <title>交叉编译工具链</title>
-        <link>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</link>
-        <pubDate>Wed, 26 Feb 2020 14:59:16 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Wed, 26 Feb 2020 14:59:16 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</guid>
-        <description>交叉编译工具链 在一个系统上运行编译器,为</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>嵌入式设备boot过程</title>
-        <link>https://chibataiki.github.io/todo/embedded-device-boot-process/</link>
-        <pubDate>Wed, 26 Feb 2020 14:07:32 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Wed, 26 Feb 2020 14:07:32 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/embedded-device-boot-process/</guid>
-        <description>bootloader bootloader 是设备供电或者充值后执行的一段程序.</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>Vim-Markdown-插件安装</title>
         <link>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</link>
         <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
@@ -519,11 +425,11 @@
       
       <item>
         <title>MacOS Catalina BurpSuite 安装</title>
-        <link>https://chibataiki.github.io/tool/macos-burpsuite-install/</link>
+        <link>https://chibataiki.github.io/macos/macos-burpsuite-install/</link>
         <pubDate>Mon, 24 Feb 2020 23:10:28 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 24 Feb 2020 23:10:28 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos-burpsuite-install/</guid>
+        <guid>https://chibataiki.github.io/macos/macos-burpsuite-install/</guid>
         <description>JDK安装 burpsuite是java程</description>
         
         <dc:creator>john</dc:creator>
@@ -542,36 +448,12 @@
       </item>
       
       <item>
-        <title>Glitching Attack 故障注入攻击</title>
-        <link>https://chibataiki.github.io/todo/glitching_attack/</link>
-        <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
-        <description>glitching 攻击的目标一般是硬件设备 通过注入故障，</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>MacOS Catalina下IDA安装问题</title>
-        <link>https://chibataiki.github.io/tool/macos_ida_install/</link>
+        <link>https://chibataiki.github.io/macos/macos_ida_install/</link>
         <pubDate>Sun, 23 Feb 2020 18:28:03 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 23 Feb 2020 18:28:03 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos_ida_install/</guid>
+        <guid>https://chibataiki.github.io/macos/macos_ida_install/</guid>
         <description>macOS catalina下安装IDA报错&amp;rs</description>
         
         <dc:creator>john</dc:creator>
@@ -591,11 +473,11 @@
       
       <item>
         <title>macOS下使用soundflower将音频输出转为输入</title>
-        <link>https://chibataiki.github.io/tool/macos_catalina_sound_redirection/</link>
+        <link>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</link>
         <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sat, 22 Feb 2020 21:43:36 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos_catalina_sound_redirection/</guid>
+        <guid>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</guid>
         <description>因为有时候英文视频没有字幕，所以需要将视</description>
         
         <dc:creator>john</dc:creator>

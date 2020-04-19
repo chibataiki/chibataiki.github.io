@@ -1416,7 +1416,7 @@
 
       
         <li class="navbarm__menu--item ">
-          <a href="/tool">tool</a>
+          <a href="/macos">macOS</a>
         </li>
       
       
@@ -1553,7 +1553,7 @@
   
   
   
-  <a href="/tool" class="navbar__menu-item navbar__slide-down " dir="ltr" data-ani="true">tool</a>
+  <a href="/macos" class="navbar__menu-item navbar__slide-down " dir="ltr" data-ani="true">macOS</a>
   
   
   
@@ -1648,6 +1648,24 @@
 <p>proxy-&gt;Options-&gt; March and Replace</p>
 <p>可以使用regex或者literal</p>
 <p>然后HTTP history 页面下方会多出一栏 Auto-modifided request, 点进去就可以看到修改过后的 request</p>
+<h3 id="插件">插件</h3>
+<h4 id="logger">Logger++</h4>
+<p>This extension can be used to log the requests and responses made by all Burp tools, and display them in a sortable table. It can also save the logged data in CSV format.</p>
+<p>Requires Java version 7.</p>
+<h4 id="http-request-smuggler">HTTP Request Smuggler</h4>
+<p>This is an extension for Burp Suite designed to help you launch HTTP Request Smuggling attacks. It supports scanning for Request Smuggling vulnerabilities, and also aids exploitation by handling cumbersome offset-tweaking for you.</p>
+<p>TODO: <a href="https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn">https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn</a></p>
+<h4 id="turbo-intruder">Turbo Intruder</h4>
+<p>Sending large numbers of HTTP requests and analyzing the results.</p>
+<ul>
+<li>Fast - Turbo Intruder uses a HTTP stack hand-coded from scratch with speed in mind. As a result, on many targets it can seriously outpace even fashionable asynchronous Go scripts.</li>
+<li>Flexible - Attacks are configured using Python. This enables handling of complex requirements such as signed requests and multi-step attack sequences. Also, the custom HTTP stack means it can handle malformed requests that break other libraries.</li>
+<li>Scalable - Turbo Intruder can achieve flat memory usage, enabling reliable multi-day attacks. It can also be run in headless environments via the command line.</li>
+<li>Convenient - Boring results can be automatically filtered out by an advanced diffing algorithm adapted from Backslash Powered Scanner</li>
+</ul>
+<p>TODO: <a href="https://portswigger.net/research/turbo-intruder-embracing-the-billion-request-attack">https://portswigger.net/research/turbo-intruder-embracing-the-billion-request-attack</a></p>
+<h3 id="referer">referer:</h3>
+<p><a href="https://portswigger.net/bappstore">https://portswigger.net/bappstore</a></p>
 
     </article>
     
@@ -2083,6 +2101,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <li>
       <ul>
         <li><a href="#使用-matchreplace">使用 match/replace</a></li>
+        <li><a href="#插件">插件</a></li>
+        <li><a href="#referer">referer:</a></li>
       </ul>
     </li>
   </ul>

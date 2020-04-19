@@ -5,7 +5,7 @@ draft: true
 ---
 
 学习汇编往往令人头疼
-可能写了很多汇编但是却不得入门  
+可能写了很多汇编但是却不得入门
 但是存在这样一类网站, 能够寓教于乐,形式就是CTF
 :microcorruption.com  ,
 
@@ -14,7 +14,6 @@ draft: true
 关于汇编:
 
 寄存器其实就和函数变量一样
-
 
 
 PC (program counter) 寄存器: CPU正在执行哪条指令
@@ -29,4 +28,3 @@ ADD EAX, 3
 
 Stack: 内存底部用来存储信息的空间
 SP  Stack Pointer
-

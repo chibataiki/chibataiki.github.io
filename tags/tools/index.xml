@@ -72,11 +72,11 @@
       
       <item>
         <title>MacOS 多版本java管理</title>
-        <link>https://chibataiki.github.io/tool/macos-multui-java-management/</link>
+        <link>https://chibataiki.github.io/macos/macos-multui-java-management/</link>
         <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:58:13 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos-multui-java-management/</guid>
+        <guid>https://chibataiki.github.io/macos/macos-multui-java-management/</guid>
         <description>之前安装 Burpsuite的时候,需要的</description>
         
         <dc:creator>john</dc:creator>
@@ -101,7 +101,7 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</guid>
-        <description>IDA pro: hopper: 适用于macOS和Linux的逆向</description>
+        <description>IDA pro: 最强大的反汇编软件 hopper: 适用于macOS</description>
         
         <dc:creator>john</dc:creator>
         
@@ -176,11 +176,11 @@
       
       <item>
         <title>MacOS Catalina BurpSuite 安装</title>
-        <link>https://chibataiki.github.io/tool/macos-burpsuite-install/</link>
+        <link>https://chibataiki.github.io/macos/macos-burpsuite-install/</link>
         <pubDate>Mon, 24 Feb 2020 23:10:28 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 24 Feb 2020 23:10:28 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos-burpsuite-install/</guid>
+        <guid>https://chibataiki.github.io/macos/macos-burpsuite-install/</guid>
         <description>JDK安装 burpsuite是java程</description>
         
         <dc:creator>john</dc:creator>
@@ -200,11 +200,11 @@
       
       <item>
         <title>MacOS Catalina下IDA安装问题</title>
-        <link>https://chibataiki.github.io/tool/macos_ida_install/</link>
+        <link>https://chibataiki.github.io/macos/macos_ida_install/</link>
         <pubDate>Sun, 23 Feb 2020 18:28:03 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 23 Feb 2020 18:28:03 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos_ida_install/</guid>
+        <guid>https://chibataiki.github.io/macos/macos_ida_install/</guid>
         <description>macOS catalina下安装IDA报错&amp;rs</description>
         
         <dc:creator>john</dc:creator>
@@ -224,11 +224,11 @@
       
       <item>
         <title>macOS下使用soundflower将音频输出转为输入</title>
-        <link>https://chibataiki.github.io/tool/macos_catalina_sound_redirection/</link>
+        <link>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</link>
         <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sat, 22 Feb 2020 21:43:36 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/tool/macos_catalina_sound_redirection/</guid>
+        <guid>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</guid>
         <description>因为有时候英文视频没有字幕，所以需要将视</description>
         
         <dc:creator>john</dc:creator>

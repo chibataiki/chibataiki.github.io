@@ -48,11 +48,6 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/fuzzing-tools/</loc>
-    <lastmod>2020-03-04T18:37:45+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</loc>
     <lastmod>2020-03-04T13:48:11+08:00</lastmod>
   </url>
@@ -60,16 +55,6 @@
   <url>
     <loc>https://chibataiki.github.io/posts/</loc>
     <lastmod>2020-03-04T13:48:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/note/grep-note/</loc>
-    <lastmod>2020-03-03T14:49:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/linux/</loc>
-    <lastmod>2020-03-03T14:49:53+08:00</lastmod>
   </url>
   
   <url>
@@ -143,12 +128,12 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/tool/macos-multui-java-management/</loc>
+    <loc>https://chibataiki.github.io/macos/</loc>
     <lastmod>2020-02-28T13:58:13+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/tool/</loc>
+    <loc>https://chibataiki.github.io/macos/macos-multui-java-management/</loc>
     <lastmod>2020-02-28T13:58:13+08:00</lastmod>
   </url>
   
@@ -173,37 +158,22 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</loc>
-    <lastmod>2020-02-26T14:59:16+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/todo/embedded-device-boot-process/</loc>
-    <lastmod>2020-02-26T14:07:32+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</loc>
     <lastmod>2020-02-25T00:23:10+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/tool/macos-burpsuite-install/</loc>
+    <loc>https://chibataiki.github.io/macos/macos-burpsuite-install/</loc>
     <lastmod>2020-02-24T23:10:28+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/glitching_attack/</loc>
-    <lastmod>2020-02-24T12:55:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tool/macos_ida_install/</loc>
+    <loc>https://chibataiki.github.io/macos/macos_ida_install/</loc>
     <lastmod>2020-02-23T18:28:03+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/tool/macos_catalina_sound_redirection/</loc>
+    <loc>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</loc>
     <lastmod>2020-02-22T21:43:36+08:00</lastmod>
   </url>
   

@@ -47,35 +47,13 @@
       </item>
       
       <item>
-        <title>模糊测试工具</title>
-        <link>https://chibataiki.github.io/todo/fuzzing-tools/</link>
-        <pubDate>Wed, 04 Mar 2020 18:37:45 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Wed, 04 Mar 2020 18:37:45 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/fuzzing-tools/</guid>
-        <description>netzob 可以对通讯协议逆向,建模并模糊测试 clusterfuzz 可</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>Unix-like 手册</title>
         <link>https://chibataiki.github.io/todo/manual-pages/</link>
         <pubDate>Mon, 02 Mar 2020 18:06:35 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 02 Mar 2020 18:06:35 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/manual-pages/</guid>
-        <description>man 命令 看命令,或者函数的用法的时候往往会</description>
+        <description>man 命令 看命令,函数的用法的时,可以使用m</description>
         
         <dc:creator>john</dc:creator>
         
@@ -93,7 +71,7 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</guid>
-        <description>IDA pro: hopper: 适用于macOS和Linux的逆向</description>
+        <description>IDA pro: 最强大的反汇编软件 hopper: 适用于macOS</description>
         
         <dc:creator>john</dc:creator>
         
@@ -107,78 +85,6 @@
           
             
               <category>Reverse Engineering</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>交叉编译工具链</title>
-        <link>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</link>
-        <pubDate>Wed, 26 Feb 2020 14:59:16 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Wed, 26 Feb 2020 14:59:16 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</guid>
-        <description>交叉编译工具链 在一个系统上运行编译器,为</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>嵌入式设备boot过程</title>
-        <link>https://chibataiki.github.io/todo/embedded-device-boot-process/</link>
-        <pubDate>Wed, 26 Feb 2020 14:07:32 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Wed, 26 Feb 2020 14:07:32 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/embedded-device-boot-process/</guid>
-        <description>bootloader bootloader 是设备供电或者充值后执行的一段程序.</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Glitching Attack 故障注入攻击</title>
-        <link>https://chibataiki.github.io/todo/glitching_attack/</link>
-        <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
-        <description>glitching 攻击的目标一般是硬件设备 通过注入故障，</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
             
           
         
