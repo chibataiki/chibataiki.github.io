@@ -14,13 +14,37 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 03 Mar 2020 14:49:53 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2020 18:44:56 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>POST</title>
+        <link>https://chibataiki.github.io/note/post/</link>
+        <pubDate>Thu, 05 Mar 2020 18:44:56 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Thu, 05 Mar 2020 18:44:56 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/post/</guid>
+        <description>curl -d @filename POSTing binary &amp;ndash;data-binary : 数据类型为二进制 curl --data-binary @filename [host]</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>linux</category>
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>Grep Note</title>
@@ -30,6 +54,30 @@
         <atom:modified>Tue, 03 Mar 2020 14:49:53 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/grep-note/</guid>
         <description>在hugo上有些笔记被打了TODO标签,</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>linux</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Ubuntu 关机 Snappy Daemon</title>
+        <link>https://chibataiki.github.io/todo/ubuntu_shutdown_snappy_daemon/</link>
+        <pubDate>Sun, 23 Feb 2020 13:10:11 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Sun, 23 Feb 2020 13:10:11 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/ubuntu_shutdown_snappy_daemon/</guid>
+        <description>环境： macOS catalina 10.15.3 , Vmware Fusion 11.5.1, ubuntu-18.04.4-desktop-amd64 关机后会出现： A stop</description>
         
         <dc:creator>john</dc:creator>
         

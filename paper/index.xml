@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Papers on Home</title>
+    <link>https://chibataiki.github.io/paper/</link>
+    <description>Recent content in Papers on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
+    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
+    <copyright>©{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Tue, 07 Apr 2020 22:49:19 +0800</lastBuildDate>
+    
+        <atom:link href="https://chibataiki.github.io/paper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>A Large-Scale Analysis of the Security of Embedded Firmwares</title>
+        <link>https://chibataiki.github.io/paper/a-large-scale-analysis-of-the-security-of-embedded-firmwares/</link>
+        <pubDate>Tue, 07 Apr 2020 22:49:19 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Tue, 07 Apr 2020 22:49:19 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/paper/a-large-scale-analysis-of-the-security-of-embedded-firmwares/</guid>
+        <description>Abstract first public, large-scale analysis of firmware images. unpacked 32 thousand firmware images into 1.7 million individual files show the</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Breaking All the Things—A Systematic Survey of Firmware Extraction Techniques for IoT Devices</title>
+        <link>https://chibataiki.github.io/paper/breaking-all-the-thingsa-systematic-survey-of-firmware-extraction-techniques-for-iot-devices/</link>
+        <pubDate>Fri, 20 Mar 2020 19:19:49 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Fri, 20 Mar 2020 19:19:49 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/paper/breaking-all-the-thingsa-systematic-survey-of-firmware-extraction-techniques-for-iot-devices/</guid>
+        <description>摘要: 基于硬件的固件提取技术 例子: 24个</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>IoT</category>
+            
+          
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>
