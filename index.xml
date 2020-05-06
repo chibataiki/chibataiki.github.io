@@ -74,7 +74,7 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 29 Mar 2020 23:46:15 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/shodan/</guid>
-        <description>过滤 include: filtername:&amp;ldquo;value&amp;rdquo; exclude: -filtername:&amp;ldquo;value&amp;rdquo; Filter: hash hash值为shodan</description>
+        <description>过滤 include: filtername:&amp;quot;value&amp;quot; exclude: - or ! -filtername:&amp;quot;value&amp;quot; 筛选多值: , port: 22,23 Filter: hash h</description>
         
         <dc:creator>john</dc:creator>
         
@@ -424,7 +424,7 @@
       </item>
       
       <item>
-        <title>macOS下使用soundflower将音频输出转为输入</title>
+        <title>macOS soundflower audio input-output</title>
         <link>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</link>
         <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>

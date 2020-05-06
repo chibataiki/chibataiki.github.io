@@ -53,7 +53,7 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 29 Mar 2020 23:46:15 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/shodan/</guid>
-        <description>过滤 include: filtername:&amp;ldquo;value&amp;rdquo; exclude: -filtername:&amp;ldquo;value&amp;rdquo; Filter: hash hash值为shodan</description>
+        <description>过滤 include: filtername:&amp;quot;value&amp;quot; exclude: - or ! -filtername:&amp;quot;value&amp;quot; 筛选多值: , port: 22,23 Filter: hash h</description>
         
         <dc:creator>john</dc:creator>
         

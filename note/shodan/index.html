@@ -1248,7 +1248,7 @@
     "datePublished": "2020-03-29T23:46:15+08:00",
     "dateModified": "2020-03-29T23:46:15+08:00",
     "url" : "https://chibataiki.github.io/note/shodan/",
-    "description": "过滤 include: filtername:\u0026ldquo;value\u0026rdquo; exclude: -filtername:\u0026ldquo;value\u0026rdquo; Filter: hash hash值为shodan",
+    "description": "过滤 include: filtername:\u0026quot;value\u0026quot; exclude: - or ! -filtername:\u0026quot;value\u0026quot; 筛选多值: , port: 22,23 Filter: hash h",
     "keywords": ["note"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1653,9 +1653,11 @@
       
       <h3 id="过滤">过滤</h3>
 <p>include:<br />
-filtername:&ldquo;value&rdquo;</p>
-<p>exclude:<br />
--filtername:&ldquo;value&rdquo;</p>
+<code>filtername:&quot;value&quot;</code></p>
+<p>exclude: <code>-</code> or  <code>!</code><br />
+<code>-filtername:&quot;value&quot;</code></p>
+<h3 id="筛选多值---">筛选多值:   <code>,</code></h3>
+<p>port: 22,23</p>
 <h4 id="filter-hash">Filter: hash</h4>
 <p>hash值为shodan data域的hash</p>
 <p>banner text为空的时候,hash值为0</p>
@@ -1673,7 +1675,7 @@ import requests
 response = requests.get('https://website/favicon.ico')
 favicon = response.content.encode('base64')
 hash = mmh3.hash(favicon)
-print hash
+print(hash)
 
 </code></pre><hr />
 <h3 id="cli">CLI</h3>
@@ -2126,6 +2128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <li>
       <ul>
         <li><a href="#过滤">过滤</a></li>
+        <li><a href="#筛选多值---">筛选多值:   <code>,</code></a></li>
         <li><a href="#cli">CLI</a></li>
       </ul>
     </li>
