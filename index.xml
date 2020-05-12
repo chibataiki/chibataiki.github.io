@@ -44,6 +44,28 @@
 
       
       <item>
+        <title>Linux Login</title>
+        <link>https://chibataiki.github.io/todo/linux-users-groups/</link>
+        <pubDate>Fri, 08 May 2020 19:39:41 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Fri, 08 May 2020 19:39:41 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/linux-users-groups/</guid>
+        <description>登陆机制相关文件: groups passwd shaodow /etc/group : user group file 用来分</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
         <title>嵌入式设备文件系统分析工具</title>
         <link>https://chibataiki.github.io/note/embedded_device_filesystem_analyze/</link>
         <pubDate>Tue, 07 Apr 2020 22:56:58 +0800</pubDate>
