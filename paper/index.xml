@@ -44,30 +44,6 @@
         
       </item>
       
-      <item>
-        <title>Breaking All the Things—A Systematic Survey of Firmware Extraction Techniques for IoT Devices</title>
-        <link>https://chibataiki.github.io/paper/breaking-all-the-thingsa-systematic-survey-of-firmware-extraction-techniques-for-iot-devices/</link>
-        <pubDate>Fri, 20 Mar 2020 19:19:49 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Fri, 20 Mar 2020 19:19:49 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/paper/breaking-all-the-thingsa-systematic-survey-of-firmware-extraction-techniques-for-iot-devices/</guid>
-        <description>摘要: 基于硬件的固件提取技术 例子: 24个</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
 
     
   </channel>

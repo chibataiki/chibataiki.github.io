@@ -90,6 +90,28 @@
       </item>
       
       <item>
+        <title>A Large-Scale Analysis of the Security of Embedded Firmwares</title>
+        <link>https://chibataiki.github.io/paper/a-large-scale-analysis-of-the-security-of-embedded-firmwares/</link>
+        <pubDate>Tue, 07 Apr 2020 22:49:19 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Tue, 07 Apr 2020 22:49:19 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/paper/a-large-scale-analysis-of-the-security-of-embedded-firmwares/</guid>
+        <description>Abstract first public, large-scale analysis of firmware images. unpacked 32 thousand firmware images into 1.7 million individual files show the</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
         <title>shodan usage</title>
         <link>https://chibataiki.github.io/note/shodan/</link>
         <pubDate>Sun, 29 Mar 2020 23:46:15 +0800</pubDate>

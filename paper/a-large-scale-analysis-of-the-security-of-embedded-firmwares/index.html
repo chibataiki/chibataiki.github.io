@@ -1657,12 +1657,16 @@
 <p>show the main benefits of look- ing at many different devices at the same time</p>
 <p>discovered a total of 38 previously unknown vulnerabilities in over 693 firmware images.</p>
 <p>correlating similar files inside apparently unrelated firmware images</p>
-<h3 id="introduction">Introduction</h3>
+<h3 id="1-introduction">1. Introduction</h3>
 <p>IoT devices:</p>
-<ol>
-<li>Common- Off-The-Shelf (COTS) devices : printers, mobile phones, home routers, and computer components and peripherals.<br />
-2.less consumer oriented :  video surveillance systems, medical implants, car elements, SCADA and PLC devices, anything electronics.</li>
-</ol>
+<ul>
+<li>
+<p>Common- Off-The-Shelf (COTS) devices : printers, mobile phones, home routers, and computer components and peripherals.</p>
+</li>
+<li>
+<p>less consumer oriented :  video surveillance systems, medical implants, car elements, SCADA and PLC devices, anything electronics.</p>
+</li>
+</ul>
 <p>firmware definition:</p>
 <p>Old:<br />
 The term was originally introduced to describe the CPU microcode that existed “somewhere” between the hardware and the software layers.</p>
@@ -1675,35 +1679,35 @@ describe the software that is embedded in a hard- ware device.</p>
 自动化分析:xx</p>
 <p>漏洞的同源性:<br />
 同一个承包商,或是使用同一工具,SDK, 不同品牌贴牌的同一产品&hellip;</p>
-<h4 id="methodology">Methodology</h4>
+<h4 id="11-methodology">1.1 Methodology</h4>
 <p>static analysis scales better than dynamic analysis as it does not require access to the physi- cal devices.</p>
 <p>collecting firmware images</p>
 <p>the contribution of this paper :<br />
 not in the static analysis techniques we use (for example, we did not perform any static code analysis)</p>
 <p>but to show the advantages of an horizontal, large-scale exploration.</p>
 <p>implemented a correlation engine to compare and find similarities between all the objects in our dataset.</p>
-<h4 id="result">result</h4>
+<h4 id="12-result">1.2 result</h4>
 <p>collected an initial set of 759,273 files (total 1.8TB of storage space) from publicly accessible firmware update sites.<br />
 After filtering, left with 172,751 potential firmware images.<br />
 sampled a set of 32,356 firmware candidates</p>
 <p>Using a private cloud deployment of 90 worker nodes.</p>
-<p>automatically discover and report 38 new vulnerabilities,<br />
+<p>automatically discover and report <strong>38</strong> new vulnerabilities,<br />
 confirm several that were already known</p>
 <ul>
 <li>extracted private RSA keys and their self-signed certificates used in about 35,000 online devices</li>
 <li>several dozens of hard-coded password hashes. Most were week</li>
 <li>identified a number of possible backdoors such as the authorized_keys file</li>
-<li>a number of hard-coded telnetd credentials</li>
-<li>hard-coded web-login admin credentials</li>
-<li>a number of backdoor daemons and web pages</li>
+<li>a number of <strong>hard-coded</strong> telnetd <strong>credentials</strong></li>
+<li><strong>hard-coded</strong> web-login admin <strong>credentials</strong></li>
+<li>a number of <strong>backdoor daemons</strong> and <strong>web pages</strong></li>
 </ul>
-<h4 id="contributions">Contributions</h4>
-<p>• Weshowtheadvantagesofperformingalarge-scale analysis of firmware images and describe the main challenges associated with this activity.<br />
-• We propose a framework to perform firmware col- lection, filtering, unpacking and analysis at large scale.<br />
+<h4 id="13-contributions">1.3 Contributions</h4>
+<p>• We show the advantages of performing a large-scale analysis of firmware images and describe the main challenges associated with this activity.<br />
+• We propose a framework to perform firmware collection, filtering, unpacking and analysis at large scale.<br />
 • We implemented several efficient static techniques that we ran on 32, 356 firmware candidates.<br />
 • We present a correlation technique which allows to propagate vulnerability information to similar firm- ware images.<br />
 • We discovered 693 firmware images affected by at least one vulnerability and reported 38 new CVEs.</p>
-<p>challenge:</p>
+<h3 id="2-challenge">2 challenge:</h3>
 <ul>
 <li>
 <p>Building a Representative Dataset</p>
@@ -1721,7 +1725,63 @@ confirm several that were already known</p>
 <p>Results Confirmation</p>
 </li>
 </ul>
-<hr />
+<h4 id="31-architecture">3.1 Architecture</h4>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geqiwqml21j30iu0m4n3i.jpg" style="zoom:50%;" /></p>
+<h4 id="32-firmware-acquisition-and-storage">3.2 Firmware Acquisition and Storage</h4>
+<p>web crawler:  from support pages; ftp server ;Google Custom Search Engines</p>
+<h4 id="33-unpacking-and-analysis">3.3 Unpacking and Analysis</h4>
+<p>binwalk,FRAK ,Binary Analysis Toolkit (BAT)</p>
+<p>paper&rsquo;s framework, (但是不开源,http://firmware.re/)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geqj89fn9dj30l40dmjt9.jpg" style="zoom:50%;" /></p>
+<h5 id="password-hash-cracking">Password Hash Cracking</h5>
+<p>use CUDA-enabled <strong>John The Ripper</strong></p>
+<p>遇到硬编码hash认证的时候可以更快破解密码</p>
+<h4 id="34-correlation-engine">3.4 Correlation Engine</h4>
+<p><strong>Shared Credentials and Self-Signed Certificates</strong></p>
+<p>(由于大量的OEM,对于嵌入式设备来说很常见)</p>
+<p><strong>keyword</strong></p>
+<p><strong>Fuzzy hashes</strong></p>
+<p>计算文件之间的相似度</p>
+<h4 id="35-data-enrichment">3.5 Data Enrichment</h4>
+<p>1.from:  Shodan,Google Custom Search Engines</p>
+<p>by: web pages <strong>title</strong> , web servers <strong>authentication realms</strong></p>
+<p>2.correlate SSL certificates (firmware,zmap)</p>
+<p>将两者的数据进行匹配,可以评估公网上易受漏洞影响的设备数量.</p>
+<h4 id="42-result">4.2 result</h4>
+<ul>
+<li><strong>Files Formats</strong>
+<ul>
+<li>ARM (63%)</li>
+<li>MIPS (7%)</li>
+<li>Vx- Works, Nucleus RTOS and Windows CE together: 7%.</li>
+</ul>
+</li>
+<li><strong>Password Hashes Statistics</strong>
+<ul>
+<li>/etc/passwd /etc/shadow</li>
+</ul>
+</li>
+<li>
+<h2 id="certificates-and-private-rsa-keys-statistics"><strong>Certificates and Private RSA Keys Statistics</strong></h2>
+</li>
+<li><strong>Packaging Outdated and Vulnerable Software</strong>
+<ul>
+<li>old kernel</li>
+<li>old busybox</li>
+<li>&hellip;</li>
+</ul>
+</li>
+<li><strong>Building Images as root</strong>
+<ul>
+<li>(很多嵌入式设备,是没有权限管理的)</li>
+</ul>
+</li>
+<li><strong>Web Servers Configuration</strong>
+<ul>
+<li>(同样很多web server的user是root)</li>
+</ul>
+</li>
+</ul>
 
     </article>
     
@@ -1779,40 +1839,10 @@ confirm several that were already known</p>
     <section class="related">
     
     
-    <h1 class="related__title">
-      <hr class="hr-dots"/>
-      <div>
-        See Also
-      </div>
-      <hr class="hr-dots"/>
-    </h1>
-    <ul class="related-ul">
-        
-        <li>
-          <a href="/note/cgi-program/" class="related__link">CGI Program</a>
-        </li>
-        
-        <li>
-          <a href="/todo/fuzzing-tools/" class="related__link">模糊测试工具</a>
-        </li>
-        
-        <li>
-          <a href="/note/compressed-and-encrypted/" class="related__link">加密与压缩</a>
-        </li>
-        
-    </ul>
-    
   </section>
     <div class="grow"></div>
 <nav class="pagination-single">
   
-    
-      <a href="https://chibataiki.github.io/paper/breaking-all-the-thingsa-systematic-survey-of-firmware-extraction-techniques-for-iot-devices/" class="pagination-single__left">
-        <div class="pagination-single__icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
-        </div>
-        <div class="pagination-single__left-title">Breaking All the Things—A Systematic Survey of Firmware Extraction Techniques for IoT Devices</div>      
-      </a>
     
     <div class="grow"></div>
     
@@ -2173,9 +2203,11 @@ document.addEventListener('DOMContentLoaded', function () {
     <li>
       <ul>
         <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#1-introduction">1. Introduction</a></li>
+        <li><a href="#2-challenge">2 challenge:</a></li>
       </ul>
     </li>
+    <li><a href="#certificates-and-private-rsa-keys-statistics"><strong>Certificates and Private RSA Keys Statistics</strong></a></li>
   </ul>
 </nav>
   </div>
