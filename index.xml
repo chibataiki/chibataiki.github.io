@@ -66,6 +66,34 @@
       </item>
       
       <item>
+        <title>Emulate Embedded Linux Device by Qemu</title>
+        <link>https://chibataiki.github.io/todo/emulate-embedded-linux-device-by-qemu/</link>
+        <pubDate>Thu, 16 Apr 2020 19:51:28 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Thu, 16 Apr 2020 19:51:28 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/emulate-embedded-linux-device-by-qemu/</guid>
+        <description>对于mips架构的busybox: 是动态</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>IoT</category>
+            
+          
+            
+              <category>qemu</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
         <title>嵌入式设备文件系统分析工具</title>
         <link>https://chibataiki.github.io/note/embedded_device_filesystem_analyze/</link>
         <pubDate>Tue, 07 Apr 2020 22:56:58 +0800</pubDate>
@@ -152,6 +180,28 @@
           
             
               <category>liveoverflow</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>模糊测试工具</title>
+        <link>https://chibataiki.github.io/todo/fuzzing-tools/</link>
+        <pubDate>Wed, 04 Mar 2020 18:37:45 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Wed, 04 Mar 2020 18:37:45 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/fuzzing-tools/</guid>
+        <description>netzob 可以对通讯协议逆向,建模并模糊测试 clusterfuzz 可</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
             
           
         
@@ -460,6 +510,54 @@
           
             
               <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Glitching Attack 故障注入攻击</title>
+        <link>https://chibataiki.github.io/todo/glitching_attack/</link>
+        <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
+        <description>glitching 攻击的目标一般是硬件设备 通过注入故障，</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>IoT</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>A Simple Program in C</title>
+        <link>https://chibataiki.github.io/todo/a_simple_program_in_c/</link>
+        <pubDate>Sun, 23 Feb 2020 22:15:56 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Sun, 23 Feb 2020 22:15:56 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/a_simple_program_in_c/</guid>
+        <description>最基础的C代码 #include&amp;lt;stdio.h&amp;gt; int main(int argc, char *argv[]){ for(int i = 0;i &amp;lt; argc; i++)</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>liveoverflow</category>
             
           
         
