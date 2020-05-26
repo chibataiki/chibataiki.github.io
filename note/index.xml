@@ -14,13 +14,37 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 07 Apr 2020 22:56:58 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 14:28:51 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/note/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>rcS_file</title>
+        <link>https://chibataiki.github.io/note/rcs_file/</link>
+        <pubDate>Tue, 26 May 2020 14:28:51 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Tue, 26 May 2020 14:28:51 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/rcs_file/</guid>
+        <description>rcS的含义: S : Single user mode,run level 1 rc: run control rcS 通常</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>linux</category>
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>嵌入式设备文件系统分析工具</title>
