@@ -41,6 +41,24 @@
       </item>
       
       <item>
+        <title>note</title>
+        <link>https://chibataiki.github.io/tags/note/</link>
+        <pubDate>Thu, 21 May 2020 21:12:55 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        
+        <guid>https://chibataiki.github.io/tags/note/</guid>
+        <description></description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
         <title>IoT</title>
         <link>https://chibataiki.github.io/tags/iot/</link>
         <pubDate>Thu, 16 Apr 2020 19:51:28 +0800</pubDate>
@@ -65,24 +83,6 @@
         <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/qemu/</guid>
-        <description></description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>note</title>
-        <link>https://chibataiki.github.io/tags/note/</link>
-        <pubDate>Sun, 29 Mar 2020 23:46:15 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        
-        <guid>https://chibataiki.github.io/tags/note/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
