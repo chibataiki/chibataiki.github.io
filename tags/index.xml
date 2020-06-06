@@ -14,7 +14,7 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 26 May 2020 14:28:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 10:30:54 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,12 +23,12 @@
 
       
       <item>
-        <title>linux</title>
-        <link>https://chibataiki.github.io/tags/linux/</link>
-        <pubDate>Tue, 26 May 2020 14:28:51 +0800</pubDate>
+        <title>note</title>
+        <link>https://chibataiki.github.io/tags/note/</link>
+        <pubDate>Thu, 28 May 2020 10:30:54 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         
-        <guid>https://chibataiki.github.io/tags/linux/</guid>
+        <guid>https://chibataiki.github.io/tags/note/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -41,12 +41,12 @@
       </item>
       
       <item>
-        <title>note</title>
-        <link>https://chibataiki.github.io/tags/note/</link>
-        <pubDate>Thu, 21 May 2020 21:12:55 +0800</pubDate>
+        <title>linux</title>
+        <link>https://chibataiki.github.io/tags/linux/</link>
+        <pubDate>Tue, 26 May 2020 14:28:51 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         
-        <guid>https://chibataiki.github.io/tags/note/</guid>
+        <guid>https://chibataiki.github.io/tags/linux/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>

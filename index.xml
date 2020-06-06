@@ -44,6 +44,28 @@
 
       
       <item>
+        <title>IDA_usage_note</title>
+        <link>https://chibataiki.github.io/note/ida_usage_note/</link>
+        <pubDate>Thu, 28 May 2020 10:30:54 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Thu, 28 May 2020 10:30:54 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/ida_usage_note/</guid>
+        <description>对于IDA不能识别的二进制文件, 可以选择</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
         <title>rcS_file</title>
         <link>https://chibataiki.github.io/note/rcs_file/</link>
         <pubDate>Tue, 26 May 2020 14:28:51 +0800</pubDate>
@@ -280,24 +302,6 @@
       </item>
       
       <item>
-        <title>Unix-like 手册</title>
-        <link>https://chibataiki.github.io/todo/manual-pages/</link>
-        <pubDate>Mon, 02 Mar 2020 18:06:35 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Mon, 02 Mar 2020 18:06:35 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/manual-pages/</guid>
-        <description>man 命令 看命令,函数的用法的时,可以使用m</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
         <title>GDB 使用note</title>
         <link>https://chibataiki.github.io/note/gdb-user-note/</link>
         <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
@@ -365,11 +369,11 @@
       
       <item>
         <title>macOS下IDA插件安装</title>
-        <link>https://chibataiki.github.io/posts/ida-note/</link>
+        <link>https://chibataiki.github.io/posts/ida-plugin-install/</link>
         <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/ida-note/</guid>
+        <guid>https://chibataiki.github.io/posts/ida-plugin-install/</guid>
         <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>
         
         <dc:creator>john</dc:creator>

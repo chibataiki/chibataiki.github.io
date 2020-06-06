@@ -119,24 +119,6 @@
       </item>
       
       <item>
-        <title>Unix-like 手册</title>
-        <link>https://chibataiki.github.io/todo/manual-pages/</link>
-        <pubDate>Mon, 02 Mar 2020 18:06:35 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Mon, 02 Mar 2020 18:06:35 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/manual-pages/</guid>
-        <description>man 命令 看命令,函数的用法的时,可以使用m</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
         <title>常用的漏洞分析工具note</title>
         <link>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</link>
         <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>

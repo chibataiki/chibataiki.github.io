@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chibataiki.github.io/note/ida_usage_note/</loc>
+    <lastmod>2020-05-28T10:30:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/note/</loc>
+    <lastmod>2020-05-28T10:30:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/note/</loc>
+    <lastmod>2020-05-28T10:30:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/</loc>
+    <lastmod>2020-05-28T10:30:54+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chibataiki.github.io/tags/linux/</loc>
     <lastmod>2020-05-26T14:28:51+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/note/</loc>
-    <lastmod>2020-05-26T14:28:51+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://chibataiki.github.io/note/rcs_file/</loc>
-    <lastmod>2020-05-26T14:28:51+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/</loc>
     <lastmod>2020-05-26T14:28:51+08:00</lastmod>
   </url>
   
@@ -30,11 +40,6 @@
   <url>
     <loc>https://chibataiki.github.io/gallery/</loc>
     <lastmod>2020-05-26T11:21:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/note/</loc>
-    <lastmod>2020-05-21T21:12:55+08:00</lastmod>
   </url>
   
   <url>
@@ -118,11 +123,6 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/manual-pages/</loc>
-    <lastmod>2020-03-02T18:06:35+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://chibataiki.github.io/note/gdb-user-note/</loc>
     <lastmod>2020-03-01T23:25:03+08:00</lastmod>
   </url>
@@ -148,7 +148,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/posts/ida-note/</loc>
+    <loc>https://chibataiki.github.io/posts/ida-plugin-install/</loc>
     <lastmod>2020-03-01T14:30:18+08:00</lastmod>
   </url>
   

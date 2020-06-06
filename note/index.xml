@@ -14,13 +14,35 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 26 May 2020 14:28:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 10:30:54 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/note/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>IDA_usage_note</title>
+        <link>https://chibataiki.github.io/note/ida_usage_note/</link>
+        <pubDate>Thu, 28 May 2020 10:30:54 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Thu, 28 May 2020 10:30:54 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/ida_usage_note/</guid>
+        <description>对于IDA不能识别的二进制文件, 可以选择</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>rcS_file</title>
