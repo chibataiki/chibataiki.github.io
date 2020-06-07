@@ -14,13 +14,35 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 28 May 2020 10:30:54 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 13:22:15 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/note/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>Ghidra Usage Note</title>
+        <link>https://chibataiki.github.io/note/ghidra-usage-note/</link>
+        <pubDate>Mon, 01 Jun 2020 13:22:15 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Mon, 01 Jun 2020 13:22:15 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/ghidra-usage-note/</guid>
+        <description>ghidra包含了一些用于IDA的插件:</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>IDA_usage_note</title>
