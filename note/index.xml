@@ -29,7 +29,7 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Mon, 01 Jun 2020 13:22:15 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/ghidra-usage-note/</guid>
-        <description>ghidra包含了一些用于IDA的插件:</description>
+        <description>Ghidra plugin for ida ghidra包含了一些用于IDA</description>
         
         <dc:creator>john</dc:creator>
         
