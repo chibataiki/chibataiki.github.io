@@ -163,7 +163,12 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/posts/ida-plugin-install/</loc>
+    <loc>https://chibataiki.github.io/tags/ida/</loc>
+    <lastmod>2020-03-01T14:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/note/ida-plugin-install/</loc>
     <lastmod>2020-03-01T14:30:18+08:00</lastmod>
   </url>
   
@@ -213,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</loc>
+    <loc>https://chibataiki.github.io/note/vim-markdown-plugin-install/</loc>
     <lastmod>2020-02-25T00:23:10+08:00</lastmod>
   </url>
   

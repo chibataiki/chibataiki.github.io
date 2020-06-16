@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>QEMU系统模式仿真 – Home</title>
+    <title>QEMU system mode emulation – Home</title>
     
 
 
@@ -1206,7 +1206,7 @@
 <meta name="description" content="binary security,Embedded security" />
 
 
-<meta name="keywords" content="tools,IoT">
+<meta name="keywords" content="tools,IoT,qemu">
 
 <meta name="created" content="2020-02-27T14:03:02&#43;0800">
 <meta name="modified" content="2020-02-27T14:03:02&#43;0800">
@@ -1216,7 +1216,7 @@
 
 
 <meta property="og:site_name" content="Home">
-<meta property="og:title" content="QEMU系统模式仿真">
+<meta property="og:title" content="QEMU system mode emulation">
 <meta property="og:url" content="https://chibataiki.github.io/posts/qemu-system-mode-setting/">
 <meta property="og:type" content="article">
 <meta property="og:description" content="binary security,Embedded security">
@@ -1244,12 +1244,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "headline": "QEMU系统模式仿真",
+    "headline": "QEMU system mode emulation",
     "datePublished": "2020-02-27T14:03:02+08:00",
     "dateModified": "2020-02-27T14:03:02+08:00",
     "url" : "https://chibataiki.github.io/posts/qemu-system-mode-setting/",
-    "description": "主要是对MIPS ARM架构的嵌入式设备进",
-    "keywords": ["tools","IoT"],
+    "description": "主要是对MIPS/ARM架构的嵌入式设备",
+    "keywords": ["tools","IoT","qemu"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://chibataiki.github.io/"
@@ -1615,7 +1615,7 @@
   
   <li  class="is-active" >
     
-      <span>QEMU系统模式仿真</span>
+      <span>QEMU system mode emulation</span>
     
   </li>
   
@@ -1627,7 +1627,7 @@
   <div class="single ">
     <div class="single__nojs">This page looks best with JavaScript enabled</div>
     <script>document.querySelector('.single').classList.remove('hide'); document.querySelector('.single__nojs').classList.add('hide');</script>
-    <h2 class="single__title" data-ani="true">QEMU系统模式仿真</h2>
+    <h2 class="single__title" data-ani="true">QEMU system mode emulation</h2>
     <div class="single__meta">
       
 <div class="single__infos">
@@ -1647,13 +1647,15 @@
 
   <li><a href="https://chibataiki.github.io/tags/iot/" class="single__tag" title="IoT">#IoT</a></li>
 
+  <li><a href="https://chibataiki.github.io/tags/qemu/" class="single__tag" title="qemu">#qemu</a></li>
+
   <li><a href="https://chibataiki.github.io/tags/tools/" class="single__tag" title="tools">#tools</a></li>
 
 </ul>
     </div>
     <article class="single__contents" data-dir="ltr" data-ani="true">
       
-      <p>主要是对MIPS ARM架构的嵌入式设备进行仿真</p>
+      <p>主要是对MIPS/ARM架构的嵌入式设备进行仿真</p>
 <p>系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件</p>
 <h3 id="0x00-qemu-系统模式的仿真方式">0x00 QEMU 系统模式的仿真方式</h3>
 <p>系统模式下的引导需要提供内核,文件系统,文件系统使用<code>binwalk</code>等工具可以相对方便的获取,<br />
@@ -1738,9 +1740,9 @@ fi
 
 echo &quot;[!]Start building bridge... &quot;
 dhclient -r ens33           # 释放ip
-ip addr flush ens33        # 清除 ip 
+ip addr flush ens33        # 清除 ip
 #确认ens3 刷新
-ip link set dev ens33 down 
+ip link set dev ens33 down
 ip link set dev ens33 up   
 
 ip link add  name br0 type bridge   #建立网桥
@@ -1765,14 +1767,14 @@ brctl delif ens33 br0
 # 删除tap 和 br0
 
 ip link delete dev br0    	
-dhclient ens33 
+dhclient ens33
 sleep 1
 ip link set dev ens33 up
 
 echo &quot;[!]Finished network setting!&quot;
 </code></pre>
 <p>qemu-ifup:</p>
-<pre><code>$ip addr add 0.0.0.0 dev $1 
+<pre><code>$ip addr add 0.0.0.0 dev $1
 $ip link set dev $1 up  
 $brctl addif br0 $1
 </code></pre>
@@ -1790,7 +1792,7 @@ sudo ./build-bridge.sh</p>
 <p>启动qemu</p>
 </li>
 </ol>
-<pre><code>sudo qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta 
+<pre><code>sudo qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta
 -hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0'
 -nographic -net nic, -net tap
 </code></pre><p>运行完的网络情况:<br />
@@ -1809,7 +1811,7 @@ old way to create a new NIC and connect it to VLAN &lsquo;n&rsquo;<br />
 <p>A: -net nic表示添加设备<br />
 可以使用model=xxxx 指定添加设备的类型<br />
 <a href="https://en.wikibooks.org/wiki/QEMU/Devices/Network">https://en.wikibooks.org/wiki/QEMU/Devices/Network</a></p>
-<p>参考链接<br />
+<p>referer:<br />
 <a href="https://people.debian.org/~aurel32/qemu/mipsel/README.txt">https://people.debian.org/~aurel32/qemu/mipsel/README.txt</a><br />
 <a href="https://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html">https://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html</a><br />
 <a href="https://wiki.qemu.org/Documentation/Networking#Tap">https://wiki.qemu.org/Documentation/Networking#Tap</a><br />
@@ -1885,7 +1887,7 @@ old way to create a new NIC and connect it to VLAN &lsquo;n&rsquo;<br />
         </li>
         
         <li>
-          <a href="/posts/vim-markdown-plugin-install/" class="related__link">Vim-Markdown-插件安装</a>
+          <a href="/note/vim-markdown-plugin-install/" class="related__link">Vim-Markdown-插件安装</a>
         </li>
         
         <li>

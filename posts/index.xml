@@ -47,30 +47,6 @@
       </item>
       
       <item>
-        <title>macOS下IDA插件安装</title>
-        <link>https://chibataiki.github.io/posts/ida-plugin-install/</link>
-        <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/ida-plugin-install/</guid>
-        <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>Dlink Backdoor 分析记录</title>
         <link>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</link>
         <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
@@ -119,13 +95,13 @@
       </item>
       
       <item>
-        <title>QEMU系统模式仿真</title>
+        <title>QEMU system mode emulation</title>
         <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
         <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
-        <description>主要是对MIPS ARM架构的嵌入式设备进</description>
+        <description>主要是对MIPS/ARM架构的嵌入式设备</description>
         
         <dc:creator>john</dc:creator>
         
@@ -139,6 +115,10 @@
           
             
               <category>IoT</category>
+            
+          
+            
+              <category>qemu</category>
             
           
         
@@ -163,30 +143,6 @@
           
             
               <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Vim-Markdown-插件安装</title>
-        <link>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</link>
-        <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Tue, 25 Feb 2020 00:23:10 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</guid>
-        <description>环境： macOS catalina vim: macvim 设置vim初始化环境 mkdir ~/.vim mv</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
             
           
         

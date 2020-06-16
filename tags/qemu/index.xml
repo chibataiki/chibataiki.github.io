@@ -50,6 +50,38 @@
         
       </item>
       
+      <item>
+        <title>QEMU system mode emulation</title>
+        <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
+        <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
+        <description>主要是对MIPS/ARM架构的嵌入式设备</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+            
+              <category>IoT</category>
+            
+          
+            
+              <category>qemu</category>
+            
+          
+        
+        
+        
+      </item>
+      
 
     
   </channel>

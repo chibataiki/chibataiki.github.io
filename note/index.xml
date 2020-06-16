@@ -270,6 +270,58 @@
         
       </item>
       
+      <item>
+        <title>macOS下IDA插件安装</title>
+        <link>https://chibataiki.github.io/note/ida-plugin-install/</link>
+        <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/ida-plugin-install/</guid>
+        <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+            
+              <category>ida</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Vim-Markdown-插件安装</title>
+        <link>https://chibataiki.github.io/note/vim-markdown-plugin-install/</link>
+        <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Tue, 25 Feb 2020 00:23:10 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/vim-markdown-plugin-install/</guid>
+        <description>环境： macOS catalina vim: macvim 设置vim初始化环境 mkdir ~/.vim mv</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>tools</category>
+            
+          
+        
+        
+        
+      </item>
+      
 
     
   </channel>
