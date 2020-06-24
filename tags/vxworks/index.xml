@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>vxworks on Home</title>
+    <link>https://chibataiki.github.io/tags/vxworks/</link>
+    <description>Recent content in vxworks on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
+    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
+    <copyright>©{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Wed, 27 May 2020 16:21:44 +0800</lastBuildDate>
+    
+        <atom:link href="https://chibataiki.github.io/tags/vxworks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>Tp_Link_wr886nv6_VxWorks_firmware_analysis</title>
+        <link>https://chibataiki.github.io/note/tp-link_wr886nv6_vxworks_firmware_analysis/</link>
+        <pubDate>Wed, 27 May 2020 16:21:44 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Wed, 27 May 2020 16:21:44 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/tp-link_wr886nv6_vxworks_firmware_analysis/</guid>
+        <description>文件系统的提取 看第一篇参考文献的时候,尝</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>vxworks</category>
+            
+          
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>
