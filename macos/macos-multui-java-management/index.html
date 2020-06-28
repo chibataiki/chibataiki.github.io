@@ -1248,7 +1248,7 @@
     "datePublished": "2020-02-28T13:58:13+08:00",
     "dateModified": "2020-02-28T13:58:13+08:00",
     "url" : "https://chibataiki.github.io/macos/macos-multui-java-management/",
-    "description": "之前安装 Burpsuite的时候,需要的",
+    "description": "之前安装 Burpsuite的时候,使用的",
     "keywords": ["tools"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1651,30 +1651,26 @@
     </div>
     <article class="single__contents" data-dir="ltr" data-ani="true">
       
-      <p>之前安装 Burpsuite的时候,需要的版本是JDK1.8,这次ghida则需要新版本</p>
-<pre><code>linux 可以使用`sudo update-alternatives --config java` 进行java版本的选择
-</code></pre>
-<p>macOS下则使用homebrew</p>
+      <p>之前安装 Burpsuite的时候,使用的是旧版本JDK1.8,这次ghida需要新版本</p>
+<p>在linux中可以使用<code>sudo update-alternatives --config java</code> 进行java版本的选择</p>
+<p>macOS下则使用jenv</p>
 <pre><code>brew tap homebrew/cask-versions
-brew install jenv 
+brew install jenv
 </code></pre><p>显示java 环境</p>
-<pre><code>/usr/libexec/java_home -v
-</code></pre>
-<p>结果类似于</p>
+<pre><code>/usr/libexec/java_home -V
+</code></pre><p>结果类似于</p>
 <pre><code>13.0.2, x86_64:	&quot;OpenJDK 13.0.2&quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home
 1.8.0_231, x86_64:	&quot;Java SE 8&quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
-</code></pre><p>添加 jdk  ,路径就是上面的结果</p>
+</code></pre><p>添加 jdk ,路径为就是上面现实的路径</p>
 <pre><code>jenv add &lt;jdk_path&gt;
-</code></pre>
-<p>显示java版本信息:</p>
+</code></pre><p>显示java版本信息:</p>
 <pre><code>jenv versions
-jenv -version
+jenv version
 </code></pre><p>设置java环境:</p>
 <pre><code>jenv global [jdk version]
 jenv local [jdk version]
-</code></pre><p>有问题可以运行<br />
-jenv doctor</p>
-<p>参考:<br />
+</code></pre><p>有问题可以运行  <code>jenv doctor</code></p>
+<p>referer:<br />
 <a href="https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e">https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</a></p>
 
     </article>

@@ -14,41 +14,13 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 16 Apr 2020 19:51:28 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Apr 2020 22:56:58 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
-      
-      <item>
-        <title>Emulate Embedded Linux Device by Qemu</title>
-        <link>https://chibataiki.github.io/todo/emulate-embedded-linux-device-by-qemu/</link>
-        <pubDate>Thu, 16 Apr 2020 19:51:28 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Thu, 16 Apr 2020 19:51:28 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/emulate-embedded-linux-device-by-qemu/</guid>
-        <description>对于mips架构的busybox: 是动态</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-            
-              <category>qemu</category>
-            
-          
-        
-        
-        
-      </item>
       
       <item>
         <title>嵌入式设备文件系统分析工具</title>

@@ -248,34 +248,6 @@
       </item>
       
       <item>
-        <title>Emulate Embedded Linux Device by Qemu</title>
-        <link>https://chibataiki.github.io/todo/emulate-embedded-linux-device-by-qemu/</link>
-        <pubDate>Thu, 16 Apr 2020 19:51:28 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Thu, 16 Apr 2020 19:51:28 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/emulate-embedded-linux-device-by-qemu/</guid>
-        <description>对于mips架构的busybox: 是动态</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-            
-              <category>qemu</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>嵌入式设备文件系统分析工具</title>
         <link>https://chibataiki.github.io/note/embedded_device_filesystem_analyze/</link>
         <pubDate>Tue, 07 Apr 2020 22:56:58 +0800</pubDate>
@@ -564,7 +536,7 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:58:13 +0800</atom:modified>
         <guid>https://chibataiki.github.io/macos/macos-multui-java-management/</guid>
-        <description>之前安装 Burpsuite的时候,需要的</description>
+        <description>之前安装 Burpsuite的时候,使用的</description>
         
         <dc:creator>john</dc:creator>
         
