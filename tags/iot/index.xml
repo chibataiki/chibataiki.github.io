@@ -174,30 +174,6 @@
         
       </item>
       
-      <item>
-        <title>Glitching Attack 故障注入攻击</title>
-        <link>https://chibataiki.github.io/todo/glitching_attack/</link>
-        <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
-        <description>glitching 攻击的目标一般是硬件设备 通过注入故障，</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
 
     
   </channel>
