@@ -14,13 +14,35 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Sat, 14 Mar 2020 22:46:32 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 18:12:05 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/todo/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>FREAK</title>
+        <link>https://chibataiki.github.io/todo/freak/</link>
+        <pubDate>Thu, 16 Jul 2020 18:12:05 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Thu, 16 Jul 2020 18:12:05 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/todo/freak/</guid>
+        <description>introduction FREAK:(Factoring RSA Export Keys ) 这是在SSL/TLS协议中存</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>Simple_key_validation</title>
