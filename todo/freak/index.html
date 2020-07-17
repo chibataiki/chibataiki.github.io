@@ -1658,13 +1658,14 @@
 <p>在 OpenSSL 库里，<code>s3_clnt.c</code> 文件中的 <code>ssl3_get_key_exchange</code> 函数允许客户端使用弱 RSA 密钥对。攻击者可拦截受影响的客户端与服务器之间的 HTTPS 连接，并强制其使用弱加密。</p>
 <p>patch:https://github.com/openssl/openssl/commit/ce325c60c74b0fa784f5872404b722e120e5cab0</p>
 <h3 id="攻击流程">攻击流程</h3>
-<p>1.client发出的Hello消息，请求正常的ciphersuite</p>
-<p>2.MITM劫持client hello,并将其中的cyphersuite更改为 export-grade</p>
-<p>3.server临时生成512bit的RSA公钥,签名后通过ServerKeyExchange发送给client</p>
-<p>4.client接受export-grade RSA</p>
-<p>5.attacker对512bit的RSA公钥进行因数分解,</p>
-<p>6.client加密pre-master secret,发送给server ,那么attacker可以解密数据获取 pre-master secret,此时可以计算出所有的密钥</p>
-<p>7.成功解密后attacker可以明文查看所有信息或者伪造发送消息</p>
+<ol>
+<li>client在发送的client hello中使用标准的RSA加密请求</li>
+<li>MITM 劫持client hello,并将cipher suite 更改为 export-grade RSA,比如<strong>TLS_RSA_EXPORT_WITH_RC4_MD5</strong></li>
+<li>服务器接受export级别的cipher suite,并临时生成512bit的RSA密钥, 通过发送ServerKeyExchange message通知client,并使用证书的密钥对公钥进行签名</li>
+<li>client端接受消息,验证证书, 生成premaster key并通过server端发送的512bits公钥进行加密</li>
+<li>mitm attacker需要将512bit的公钥进行因数分解, mitm 嗅探到 encrypted pre-master secret 后就可以解密获得pre-master key,master key</li>
+<li>成功解密后attacker可以明文查看所有信息</li>
+</ol>
 <p><strong>检测方式:</strong></p>
 <ul>
 <li>服务端:<br />
@@ -1714,17 +1715,19 @@ def modify(packet):
 
 
 if __name__ == '__main__':
-		nfqueue = NetfilterQueue()
+    nfqueue = NetfilterQueue()
     nfqueue.bind(nfQueueID, modify, maxPacketsToStore) # binds to queue 0, use 			handler &quot;packetReceived()&quot;
     try:
-   		 	nfqueue.run()
-		except KeyboardInterrupt:
-      	pass
-</code></pre><p>注意点:</p>
+        nfqueue.run()
+    except KeyboardInterrupt:
+        pass
+</code></pre><p>tip:</p>
 <p>需要将chksum del掉让scapy再计算一次,不然会出现retransmisstion问题</p>
 <hr />
 <p>referer:</p>
-<p><a href="https://en.wikipedia.org/wiki/FREAK">https://en.wikipedia.org/wiki/FREAK</a></p>
+<p><a href="https://en.wikipedia.org/wiki/FREAK">https://en.wikipedia.org/wiki/FREAK</a><br />
+<a href="https://lbarman.ch/blog/downgrade-tls/">https://lbarman.ch/blog/downgrade-tls/</a><br />
+<a href="https://medium.com/@c0D3M/freak-attack-explained-3048ab9d3f30">https://medium.com/@c0D3M/freak-attack-explained-3048ab9d3f30</a></p>
 
     </article>
     
