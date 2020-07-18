@@ -1651,12 +1651,17 @@
       
       <h3 id="introduction">introduction</h3>
 <p>FREAK:(Factoring RSA Export Keys )<br />
-这是在SSL/TLS协议中存在一种漏洞</p>
-<p>早期由于二战的因素,许多国家出于国家安全因素的考虑,从而限制加密技术的出口,美国政府对出口的加密算法存在限制, 美国根据法律将出口的RSA密钥长度减少到512bits.<br />
-而512bit的RSA密钥解密的代价很小,通过中间人攻击可以获得所以密文的解密明文.</p>
-<p>在openssl漏洞编号为:CVE-2015-0204</p>
-<p>在 OpenSSL 库里，<code>s3_clnt.c</code> 文件中的 <code>ssl3_get_key_exchange</code> 函数允许客户端使用弱 RSA 密钥对。攻击者可拦截受影响的客户端与服务器之间的 HTTPS 连接，并强制其使用弱加密。</p>
-<p>patch:https://github.com/openssl/openssl/commit/ce325c60c74b0fa784f5872404b722e120e5cab0</p>
+这是在SSL/TLS协议中存在一种漏洞,允许中间人将ciphersuite中的RSA强度降低为EXPORT-grade(出口级别).</p>
+<p>早期由于二战的因素,许多国家出于国家安全因素的考虑,从而限制加密技术的出口,美国政府对出口的加密算法存在限制, 美国根据法律将出口的RSA密钥长度减少到512bits.而512bit的RSA密钥解密的代价很小,这允许美国当局可以解密所有国外的加密通讯.</p>
+<p>受漏洞影响的相关库:</p>
+<ul>
+<li>OpenSSL :CVE-2015-0204  1.0.1-1.0.1j, 1.0.0-1.0.0o,0.9.8-0.9.8zc</li>
+<li>BoringSSL: versions before Nov 10, 2014 are vulnerable</li>
+<li>&hellip;</li>
+</ul>
+<p>在 OpenSSL 库里，<code>s3_clnt.c</code> 文件中的 <code>ssl3_get_key_exchange</code> 函数允许客户端使用弱RSA密钥对。攻击者可拦截受影响的客户端与服务器之间的HTTPS连接，并强制其使用弱加密。</p>
+<p>patch部分:<br />
+<a href="https://github.com/openssl/openssl/commit/ce325c60c74b0fa784f5872404b722e120e5cab0">https://github.com/openssl/openssl/commit/ce325c60c74b0fa784f5872404b722e120e5cab0</a></p>
 <h3 id="攻击流程">攻击流程</h3>
 <ol>
 <li>client在发送的client hello中使用标准的RSA加密请求</li>
@@ -1721,13 +1726,15 @@ if __name__ == '__main__':
         nfqueue.run()
     except KeyboardInterrupt:
         pass
-</code></pre><p>tip:</p>
-<p>需要将chksum del掉让scapy再计算一次,不然会出现retransmisstion问题</p>
+</code></pre><p>tip:<br />
+需要将TCP/IP的chksum del掉让scapy再计算一次,不然会出现retransmisstion问题</p>
 <hr />
 <p>referer:</p>
 <p><a href="https://en.wikipedia.org/wiki/FREAK">https://en.wikipedia.org/wiki/FREAK</a><br />
 <a href="https://lbarman.ch/blog/downgrade-tls/">https://lbarman.ch/blog/downgrade-tls/</a><br />
-<a href="https://medium.com/@c0D3M/freak-attack-explained-3048ab9d3f30">https://medium.com/@c0D3M/freak-attack-explained-3048ab9d3f30</a></p>
+<a href="https://medium.com/@c0D3M/freak-attack-explained-3048ab9d3f30">https://medium.com/@c0D3M/freak-attack-explained-3048ab9d3f30</a><br />
+<a href="https://mitls.org/pages/attacks/SMACK">https://mitls.org/pages/attacks/SMACK</a><br />
+<a href="https://www.openssl.org/news/vulnerabilities.html">https://www.openssl.org/news/vulnerabilities.html</a></p>
 
     </article>
     
