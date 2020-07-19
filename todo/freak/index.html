@@ -1691,18 +1691,23 @@ sudo make install
 
 </code></pre><h4 id="mitm">MITM</h4>
 <ul>
-<li>NetFilterQueue</li>
-<li>scapy</li>
+<li>
+<p>NFQUEUE<br />
+内核提供的功能,可以将packet发送到用户空间进行处理</p>
+</li>
+<li>
+<p>scapy<br />
+对包内容进行修改</p>
+</li>
 </ul>
-<pre><code>依赖:
-
+<pre><code>依赖安装:
 sudo apt install libnetfilter-queue-dev scapy -y
 python3 -m pip install NetfilterQueue
 
-iptable
-sudo iptables -D FORWARD -p tcp  --dport 443 -j NFQUEUE --queue-num 1
+iptable:
+sudo iptables -A FORWARD -p tcp  --dport 443 -j NFQUEUE --queue-num 1
 
-</code></pre><p>对包进行修改操作:</p>
+</code></pre><p>使用scapy对包进行修改操作:</p>
 <pre><code>#!/usr/bin/python3
 from netfilterqueue import NetfilterQueue
 from scapy.layers.inet import IP, TCP
