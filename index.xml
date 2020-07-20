@@ -14,7 +14,7 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 16 Jul 2020 18:12:05 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 17:09:57 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -42,28 +42,6 @@
         
       
 
-      
-      <item>
-        <title>FREAK</title>
-        <link>https://chibataiki.github.io/todo/freak/</link>
-        <pubDate>Thu, 16 Jul 2020 18:12:05 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Thu, 16 Jul 2020 18:12:05 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/freak/</guid>
-        <description>introduction FREAK:(Factoring RSA Export Keys ) 这是在SSL/TLS协议中存</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-          
-        
-        
-        
-      </item>
       
       <item>
         <title>Why Need Emulation</title>
@@ -96,7 +74,9 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Tue, 09 Jun 2020 09:16:47 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/sslstrip-use-note/</guid>
-        <description>sslstrip is a MITM tool. how it works People may not type https:// (http://) in the address bar. offen encouter</description>
+        <description>sslstrip is a MITM tool.
+how it works People may not type https:// (http://) in the address bar.
+offen encouter SSL with this two types:</description>
         
         <dc:creator>john</dc:creator>
         

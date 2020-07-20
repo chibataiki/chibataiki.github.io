@@ -1248,7 +1248,7 @@
     "datePublished": "2020-06-09T09:16:47+08:00",
     "dateModified": "2020-06-09T09:16:47+08:00",
     "url" : "https://chibataiki.github.io/note/sslstrip-use-note/",
-    "description": "sslstrip is a MITM tool. how it works People may not type https:// (http://) in the address bar. offen encouter",
+    "description": "sslstrip is a MITM tool. how it works People may not type https:// (http://) in the address bar. offen encouter SSL with this two types:",
     "keywords": [""],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1660,8 +1660,8 @@
 <p>sslstrip can watch http traffic and change all https links to http</p>
 <h3 id="arpspoof">arpspoof</h3>
 <p>send ARP messages on LAN associate the attacker&rsquo;s Mac address with the gateway ip, then all traffic will send too attacker&rsquo;s machine</p>
-<pre><code>sudo arpspoof -i [interface] -t [target] -r [gataway]
-</code></pre><h3 id="端口转发">端口转发</h3>
+<pre><code>sudo arpspoof -i [interface] -t [target mac] -r [gataway mac]
+</code></pre><h3 id="traffic-redirect">traffic redirect</h3>
 <pre><code>sudo iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
 </code></pre><p>referer:<br />
 <a href="https://github.com/moxie0/sslstrip">https://github.com/moxie0/sslstrip</a><br />
@@ -2134,7 +2134,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <ul>
         <li><a href="#how-it-works">how it works</a></li>
         <li><a href="#arpspoof">arpspoof</a></li>
-        <li><a href="#端口转发">端口转发</a></li>
+        <li><a href="#traffic-redirect">traffic redirect</a></li>
       </ul>
     </li>
   </ul>

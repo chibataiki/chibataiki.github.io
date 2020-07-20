@@ -29,7 +29,9 @@
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Tue, 09 Jun 2020 09:16:47 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/sslstrip-use-note/</guid>
-        <description>sslstrip is a MITM tool. how it works People may not type https:// (http://) in the address bar. offen encouter</description>
+        <description>sslstrip is a MITM tool.
+how it works People may not type https:// (http://) in the address bar.
+offen encouter SSL with this two types:</description>
         
         <dc:creator>john</dc:creator>
         
