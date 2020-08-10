@@ -1248,7 +1248,7 @@
     "datePublished": "2020-07-16T18:12:05+08:00",
     "dateModified": "2020-07-16T18:12:05+08:00",
     "url" : "https://chibataiki.github.io/todo/freak/",
-    "description": "introduction FREAK:(Factoring RSA Export Keys ) 这是在SSL/TLS协议中存",
+    "description": "introduction FREAK:(Factoring RSA Export Keys ) 在SSL/TLS协议中存在一",
     "keywords": [""],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1651,24 +1651,24 @@
       
       <h3 id="introduction">introduction</h3>
 <p>FREAK:(Factoring RSA Export Keys )<br />
-这是在SSL/TLS协议中存在一种漏洞,允许中间人将ciphersuite中的RSA强度降低为EXPORT-grade(出口级别).</p>
-<p>早期由于二战的因素,许多国家出于国家安全因素的考虑,从而限制加密技术的出口,美国政府对出口的加密算法存在限制, 美国根据法律将出口的RSA密钥长度减少到512bits.而512bit的RSA密钥解密的代价很小,这允许美国当局可以解密所有国外的加密通讯.</p>
+在SSL/TLS协议中存在一种漏洞,允许中间人将ciphersuite中的RSA强度降低为EXPORT-grade(出口级别).</p>
+<p>早期由于二战的因素,许多国家出于国家安全因素的考虑,从而限制加密技术的出口;美国政府对出口的加密算法存在限制, 根据法律将出口的RSA密钥长度减少为512bits.而512bit的RSA密钥解密的代价很小,允许美国可以解密国外的加密通讯.</p>
 <p>受漏洞影响的相关库:</p>
 <ul>
 <li>OpenSSL :CVE-2015-0204  1.0.1-1.0.1j, 1.0.0-1.0.0o,0.9.8-0.9.8zc</li>
 <li>BoringSSL: versions before Nov 10, 2014 are vulnerable</li>
 <li>&hellip;</li>
 </ul>
-<p>在 OpenSSL 库里，<code>s3_clnt.c</code> 文件中的 <code>ssl3_get_key_exchange</code> 函数允许客户端使用弱RSA密钥对。攻击者可拦截受影响的客户端与服务器之间的HTTPS连接，并强制其使用弱加密。</p>
+<p>在 OpenSSL 库中，<code>s3_clnt.c</code> 文件中的 <code>ssl3_get_key_exchange</code> 函数允许客户端使用弱RSA密钥对。攻击者可拦截受影响的客户端与服务器之间的HTTPS连接，并强制其使用弱加密。</p>
 <p>patch部分:<br />
 <a href="https://github.com/openssl/openssl/commit/ce325c60c74b0fa784f5872404b722e120e5cab0">https://github.com/openssl/openssl/commit/ce325c60c74b0fa784f5872404b722e120e5cab0</a></p>
 <h3 id="攻击流程">攻击流程</h3>
 <ol>
 <li>client在发送的client hello中使用标准的RSA加密请求</li>
-<li>MITM 劫持client hello,并将cipher suite 更改为 export-grade RSA,比如<strong>TLS_RSA_EXPORT_WITH_RC4_MD5</strong></li>
-<li>服务器接受export级别的cipher suite,并临时生成512bit的RSA密钥, 通过发送ServerKeyExchange message通知client,并使用证书的密钥对公钥进行签名</li>
-<li>client端接受消息,验证证书, 生成premaster key并通过server端发送的512bits公钥进行加密</li>
-<li>mitm attacker需要将512bit的公钥进行因数分解, mitm 嗅探到 encrypted pre-master secret 后就可以解密获得pre-master key,master key</li>
+<li>MITM 劫持client hello,并将cipher suite 更改为 export-grade RSA,比如<strong>TLS_RSA_EXPORT_WITH_RC4_MD5</strong>,并传给server</li>
+<li>server在ServerCertificate中发送2048bits的公钥，接受export级别的cipher suite,并临时生成512bit的RSA公钥, 通过发送ServerKeyExchange message通知client,并使用证书的密钥对公钥进行签名</li>
+<li>client端接受消息,验证证书, 生成 premaster key并通过server端的公钥进行加密</li>
+<li>mitm attacker需要将512bit的公钥进行因数分解获得临时私钥, mitm 此时可以从clientkeyexchange中解密出pre-master secret</li>
 <li>成功解密后attacker可以明文查看所有信息</li>
 </ol>
 <p><strong>检测方式:</strong></p>
@@ -1678,61 +1678,6 @@
 <li>客户端<br />
 <a href="https://clienttest.ssllabs.com">https://clienttest.ssllabs.com</a>:8443/ssltest/viewMyClient.html</li>
 </ul>
-<h3 id="downgrade">downgrade</h3>
-<h4 id="server">server</h4>
-<p>下载存在漏洞影响的openssl,使用nginx指定openssl进行编译</p>
-<pre><code>
-sudo apt-get install zlib1g-dev libpcre3 libpcre3-dev
-
-./configure --prefix=[nginx location]  --with-http_ssl_module --with-openssl= [openssl source code location]
-
-sudo make
-sudo make install
-
-</code></pre><h4 id="mitm">MITM</h4>
-<ul>
-<li>
-<p>NFQUEUE<br />
-内核提供的功能,可以将packet发送到用户空间进行处理</p>
-</li>
-<li>
-<p>scapy<br />
-对包内容进行修改</p>
-</li>
-</ul>
-<pre><code>依赖安装:
-sudo apt install libnetfilter-queue-dev scapy -y
-python3 -m pip install NetfilterQueue
-
-iptable:
-sudo iptables -A FORWARD -p tcp  --dport 443 -j NFQUEUE --queue-num 1
-
-</code></pre><p>使用scapy对包进行修改操作:</p>
-<pre><code>#!/usr/bin/python3
-from netfilterqueue import NetfilterQueue
-from scapy.layers.inet import IP, TCP
-
-nfQueueID         = 1   # 和iptables设置的有关
-maxPacketsToStore = 100
-
-def modify(packet):
-    pkt = IP(packet.get_payload())
-
-    #modify the packet all you want here
-
-    packet.set_payload(bytes(pkt))
-    packet.accept()  
-
-
-if __name__ == '__main__':
-    nfqueue = NetfilterQueue()
-    nfqueue.bind(nfQueueID, modify, maxPacketsToStore) # binds to queue 0, use 			handler &quot;packetReceived()&quot;
-    try:
-        nfqueue.run()
-    except KeyboardInterrupt:
-        pass
-</code></pre><p>tip:<br />
-需要将TCP/IP的chksum del掉让scapy再计算一次,不然会出现retransmisstion问题</p>
 <hr />
 <p>referer:</p>
 <p><a href="https://en.wikipedia.org/wiki/FREAK">https://en.wikipedia.org/wiki/FREAK</a><br />
@@ -2200,7 +2145,6 @@ document.addEventListener('DOMContentLoaded', function () {
       <ul>
         <li><a href="#introduction">introduction</a></li>
         <li><a href="#攻击流程">攻击流程</a></li>
-        <li><a href="#downgrade">downgrade</a></li>
       </ul>
     </li>
   </ul>
