@@ -1678,6 +1678,9 @@
 <li>客户端<br />
 <a href="https://clienttest.ssllabs.com">https://clienttest.ssllabs.com</a>:8443/ssltest/viewMyClient.html</li>
 </ul>
+<h3 id="实验">实验</h3>
+<p>使用<code> netfilterqueue</code> 能够劫持TLS/SSL 握手包，可以通过<code>scapy</code>对数据包进行过滤和修改，可以将ciphersuite 更换为自己想要的版本</p>
+<p>问题： SSLv3以及之后的TLS会对消息进行一个完整性校验，修改ciphersuite的话密钥协商过程最后的Finish会校验失败，大概思路是解密出master key之后重新构造一下最后的Finish包。todo</p>
 <hr />
 <p>referer:</p>
 <p><a href="https://en.wikipedia.org/wiki/FREAK">https://en.wikipedia.org/wiki/FREAK</a><br />
@@ -2145,6 +2148,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <ul>
         <li><a href="#introduction">introduction</a></li>
         <li><a href="#攻击流程">攻击流程</a></li>
+        <li><a href="#实验">实验</a></li>
       </ul>
     </li>
   </ul>
