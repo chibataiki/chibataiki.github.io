@@ -18,27 +18,32 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/freak/</loc>
+    <loc>https://chibataiki.github.io/note/freak/</loc>
     <lastmod>2020-07-16T18:12:05+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/</loc>
+    <loc>https://chibataiki.github.io/note/</loc>
+    <lastmod>2020-07-16T18:12:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/</loc>
+    <lastmod>2020-07-16T18:12:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/tls/</loc>
+    <lastmod>2020-07-16T18:12:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/todo/</loc>
     <lastmod>2020-07-16T18:12:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://chibataiki.github.io/tags/emulation/</loc>
-    <lastmod>2020-06-16T17:09:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/note/</loc>
-    <lastmod>2020-06-16T17:09:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/</loc>
     <lastmod>2020-06-16T17:09:57+08:00</lastmod>
   </url>
   
@@ -138,7 +143,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/simple_key_validation/</loc>
+    <loc>https://chibataiki.github.io/note/simple_key_validation/</loc>
     <lastmod>2020-03-14T22:46:32+08:00</lastmod>
   </url>
   
@@ -208,12 +213,12 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/macos/</loc>
+    <loc>https://chibataiki.github.io/tags/mac/</loc>
     <lastmod>2020-02-28T13:58:13+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/macos/macos-multui-java-management/</loc>
+    <loc>https://chibataiki.github.io/note/macos-multui-java-management/</loc>
     <lastmod>2020-02-28T13:58:13+08:00</lastmod>
   </url>
   
@@ -223,7 +228,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</loc>
+    <loc>https://chibataiki.github.io/note/normal-binary-analysis-tools/</loc>
     <lastmod>2020-02-28T13:29:32+08:00</lastmod>
   </url>
   
@@ -248,7 +253,7 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</loc>
+    <loc>https://chibataiki.github.io/note/macos_catalina_sound_redirection/</loc>
     <lastmod>2020-02-22T21:43:36+08:00</lastmod>
   </url>
   

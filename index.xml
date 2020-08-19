@@ -67,11 +67,11 @@
       
       <item>
         <title>FREAK</title>
-        <link>https://chibataiki.github.io/todo/freak/</link>
+        <link>https://chibataiki.github.io/note/freak/</link>
         <pubDate>Thu, 16 Jul 2020 18:12:05 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Thu, 16 Jul 2020 18:12:05 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/freak/</guid>
+        <guid>https://chibataiki.github.io/note/freak/</guid>
         <description>introduction FREAK:(Factoring RSA Export Keys ) 在SSL/TLS协议中存在一</description>
         
         <dc:creator>john</dc:creator>
@@ -80,6 +80,12 @@
         
         
           
+            
+              <category>TLS</category>
+            
+          
+            
+              <category>TODO</category>
             
           
         
@@ -365,11 +371,11 @@ offen encouter SSL with this two types:</description>
       
       <item>
         <title>Simple_key_validation</title>
-        <link>https://chibataiki.github.io/todo/simple_key_validation/</link>
+        <link>https://chibataiki.github.io/note/simple_key_validation/</link>
         <pubDate>Sat, 14 Mar 2020 22:46:32 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sat, 14 Mar 2020 22:46:32 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/simple_key_validation/</guid>
+        <guid>https://chibataiki.github.io/note/simple_key_validation/</guid>
         <description>一种简单的密码加密机制: #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){</description>
         
         <dc:creator>john</dc:creator>
@@ -555,11 +561,11 @@ offen encouter SSL with this two types:</description>
       
       <item>
         <title>MacOS 多版本java管理</title>
-        <link>https://chibataiki.github.io/macos/macos-multui-java-management/</link>
+        <link>https://chibataiki.github.io/note/macos-multui-java-management/</link>
         <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:58:13 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/macos/macos-multui-java-management/</guid>
+        <guid>https://chibataiki.github.io/note/macos-multui-java-management/</guid>
         <description>之前安装 Burpsuite的时候,使用的</description>
         
         <dc:creator>john</dc:creator>
@@ -572,6 +578,10 @@ offen encouter SSL with this two types:</description>
               <category>tools</category>
             
           
+            
+              <category>mac</category>
+            
+          
         
         
         
@@ -579,11 +589,11 @@ offen encouter SSL with this two types:</description>
       
       <item>
         <title>常用的漏洞分析工具note</title>
-        <link>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</link>
+        <link>https://chibataiki.github.io/note/normal-binary-analysis-tools/</link>
         <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</guid>
+        <guid>https://chibataiki.github.io/note/normal-binary-analysis-tools/</guid>
         <description>IDA pro: 最强大的反汇编软件 hopper: 适用于macOS</description>
         
         <dc:creator>john</dc:creator>
@@ -687,11 +697,11 @@ offen encouter SSL with this two types:</description>
       
       <item>
         <title>macOS soundflower audio input-output</title>
-        <link>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</link>
+        <link>https://chibataiki.github.io/note/macos_catalina_sound_redirection/</link>
         <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Sat, 22 Feb 2020 21:43:36 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/macos/macos_catalina_sound_redirection/</guid>
+        <guid>https://chibataiki.github.io/note/macos_catalina_sound_redirection/</guid>
         <description>因为有时候英文视频没有字幕，所以需要将视</description>
         
         <dc:creator>john</dc:creator>
@@ -702,6 +712,10 @@ offen encouter SSL with this two types:</description>
           
             
               <category>tools</category>
+            
+          
+            
+              <category>mac</category>
             
           
         
