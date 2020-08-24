@@ -14,13 +14,37 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Fri, 14 Aug 2020 19:53:15 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2020 20:24:49 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/note/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>The Design of Metro Map</title>
+        <link>https://chibataiki.github.io/note/the-design-of-metro-map/</link>
+        <pubDate>Sat, 22 Aug 2020 20:24:49 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        <atom:modified>Sat, 22 Aug 2020 20:24:49 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/the-design-of-metro-map/</guid>
+        <description>伦敦交通图的最初几个版本很复杂，包含了很</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>design</category>
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>PTE - Speaking Skills</title>
