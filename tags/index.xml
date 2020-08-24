@@ -23,12 +23,30 @@
 
       
       <item>
-        <title>note</title>
-        <link>https://chibataiki.github.io/tags/note/</link>
+        <title>english</title>
+        <link>https://chibataiki.github.io/tags/english/</link>
         <pubDate>Fri, 14 Aug 2020 19:53:15 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
         
-        <guid>https://chibataiki.github.io/tags/note/</guid>
+        <guid>https://chibataiki.github.io/tags/english/</guid>
+        <description></description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>pte</title>
+        <link>https://chibataiki.github.io/tags/pte/</link>
+        <pubDate>Fri, 14 Aug 2020 19:53:15 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        
+        <guid>https://chibataiki.github.io/tags/pte/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -83,6 +101,24 @@
         <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/emulation/</guid>
+        <description></description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>note</title>
+        <link>https://chibataiki.github.io/tags/note/</link>
+        <pubDate>Tue, 09 Jun 2020 09:16:47 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        
+        <guid>https://chibataiki.github.io/tags/note/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
