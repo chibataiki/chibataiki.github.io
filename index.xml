@@ -624,7 +624,7 @@ offen encouter SSL with this two types:</description>
         <author>polaalemu(at)gmail.com (john)</author>
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/normal-binary-analysis-tools/</guid>
-        <description>IDA pro: 最强大的反汇编软件 hopper: 适用于macOS</description>
+        <description>IDA hopper radare2 ghidra ollydbg gdb pwngdb gef peda burpsuite linux command file readelf strings objdump hexdump strace ltrace binwalk</description>
         
         <dc:creator>john</dc:creator>
         
