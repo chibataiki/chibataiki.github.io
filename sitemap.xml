@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://chibataiki.github.io/tags/design/</loc>
-    <lastmod>2020-08-22T20:24:49+08:00</lastmod>
+    <loc>https://chibataiki.github.io/</loc>
+    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/</loc>
-    <lastmod>2020-08-22T20:24:49+08:00</lastmod>
+    <loc>https://chibataiki.github.io/note/init_file_in_linux/</loc>
+    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/linux/</loc>
+    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://chibataiki.github.io/note/</loc>
-    <lastmod>2020-08-22T20:24:49+08:00</lastmod>
+    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://chibataiki.github.io/tags/</loc>
+    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/design/</loc>
     <lastmod>2020-08-22T20:24:49+08:00</lastmod>
   </url>
   
@@ -100,16 +110,6 @@
   <url>
     <loc>https://chibataiki.github.io/tags/vxworks/</loc>
     <lastmod>2020-05-27T16:21:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/linux/</loc>
-    <lastmod>2020-05-26T14:28:51+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/note/rcs_file/</loc>
-    <lastmod>2020-05-26T14:28:51+08:00</lastmod>
   </url>
   
   <url>

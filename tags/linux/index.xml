@@ -14,7 +14,7 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 26 May 2020 14:28:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2020 14:37:51 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,13 +23,13 @@
 
       
       <item>
-        <title>rcS_file</title>
-        <link>https://chibataiki.github.io/note/rcs_file/</link>
-        <pubDate>Tue, 26 May 2020 14:28:51 +0800</pubDate>
+        <title>Init file in linux</title>
+        <link>https://chibataiki.github.io/note/init_file_in_linux/</link>
+        <pubDate>Wed, 14 Oct 2020 14:37:51 +0800</pubDate>
         <author>polaalemu(at)gmail.com (john)</author>
-        <atom:modified>Tue, 26 May 2020 14:28:51 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/rcs_file/</guid>
-        <description>rcS的含义: S : Single user mode,run level 1 rc: run control rcS 通常</description>
+        <atom:modified>Wed, 14 Oct 2020 14:37:51 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/init_file_in_linux/</guid>
+        <description>init 是kernel调用的第一个usersp</description>
         
         <dc:creator>john</dc:creator>
         

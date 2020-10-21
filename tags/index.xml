@@ -14,13 +14,31 @@
     <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
     <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Sat, 22 Aug 2020 20:24:49 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2020 14:37:51 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     
 
+      
+      <item>
+        <title>linux</title>
+        <link>https://chibataiki.github.io/tags/linux/</link>
+        <pubDate>Wed, 14 Oct 2020 14:37:51 +0800</pubDate>
+        <author>polaalemu(at)gmail.com (john)</author>
+        
+        <guid>https://chibataiki.github.io/tags/linux/</guid>
+        <description></description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
       <item>
         <title>design</title>
@@ -155,24 +173,6 @@
         <author>polaalemu(at)gmail.com (john)</author>
         
         <guid>https://chibataiki.github.io/tags/vxworks/</guid>
-        <description></description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>linux</title>
-        <link>https://chibataiki.github.io/tags/linux/</link>
-        <pubDate>Tue, 26 May 2020 14:28:51 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
-        
-        <guid>https://chibataiki.github.io/tags/linux/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
