@@ -11,14 +11,10 @@
     <description>Recent content in liveoverflow on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Sat, 14 Mar 2020 22:46:32 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/liveoverflow/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>Simple_key_validation</title>
         <link>https://chibataiki.github.io/note/simple_key_validation/</link>
         <pubDate>Sat, 14 Mar 2020 22:46:32 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Sat, 14 Mar 2020 22:46:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/simple_key_validation/</guid>
         <description>一种简单的密码加密机制: #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){</description>

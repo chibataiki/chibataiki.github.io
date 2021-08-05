@@ -11,14 +11,10 @@
     <description>Recent content in TLS on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Thu, 16 Jul 2020 18:12:05 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/tls/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>FREAK</title>
         <link>https://chibataiki.github.io/note/freak/</link>
         <pubDate>Thu, 16 Jul 2020 18:12:05 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Thu, 16 Jul 2020 18:12:05 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/freak/</guid>
         <description>introduction FREAK:(Factoring RSA Export Keys ) 在SSL/TLS协议中存在一</description>

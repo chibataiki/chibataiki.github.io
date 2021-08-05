@@ -11,14 +11,10 @@
     <description>Recent content in emulation on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Tue, 16 Jun 2020 17:09:57 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/emulation/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>Why Need Emulation</title>
         <link>https://chibataiki.github.io/note/why-need-emulation/</link>
         <pubDate>Tue, 16 Jun 2020 17:09:57 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Tue, 16 Jun 2020 17:09:57 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/why-need-emulation/</guid>
         <description>对于嵌入式设备系统的仿真,往往是前期比较</description>

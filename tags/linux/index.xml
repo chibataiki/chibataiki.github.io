@@ -11,14 +11,10 @@
     <description>Recent content in linux on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Wed, 14 Oct 2020 14:37:51 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>Init file in linux</title>
         <link>https://chibataiki.github.io/note/init_file_in_linux/</link>
         <pubDate>Wed, 14 Oct 2020 14:37:51 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Wed, 14 Oct 2020 14:37:51 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/init_file_in_linux/</guid>
         <description>init 是kernel调用的第一个usersp</description>

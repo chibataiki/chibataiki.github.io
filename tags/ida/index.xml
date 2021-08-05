@@ -11,14 +11,10 @@
     <description>Recent content in ida on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Sun, 01 Mar 2020 14:30:18 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/ida/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>macOS下IDA插件安装</title>
         <link>https://chibataiki.github.io/note/ida-plugin-install/</link>
         <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/ida-plugin-install/</guid>
         <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>

@@ -11,14 +11,10 @@
     <description>Recent content in design on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Sat, 22 Aug 2020 20:24:49 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/design/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>The Design of Metro Map</title>
         <link>https://chibataiki.github.io/note/the-design-of-metro-map/</link>
         <pubDate>Sat, 22 Aug 2020 20:24:49 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Sat, 22 Aug 2020 20:24:49 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/the-design-of-metro-map/</guid>
         <description>伦敦交通图的最初几个版本很复杂，包含了很</description>

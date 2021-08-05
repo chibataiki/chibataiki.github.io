@@ -11,14 +11,10 @@
     <description>Recent content in qemu on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Thu, 27 Feb 2020 14:03:02 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/qemu/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>QEMU system mode emulation</title>
         <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
         <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
         <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
         <description>主要是对MIPS/ARM架构的嵌入式设备</description>

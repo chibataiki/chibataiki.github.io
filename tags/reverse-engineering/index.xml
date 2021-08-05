@@ -11,14 +11,10 @@
     <description>Recent content in Reverse Engineering on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>polaalemu(at)gmail.com (john)</managingEditor>
-    <webMaster>polaalemu(at)gmail.com (john)</webMaster>
     <copyright>©{year}, All Rights Reserved</copyright>
     <lastBuildDate>Fri, 28 Feb 2020 13:29:32 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -26,7 +22,7 @@
         <title>常用的漏洞分析工具note</title>
         <link>https://chibataiki.github.io/note/normal-binary-analysis-tools/</link>
         <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
-        <author>polaalemu(at)gmail.com (john)</author>
+        
         <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
         <guid>https://chibataiki.github.io/note/normal-binary-analysis-tools/</guid>
         <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb pwngdb gef peda burpsuite linux command file readelf strings objdump hexdump strace ltrace</description>

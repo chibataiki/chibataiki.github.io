@@ -9,15 +9,18 @@
     
 
 
+  
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
+
+
+
 <script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
 <script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/fuse.min.94c78ad70b02749822921660cf4e9f0b3701bc0680c421afb784a78228de0275.js"></script>
-
 <script defer src="/js/helper/getParents.min.1618c696be7c98933f9a92677f518b512a74e55bdbb976b09936b4182e93181b.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.93a331f96194789a542f33690bbe4f0c102c7e78ffc018217f5a1c33010bad91.js"></script>
+<script defer src="/js/helper/fadeinout.min.efa35f4c090622130b3f4cfae6971448b5ffb61c5f0a8f21cdfd157fa712abc4.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -96,6 +99,74 @@
           navCollapse.setAttribute('data-open', 'true');
           navCollapse.style.maxHeight = navCollapse.scrollHeight + "px";
           navCollapseBtn.classList.add('is-active');
+        }
+      }
+    }) : null;
+    
+
+
+    
+    var tables = document.querySelectorAll('.single__contents > table');
+    for (let i = 0; i < tables.length; i++) {
+      var table = tables[i];
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentElement.replaceChild(wrapper, table);
+      wrapper.appendChild(table);
+    }
+    
+
+
+    
+    var footNoteRefs = document.querySelectorAll('.footnote-ref');
+    var footNoteBackRefs = document.querySelectorAll('.footnote-backref');
+
+    footNoteRefs ? 
+    footNoteRefs.forEach(function(elem, idx) {
+      elem.onmouseenter = function () {
+        if (navbar.classList.contains('scrolling')) {
+          navbar.classList.remove('scrolling');
+        }
+      }
+
+      elem.onmouseleave = function () {
+        if (!navbar.classList.contains('scrolling')) {
+          setTimeout(function () {
+            navbar.classList.add('scrolling');
+          }, 100);
+        }
+      }
+
+      elem.onclick = function () {
+        if (!navbar.classList.contains('scrolling')) {
+          navbar.classList.remove('navbar--show');
+          navbar.classList.remove('navbar--hide');
+          navbar.classList.add('navbar--hide');
+        }
+      }
+    }) : null;
+
+    footNoteBackRefs ? 
+    footNoteBackRefs.forEach(function(elem, idx) {
+      elem.onmouseenter = function () {
+        if (navbar.classList.contains('scrolling')) {
+          navbar.classList.remove('scrolling');
+        }
+      }
+
+      elem.onmouseleave = function () {
+        if (!navbar.classList.contains('scrolling')) {
+          setTimeout(function() {
+            navbar.classList.add('scrolling');
+          }, 100);
+        }
+      }
+
+      elem.onclick = function () {
+        if (!navbar.classList.contains('scrolling')) {
+          navbar.classList.remove('navbar--show');
+          navbar.classList.remove('navbar--hide');
+          navbar.classList.add('navbar--hide');
         }
       }
     }) : null;
@@ -289,11 +360,13 @@
         if (st < 45) {
           return null;
         }
-        
-        if (!navbar.classList.contains('navbar--hide')) {
-          navbar.classList.add('navbar--hide');
-        } else if (navbar.classList.contains('navbar--show')) {
-          navbar.classList.remove('navbar--show');
+
+        if (navbar.classList.contains('scrolling')) {
+          if (!navbar.classList.contains('navbar--hide')) {
+            navbar.classList.add('navbar--hide');
+          } else if (navbar.classList.contains('navbar--show')) {
+            navbar.classList.remove('navbar--show');
+          }
         }
 
         if (singleContentsElem) {
@@ -360,10 +433,12 @@
           gttBtn.style.display = "none";
         }
 
-        if (navbar.classList.contains('navbar--hide')) {
-          navbar.classList.remove('navbar--hide');
-        } else if (!navbar.classList.contains('navbar--show')) {
-          navbar.classList.add('navbar--show');
+        if (navbar.classList.contains('scrolling')) {
+          if (navbar.classList.contains('navbar--hide')) {
+            navbar.classList.remove('navbar--hide');
+          } else if (!navbar.classList.contains('navbar--show')) {
+            navbar.classList.add('navbar--show');
+          }
         }
 
         if (singleContentsElem) {
@@ -444,6 +519,17 @@
     var rootEleme = document.getElementById('root');
     var selectThemeElem = document.querySelectorAll('.select-theme');
     var selectThemeItemElem = document.querySelectorAll('.select-theme__item');
+    
+    
+    var skinDarkCode = JSON.parse("\"dark\"");
+    
+    var skinLightCode = JSON.parse("\"light\"");
+    
+    var skinHackerCode = JSON.parse("\"hacker\"");
+    
+    var skinSolarizedCode = JSON.parse("\"solarized\"");
+    
+    var skinKimbieCode = JSON.parse("\"kimbie\"");
 
     var setMetaColor = function(themeColor) {
       var metaMsapplicationTileColor = document.getElementsByName('msapplication-TileColor')[0];
@@ -476,7 +562,21 @@
         metaThemeColor.setAttribute('content', '#eee8d5');
         metaMsapplicationNavbuttonColor.setAttribute('content', '#eee8d5');
         metaAppleMobileWebAappStatusBarStyle.setAttribute('content', '#eee8d5');
-      } 
+      }
+    }
+
+    var parseSkinCode = function(themeText) {
+      if (themeText === skinDarkCode) {
+        return 'dark';
+      } else if (themeText === skinLightCode) {
+        return 'light';
+      } else if (themeText === skinHackerCode) {
+        return 'hacker';
+      } else if (themeText === skinSolarizedCode) {
+        return 'solarized';
+      } else if (themeText === skinKimbieCode) {
+        return 'kimbie';
+      }
     }
     
     if (localTheme) {
@@ -497,7 +597,7 @@
     selectThemeItemElem ? 
     selectThemeItemElem.forEach(function (v, i) {
       v.addEventListener('click', function (e) {
-        var selectedThemeVariant = e.target.text.trim();
+        var selectedThemeVariant = parseSkinCode(e.target.text.trim());
         localStorage.setItem('theme', selectedThemeVariant);
         setMetaColor(selectedThemeVariant);
 
@@ -551,60 +651,78 @@
 
   
     
+    var baseurl = JSON.parse("\"https://chibataiki.github.io/\"");
+    
     var permalink = JSON.parse("\"https://chibataiki.github.io/\"");
+    
+    var langprefix = JSON.parse("\"\"");
     var searchResults = null;
     var searchMenu = null;
     var searchText = null;
     
+    
+    var enableSearch = JSON.parse("true");
     
     var enableSearchHighlight = JSON.parse("true");
     
     var searchResultPosition = JSON.parse("null");
     
     var sectionType = JSON.parse("\"page\"");
-
+    
+    var kind = JSON.parse("\"home\"");
+    
     var fuse = null;
 
-    (function initFuse() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', permalink + "index.json");
-      xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          fuse = new Fuse(JSON.parse(xhr.response.toString('utf-8')), {
-            keys: sectionType.includes('publication') ? ['title', 'abstract'] : ['title', 'description', 'content'],
-            includeMatches: enableSearchHighlight,
-            shouldSort: true,
-            threshold: 0.4,
-            location: 0,
-            distance: 100,
-            maxPatternLength: 32,
-            minMatchCharLength: 1,
-          });
-          window.fuse = fuse;
+    if (enableSearch) {
+      (function initFuse() {
+        var xhr = new XMLHttpRequest();
+        if (sectionType === "publication" && kind !== "page") {
+          xhr.open('GET', permalink + "index.json");
+        } else {
+          xhr.open('GET', baseurl + langprefix + "/index.json");
         }
-        else {
-          console.error('[' + xhr.status + ']Error:', xhr.statusText);
-        }
-      };
-      xhr.send();
-    })();
+        
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            fuse = new Fuse(JSON.parse(xhr.response.toString('utf-8')), {
+              keys: sectionType.includes('publication') ? ['title', 'abstract'] : ['title', 'description', 'content'],
+              includeMatches: enableSearchHighlight,
+              shouldSort: true, 
+              threshold: 0.4, 
+              location: 0, 
+              distance: 100, 
+              maxPatternLength: 32,
+              minMatchCharLength: 1,
+              isCaseSensitive: false, 
+              findAllMatches: false, 
+              useExtendedSearch: false, 
+            });
+            window.fuse = fuse;
+          }
+          else {
+            console.error('[' + xhr.status + ']Error:', xhr.statusText);
+          }
+        };
+        xhr.send();
+      })();
+    }
 
     function makeLi(ulElem, obj) {
       var li = document.createElement('li');
       li.className = 'search-result__item';
       
       var a = document.createElement('a');
-      a.innerHTML = obj.title;
+      a.innerHTML = obj.item.title;
       a.setAttribute('class', 'search-result__item--title');
-      a.setAttribute('href', obj.permalink);
+      a.setAttribute('href', obj.item.permalink);
 
       var descDiv = document.createElement('div');
       descDiv.setAttribute('class', 'search-result__item--desc');
-      if (obj.description) {
-        descDiv.innerHTML = obj.description;
-      } else if (obj.content) {
-        descDiv.innerHTML = obj.content.substring(0, 225);
+      if (obj.item.description) {
+        descDiv.innerHTML = obj.item.description;
+      } else if (obj.item.content) {
+        descDiv.innerHTML = obj.item.content.substring(0, 225);
       }
       
       li.appendChild(a);
@@ -1078,7 +1196,7 @@
   
     var mobileSearchInputElem = document.querySelector('#search-mobile');
     var mobileSearchClassElem = document.querySelector('.mobile-search');
-    var mobileSearchBtnElem = document.querySelector('#mobileSearchBtn');
+    var mobileSearchBtnElems = document.querySelectorAll('.navbar-search');
     var mobileSearchCloseBtnElem = document.querySelector('#search-mobile-close');
     var mobileSearchContainer = document.querySelector('#search-mobile-container');
     var mobileSearchResultsElem = document.querySelector('#search-mobile-results');
@@ -1088,19 +1206,21 @@
       mobileSearchClassElem.style.display = 'none';
     }
 
-    mobileSearchBtnElem ? 
-    mobileSearchBtnElem.addEventListener('click', function () {
-      if (mobileSearchContainer) {
-        mobileSearchContainer.style.display = 'block';
-      }
+    mobileSearchBtnElems ? 
+    mobileSearchBtnElems.forEach(function (elem, idx) {
+      elem.addEventListener('click', function () {
+        if (mobileSearchContainer) {
+          mobileSearchContainer.style.display = 'block';
+        }
 
-      if (mobileSearchInputElem) {
-        mobileSearchInputElem.focus();
-      }
+        if (mobileSearchInputElem) {
+          mobileSearchInputElem.focus();
+        }
 
-      if (htmlElem) {
-        htmlElem.style.overflowY = 'hidden';
-      }
+        if (htmlElem) {
+          htmlElem.style.overflowY = 'hidden';
+        }
+      });
     }) : null;
 
     mobileSearchCloseBtnElem ? 
@@ -1289,7 +1409,7 @@
 
 
         <div class="wrapper" data-type="page" data-kind="home">
-            <nav class="navbar" role="navigation" aria-label="main navigation" data-dir="ltr">
+            <nav class="navbar scrolling" role="navigation" aria-label="main navigation" data-dir="ltr">
   <div class="navbar__brand">
     
     &nbsp;&nbsp;
@@ -1336,7 +1456,7 @@
 </div>
 
 
-<div id="mobileSearchBtn" class="mobile-search__btn" data-ani="true">
+<div class="mobile-search__btn navbar-search" data-ani="true">
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
 </div>
 
@@ -1459,6 +1579,8 @@
 </div>
   <div class="navbar__menu">
   
+  
+  
 <div class="theme" data-ani="true">
   <div class="dropdown">
     <button class="dropdown-trigger navbar__slide-down" aria-label="Select Theme Button" data-ani="true">
@@ -1545,7 +1667,7 @@
 </div>
 </nav>
             
-<header class="header">
+<header class="header ">
     
         
     
@@ -1567,6 +1689,10 @@
             
             
             
+            
+            
+            
+            
                 
   <article class="summary-classic" data-ani="true">
   <div class="summary-classic__flex-box" data-position="left">
@@ -1575,7 +1701,7 @@
 
     <div class="summary-classic__content">
       <header>
-        <h5 class="title h5"><a href='https://chibataiki.github.io/posts/qemu-system-mode-setting/'> QEMU system mode emulation</a> </h5>
+        <h5 class="title h5"><a href='https://chibataiki.github.io/posts/qemu-system-mode-setting/'>QEMU system mode emulation</a> </h5>
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Feb 27, 2020 </time>
           
@@ -1598,6 +1724,7 @@
   <hr />
 </article>
 
+
             
                 
   <article class="summary-classic" data-ani="true">
@@ -1607,7 +1734,7 @@
 
     <div class="summary-classic__content">
       <header>
-        <h5 class="title h5"><a href='https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/'> Netcore-igdmptd-后门漏洞分析</a> </h5>
+        <h5 class="title h5"><a href='https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/'>Netcore-igdmptd-后门漏洞分析</a> </h5>
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Feb 27, 2020 </time>
           
@@ -1630,6 +1757,7 @@
   <hr />
 </article>
 
+
             
                 
   <article class="summary-classic" data-ani="true">
@@ -1639,7 +1767,7 @@
 
     <div class="summary-classic__content">
       <header>
-        <h5 class="title h5"><a href='https://chibataiki.github.io/note/vim-markdown-plugin-install/'> Vim-Markdown-插件安装</a> </h5>
+        <h5 class="title h5"><a href='https://chibataiki.github.io/note/vim-markdown-plugin-install/'>Vim-Markdown-插件安装</a> </h5>
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Feb 25, 2020 </time>
           
@@ -1662,6 +1790,7 @@
   <hr />
 </article>
 
+
             
                 
   <article class="summary-classic" data-ani="true">
@@ -1671,7 +1800,7 @@
 
     <div class="summary-classic__content">
       <header>
-        <h5 class="title h5"><a href='https://chibataiki.github.io/note/macos_catalina_sound_redirection/'> macOS soundflower audio input-output</a> </h5>
+        <h5 class="title h5"><a href='https://chibataiki.github.io/note/macos_catalina_sound_redirection/'>macOS soundflower audio input-output</a> </h5>
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Feb 22, 2020 </time>
           
@@ -1694,6 +1823,7 @@
   <hr />
 </article>
 
+
             
             
 
@@ -1707,27 +1837,18 @@
   <ul class="pagination">
     
       
-      <script>
-      </script>
       
-        <li
-        ><a href="/">1</a></li>
+        <li ><a href="/">1</a></li>
       
     
       
-      <script>
-      </script>
       
-        <li
-        ><a href="/page/2/">2</a></li>
+        <li ><a href="/page/2/">2</a></li>
       
     
       
-      <script>
-      </script>
       
-        <li
-        class="active"><a href="/page/3/">3</a></li>
+        <li class="active"><a href="/page/3/">3</a></li>
       
     
   </ul>
@@ -1772,32 +1893,38 @@
 
     
 <section class="bio" data-dir="ltr">
-
-
+  
+  <hr class="hr-slash bio-hr"/>
+  <div class="bio__photo-wrapper">
+    
+    
+      
+        <img data-src="/images/whoami/avatar.jpg" alt="john" src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23aaa' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-4.44-6.19l-2.35 3.02-1.56-1.88c-.2-.25-.58-.24-.78.01l-1.74 2.23c-.26.33-.02.81.39.81h8.98c.41 0 .65-.47.4-.8l-2.55-3.39c-.19-.26-.59-.26-.79 0z'/%3E%3C/svg%3E" class="lazyload bio__photo" data-ani="true"/>
+           
+    
+  </div>
+  
   <hr class="hr-slash bio-hr"/>
   <div class="bio__name">
     john
   </div>
-
   <div class="bio__desc">
-    Cyber Security Research Beginner
-  </div>
-
-
-
-  
-  <div class="bio__info">
-    <div class="bio__info--icon">      
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25c-.25-.16-.4-.43-.4-.72 0-.67.73-1.07 1.3-.72L12 11l6.7-4.19c.57-.35 1.3.05 1.3.72 0 .29-.15.56-.4.72z"/></svg>
-    </div>
-    <a href="mailto:polaalemu%28at%29gmail.com">polaalemu(at)gmail.com</a>    
+    a security researcher
   </div>
   
+  
 
-  <hr class="hr-slash bio-hr"/>
+  
+
+  
+
+  
+
+  <div class="bio__social">
+    
+  </div>
 </section>
-
-
+<hr class="hr-fade sidebar-hr"/>
 
 
     
@@ -1894,6 +2021,7 @@
                 Tags
             </a>
         </span>
+        
         
         
         
@@ -2232,7 +2360,7 @@
 
     <hr />
 
-    <div class="basicflex">
+    <div class="basicflex flexwrap">
         
     </div>
 
@@ -2241,7 +2369,7 @@
                 
             <p class="caption">
                 
-                    ©2020, All Rights Reserved
+                    ©2021, All Rights Reserved
                 
             </p>
         
