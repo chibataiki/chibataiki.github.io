@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>gdb on Home</title>
+    <link>https://chibataiki.github.io/tags/gdb/</link>
+    <description>Recent content in gdb on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 15 Apr 2021 19:11:58 +0800</lastBuildDate>
+    
+        <atom:link href="https://chibataiki.github.io/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>Gdb Script</title>
+        <link>https://chibataiki.github.io/note/gdb-script/</link>
+        <pubDate>Thu, 15 Apr 2021 19:11:58 +0800</pubDate>
+        
+        <atom:modified>Thu, 15 Apr 2021 19:11:58 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/gdb-script/</guid>
+        <description>a sample example
+set pagination off set logging file gdb.output set logging on break xxxx.c:[line number] commands silent p p p eod bt c end run set logging off quit run :</description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>gdb</category>
+            
+          
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

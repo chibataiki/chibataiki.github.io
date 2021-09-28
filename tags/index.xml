@@ -12,19 +12,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Wed, 14 Oct 2020 14:37:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Apr 2021 19:11:58 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
 
       
       <item>
-        <title>linux</title>
-        <link>https://chibataiki.github.io/tags/linux/</link>
-        <pubDate>Wed, 14 Oct 2020 14:37:51 +0800</pubDate>
+        <title>gdb</title>
+        <link>https://chibataiki.github.io/tags/gdb/</link>
+        <pubDate>Thu, 15 Apr 2021 19:11:58 +0800</pubDate>
         
         
-        <guid>https://chibataiki.github.io/tags/linux/</guid>
+        <guid>https://chibataiki.github.io/tags/gdb/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -43,42 +43,6 @@
         
         
         <guid>https://chibataiki.github.io/tags/design/</guid>
-        <description></description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>english</title>
-        <link>https://chibataiki.github.io/tags/english/</link>
-        <pubDate>Fri, 14 Aug 2020 19:53:15 +0800</pubDate>
-        
-        
-        <guid>https://chibataiki.github.io/tags/english/</guid>
-        <description></description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>pte</title>
-        <link>https://chibataiki.github.io/tags/pte/</link>
-        <pubDate>Fri, 14 Aug 2020 19:53:15 +0800</pubDate>
-        
-        
-        <guid>https://chibataiki.github.io/tags/pte/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -115,24 +79,6 @@
         
         
         <guid>https://chibataiki.github.io/tags/todo/</guid>
-        <description></description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>emulation</title>
-        <link>https://chibataiki.github.io/tags/emulation/</link>
-        <pubDate>Tue, 16 Jun 2020 17:09:57 +0800</pubDate>
-        
-        
-        <guid>https://chibataiki.github.io/tags/emulation/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>
@@ -217,24 +163,6 @@
       </item>
       
       <item>
-        <title>tools</title>
-        <link>https://chibataiki.github.io/tags/tools/</link>
-        <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
-        
-        
-        <guid>https://chibataiki.github.io/tags/tools/</guid>
-        <description></description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
         <title>assembly</title>
         <link>https://chibataiki.github.io/tags/assembly/</link>
         <pubDate>Sun, 01 Mar 2020 16:07:18 +0800</pubDate>
@@ -259,6 +187,24 @@
         
         
         <guid>https://chibataiki.github.io/tags/ida/</guid>
+        <description></description>
+        
+        <dc:creator>john</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>tools</title>
+        <link>https://chibataiki.github.io/tags/tools/</link>
+        <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
+        
+        
+        <guid>https://chibataiki.github.io/tags/tools/</guid>
         <description></description>
         
         <dc:creator>john</dc:creator>

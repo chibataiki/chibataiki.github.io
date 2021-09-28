@@ -12,7 +12,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Wed, 14 Oct 2020 14:37:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Apr 2021 19:11:58 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -40,13 +40,14 @@
 
       
       <item>
-        <title>Init file in linux</title>
-        <link>https://chibataiki.github.io/note/init_file_in_linux/</link>
-        <pubDate>Wed, 14 Oct 2020 14:37:51 +0800</pubDate>
+        <title>Gdb Script</title>
+        <link>https://chibataiki.github.io/note/gdb-script/</link>
+        <pubDate>Thu, 15 Apr 2021 19:11:58 +0800</pubDate>
         
-        <atom:modified>Wed, 14 Oct 2020 14:37:51 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/init_file_in_linux/</guid>
-        <description>init 是kernel调用的第一个usersp</description>
+        <atom:modified>Thu, 15 Apr 2021 19:11:58 +0800</atom:modified>
+        <guid>https://chibataiki.github.io/note/gdb-script/</guid>
+        <description>a sample example
+set pagination off set logging file gdb.output set logging on break xxxx.c:[line number] commands silent p p p eod bt c end run set logging off quit run :</description>
         
         <dc:creator>john</dc:creator>
         
@@ -55,7 +56,7 @@
         
           
             
-              <category>linux</category>
+              <category>gdb</category>
             
           
         
@@ -88,34 +89,6 @@
       </item>
       
       <item>
-        <title>PTE - Speaking Skills</title>
-        <link>https://chibataiki.github.io/note/pte_read_aloud/</link>
-        <pubDate>Fri, 14 Aug 2020 19:53:15 +0800</pubDate>
-        
-        <atom:modified>Fri, 14 Aug 2020 19:53:15 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/pte_read_aloud/</guid>
-        <description>This is a note for the learning of PTE Academic English Skills Start from word to paragraph. word consonants the</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>english</category>
-            
-          
-            
-              <category>pte</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
         <title>FREAK</title>
         <link>https://chibataiki.github.io/note/freak/</link>
         <pubDate>Thu, 16 Jul 2020 18:12:05 +0800</pubDate>
@@ -136,30 +109,6 @@
           
             
               <category>TODO</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Why Need Emulation</title>
-        <link>https://chibataiki.github.io/note/why-need-emulation/</link>
-        <pubDate>Tue, 16 Jun 2020 17:09:57 +0800</pubDate>
-        
-        <atom:modified>Tue, 16 Jun 2020 17:09:57 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/why-need-emulation/</guid>
-        <description>对于嵌入式设备系统的仿真,往往是前期比较</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>emulation</category>
             
           
         
@@ -436,30 +385,6 @@ offen encouter SSL with this two types:</description>
           
             
               <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>GDB 使用note</title>
-        <link>https://chibataiki.github.io/note/gdb-user-note/</link>
-        <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
-        
-        <atom:modified>Sun, 01 Mar 2020 23:25:03 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/gdb-user-note/</guid>
-        <description>gdb [program] [arguments] 反汇编 main函数 (gdb) disasseble main 修改汇编模</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
             
           
         

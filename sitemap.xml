@@ -3,28 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chibataiki.github.io/tags/gdb/</loc>
+    <lastmod>2021-04-15T19:11:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/note/gdb-script/</loc>
+    <lastmod>2021-04-15T19:11:58+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chibataiki.github.io/</loc>
-    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/note/init_file_in_linux/</loc>
-    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/linux/</loc>
-    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
+    <lastmod>2021-04-15T19:11:58+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://chibataiki.github.io/note/</loc>
-    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
+    <lastmod>2021-04-15T19:11:58+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://chibataiki.github.io/tags/</loc>
-    <lastmod>2020-10-14T14:37:51+08:00</lastmod>
+    <lastmod>2021-04-15T19:11:58+08:00</lastmod>
   </url>
   
   <url>
@@ -35,21 +35,6 @@
   <url>
     <loc>https://chibataiki.github.io/note/the-design-of-metro-map/</loc>
     <lastmod>2020-08-22T20:24:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/english/</loc>
-    <lastmod>2020-08-14T19:53:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/pte/</loc>
-    <lastmod>2020-08-14T19:53:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/note/pte_read_aloud/</loc>
-    <lastmod>2020-08-14T19:53:15+08:00</lastmod>
   </url>
   
   <url>
@@ -65,16 +50,6 @@
   <url>
     <loc>https://chibataiki.github.io/tags/todo/</loc>
     <lastmod>2020-07-16T18:12:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/emulation/</loc>
-    <lastmod>2020-06-16T17:09:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/note/why-need-emulation/</loc>
-    <lastmod>2020-06-16T17:09:57+08:00</lastmod>
   </url>
   
   <url>
@@ -178,16 +153,6 @@
   </url>
   
   <url>
-    <loc>https://chibataiki.github.io/note/gdb-user-note/</loc>
-    <lastmod>2020-03-01T23:25:03+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chibataiki.github.io/tags/tools/</loc>
-    <lastmod>2020-03-01T23:25:03+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://chibataiki.github.io/note/burpsuite-note/</loc>
     <lastmod>2020-03-01T22:58:31+08:00</lastmod>
   </url>
@@ -209,6 +174,11 @@
   
   <url>
     <loc>https://chibataiki.github.io/note/ida-plugin-install/</loc>
+    <lastmod>2020-03-01T14:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chibataiki.github.io/tags/tools/</loc>
     <lastmod>2020-03-01T14:30:18+08:00</lastmod>
   </url>
   

@@ -12,35 +12,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 01 Mar 2020 23:25:03 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 14:30:18 +0800</lastBuildDate>
     
         <atom:link href="https://chibataiki.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     
 
-      
-      <item>
-        <title>GDB 使用note</title>
-        <link>https://chibataiki.github.io/note/gdb-user-note/</link>
-        <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
-        
-        <atom:modified>Sun, 01 Mar 2020 23:25:03 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/note/gdb-user-note/</guid>
-        <description>gdb [program] [arguments] 反汇编 main函数 (gdb) disasseble main 修改汇编模</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
       
       <item>
         <title>macOS下IDA插件安装</title>
