@@ -1,200 +1,132 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" 
-  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-  xmlns:dc="http://purl.org/dc/elements/1.1/" 
-  xmlns:atom="http://www.w3.org/2005/Atom" 
-  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
-  xmlns:media="http://search.yahoo.com/mrss/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>IoT on Home</title>
+    <title>IoT on JiansLife</title>
     <link>https://chibataiki.github.io/tags/iot/</link>
-    <description>Recent content in IoT on Home</description>
+    <description>Recent content in IoT on JiansLife</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
-    <webMaster>polaalemu@gmail.com (john)</webMaster>
-    <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 01 Mar 2020 12:38:39 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Apr 2020 22:56:58 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嵌入式设备文件系统分析工具</title>
+      <link>https://chibataiki.github.io/posts/embedded_device_filesystem_analyze/</link>
+      <pubDate>Tue, 07 Apr 2020 22:56:58 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/embedded_device_filesystem_analyze/</guid>
+      <description>firmwalker https://github.com/craigz28/firmwalker
+比较早的一个项目,bash编写,keywords patterns比较单薄
+static-firmware-analysis https://github.com/secjey/static-firmware-analysis
+灵感来自于firmwalker, 由python编写,比firmwalker多了一写匹配内容
+trommel 参考了firmwalker,由python编写,相比来说最为完善
+emba https://github.com/e-m-b-a/emba
+简单看了下有挺多功能，比较有趣的是对 vulnerable function的检测，但是仅仅只是检测func的数量。</description>
+    </item>
     
-        <atom:link href="https://chibataiki.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Netgear-命令注入漏洞分析</title>
+      <link>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</link>
+      <pubDate>Wed, 04 Mar 2020 13:48:11 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/</guid>
+      <description>netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.
+使用固件版本: V1.0.1.42
+固件信息:
+LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
+使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
+固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
+反编译一下大概就是:
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
+因为sprintf 不检验长度,所以存在缓冲区溢出
+但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
+system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;amp;&amp;gt; /dev/null
+那么执行完ping6 后,就会执行恶意命令.
+那么就要看如何控制传入cmd_ping6 的参数.</description>
+    </item>
     
+    <item>
+      <title>Dlink Backdoor 分析记录</title>
+      <link>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</link>
+      <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</guid>
+      <description>受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.
+只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。
+该后门在路由器的web服务中实现.
+Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.
+首先查看web server 的型号: thttpd-alphanetworks/2.23应该是thttpd的修改版本,而alphanetworks是D-link的子公司.
+functions一栏里面很多alpha开头的函数,里面有个权限检查程序alpha_auth_check,可以分析一下.
+通过交叉引用搜索发现 alpha_httpd_parse_request调用了alpha_auth_check :
+alpha_httpd_parse_request调用部分:
+loc_41A420: move $a0, $s2 la $t9, alpha_auth_check nop jalr $t9 ; alpha_auth_check nop lw $gp, 0x2830+var_2820($sp) li $v1, 0xFFFFFFFF beq $v0, $v1, loc_41A4B0 li $a0, 0xFFFFFFFF 分析一下参数: alpha_auth_check的传入参数$a0在$s2中,而 alpha_auth_check返回值存储在$v0中, 然后  $v0和$v1 (0xFFFFFFFF :-1)会进行比较, 相等就跳转到loc_41A4B0 结束函数.
+ alpha_auth_check内:
+存在strstr,strcmp 和以及一个明显的硬编码字符串
+看一下strstr用法:
+NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function finds the first occurrence of the substring needle in the string haystack.</description>
+    </item>
     
+    <item>
+      <title>MIPS/ARM 调试环境</title>
+      <link>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</link>
+      <pubDate>Sat, 29 Feb 2020 10:47:10 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</guid>
+      <description>环境
+宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的debian(wheey)
+MIPS/ARM的程序调试方式:
+ 直接在宿主机上使用qemu 用户模式 在对应架构的debian虚拟机上运行,使用qemu-[mips/arm]-static的调试模式或者gdbserver都行  这里选择第二种
+2.1. 客户机安装qemu-user-static
+ apt-get install qemu-user-static  chroot . ./qemu-[arch]-static [-g port] [program]
+2.2. 客户机安装 gdbserver
+chroot . ./program gdbserver --attach pid 调试工具(宿主机):
+ IDA debugger里设置一下就行 gdb-multiatch  set architecture mips target remote [ip]:[port] gdb可以使用pwngdb,pedagdb等插件
+referer:</description>
+    </item>
     
-
+    <item>
+      <title>QEMU system mode emulation</title>
+      <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
+      <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
       
-      <item>
-        <title>Dlink Backdoor 分析记录</title>
-        <link>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</link>
-        <pubDate>Sun, 01 Mar 2020 12:38:39 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Sun, 01 Mar 2020 12:38:39 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/dlink-backdoor-analysis/</guid>
-        <description>受漏洞影响的是D-link 路由器的一些型</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
+      <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
+      <description>主要是对MIPS/ARM架构的嵌入式设备进行仿真
+系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 这里大致有三种系统仿真方式
+1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
+2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
+3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
+这里选择第3种.
+0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y (这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化, 但是还有一种说法就是,最好不要自己编译QEMU,因为可能对某些支持不是很好)
+0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/
+一些默认设置:
+Root password: root
+User account: user
+User password: user
+0x03启动qemu 最基础的命令:
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot;  不想使用图形模式: -nographic
+默认内存128 可以设置 -m 256M
+0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络
+(! net 参数不提倡,QEMU建议使用netdev)</description>
+    </item>
+    
+    <item>
+      <title>Netcore-igdmptd-后门漏洞分析</title>
+      <link>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</link>
+      <pubDate>Thu, 27 Feb 2020 13:53:04 +0800</pubDate>
       
-      <item>
-        <title>MIPS/ARM 调试环境</title>
-        <link>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</link>
-        <pubDate>Sat, 29 Feb 2020 10:47:10 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Sat, 29 Feb 2020 10:47:10 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/</guid>
-        <description>环境 宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>QEMU系统模式仿真</title>
-        <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
-        <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
-        <description>主要是对MIPS ARM架构的嵌入式设备进</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Netcore-igdmptd-后门漏洞分析</title>
-        <link>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</link>
-        <pubDate>Thu, 27 Feb 2020 13:53:04 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Thu, 27 Feb 2020 13:53:04 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</guid>
-        <description>磊科路由器中内置了一个IGDMPTD的程</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>交叉编译工具链</title>
-        <link>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</link>
-        <pubDate>Wed, 26 Feb 2020 14:59:16 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Wed, 26 Feb 2020 14:59:16 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/cross-compilation-tool-chain/</guid>
-        <description>交叉编译工具链 在一个系统上运行编译器,为</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>嵌入式设备boot过程</title>
-        <link>https://chibataiki.github.io/todo/embedded-device-boot-process/</link>
-        <pubDate>Wed, 26 Feb 2020 14:07:32 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Wed, 26 Feb 2020 14:07:32 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/embedded-device-boot-process/</guid>
-        <description>bootloader bootloader 是设备供电或者充值后执行的一段程序.</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Glitching Attack 故障注入攻击</title>
-        <link>https://chibataiki.github.io/todo/glitching_attack/</link>
-        <pubDate>Mon, 24 Feb 2020 12:55:22 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Mon, 24 Feb 2020 12:55:22 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/glitching_attack/</guid>
-        <description>glitching 攻击的目标一般是硬件设备，通过注入故障</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-
+      <guid>https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/</guid>
+      <description>磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.
+知道了这些之后,进行分析
+仿真:
+使用qemu 系统模式作为测试环境
+固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
+bind:
+ int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
+0xd05a = 53413 :端口号
+0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
+0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
+这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.
+/* Socket types. */ #define SOCK_STREAM	1	/* stream (connection) socket	*/ #define SOCK_DGRAM	2	/* datagram (conn.</description>
+    </item>
     
   </channel>
 </rss>

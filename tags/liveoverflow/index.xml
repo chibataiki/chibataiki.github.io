@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>liveoverflow on JiansLife</title>
+    <link>https://chibataiki.github.io/tags/liveoverflow/</link>
+    <description>Recent content in liveoverflow on JiansLife</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 14 Mar 2020 22:46:32 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/liveoverflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simple_key_validation</title>
+      <link>https://chibataiki.github.io/posts/simple_key_validation/</link>
+      <pubDate>Sat, 14 Mar 2020 22:46:32 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/simple_key_validation/</guid>
+      <description>一种简单的密码加密机制:
+#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&amp;quot;Checking License: %s\n&amp;quot;,argv[1]); int sum=0; for(int i=0;i&amp;lt;strlen(argv[1]);i++){ sum += (int)argv[1][i]; } // printf(&amp;quot;%d\n&amp;quot;,sum); if( 1022 == sum){ printf(&amp;quot;Accessed!&amp;quot;); } else { printf(&amp;quot;Wrong!&amp;quot;); } }else { printf(&amp;quot;Usage: %s &amp;lt;key&amp;gt;\n&amp;quot;,argv[0]); } return 0; } 其中1022 是 &amp;ldquo;THIS IS THE KEY&amp;rdquo; 进行简单的ascii值求和的结果.
+可以通过静态分析和逆向工程可以分析出加密机制.
+key generator 根据逆向分析的算法生成注册码
+import random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) return char_sum chars=&amp;quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;quot; key = &amp;quot;&amp;quot; while True: key += random.</description>
+    </item>
+    
+  </channel>
+</rss>

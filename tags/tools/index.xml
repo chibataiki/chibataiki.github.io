@@ -1,252 +1,118 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" 
-  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-  xmlns:dc="http://purl.org/dc/elements/1.1/" 
-  xmlns:atom="http://www.w3.org/2005/Atom" 
-  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
-  xmlns:media="http://search.yahoo.com/mrss/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>tools on Home</title>
+    <title>tools on JiansLife</title>
     <link>https://chibataiki.github.io/tags/tools/</link>
-    <description>Recent content in tools on Home</description>
+    <description>Recent content in tools on JiansLife</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>polaalemu@gmail.com (john)</managingEditor>
-    <webMaster>polaalemu@gmail.com (john)</webMaster>
-    <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 01 Mar 2020 23:25:03 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 14:30:18 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macOS下IDA插件安装</title>
+      <link>https://chibataiki.github.io/posts/ida-plugin-install/</link>
+      <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/ida-plugin-install/</guid>
+      <description> IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+ 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
+chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til </description>
+    </item>
     
-        <atom:link href="https://chibataiki.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MacOS 多版本java管理</title>
+      <link>https://chibataiki.github.io/posts/macos-multui-java-management/</link>
+      <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/macos-multui-java-management/</guid>
+      <description>之前安装 Burpsuite的时候,使用的是旧版本JDK1.8,这次ghida需要新版本
+在linux中可以使用sudo update-alternatives --config java 进行java版本的选择
+macOS下则使用jenv
+brew tap homebrew/cask-versions brew install jenv 显示java 环境
+/usr/libexec/java_home -V 结果类似于
+13.0.2, x86_64:	&amp;quot;OpenJDK 13.0.2&amp;quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;quot;Java SE 8&amp;quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
+jenv add &amp;lt;jdk_path&amp;gt; 显示java版本信息:
+jenv versions jenv version 设置java环境:
+jenv global [jdk version] jenv local [jdk version] 有问题可以运行 jenv doctor
+referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</description>
+    </item>
     
+    <item>
+      <title>常用的漏洞分析工具note</title>
+      <link>https://chibataiki.github.io/posts/normal-binary-analysis-tools/</link>
+      <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/normal-binary-analysis-tools/</guid>
+      <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb  pwngdb gef peda   burpsuite  linux command
+  file
+  readelf
+  strings
+  objdump
+  hexdump
+  strace
+  ltrace
+     binwalk
+  checksec
+  qemu
+  dockerhub： https://hub.docker.com/u/waveburst
+封装了QEMU system模式的arm,mips的docker镜像
+    参考链接:
+https://reverseengineering.stackexchange.com/questions/1817/is-there-any-disassembler-to-rival-ida-pro</description>
+    </item>
     
+    <item>
+      <title>QEMU system mode emulation</title>
+      <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
+      <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
+      <description>主要是对MIPS/ARM架构的嵌入式设备进行仿真
+系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
+0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 这里大致有三种系统仿真方式
+1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.
+2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.
+3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现
+这里选择第3种.
+0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y (这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化, 但是还有一种说法就是,最好不要自己编译QEMU,因为可能对某些支持不是很好)
+0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/
+一些默认设置:
+Root password: root
+User account: user
+User password: user
+0x03启动qemu 最基础的命令:
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot;  不想使用图形模式: -nographic
+默认内存128 可以设置 -m 256M
+0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络
+(! net 参数不提倡,QEMU建议使用netdev)</description>
+    </item>
     
-
+    <item>
+      <title>Vim-Markdown-插件安装</title>
+      <link>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</link>
+      <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
       
-      <item>
-        <title>GDB 使用note</title>
-        <link>https://chibataiki.github.io/notes/gdb-user-note/</link>
-        <pubDate>Sun, 01 Mar 2020 23:25:03 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Sun, 01 Mar 2020 23:25:03 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/notes/gdb-user-note/</guid>
-        <description>gdb [program] [arguments] 反汇编 main函数 (gdb) disasseble main 修改汇编模</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
+      <guid>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</guid>
+      <description>环境： macOS catalina vim: macvim
+设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
+需要将
+&amp;quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &amp;quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
+安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim
+在vimrc Plug区域添加
+call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
+:MarkdownPreview :MarkdownPreviewStop  </description>
+    </item>
+    
+    <item>
+      <title>macOS soundflower audio input-output</title>
+      <link>https://chibataiki.github.io/posts/macos_catalina_sound_redirection/</link>
+      <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
       
-      <item>
-        <title>macOS下IDA插件安装</title>
-        <link>https://chibataiki.github.io/posts/ida-note/</link>
-        <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Sun, 01 Mar 2020 14:30:18 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/ida-note/</guid>
-        <description>IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>MacOS 多版本java管理</title>
-        <link>https://chibataiki.github.io/posts/macos-multui-java-management/</link>
-        <pubDate>Fri, 28 Feb 2020 13:58:13 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Fri, 28 Feb 2020 13:58:13 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/macos-multui-java-management/</guid>
-        <description>之前安装 Burpsuite的时候,需要的</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>常用的漏洞分析工具note</title>
-        <link>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</link>
-        <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Fri, 28 Feb 2020 13:29:32 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/todo/normal-binary-analysis-tools/</guid>
-        <description>IDA pro: hopper: 适用于macOS和Linux的逆向</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-            
-              <category>Reverse Engineering</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>QEMU系统模式仿真</title>
-        <link>https://chibataiki.github.io/posts/qemu-system-mode-setting/</link>
-        <pubDate>Thu, 27 Feb 2020 14:03:02 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Thu, 27 Feb 2020 14:03:02 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/qemu-system-mode-setting/</guid>
-        <description>主要是对MIPS ARM架构的嵌入式设备进</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-            
-              <category>IoT</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Vim-Markdown-插件安装</title>
-        <link>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</link>
-        <pubDate>Tue, 25 Feb 2020 00:23:10 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Tue, 25 Feb 2020 00:23:10 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</guid>
-        <description>环境： macOS catalina vim: macvim 设置vim初始化环境 mkdir ~/.vim mv</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>MacOS Catalina BurpSuite 安装</title>
-        <link>https://chibataiki.github.io/posts/macos-burpsuite-install/</link>
-        <pubDate>Mon, 24 Feb 2020 23:10:28 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Mon, 24 Feb 2020 23:10:28 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/macos-burpsuite-install/</guid>
-        <description>JDK安装 burpsuite是java程</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>MacOS Catalina下IDA安装问题</title>
-        <link>https://chibataiki.github.io/posts/macos_ida_install/</link>
-        <pubDate>Sun, 23 Feb 2020 18:28:03 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Sun, 23 Feb 2020 18:28:03 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/macos_ida_install/</guid>
-        <description>macOS catalina下安装IDA报错&amp;rs</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>macOS下使用soundflower将音频输出转为输入</title>
-        <link>https://chibataiki.github.io/posts/macos_catalina_sound_redirection/</link>
-        <pubDate>Sat, 22 Feb 2020 21:43:36 +0800</pubDate>
-        <author>polaalemu@gmail.com (john)</author>
-        <atom:modified>Sat, 22 Feb 2020 21:43:36 +0800</atom:modified>
-        <guid>https://chibataiki.github.io/posts/macos_catalina_sound_redirection/</guid>
-        <description>因为有时候英文视频没有字幕，所以需要将视</description>
-        
-        <dc:creator>john</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>tools</category>
-            
-          
-        
-        
-        
-      </item>
-      
-
+      <guid>https://chibataiki.github.io/posts/macos_catalina_sound_redirection/</guid>
+      <description>因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
+工具： Soundflower
+  安装 https://github.com/mattingalls/Soundflower/releases
+  打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
+  chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
+  referer: https://github.com/mattingalls/Soundflower/releases</description>
+    </item>
     
   </channel>
 </rss>

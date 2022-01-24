@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Tp_Link_wr886nv6_VxWorks_firmware_analysis | JiansLife</title>
+<meta name="keywords" content="vxworks" />
+<meta name="description" content="文件系统的提取 看第一篇参考文献的时候,尝试了下,找到了Tp_Link_wr886nv6的固件.
+binwalk 扫描结果:
+考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.
+但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大. 类似于这样: 真实数据到 0x00b6b2就结束了
+000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. &#39;...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS.">
+<meta name="author" content="chiba">
+<link rel="canonical" href="https://chibataiki.github.io/posts/tp-link_wr886nv6_vxworks_firmware_analysis/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://chibataiki.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://chibataiki.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://chibataiki.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.92.0" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Tp_Link_wr886nv6_VxWorks_firmware_analysis" />
+<meta property="og:description" content="文件系统的提取 看第一篇参考文献的时候,尝试了下,找到了Tp_Link_wr886nv6的固件.
+binwalk 扫描结果:
+考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.
+但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大. 类似于这样: 真实数据到 0x00b6b2就结束了
+000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. &#39;...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chibataiki.github.io/posts/tp-link_wr886nv6_vxworks_firmware_analysis/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-27T16:21:44&#43;08:00" />
+<meta property="article:modified_time" content="2020-05-27T16:21:44&#43;08:00" /><meta property="og:site_name" content="JiansLife" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tp_Link_wr886nv6_VxWorks_firmware_analysis"/>
+<meta name="twitter:description" content="文件系统的提取 看第一篇参考文献的时候,尝试了下,找到了Tp_Link_wr886nv6的固件.
+binwalk 扫描结果:
+考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.
+但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大. 类似于这样: 真实数据到 0x00b6b2就结束了
+000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. &#39;...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://chibataiki.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Tp_Link_wr886nv6_VxWorks_firmware_analysis",
+      "item": "https://chibataiki.github.io/posts/tp-link_wr886nv6_vxworks_firmware_analysis/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tp_Link_wr886nv6_VxWorks_firmware_analysis",
+  "name": "Tp_Link_wr886nv6_VxWorks_firmware_analysis",
+  "description": "文件系统的提取 看第一篇参考文献的时候,尝试了下,找到了Tp_Link_wr886nv6的固件.\nbinwalk 扫描结果:\n考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.\n但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大. 类似于这样: 真实数据到 0x00b6b2就结束了\n000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. '...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS.",
+  "keywords": [
+    "vxworks"
+  ],
+  "articleBody": "文件系统的提取 看第一篇参考文献的时候,尝试了下,找到了Tp_Link_wr886nv6的固件.\nbinwalk 扫描结果:\n考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.\n但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大. 类似于这样: 真实数据到 0x00b6b2就结束了\n000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. '...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS.......... 000b7010: 0000 0002 0000 0086 0001 f400 0007 557c ..............U| 000b7020: 921c 644e ae88 d9d2 2db4 48ce 5ceb 6951 ..dN....-.H.\\.iQ 所以实际的lzma文件\ndd if=wr886nv6.bin of=a200.lzma bs=1 skip=41472 count=746162 # 746162=0x000b62b0+2 IDA的加载 IDA无法直接识别文件,所以需要确定CPU架构和基址\n架构:\n通过 binwalk -Y获取结果:\n基址:\n通过strings对文件进行字符输出,可以看到:\n# Example: # mem -dump 80010000 1000 .... Show memory block start at 0x80010000 which size of 4k. 20065 # tftp -get 192.168.1.100 wr740nv5-cn.bin 80001000 .... 20066 # Download file wr740nv5-cn.bin from tftp server(192.168.1.100) to 20067 # local memory address 0x80001000. 应该就可以判断基址是0x80001000\n然后IDA设置一下CPU架构mipseb和基址.\n但是IDA打开之后,只进行了有限的自动分析,依然存在很多没有被分析的函数\n(TODO 可以尝试自己些IDApython 脚本)\n符号表的导入 通过对VxWorks关键词 bzero进行搜索(关键词来源? )\n➜ grep -r bzero . Binary file ./C2E3A matches 独立符号文件特征:\n 1 00000000: 0001 f3fe 0000 139f 5400 0000 8017 c3d8 ........T....... 2 00000010: 5400 0006 8018 b8b0 5400 0014 8018 bef0 T.......T....... 3 00000020: 5400 0022 8018 b878 5400 002b 8018 c52c T..\"...xT..+..., 4 00000030: 5400 0035 8017 c330 5400 0043 8018 000c T..5...0T..C.... 5 00000040: 5400 0051 8017 db8c 5400 0062 8018 14ec T..Q....T..b.... 6 00000050: 5400 0075 8001 8684 5400 0082 8001 8e04 T..u....T....... 7 00000060: 5400 0098 8017 f110 5400 00a4 8018 1604 T.......T....... 8 00000070: 5400 00b6 8018 1698 5400 00c9 8018 4bb8 T.......T.....K. 每8个bytes为一组, 然后第三第四的数值是递增的, 第5到第8字节和地址很像\ns\n编写IDApytho脚本 对symbol文件进行分析 可以看到,对符号名的描述从00000008开始, 而00009d00开始出现symbol对应的字符串.\n5400 0000 8017 c3d8 中:\n第0字节 54 表示类型(?)\n第1-3字节 00 0000表示symbol文件中的偏移\n第4-7字节8017 C3D8表示二进制文件对应的地址\n进入IDA后 8017C3D8 地址处 IDA并没有分析, 但是按c分析结果如下, 并且该函数名按照符号表对应为AddCA\nROM:8017C3D8 # --------------------------------------------------------------------------- ROM:8017C3D8 addiu $sp, -0x318 ROM:8017C3DC sw $ra, 0x310($sp) ROM:8017C3E0 sw $s7, 0x30C($sp) ROM:8017C3E4 sw $s6, 0x308($sp) ROM:8017C3E8 sw $s5, 0x304($sp) ROM:8017C3EC sw $s4, 0x300($sp) ... IDApython脚本:\nsymfile =\"xxx/xxxx/C2E3A\" symbols_table_start_offset = 0x08 strings_table_start_offset = 0x9d00 with open(symfile, \"rb\") as f: symfile_contents = f.read() # 获取symbol 相关数据 symbols_table = symfile_contents[symbols_table_start_offset:strings_table_start_offset] # 获取对应字符 strings_table = symfile_contents[strings_table_start_offset:] # strings 直接通过 \\x00 进行分割; def get_string_by_offset(offset): index = 0 while True: if strings_table[offset+index] != \"\\x00\": index += 1 else: break return strings_table[offset:offset+index] # 将8个字节的symbol数据结构进行拆解 def get_symbols_metadata(): symbols = [] for offset in range(0, len(symbols_table), 8): symbol_item = symbols_table[offset:offset+8] flag = symbol_item[0] #第一个字节 string_offset = int(symbol_item[1:4].encode('hex'), 16) # 2-4 bytes string_name = get_string_by_offset(string_offset) target_address = int(symbol_item[-4:].encode('hex'), 16) #5-8 bytes symbols.append((flag, string_name, target_address)) return symbols def add_symbols(symbols): for flag, string_name, target_address in symbols: idc.MakeName(target_address, string_name) if flag ==\"\\x54\": idc.MakeCode(target_address) idc.MakeFunction(target_address) if __name__ == '__main__': symbols = get_symbols_metadata() add_symbols(symbols) 另一种方式:(如果严格一一对应的话,那么可以直接将strings直接通过\\x00进行split,然后对应起来)\n不过好像有时候会出问题。\nsymfile =\"xxxx/C2E3A\" symbols_table_start_offset = 0x08 strings_table_start_offset = 0x9d00 with open(symfile, \"rb\") as f: symfile_contents = f.read() # 获取symbol 相关数据 symbols_table = symfile_contents[symbols_table_start_offset:strings_table_start_offset] strings_table = symfile_contents[strings_table_start_offset:] symbol_strings = strings_table.split(chr(0)) def get_symbols_metadata(): symbols_metadata = [] num = 0 for offset in range(0, len(symbols_table), 8): symbol_item = symbols_table[offset:offset+8] flag = symbol_item[0] target_addr = int(symbol_item[-4:].encode('hex'), 16) symbols_metadata.append((flag, symbol_strings[num], target_addr)) num += 1 return symbols_metadata def add_symbols(symbols_metadata): for flag, string_name, target_address in symbols_metadata: idc.MakeName(target_address, string_name) if flag ==\"\\x54\": idc.MakeCode(target_address) idc.MakeFunction(target_address) symbols_metadata = get_symbols_metadata() add_symbols(symbols_metadata) 运行完之后符号已经修复了\nreferer:\n  http://galaxylab.com.cn/0x00-tp-link-wr886nv7-v1-1-0-%e8%b7%af%e7%94%b1%e5%99%a8%e5%88%86%e6%9e%90-%e5%9b%ba%e4%bb%b6%e5%88%9d%e6%ad%a5%e5%88%86%e6%9e%90/\n  https://cq674350529.github.io/2018/09/19/TP-Link-wr886v6-%E5%9B%BA%E4%BB%B6%E8%A7%A3%E6%9E%90/\n  https://blog.quarkslab.com/reverse-engineering-a-vxworks-os-based-router.html\n  ",
+  "wordCount" : "514",
+  "inLanguage": "en",
+  "datePublished": "2020-05-27T16:21:44+08:00",
+  "dateModified": "2020-05-27T16:21:44+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "chiba"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://chibataiki.github.io/posts/tp-link_wr886nv6_vxworks_firmware_analysis/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "JiansLife",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chibataiki.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://chibataiki.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://chibataiki.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://chibataiki.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Tp_Link_wr886nv6_VxWorks_firmware_analysis
+    </h1>
+    <div class="post-meta"><span title='2020-05-27 16:21:44 +0800 CST'>May 27, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;chiba
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="文件系统的提取">文件系统的提取<a hidden class="anchor" aria-hidden="true" href="#文件系统的提取">#</a></h2>
+<p>看第一篇参考文献的时候,尝试了下,找到了Tp_Link_wr886nv6的固件.</p>
+<p>binwalk 扫描结果:</p>
+<p><img loading="lazy" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf7vulxcsdj31uc09odjs.jpg" alt=""  />
+</p>
+<p>考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.</p>
+<p>但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大.
+类似于这样:  真实数据到 0x00b6b2就结束了</p>
+<pre tabindex="0"><code>000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe  P..e..F.....)...
+000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba  90Z.o\ec.B.i....
+000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de  ...@. '...d...x.
+000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff  .h..............
+
+...
+
+000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff  ................
+000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000  MINIFS..........
+000b7010: 0000 0002 0000 0086 0001 f400 0007 557c  ..............U|
+000b7020: 921c 644e ae88 d9d2 2db4 48ce 5ceb 6951  ..dN....-.H.\.iQ
+
+</code></pre><p>所以实际的lzma文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>wr886nv6.bin of<span style="color:#f92672">=</span>a200.lzma bs<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> skip<span style="color:#f92672">=</span><span style="color:#ae81ff">41472</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">746162</span> <span style="color:#75715e"># 746162=0x000b62b0+2</span>
+</code></pre></div><h2 id="ida的加载">IDA的加载<a hidden class="anchor" aria-hidden="true" href="#ida的加载">#</a></h2>
+<p>IDA无法直接识别文件,所以需要确定CPU架构和基址</p>
+<p>架构:<br>
+通过 <code>binwalk -Y</code>获取结果:</p>
+<p>基址:<br>
+通过strings对文件进行字符输出,可以看到:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Example:</span>
+<span style="color:#75715e"># mem -dump 80010000 1000   .... Show memory block start at 0x80010000 which size of 4k.</span>
+
+<span style="color:#ae81ff">20065</span> <span style="color:#75715e"># tftp -get 192.168.1.100 wr740nv5-cn.bin 80001000    ....</span>
+<span style="color:#ae81ff">20066</span> <span style="color:#75715e">#              Download file wr740nv5-cn.bin from tftp server(192.168.1.100) to</span>
+<span style="color:#ae81ff">20067</span> <span style="color:#75715e">#              local memory address 0x80001000.</span>
+</code></pre></div><p>应该就可以判断基址是0x80001000</p>
+<p>然后IDA设置一下CPU架构mipseb和基址.</p>
+<p>但是IDA打开之后,只进行了有限的自动分析,依然存在很多没有被分析的函数</p>
+<p>(TODO 可以尝试自己些IDApython 脚本)</p>
+<h2 id="符号表的导入">符号表的导入<a hidden class="anchor" aria-hidden="true" href="#符号表的导入">#</a></h2>
+<p>通过对VxWorks关键词 <strong>bzero</strong>进行搜索(关键词来源? )</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜ grep -r bzero .
+Binary file ./C2E3A matches
+</code></pre></div><p>独立符号文件特征:</p>
+<pre tabindex="0"><code>   1 00000000: 0001 f3fe 0000 139f 5400 0000 8017 c3d8  ........T.......
+   2 00000010: 5400 0006 8018 b8b0 5400 0014 8018 bef0  T.......T.......
+   3 00000020: 5400 0022 8018 b878 5400 002b 8018 c52c  T..&quot;...xT..+...,
+   4 00000030: 5400 0035 8017 c330 5400 0043 8018 000c  T..5...0T..C....
+   5 00000040: 5400 0051 8017 db8c 5400 0062 8018 14ec  T..Q....T..b....
+   6 00000050: 5400 0075 8001 8684 5400 0082 8001 8e04  T..u....T.......
+   7 00000060: 5400 0098 8017 f110 5400 00a4 8018 1604  T.......T.......
+   8 00000070: 5400 00b6 8018 1698 5400 00c9 8018 4bb8  T.......T.....K.
+
+</code></pre><p>每8个bytes为一组, 然后第三第四的数值是递增的, 第5到第8字节和地址很像</p>
+<p>s</p>
+<h3 id="编写idapytho脚本">编写IDApytho脚本<a hidden class="anchor" aria-hidden="true" href="#编写idapytho脚本">#</a></h3>
+<h4 id="对symbol文件进行分析">对symbol文件进行分析<a hidden class="anchor" aria-hidden="true" href="#对symbol文件进行分析">#</a></h4>
+<p>可以看到,对符号名的描述从00000008开始, 而00009d00开始出现symbol对应的字符串.</p>
+<p><img loading="lazy" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf89u1coghj31800bc169.jpg" alt=""  />
+</p>
+<p><code>5400 0000 8017 c3d8</code>   中:</p>
+<p>第0字节 54 表示类型(?)</p>
+<p>第1-3字节 00 0000表示symbol文件中的偏移</p>
+<p>第4-7字节8017 C3D8表示二进制文件对应的地址</p>
+<p>进入IDA后 8017C3D8 地址处 IDA并没有分析, 但是按c分析结果如下, 并且该函数名按照符号表对应为AddCA</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ASN.1" data-lang="ASN.1">
+ROM:8017C3D8  # ---------------------------------------------------------------------------
+ROM:8017C3D8                 addiu   $sp, -0x318
+ROM:8017C3DC                 sw      $ra, 0x310($sp)
+ROM:8017C3E0                 sw      $s7, 0x30C($sp)
+ROM:8017C3E4                 sw      $s6, 0x308($sp)
+ROM:8017C3E8                 sw      $s5, 0x304($sp)
+ROM:8017C3EC                 sw      $s4, 0x300($sp)
+.<span style="color:#e6db74">..</span>
+</code></pre></div><p>IDApython脚本:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">symfile <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxx/xxxx/C2E3A&#34;</span>
+
+
+symbols_table_start_offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x08</span>
+strings_table_start_offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x9d00</span>
+<span style="color:#66d9ef">with</span> open(symfile, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+    symfile_contents <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+
+<span style="color:#75715e"># 获取symbol 相关数据</span>
+symbols_table <span style="color:#f92672">=</span> symfile_contents[symbols_table_start_offset:strings_table_start_offset]
+<span style="color:#75715e"># 获取对应字符</span>
+strings_table <span style="color:#f92672">=</span> symfile_contents[strings_table_start_offset:]
+
+
+<span style="color:#75715e"># strings 直接通过 \x00 进行分割;</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_string_by_offset</span>(offset):
+    index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+        <span style="color:#66d9ef">if</span> strings_table[offset<span style="color:#f92672">+</span>index] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#34;</span>:
+            index <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">break</span>
+    <span style="color:#66d9ef">return</span> strings_table[offset:offset<span style="color:#f92672">+</span>index]
+
+<span style="color:#75715e"># 将8个字节的symbol数据结构进行拆解</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_symbols_metadata</span>():
+    symbols <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> offset <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(symbols_table), <span style="color:#ae81ff">8</span>):
+        symbol_item <span style="color:#f92672">=</span> symbols_table[offset:offset<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>]
+        flag <span style="color:#f92672">=</span> symbol_item[<span style="color:#ae81ff">0</span>] <span style="color:#75715e">#第一个字节</span>
+        string_offset <span style="color:#f92672">=</span> int(symbol_item[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;hex&#39;</span>), <span style="color:#ae81ff">16</span>) <span style="color:#75715e"># 2-4 bytes</span>
+        string_name <span style="color:#f92672">=</span> get_string_by_offset(string_offset)
+        target_address <span style="color:#f92672">=</span> int(symbol_item[<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>:]<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;hex&#39;</span>), <span style="color:#ae81ff">16</span>) <span style="color:#75715e">#5-8 bytes</span>
+        symbols<span style="color:#f92672">.</span>append((flag, string_name, target_address))
+    <span style="color:#66d9ef">return</span> symbols
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_symbols</span>(symbols):
+    <span style="color:#66d9ef">for</span> flag, string_name, target_address <span style="color:#f92672">in</span> symbols:
+        idc<span style="color:#f92672">.</span>MakeName(target_address, string_name)
+        <span style="color:#66d9ef">if</span> flag <span style="color:#f92672">==</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x54</span><span style="color:#e6db74">&#34;</span>:
+            idc<span style="color:#f92672">.</span>MakeCode(target_address)
+            idc<span style="color:#f92672">.</span>MakeFunction(target_address)
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    symbols <span style="color:#f92672">=</span> get_symbols_metadata()
+    add_symbols(symbols)
+</code></pre></div><p>另一种方式:(如果严格一一对应的话,那么可以直接将strings直接通过\x00进行split,然后对应起来)</p>
+<p>不过好像有时候会出问题。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">symfile <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxxx/C2E3A&#34;</span>
+
+symbols_table_start_offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x08</span>
+strings_table_start_offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x9d00</span>
+
+<span style="color:#66d9ef">with</span> open(symfile, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+    symfile_contents <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+
+<span style="color:#75715e"># 获取symbol 相关数据</span>
+symbols_table <span style="color:#f92672">=</span> symfile_contents[symbols_table_start_offset:strings_table_start_offset]
+strings_table <span style="color:#f92672">=</span> symfile_contents[strings_table_start_offset:]
+
+symbol_strings <span style="color:#f92672">=</span> strings_table<span style="color:#f92672">.</span>split(chr(<span style="color:#ae81ff">0</span>))
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_symbols_metadata</span>():
+    symbols_metadata <span style="color:#f92672">=</span> []
+    num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> offset <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(symbols_table), <span style="color:#ae81ff">8</span>):
+        symbol_item <span style="color:#f92672">=</span> symbols_table[offset:offset<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>]
+        flag <span style="color:#f92672">=</span> symbol_item[<span style="color:#ae81ff">0</span>]
+        target_addr <span style="color:#f92672">=</span> int(symbol_item[<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>:]<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;hex&#39;</span>), <span style="color:#ae81ff">16</span>)
+        symbols_metadata<span style="color:#f92672">.</span>append((flag, symbol_strings[num], target_addr))
+        num <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> symbols_metadata
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_symbols</span>(symbols_metadata):
+    <span style="color:#66d9ef">for</span> flag, string_name, target_address <span style="color:#f92672">in</span> symbols_metadata:
+        idc<span style="color:#f92672">.</span>MakeName(target_address, string_name)
+        <span style="color:#66d9ef">if</span> flag <span style="color:#f92672">==</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x54</span><span style="color:#e6db74">&#34;</span>:
+            idc<span style="color:#f92672">.</span>MakeCode(target_address)
+            idc<span style="color:#f92672">.</span>MakeFunction(target_address)
+
+symbols_metadata <span style="color:#f92672">=</span> get_symbols_metadata()
+add_symbols(symbols_metadata)
+
+</code></pre></div><p>运行完之后符号已经修复了</p>
+<p><img loading="lazy" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf89tcy8thj30e80lidi5.jpg" alt=""  />
+</p>
+<p>referer:</p>
+<ol>
+<li>
+<p><a href="http://galaxylab.com.cn/0x00-tp-link-wr886nv7-v1-1-0-%e8%b7%af%e7%94%b1%e5%99%a8%e5%88%86%e6%9e%90-%e5%9b%ba%e4%bb%b6%e5%88%9d%e6%ad%a5%e5%88%86%e6%9e%90/">http://galaxylab.com.cn/0x00-tp-link-wr886nv7-v1-1-0-%e8%b7%af%e7%94%b1%e5%99%a8%e5%88%86%e6%9e%90-%e5%9b%ba%e4%bb%b6%e5%88%9d%e6%ad%a5%e5%88%86%e6%9e%90/</a></p>
+</li>
+<li>
+<p><a href="https://cq674350529.github.io/2018/09/19/TP-Link-wr886v6-%E5%9B%BA%E4%BB%B6%E8%A7%A3%E6%9E%90/">https://cq674350529.github.io/2018/09/19/TP-Link-wr886v6-%E5%9B%BA%E4%BB%B6%E8%A7%A3%E6%9E%90/</a></p>
+</li>
+<li>
+<p><a href="https://blog.quarkslab.com/reverse-engineering-a-vxworks-os-based-router.html">https://blog.quarkslab.com/reverse-engineering-a-vxworks-os-based-router.html</a></p>
+</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://chibataiki.github.io/tags/vxworks/">vxworks</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://chibataiki.github.io/posts/ida_usage_note/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>IDA_usage_note</span>
+  </a>
+  <a class="next" href="https://chibataiki.github.io/posts/polypyus_about/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>Polypyus_about</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://chibataiki.github.io/">JiansLife</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
