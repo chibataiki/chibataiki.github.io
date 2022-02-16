@@ -5,7 +5,18 @@
     <link>https://chibataiki.github.io/tags/iot/</link>
     <description>Recent content in IoT on JiansLife</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 07 Apr 2020 22:56:58 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Feb 2022 15:00:44 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firmware emulation tools</title>
+      <link>https://chibataiki.github.io/posts/firmware_emulation_tools/</link>
+      <pubDate>Wed, 16 Feb 2022 15:00:44 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/firmware_emulation_tools/</guid>
+      <description>Collect some firmware emulation tools. Add some more analysis later.
+[TOC]
+QEMU  user mode system mode  Firmadyne  https://github.com/firmadyne/firmadyne a research-paper project  FirmAE  https://github.com/pr0v3rbs/FirmAE  EMUX (formerly ARMX)  https://github.com/therealsaumil/emux  Firmware Analysis Toolkit  https://github.com/attify/firmware-analysis-toolkit  Qiling  https://github.com/qilingframework/qiling  unicorn  https://github.com/unicorn-engine/unicorn  basesafe  https://github.com/fgsect/BaseSAFE a research-paper project  usercore  https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019  binee  https://github.com/carbonblack/binee no more commits since 15 Jun 2020  </description>
+    </item>
+    
     <item>
       <title>嵌入式设备文件系统分析工具</title>
       <link>https://chibataiki.github.io/posts/embedded_device_filesystem_analyze/</link>

@@ -152,6 +152,30 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Dlink Backdoor 分析记录
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.
+只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。
+该后门在路由器的web服务中实现.
+Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析.
+首先查看web server 的型号: thttpd-alphanetworks/2.23应该是thttpd的修改版本,而alphanetworks是D-link的子公司.
+functions一栏里面很多alpha开头的函数,里面有个权限检查程序alpha_auth_check,可以分析一下.
+通过交叉引用搜索发现 alpha_httpd_parse_request调用了alpha_auth_check :
+alpha_httpd_parse_request调用部分:
+loc_41A420: move $a0, $s2 la $t9, alpha_auth_check nop jalr $t9 ; alpha_auth_check nop lw $gp, 0x2830&#43;var_2820($sp) li $v1, 0xFFFFFFFF beq $v0, $v1, loc_41A4B0 li $a0, 0xFFFFFFFF 分析一下参数: alpha_auth_check的传入参数$a0在$s2中,而 alpha_auth_check返回值存储在$v0中, 然后  $v0和$v1 (0xFFFFFFFF :-1)会进行比较, 相等就跳转到loc_41A4B0 结束函数.
+ alpha_auth_check内:
+存在strstr,strcmp 和以及一个明显的硬编码字符串
+看一下strstr用法:
+NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function finds the first occurrence of the substring needle in the string haystack....</p>
+  </section>
+  <footer class="entry-footer"><span title='2020-03-01 12:38:39 +0800 CST'>March 1, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to Dlink Backdoor 分析记录" href="https://chibataiki.github.io/posts/dlink-backdoor-analysis/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>MIPS/ARM 调试环境
     </h2>
   </header>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>emulation on JiansLife</title>
+    <link>https://chibataiki.github.io/tags/emulation/</link>
+    <description>Recent content in emulation on JiansLife</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 16 Feb 2022 15:00:44 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/emulation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firmware emulation tools</title>
+      <link>https://chibataiki.github.io/posts/firmware_emulation_tools/</link>
+      <pubDate>Wed, 16 Feb 2022 15:00:44 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/firmware_emulation_tools/</guid>
+      <description>Collect some firmware emulation tools. Add some more analysis later.
+[TOC]
+QEMU  user mode system mode  Firmadyne  https://github.com/firmadyne/firmadyne a research-paper project  FirmAE  https://github.com/pr0v3rbs/FirmAE  EMUX (formerly ARMX)  https://github.com/therealsaumil/emux  Firmware Analysis Toolkit  https://github.com/attify/firmware-analysis-toolkit  Qiling  https://github.com/qilingframework/qiling  unicorn  https://github.com/unicorn-engine/unicorn  basesafe  https://github.com/fgsect/BaseSAFE a research-paper project  usercore  https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019  binee  https://github.com/carbonblack/binee no more commits since 15 Jun 2020  </description>
+    </item>
+    
+  </channel>
+</rss>
