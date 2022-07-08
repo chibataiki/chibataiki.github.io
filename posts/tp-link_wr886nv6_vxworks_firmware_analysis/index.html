@@ -24,7 +24,7 @@ binwalk 扫描结果:
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -219,7 +219,7 @@ binwalk 扫描结果:
 <p>考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.</p>
 <p>但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大.
 类似于这样:  真实数据到 0x00b6b2就结束了</p>
-<pre tabindex="0"><code>000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe  P..e..F.....)...
+<pre><code>000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe  P..e..F.....)...
 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba  90Z.o\ec.B.i....
 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de  ...@. '...d...x.
 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff  .h..............
@@ -254,7 +254,7 @@ binwalk 扫描结果:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜ grep -r bzero .
 Binary file ./C2E3A matches
 </code></pre></div><p>独立符号文件特征:</p>
-<pre tabindex="0"><code>   1 00000000: 0001 f3fe 0000 139f 5400 0000 8017 c3d8  ........T.......
+<pre><code>   1 00000000: 0001 f3fe 0000 139f 5400 0000 8017 c3d8  ........T.......
    2 00000010: 5400 0006 8018 b8b0 5400 0014 8018 bef0  T.......T.......
    3 00000020: 5400 0022 8018 b878 5400 002b 8018 c52c  T..&quot;...xT..+...,
    4 00000030: 5400 0035 8017 c330 5400 0043 8018 000c  T..5...0T..C....

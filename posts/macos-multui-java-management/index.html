@@ -29,7 +29,7 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e">
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -229,20 +229,20 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e"/>
   <div class="post-content"><p>之前安装 Burpsuite的时候,使用的是旧版本JDK1.8,这次ghida需要新版本</p>
 <p>在linux中可以使用<code>sudo update-alternatives --config java</code> 进行java版本的选择</p>
 <p>macOS下则使用jenv</p>
-<pre tabindex="0"><code>brew tap homebrew/cask-versions
+<pre><code>brew tap homebrew/cask-versions
 brew install jenv
 </code></pre><p>显示java 环境</p>
-<pre tabindex="0"><code>/usr/libexec/java_home -V
+<pre><code>/usr/libexec/java_home -V
 </code></pre><p>结果类似于</p>
-<pre tabindex="0"><code>13.0.2, x86_64:	&quot;OpenJDK 13.0.2&quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home
+<pre><code>13.0.2, x86_64:	&quot;OpenJDK 13.0.2&quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home
 1.8.0_231, x86_64:	&quot;Java SE 8&quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
 </code></pre><p>添加 jdk ,路径为就是上面现实的路径</p>
-<pre tabindex="0"><code>jenv add &lt;jdk_path&gt;
+<pre><code>jenv add &lt;jdk_path&gt;
 </code></pre><p>显示java版本信息:</p>
-<pre tabindex="0"><code>jenv versions
+<pre><code>jenv versions
 jenv version
 </code></pre><p>设置java环境:</p>
-<pre tabindex="0"><code>jenv global [jdk version]
+<pre><code>jenv global [jdk version]
 jenv local [jdk version]
 </code></pre><p>有问题可以运行  <code>jenv doctor</code></p>
 <p>referer:

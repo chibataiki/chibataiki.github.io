@@ -32,7 +32,7 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -244,7 +244,7 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
 functions一栏里面很多alpha开头的函数,里面有个权限检查程序<code>alpha_auth_check</code>,可以分析一下.</p>
 <p>通过交叉引用搜索发现 <code>alpha_httpd_parse_request</code>调用了<code>alpha_auth_check</code> :</p>
 <p><code>alpha_httpd_parse_request</code>调用部分:</p>
-<pre tabindex="0"><code>loc_41A420:
+<pre><code>loc_41A420:
 move    $a0, $s2
 la      $t9, alpha_auth_check
 nop
@@ -265,7 +265,7 @@ li      $a0, 0xFFFFFFFF
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gceifspvtjj30sk0e2tb3.jpg" alt=""  />
 </p>
 <p>看一下strstr用法:</p>
-<pre tabindex="0"><code>NAME
+<pre><code>NAME
        strstr, strcasestr - locate a substring
 DESCRIPTION
        The  strstr()  function  finds  the  first  occurrence of the substring needle in the string
@@ -284,7 +284,7 @@ RETURN VALUE
 <p>分析传入的字符串</p>
 <p><code>0xD0($s0)</code> -&gt; <code>httpd_parse_request $s0</code></p>
 <p>通过搜索0XD0 ,可以追溯到<code>httpd_parse_request</code>内:</p>
-<pre tabindex="0"><code>loc_41488C:
+<pre><code>loc_41488C:
 loc_41488C:
 la      $a1, aNotPermitted  # &quot; not permitted.\n&quot;
 nop

@@ -31,7 +31,7 @@ https://help.shodan.io/mastery/property-hashes">
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -242,15 +242,15 @@ https://help.shodan.io/mastery/property-hashes"/>
 <h4 id="filter-hash">Filter: hash<a hidden class="anchor" aria-hidden="true" href="#filter-hash">#</a></h4>
 <p>hash值为shodan data域的hash</p>
 <p>banner text为空的时候,hash值为0</p>
-<pre tabindex="0"><code>hash:0
+<pre><code>hash:0
 </code></pre><h4 id="filter-httphtml_hash">Filter: http.html_hash<a hidden class="anchor" aria-hidden="true" href="#filter-httphtml_hash">#</a></h4>
 <p>html的hash</p>
 <p>很多header存在Date值,此时使用hash值进行过滤就存在
 漏报,可以采用http.html的hash值进行过滤</p>
-<pre tabindex="0"><code>http.html_hash:[hash value]
+<pre><code>http.html_hash:[hash value]
 </code></pre><p>其他过滤规则类似,可以看raw数据进行筛选</p>
 <h4 id="favicon-hash值的计算">favicon hash值的计算<a hidden class="anchor" aria-hidden="true" href="#favicon-hash值的计算">#</a></h4>
-<pre tabindex="0"><code>import mmh3
+<pre><code>import mmh3
 import requests
 
 response = requests.get('https://website/favicon.ico')
@@ -261,8 +261,8 @@ print(hash)
 </code></pre><hr>
 <h3 id="cli">CLI<a hidden class="anchor" aria-hidden="true" href="#cli">#</a></h3>
 <p>shodan提供cli接口</p>
-<pre tabindex="0"><code>python3 -m pip install shodan
-</code></pre><pre tabindex="0"><code>shodan download [quary]
+<pre><code>python3 -m pip install shodan
+</code></pre><pre><code>shodan download [quary]
 
 shodan parse --fields ip_str,port,[fields] --separator , [download_file]
 
