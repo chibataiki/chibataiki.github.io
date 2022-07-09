@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>MIPS汇编note | JiansLife</title>
-<meta name="keywords" content="assembly" />
+<meta name="keywords" content="assembly">
 <meta name="description" content="特性 MIPS和ARM 一样是RISC精简指令集
 延迟槽 MIPS I 引入了延迟槽机制,以减少各种指令后流水线的阻塞.
 MIPS II 取消了延迟槽机制
@@ -16,9 +16,9 @@ MIPS &hellip;
 MIPS架构中, 指令分为三种类型,R型、I型和J型.
 寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src &#43; [xx]">
 <meta name="author" content="chiba">
-<link rel="canonical" href="https://chibataiki.github.io/posts/mips-assembly-note/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<link rel="canonical" href="https://chibataiki.github.io/posts/mips-assembly-note/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
@@ -27,7 +27,6 @@ MIPS架构中, 指令分为三种类型,R型、I型和J型.
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -161,14 +160,14 @@ MIPS架构中, 指令分为三种类型,R型、I型和J型.
     <nav class="nav">
         <div class="logo">
             <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -182,7 +181,7 @@ MIPS架构中, 指令分为三种类型,R型、I型和J型.
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -363,12 +362,12 @@ sb register_source, RAM_dst</p>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://chibataiki.github.io/posts/burpsuite-note/">
-    <span class="title">« Prev Page</span>
+    <span class="title">« Prev</span>
     <br>
     <span>Burpsuite使用note</span>
   </a>
   <a class="next" href="https://chibataiki.github.io/posts/ida-plugin-install/">
-    <span class="title">Next Page »</span>
+    <span class="title">Next »</span>
     <br>
     <span>macOS下IDA插件安装</span>
   </a>
@@ -383,7 +382,7 @@ sb register_source, RAM_dst</p>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">

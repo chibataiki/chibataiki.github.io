@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Netgear-命令注入漏洞分析 | JiansLife</title>
-<meta name="keywords" content="IoT" />
+<meta name="keywords" content="IoT">
 <meta name="description" content="netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.
 使用固件版本: V1.0.1.42
 固件信息:
@@ -14,16 +14,16 @@ LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executa
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;&gt; /dev/null
 那么执行完ping6 后,就会执行恶意命令.
 那么就要看如何控制传入cmd_ping6 的参数.">
 <meta name="author" content="chiba">
-<link rel="canonical" href="https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<link rel="canonical" href="https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
@@ -32,7 +32,6 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -77,7 +76,7 @@ LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executa
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;&gt; /dev/null
@@ -97,7 +96,7 @@ LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executa
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;&gt; /dev/null
@@ -131,7 +130,7 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
   "@type": "BlogPosting",
   "headline": "Netgear-命令注入漏洞分析",
   "name": "Netgear-命令注入漏洞分析",
-  "description": "netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.\n使用固件版本: V1.0.1.42\n固件信息:\nLZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)\n使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口\n固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:\n反编译一下大概就是:\nvoid cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,\u0026quot;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,\u0026quot;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026quot;,target)\n因为sprintf 不检验长度,所以存在缓冲区溢出\n但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.\nsystem()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command \u0026amp;\u0026gt; /dev/null\n那么执行完ping6 后,就会执行恶意命令.\n那么就要看如何控制传入cmd_ping6 的参数.",
+  "description": "netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.\n使用固件版本: V1.0.1.42\n固件信息:\nLZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)\n使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口\n固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:\n反编译一下大概就是:\nvoid cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,\u0026#34;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,\u0026quot;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026quot;,target)\n因为sprintf 不检验长度,所以存在缓冲区溢出\n但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.\nsystem()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command \u0026amp;\u0026gt; /dev/null\n那么执行完ping6 后,就会执行恶意命令.\n那么就要看如何控制传入cmd_ping6 的参数.",
   "keywords": [
     "IoT"
   ],
@@ -176,14 +175,14 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
     <nav class="nav">
         <div class="logo">
             <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -197,7 +196,7 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -246,12 +245,12 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gchzkctptpj30o60msq79.jpg" alt=""  />
 </p>
 <p>反编译一下大概就是:</p>
-<pre><code>void cmd_ping6(char *target)
+<pre tabindex="0"><code>void cmd_ping6(char *target)
 
 {
   char cmd [132];
   memset(cmd,0,0x80);
-  sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target);
+  sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target);
   system(cmd);
   return;
 }
@@ -284,12 +283,12 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://chibataiki.github.io/posts/simple_key_validation/">
-    <span class="title">« Prev Page</span>
+    <span class="title">« Prev</span>
     <br>
     <span>Simple_key_validation</span>
   </a>
   <a class="next" href="https://chibataiki.github.io/posts/burpsuite-note/">
-    <span class="title">Next Page »</span>
+    <span class="title">Next »</span>
     <br>
     <span>Burpsuite使用note</span>
   </a>
@@ -304,7 +303,7 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Dlink Backdoor 分析记录 | JiansLife</title>
-<meta name="keywords" content="IoT" />
+<meta name="keywords" content="IoT">
 <meta name="description" content="受漏洞影响的是D-link 路由器的一些型号, 这些固件由D-link 子公司Alpha Networks公司开发.
 只需要将浏览器User-Agent标志修改为：xmlset_roodkcableoj28840ybtide，再访问路由器IP地址，即可无需经过验证访问路由器的Web管理界面修改设备设置。
 该后门在路由器的web服务中实现.
@@ -21,9 +21,9 @@ loc_41A420: move $a0, $s2 la $t9, alpha_auth_check nop jalr $t9 ; alpha_auth_che
 看一下strstr用法:
 NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function finds the first occurrence of the substring needle in the string haystack.">
 <meta name="author" content="chiba">
-<link rel="canonical" href="https://chibataiki.github.io/posts/dlink-backdoor-analysis/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<link rel="canonical" href="https://chibataiki.github.io/posts/dlink-backdoor-analysis/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
@@ -32,7 +32,6 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -176,14 +175,14 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
     <nav class="nav">
         <div class="logo">
             <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -197,7 +196,7 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -244,7 +243,7 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
 functions一栏里面很多alpha开头的函数,里面有个权限检查程序<code>alpha_auth_check</code>,可以分析一下.</p>
 <p>通过交叉引用搜索发现 <code>alpha_httpd_parse_request</code>调用了<code>alpha_auth_check</code> :</p>
 <p><code>alpha_httpd_parse_request</code>调用部分:</p>
-<pre><code>loc_41A420:
+<pre tabindex="0"><code>loc_41A420:
 move    $a0, $s2
 la      $t9, alpha_auth_check
 nop
@@ -265,11 +264,11 @@ li      $a0, 0xFFFFFFFF
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gceifspvtjj30sk0e2tb3.jpg" alt=""  />
 </p>
 <p>看一下strstr用法:</p>
-<pre><code>NAME
+<pre tabindex="0"><code>NAME
        strstr, strcasestr - locate a substring
 DESCRIPTION
        The  strstr()  function  finds  the  first  occurrence of the substring needle in the string
-       haystack.  The terminating null bytes ('\0') are not compared.
+       haystack.  The terminating null bytes (&#39;\0&#39;) are not compared.
 
 RETURN VALUE
        These functions return a pointer to the beginning of the located substring, or NULL  if  the
@@ -284,15 +283,15 @@ RETURN VALUE
 <p>分析传入的字符串</p>
 <p><code>0xD0($s0)</code> -&gt; <code>httpd_parse_request $s0</code></p>
 <p>通过搜索0XD0 ,可以追溯到<code>httpd_parse_request</code>内:</p>
-<pre><code>loc_41488C:
+<pre tabindex="0"><code>loc_41488C:
 loc_41488C:
-la      $a1, aNotPermitted  # &quot; not permitted.\n&quot;
+la      $a1, aNotPermitted  # &#34; not permitted.\n&#34;
 nop
-addiu   $a1, (aUserAgent - 0x470000)  # &quot;User-Agent:&quot;
+addiu   $a1, (aUserAgent - 0x470000)  # &#34;User-Agent:&#34;
 li      $a2, 0xB
 la      $t9, strncasecmp
 nop
-jalr    $t9 ; strncasecmp                                  # $v0 =strncasecmp(a0,a1=&quot;User-Agent:&quot;,a2=0xB)
+jalr    $t9 ; strncasecmp                                  # $v0 =strncasecmp(a0,a1=&#34;User-Agent:&#34;,a2=0xB)
 nop
 lw      $gp, 0x48+var_30($sp)
 bnez    $v0, loc_4148EC	                                   # if($v0!=0)	  jmp 	loc_4148EC					
@@ -302,9 +301,9 @@ move    $a0, $s0
 
 addiu   $s0, 0xB                                           # $s0 = $s0+0xB
 move    $a0, $s0                                           # MEM[$a0] = MEM[$s0]
-la      $a1, aNotPermitted  # &quot; not permitted.\n&quot;          # load address to a1?? [TODO]
+la      $a1, aNotPermitted  # &#34; not permitted.\n&#34;          # load address to a1?? [TODO]
 nop
-addiu   $a1, (asc_46EC10 - 0x470000)  # &quot; \t&quot;              # $a1 = &quot;\t&quot;
+addiu   $a1, (asc_46EC10 - 0x470000)  # &#34; \t&#34;              # $a1 = &#34;\t&#34;
 la      $t9, strspn						
 nop
 jalr    $t9 ; strspn                                       #  $v0 = strspn(a0,a1)
@@ -313,7 +312,6 @@ lw      $gp, 0x48+var_30($sp)
 addu    $s0, $v0                                           #  $s0= $s0+ $v0
 b       loc_4150EC
 sw      $s0, 0xD0($s2)                                     # MEM[$s2+0xD0]:4 = $s0     
-
 </code></pre><p>大概分析了下,如果User-Agent里带有xmlset_roodkcableoj28840ybtide, 那么就可以绕过验证</p>
 <p>shodan 关键词:  Server: thttpd-alphanetworks/2.23</p>
 <p>referer:</p>
@@ -328,12 +326,12 @@ sw      $s0, 0xD0($s2)                                     # MEM[$s2+0xD0]:4 = $
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://chibataiki.github.io/posts/ida-plugin-install/">
-    <span class="title">« Prev Page</span>
+    <span class="title">« Prev</span>
     <br>
     <span>macOS下IDA插件安装</span>
   </a>
   <a class="next" href="https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/">
-    <span class="title">Next Page »</span>
+    <span class="title">Next »</span>
     <br>
     <span>MIPS/ARM 调试环境</span>
   </a>
@@ -348,7 +346,7 @@ sw      $s0, 0xD0($s2)                                     # MEM[$s2+0xD0]:4 = $
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">

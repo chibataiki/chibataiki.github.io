@@ -14,7 +14,7 @@
       <guid>https://chibataiki.github.io/posts/firmware_emulation_tools/</guid>
       <description>Collect some firmware emulation tools. Add some more analysis later.
 [TOC]
-QEMU  user mode system mode  Firmadyne  https://github.com/firmadyne/firmadyne a research-paper project  FirmAE  https://github.com/pr0v3rbs/FirmAE  Renode  https://github.com/renode/renode/  EMUX (formerly ARMX)  https://github.com/therealsaumil/emux  Firmware Analysis Toolkit  https://github.com/attify/firmware-analysis-toolkit  Qiling  https://github.com/qilingframework/qiling  unicorn  https://github.com/unicorn-engine/unicorn  basesafe  https://github.com/fgsect/BaseSAFE a research-paper project  usercore  https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019  binee  https://github.</description>
+QEMU  user mode system mode  Firmadyne  https://github.com/firmadyne/firmadyne a research-paper project  FirmAE  https://github.com/pr0v3rbs/FirmAE  EMUX (formerly ARMX)  https://github.com/therealsaumil/emux  Firmware Analysis Toolkit  https://github.com/attify/firmware-analysis-toolkit  Qiling  https://github.com/qilingframework/qiling  unicorn  https://github.com/unicorn-engine/unicorn  basesafe  https://github.com/fgsect/BaseSAFE a research-paper project  FirmWire  https://github.com/FirmWire/FirmWire.git for smartphone baseband firmwares  usercore  https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019  binee  https://github.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@ LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executa
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;#34;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;amp;&amp;gt; /dev/null

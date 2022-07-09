@@ -17,7 +17,7 @@
 macOS下则使用jenv
 brew tap homebrew/cask-versions brew install jenv 显示java 环境
 /usr/libexec/java_home -V 结果类似于
-13.0.2, x86_64:	&amp;quot;OpenJDK 13.0.2&amp;quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;quot;Java SE 8&amp;quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
+13.0.2, x86_64:	&amp;#34;OpenJDK 13.0.2&amp;#34;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;#34;Java SE 8&amp;#34;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
 jenv add &amp;lt;jdk_path&amp;gt; 显示java版本信息:
 jenv versions jenv version 设置java环境:
 jenv global [jdk version] jenv local [jdk version] 有问题可以运行 jenv doctor

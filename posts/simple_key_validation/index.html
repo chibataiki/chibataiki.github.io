@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Simple_key_validation | JiansLife</title>
-<meta name="keywords" content="liveoverflow" />
+<meta name="keywords" content="liveoverflow">
 <meta name="description" content="一种简单的密码加密机制:
-#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&quot;Checking License: %s\n&quot;,argv[1]); int sum=0; for(int i=0;i&lt;strlen(argv[1]);i&#43;&#43;){ sum &#43;= (int)argv[1][i]; } // printf(&quot;%d\n&quot;,sum); if( 1022 == sum){ printf(&quot;Accessed!&quot;); } else { printf(&quot;Wrong!&quot;); } }else { printf(&quot;Usage: %s &lt;key&gt;\n&quot;,argv[0]); } return 0; } 其中1022 是 &ldquo;THIS IS THE KEY&rdquo; 进行简单的ascii值求和的结果.
+#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&#34;Checking License: %s\n&#34;,argv[1]); int sum=0; for(int i=0;i&lt;strlen(argv[1]);i&#43;&#43;){ sum &#43;= (int)argv[1][i]; } // printf(&#34;%d\n&#34;,sum); if( 1022 == sum){ printf(&#34;Accessed!&#34;); } else { printf(&#34;Wrong!&#34;); } }else { printf(&#34;Usage: %s &lt;key&gt;\n&#34;,argv[0]); } return 0; } 其中1022 是 &ldquo;THIS IS THE KEY&rdquo; 进行简单的ascii值求和的结果.
 可以通过静态分析和逆向工程可以分析出加密机制.
 key generator 根据逆向分析的算法生成注册码
-import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c) return char_sum chars=&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot; key = &quot;&quot; while True: key &#43;= random.">
+import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c) return char_sum chars=&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#34; key = &#34;&#34; while True: key &#43;= random.">
 <meta name="author" content="chiba">
-<link rel="canonical" href="https://chibataiki.github.io/posts/simple_key_validation/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<link rel="canonical" href="https://chibataiki.github.io/posts/simple_key_validation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
@@ -24,7 +24,6 @@ import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -63,10 +62,10 @@ import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c
     </style>
 </noscript><meta property="og:title" content="Simple_key_validation" />
 <meta property="og:description" content="一种简单的密码加密机制:
-#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&quot;Checking License: %s\n&quot;,argv[1]); int sum=0; for(int i=0;i&lt;strlen(argv[1]);i&#43;&#43;){ sum &#43;= (int)argv[1][i]; } // printf(&quot;%d\n&quot;,sum); if( 1022 == sum){ printf(&quot;Accessed!&quot;); } else { printf(&quot;Wrong!&quot;); } }else { printf(&quot;Usage: %s &lt;key&gt;\n&quot;,argv[0]); } return 0; } 其中1022 是 &ldquo;THIS IS THE KEY&rdquo; 进行简单的ascii值求和的结果.
+#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&#34;Checking License: %s\n&#34;,argv[1]); int sum=0; for(int i=0;i&lt;strlen(argv[1]);i&#43;&#43;){ sum &#43;= (int)argv[1][i]; } // printf(&#34;%d\n&#34;,sum); if( 1022 == sum){ printf(&#34;Accessed!&#34;); } else { printf(&#34;Wrong!&#34;); } }else { printf(&#34;Usage: %s &lt;key&gt;\n&#34;,argv[0]); } return 0; } 其中1022 是 &ldquo;THIS IS THE KEY&rdquo; 进行简单的ascii值求和的结果.
 可以通过静态分析和逆向工程可以分析出加密机制.
 key generator 根据逆向分析的算法生成注册码
-import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c) return char_sum chars=&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot; key = &quot;&quot; while True: key &#43;= random." />
+import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c) return char_sum chars=&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#34; key = &#34;&#34; while True: key &#43;= random." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chibataiki.github.io/posts/simple_key_validation/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-03-14T22:46:32&#43;08:00" />
@@ -75,10 +74,10 @@ import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Simple_key_validation"/>
 <meta name="twitter:description" content="一种简单的密码加密机制:
-#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&quot;Checking License: %s\n&quot;,argv[1]); int sum=0; for(int i=0;i&lt;strlen(argv[1]);i&#43;&#43;){ sum &#43;= (int)argv[1][i]; } // printf(&quot;%d\n&quot;,sum); if( 1022 == sum){ printf(&quot;Accessed!&quot;); } else { printf(&quot;Wrong!&quot;); } }else { printf(&quot;Usage: %s &lt;key&gt;\n&quot;,argv[0]); } return 0; } 其中1022 是 &ldquo;THIS IS THE KEY&rdquo; 进行简单的ascii值求和的结果.
+#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&#34;Checking License: %s\n&#34;,argv[1]); int sum=0; for(int i=0;i&lt;strlen(argv[1]);i&#43;&#43;){ sum &#43;= (int)argv[1][i]; } // printf(&#34;%d\n&#34;,sum); if( 1022 == sum){ printf(&#34;Accessed!&#34;); } else { printf(&#34;Wrong!&#34;); } }else { printf(&#34;Usage: %s &lt;key&gt;\n&#34;,argv[0]); } return 0; } 其中1022 是 &ldquo;THIS IS THE KEY&rdquo; 进行简单的ascii值求和的结果.
 可以通过静态分析和逆向工程可以分析出加密机制.
 key generator 根据逆向分析的算法生成注册码
-import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c) return char_sum chars=&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot; key = &quot;&quot; while True: key &#43;= random."/>
+import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c) return char_sum chars=&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#34; key = &#34;&#34; while True: key &#43;= random."/>
 
 
 <script type="application/ld+json">
@@ -107,7 +106,7 @@ import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c
   "@type": "BlogPosting",
   "headline": "Simple_key_validation",
   "name": "Simple_key_validation",
-  "description": "一种简单的密码加密机制:\n#include\u0026lt;stdio.h\u0026gt; #include\u0026lt;stdlib.h\u0026gt; int main(int argc, char *argv[]){ if(argc==2){ printf(\u0026quot;Checking License: %s\\n\u0026quot;,argv[1]); int sum=0; for(int i=0;i\u0026lt;strlen(argv[1]);i++){ sum += (int)argv[1][i]; } // printf(\u0026quot;%d\\n\u0026quot;,sum); if( 1022 == sum){ printf(\u0026quot;Accessed!\u0026quot;); } else { printf(\u0026quot;Wrong!\u0026quot;); } }else { printf(\u0026quot;Usage: %s \u0026lt;key\u0026gt;\\n\u0026quot;,argv[0]); } return 0; } 其中1022 是 \u0026ldquo;THIS IS THE KEY\u0026rdquo; 进行简单的ascii值求和的结果.\n可以通过静态分析和逆向工程可以分析出加密机制.\nkey generator 根据逆向分析的算法生成注册码\nimport random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) return char_sum chars=\u0026quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\u0026quot; key = \u0026quot;\u0026quot; while True: key += random.",
+  "description": "一种简单的密码加密机制:\n#include\u0026lt;stdio.h\u0026gt; #include\u0026lt;stdlib.h\u0026gt; int main(int argc, char *argv[]){ if(argc==2){ printf(\u0026#34;Checking License: %s\\n\u0026#34;,argv[1]); int sum=0; for(int i=0;i\u0026lt;strlen(argv[1]);i++){ sum += (int)argv[1][i]; } // printf(\u0026#34;%d\\n\u0026#34;,sum); if( 1022 == sum){ printf(\u0026#34;Accessed!\u0026#34;); } else { printf(\u0026#34;Wrong!\u0026#34;); } }else { printf(\u0026#34;Usage: %s \u0026lt;key\u0026gt;\\n\u0026#34;,argv[0]); } return 0; } 其中1022 是 \u0026ldquo;THIS IS THE KEY\u0026rdquo; 进行简单的ascii值求和的结果.\n可以通过静态分析和逆向工程可以分析出加密机制.\nkey generator 根据逆向分析的算法生成注册码\nimport random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) return char_sum chars=\u0026#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\u0026#34; key = \u0026#34;\u0026#34; while True: key += random.",
   "keywords": [
     "liveoverflow"
   ],
@@ -152,14 +151,14 @@ import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c
     <nav class="nav">
         <div class="logo">
             <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -173,7 +172,7 @@ import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -212,34 +211,33 @@ import random def check_key(key): char_sum=0 for c in key: char_sum &#43;= ord(c
 </div>
   </header> 
   <div class="post-content"><p>一种简单的密码加密机制:</p>
-<pre><code>#include&lt;stdio.h&gt;
+<pre tabindex="0"><code>#include&lt;stdio.h&gt;
 #include&lt;stdlib.h&gt;
 int main(int argc, char *argv[]){
         if(argc==2){
-                printf(&quot;Checking License: %s\n&quot;,argv[1]);
+                printf(&#34;Checking License: %s\n&#34;,argv[1]);
                 int sum=0;
                 for(int i=0;i&lt;strlen(argv[1]);i++){
                         sum += (int)argv[1][i];
                 }
-//              printf(&quot;%d\n&quot;,sum);
+//              printf(&#34;%d\n&#34;,sum);
                 if( 1022 == sum){
-                        printf(&quot;Accessed!&quot;);
+                        printf(&#34;Accessed!&#34;);
                 } else {
-                        printf(&quot;Wrong!&quot;);
+                        printf(&#34;Wrong!&#34;);
                 }
         }else {
-                printf(&quot;Usage: %s &lt;key&gt;\n&quot;,argv[0]);
+                printf(&#34;Usage: %s &lt;key&gt;\n&#34;,argv[0]);
                 }
         return 0;
 }
-
 </code></pre><p>其中1022 是 &ldquo;THIS IS THE KEY&rdquo; 进行简单的ascii值求和的结果.</p>
 <p>可以通过静态分析和逆向工程可以分析出加密机制.</p>
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gcvxx9n3tuj315605iq5p.jpg" alt=""  />
 </p>
 <h3 id="key-generator">key generator<a hidden class="anchor" aria-hidden="true" href="#key-generator">#</a></h3>
 <p>根据逆向分析的算法生成注册码</p>
-<pre><code>import random
+<pre tabindex="0"><code>import random
 
 def check_key(key):
         char_sum=0
@@ -247,22 +245,20 @@ def check_key(key):
                 char_sum += ord(c)
         return char_sum
 
-chars=&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;
+chars=&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#34;
 
-key = &quot;&quot;
+key = &#34;&#34;
 
 while True:
         key += random.choice(chars)
 
         sum_temp = check_key(key)
         if sum_temp &gt; 1022:
-                key = &quot;&quot;
+                key = &#34;&#34;
         elif sum_temp &lt;1022:
                 pass
         else:   
-                print(&quot;Key:{}&quot;.format(key))
-
-
+                print(&#34;Key:{}&#34;.format(key))
 </code></pre><p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gcvwahfr4sj30pu08uq4h.jpg" alt=""  />
 </p>
 <p><strong>referer</strong>:<br>
@@ -277,12 +273,12 @@ youtube channel: liveoverflow</p>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://chibataiki.github.io/posts/shodan/">
-    <span class="title">« Prev Page</span>
+    <span class="title">« Prev</span>
     <br>
     <span>shodan usage</span>
   </a>
   <a class="next" href="https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/">
-    <span class="title">Next Page »</span>
+    <span class="title">Next »</span>
     <br>
     <span>Netgear-命令注入漏洞分析</span>
   </a>
@@ -297,7 +293,7 @@ youtube channel: liveoverflow</p>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">

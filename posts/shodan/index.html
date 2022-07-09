@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>shodan usage | JiansLife</title>
-<meta name="keywords" content="note" />
+<meta name="keywords" content="note">
 <meta name="description" content="过滤 include:
 filtername:&quot;value&quot;
 exclude: - or ! -filtername:&quot;value&quot;
@@ -20,9 +20,9 @@ favicon hash值的计算 import mmh3 import requests response = requests.get(&#3
 python3 -m pip install shodan shodan download [quary] shodan parse --fields ip_str,port,[fields] --separator , [download_file] shodan search --fields ip_str,port,[fields] [quary] ...  referer:
 https://help.shodan.io/mastery/property-hashes">
 <meta name="author" content="chiba">
-<link rel="canonical" href="https://chibataiki.github.io/posts/shodan/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<link rel="canonical" href="https://chibataiki.github.io/posts/shodan/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
@@ -31,7 +31,6 @@ https://help.shodan.io/mastery/property-hashes">
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -128,7 +127,7 @@ https://help.shodan.io/mastery/property-hashes"/>
   "@type": "BlogPosting",
   "headline": "shodan usage",
   "name": "shodan usage",
-  "description": "过滤 include:\nfiltername:\u0026quot;value\u0026quot;\nexclude: - or ! -filtername:\u0026quot;value\u0026quot;\n筛选多值: , port: 22,23\nFilter: hash hash值为shodan data域的hash\nbanner text为空的时候,hash值为0\nhash:0 Filter: http.html_hash html的hash\n很多header存在Date值,此时使用hash值进行过滤就存在 漏报,可以采用http.html的hash值进行过滤\nhttp.html_hash:[hash value] 其他过滤规则类似,可以看raw数据进行筛选\nfavicon hash值的计算 import mmh3 import requests response = requests.get('https://website/favicon.ico') favicon = response.content.encode('base64') hash = mmh3.hash(favicon) print(hash)  CLI shodan提供cli接口\npython3 -m pip install shodan shodan download [quary] shodan parse --fields ip_str,port,[fields] --separator , [download_file] shodan search --fields ip_str,port,[fields] [quary] ...  referer:\nhttps://help.shodan.io/mastery/property-hashes",
+  "description": "过滤 include:\nfiltername:\u0026quot;value\u0026quot;\nexclude: - or ! -filtername:\u0026quot;value\u0026quot;\n筛选多值: , port: 22,23\nFilter: hash hash值为shodan data域的hash\nbanner text为空的时候,hash值为0\nhash:0 Filter: http.html_hash html的hash\n很多header存在Date值,此时使用hash值进行过滤就存在 漏报,可以采用http.html的hash值进行过滤\nhttp.html_hash:[hash value] 其他过滤规则类似,可以看raw数据进行筛选\nfavicon hash值的计算 import mmh3 import requests response = requests.get(\u0026#39;https://website/favicon.ico\u0026#39;) favicon = response.content.encode(\u0026#39;base64\u0026#39;) hash = mmh3.hash(favicon) print(hash)  CLI shodan提供cli接口\npython3 -m pip install shodan shodan download [quary] shodan parse --fields ip_str,port,[fields] --separator , [download_file] shodan search --fields ip_str,port,[fields] [quary] ...  referer:\nhttps://help.shodan.io/mastery/property-hashes",
   "keywords": [
     "note"
   ],
@@ -173,14 +172,14 @@ https://help.shodan.io/mastery/property-hashes"/>
     <nav class="nav">
         <div class="logo">
             <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -194,7 +193,7 @@ https://help.shodan.io/mastery/property-hashes"/>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -242,34 +241,32 @@ https://help.shodan.io/mastery/property-hashes"/>
 <h4 id="filter-hash">Filter: hash<a hidden class="anchor" aria-hidden="true" href="#filter-hash">#</a></h4>
 <p>hash值为shodan data域的hash</p>
 <p>banner text为空的时候,hash值为0</p>
-<pre><code>hash:0
+<pre tabindex="0"><code>hash:0
 </code></pre><h4 id="filter-httphtml_hash">Filter: http.html_hash<a hidden class="anchor" aria-hidden="true" href="#filter-httphtml_hash">#</a></h4>
 <p>html的hash</p>
 <p>很多header存在Date值,此时使用hash值进行过滤就存在
 漏报,可以采用http.html的hash值进行过滤</p>
-<pre><code>http.html_hash:[hash value]
+<pre tabindex="0"><code>http.html_hash:[hash value]
 </code></pre><p>其他过滤规则类似,可以看raw数据进行筛选</p>
 <h4 id="favicon-hash值的计算">favicon hash值的计算<a hidden class="anchor" aria-hidden="true" href="#favicon-hash值的计算">#</a></h4>
-<pre><code>import mmh3
+<pre tabindex="0"><code>import mmh3
 import requests
 
-response = requests.get('https://website/favicon.ico')
-favicon = response.content.encode('base64')
+response = requests.get(&#39;https://website/favicon.ico&#39;)
+favicon = response.content.encode(&#39;base64&#39;)
 hash = mmh3.hash(favicon)
 print(hash)
-
 </code></pre><hr>
 <h3 id="cli">CLI<a hidden class="anchor" aria-hidden="true" href="#cli">#</a></h3>
 <p>shodan提供cli接口</p>
-<pre><code>python3 -m pip install shodan
-</code></pre><pre><code>shodan download [quary]
+<pre tabindex="0"><code>python3 -m pip install shodan
+</code></pre><pre tabindex="0"><code>shodan download [quary]
 
 shodan parse --fields ip_str,port,[fields] --separator , [download_file]
 
 shodan search --fields ip_str,port,[fields] [quary]
 
 ...
-
 </code></pre><hr>
 <p>referer:</p>
 <p><a href="https://help.shodan.io/mastery/property-hashes">https://help.shodan.io/mastery/property-hashes</a><br>
@@ -284,12 +281,12 @@ shodan search --fields ip_str,port,[fields] [quary]
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://chibataiki.github.io/posts/a-large-scale-analysis-of-the-security-of-embedded-firmwares/">
-    <span class="title">« Prev Page</span>
+    <span class="title">« Prev</span>
     <br>
     <span>A Large-Scale Analysis of the Security of Embedded Firmwares</span>
   </a>
   <a class="next" href="https://chibataiki.github.io/posts/simple_key_validation/">
-    <span class="title">Next Page »</span>
+    <span class="title">Next »</span>
     <br>
     <span>Simple_key_validation</span>
   </a>
@@ -304,7 +301,7 @@ shodan search --fields ip_str,port,[fields] [quary]
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">

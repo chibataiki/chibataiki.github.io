@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>MIPS/ARM 调试环境 | JiansLife</title>
-<meta name="keywords" content="IoT" />
+<meta name="keywords" content="IoT">
 <meta name="description" content="环境
 宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的debian(wheey)
 MIPS/ARM的程序调试方式:
@@ -18,9 +18,9 @@ chroot . ./program gdbserver --attach pid 调试工具(宿主机):
  IDA debugger里设置一下就行 gdb-multiatch  set architecture mips target remote [ip]:[port] gdb可以使用pwngdb,pedagdb等插件
 referer:">
 <meta name="author" content="chiba">
-<link rel="canonical" href="https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<link rel="canonical" href="https://chibataiki.github.io/posts/dynamic-analysis-for-mips-arm/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
@@ -29,7 +29,6 @@ referer:">
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.87.0" />
 <noscript>
     <style>
         #theme-toggle,
@@ -167,14 +166,14 @@ referer:"/>
     <nav class="nav">
         <div class="logo">
             <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -188,7 +187,7 @@ referer:"/>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -239,7 +238,7 @@ referer:"/>
 <p><code> apt-get install qemu-user-static</code>
 <code> chroot . ./qemu-[arch]-static [-g port] [program]</code></p>
 <p>2.2. 客户机安装 gdbserver</p>
-<pre><code>chroot . ./program
+<pre tabindex="0"><code>chroot . ./program
 gdbserver --attach pid
 </code></pre><p>调试工具(宿主机):</p>
 <ol>
@@ -247,7 +246,7 @@ gdbserver --attach pid
 debugger里设置一下就行</li>
 <li>gdb-multiatch</li>
 </ol>
-<pre><code>set architecture mips
+<pre tabindex="0"><code>set architecture mips
 target remote [ip]:[port]
 </code></pre><p>gdb可以使用pwngdb,pedagdb等插件</p>
 <p>referer:</p>
@@ -261,12 +260,12 @@ target remote [ip]:[port]
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://chibataiki.github.io/posts/dlink-backdoor-analysis/">
-    <span class="title">« Prev Page</span>
+    <span class="title">« Prev</span>
     <br>
     <span>Dlink Backdoor 分析记录</span>
   </a>
   <a class="next" href="https://chibataiki.github.io/posts/macos-multui-java-management/">
-    <span class="title">Next Page »</span>
+    <span class="title">Next »</span>
     <br>
     <span>MacOS 多版本java管理</span>
   </a>
@@ -281,7 +280,7 @@ target remote [ip]:[port]
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">

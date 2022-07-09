@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>tools | JiansLife</title>
-<meta name="keywords" content="" />
+<meta name="keywords" content="">
 <meta name="description" content="JiansLife Blog">
 <meta name="author" content="chiba">
-<link rel="canonical" href="https://chibataiki.github.io/tags/tools/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
+<link rel="canonical" href="https://chibataiki.github.io/tags/tools/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://chibataiki.github.io/favicon-32x32.png">
@@ -18,7 +18,6 @@
 <link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.87.0" />
 <link rel="alternate" type="application/rss+xml" href="https://chibataiki.github.io/tags/tools/index.xml">
 <noscript>
     <style>
@@ -83,14 +82,14 @@
     <nav class="nav">
         <div class="logo">
             <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -104,7 +103,7 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -132,7 +131,9 @@
 </header>
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://chibataiki.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://chibataiki.github.io/tags/">Tags</a></div>
-  <h1>tools</h1>
+  <h1>
+    tools
+  </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
@@ -140,11 +141,11 @@
     <h2>macOS下IDA插件安装
     </h2>
   </header>
-  <section class="entry-content">
+  <div class="entry-content">
     <p> IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
  将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
 chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til </p>
-  </section>
+  </div>
   <footer class="entry-footer"><span title='2020-03-01 14:30:18 +0800 CST'>March 1, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to macOS下IDA插件安装" href="https://chibataiki.github.io/posts/ida-plugin-install/"></a>
 </article>
@@ -154,7 +155,7 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
     <h2>MacOS 多版本java管理
     </h2>
   </header>
-  <section class="entry-content">
+  <div class="entry-content">
     <p>之前安装 Burpsuite的时候,使用的是旧版本JDK1.8,这次ghida需要新版本
 在linux中可以使用sudo update-alternatives --config java 进行java版本的选择
 macOS下则使用jenv
@@ -165,7 +166,7 @@ jenv add &lt;jdk_path&gt; 显示java版本信息:
 jenv versions jenv version 设置java环境:
 jenv global [jdk version] jenv local [jdk version] 有问题可以运行 jenv doctor
 referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</p>
-  </section>
+  </div>
   <footer class="entry-footer"><span title='2020-02-28 13:58:13 +0800 CST'>February 28, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to MacOS 多版本java管理" href="https://chibataiki.github.io/posts/macos-multui-java-management/"></a>
 </article>
@@ -175,7 +176,7 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</p>
     <h2>常用的漏洞分析工具note
     </h2>
   </header>
-  <section class="entry-content">
+  <div class="entry-content">
     <p>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb  pwngdb gef peda   burpsuite  linux command
   file
   readelf
@@ -191,7 +192,7 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</p>
 封装了QEMU system模式的arm,mips的docker镜像
     参考链接:
 https://reverseengineering.stackexchange.com/questions/1817/is-there-any-disassembler-to-rival-ida-pro</p>
-  </section>
+  </div>
   <footer class="entry-footer"><span title='2020-02-28 13:29:32 +0800 CST'>February 28, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to 常用的漏洞分析工具note" href="https://chibataiki.github.io/posts/normal-binary-analysis-tools/"></a>
 </article>
@@ -201,7 +202,7 @@ https://reverseengineering.stackexchange.com/questions/1817/is-there-any-disasse
     <h2>QEMU system mode emulation
     </h2>
   </header>
-  <section class="entry-content">
+  <div class="entry-content">
     <p>主要是对MIPS/ARM架构的嵌入式设备进行仿真
 系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件
 0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 这里大致有三种系统仿真方式
@@ -220,7 +221,7 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
 默认内存128 可以设置 -m 256M
 0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络
 (! net 参数不提倡,QEMU建议使用netdev)...</p>
-  </section>
+  </div>
   <footer class="entry-footer"><span title='2020-02-27 14:03:02 +0800 CST'>February 27, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to QEMU system mode emulation" href="https://chibataiki.github.io/posts/qemu-system-mode-setting/"></a>
 </article>
@@ -230,7 +231,7 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
     <h2>Vim-Markdown-插件安装
     </h2>
   </header>
-  <section class="entry-content">
+  <div class="entry-content">
     <p>环境： macOS catalina vim: macvim
 设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
 需要将
@@ -239,7 +240,7 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
 在vimrc Plug区域添加
 call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
 :MarkdownPreview :MarkdownPreviewStop  </p>
-  </section>
+  </div>
   <footer class="entry-footer"><span title='2020-02-25 00:23:10 +0800 CST'>February 25, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to Vim-Markdown-插件安装" href="https://chibataiki.github.io/posts/vim-markdown-plugin-install/"></a>
 </article>
@@ -249,14 +250,14 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
     <h2>macOS soundflower audio input-output
     </h2>
   </header>
-  <section class="entry-content">
+  <div class="entry-content">
     <p>因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
 工具： Soundflower
   安装 https://github.com/mattingalls/Soundflower/releases
   打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
   chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
   referer: https://github.com/mattingalls/Soundflower/releases</p>
-  </section>
+  </div>
   <footer class="entry-footer"><span title='2020-02-22 21:43:36 +0800 CST'>February 22, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to macOS soundflower audio input-output" href="https://chibataiki.github.io/posts/macos_catalina_sound_redirection/"></a>
 </article>
@@ -267,7 +268,7 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
