@@ -173,5 +173,29 @@ https://www.anquanke.com/post/id/91318
 https://www.anquanke.com/post/id/91454</description>
     </item>
     
+    <item>
+      <title>CVE 2017 9675_D Link DIR 605L_DoS_analysis</title>
+      <link>https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/</link>
+      <pubDate>Wed, 29 Nov 2017 10:27:00 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/</guid>
+      <description>Details
+  Device: D-Link DIR-605L, Model B
+  Vulnerable Firmware Versions: 2.08UIB01 and prior releases. Fixed in
+2.08UIBETA01.
+  Attack Vector: Unauthenticated HTTP GET request
+  Impact: Denial of service
+  CVE: CVE-2017-9675
+Poc: curl http://192.168.1.1/common/
+  请求 http://192.168.1.1/common/ ， 路由器器会发生重启
+条件: ’/’ 为末位字符串串， Get 请求
+根据这些条件可以得出漏漏洞洞位于 boa web server
+选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
+根据固件中的boa 的字符串串信息可以获取到boa的版本为 0.94.14rc21
+因为漏洞发⽣生于 GET 请求，那么猜测漏洞位于: 处理GET请求的函数，且为其中处理目录的那些函数。且末位为 / 分隔符，那么修改或使用URL 字符串的那些函数可能存在漏洞。
+boa.conf:
+漏洞成因:</description>
+    </item>
+    
   </channel>
 </rss>
