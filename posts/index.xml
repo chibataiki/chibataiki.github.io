@@ -488,7 +488,7 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
     </item>
     
     <item>
-      <title>CNVD 2018 01084_D Link_DIR 645_reproduction</title>
+      <title>CNVD-2018-01084_D Link_DIR 645_reproduction</title>
       <link>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</link>
       <pubDate>Wed, 07 Mar 2018 16:36:34 +0800</pubDate>
       
@@ -507,7 +507,7 @@ chroot . ./qemu-mipsel-static -0 &amp;#34;service.cgi&amp;#34; -E REQUEST_METHOD
     </item>
     
     <item>
-      <title>CVE 2017 17562_GoAhead_RCE_reproduce</title>
+      <title>CVE-2017-17562_GoAhead_RCE_reproduce</title>
       <link>https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/</link>
       <pubDate>Wed, 20 Dec 2017 17:36:42 +0800</pubDate>
       
@@ -556,6 +556,27 @@ Step 1. 尝试使用 firmadyne进行初步仿真，失败。
 因为漏洞发⽣于 GET 请求，，那么猜测漏洞位于处理GET请求的函数，且为其 中处理⽬录的那些函数。且 末位为 / 分隔符，那么 修改或使⽤URL 字符串的那些函数可能存在漏洞。
 漏洞成因:
 execl(dirmaker, dirmaker, req-&amp;gt;pathname, req-&amp;gt;request_uri, (void *) NULL); 可能: dirmaker指针指向的⽂件在⽂件系统中并不存在 man execl 中 参数是 char * 类型的NULL指针，但是上⾯使用的是 void *类型的，</description>
+    </item>
+    
+    <item>
+      <title>CVE-2017-17215_HG532e_analysis</title>
+      <link>https://chibataiki.github.io/posts/cve-2017-17215_hg532e_analysis/</link>
+      <pubDate>Tue, 28 Nov 2017 11:16:23 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cve-2017-17215_hg532e_analysis/</guid>
+      <description>使⽤用firmadyne 仿真整个⽂件系统时， ⽆法进入到console 中，console 登陆有限制
+仿真mips架构的debian系统， 将HG532e的⽂文件系统传到debian中，
+checkpoint 中 https://research.checkpoint.com/good-zero-day-skiddie/ 提到漏洞存在于upup 服务中, 该路由器的UPnP服务中有⼀项为DeviceUpgrade，通过请求 /ctrlt/DeviceUpgrade_1 进行固件的升级
+使⽤chroot 运行upnp ， 没有任何提示，查看端口也并没打开，
+使用 strace(system call trace)进行跟踪，发现缺少⽂件
+搜索一下，应该是依赖于 mic 二进制⽂文件
+继续追溯可以发现 profile 中有mic
+对mic ⼆进制进行 msgsvr 关键字搜索: 可以发现和上面strace 的报错信息对应起来。
+运行 mic 时 ，会⽣成对应 /var/msgsvr 不过会进入 ATP cli 从⽽而导致⽆法执⾏其他命令， 不过我们可以通过新建个ssh session 执行 mic 绕过这个限制。
+补充，bin/下的cli 是 ATP cli ， 运行mic时会执行cli?
+现在回过头来可以发现， 打开37215的端口是⼆进制程序是 mic
+使⽤用exploit上的poc进行尝试后，发现确实可以完成命令注入，但是并不是所有命令都能正确执行.
+ ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &amp;#34;GET /a HTTP/1.</description>
     </item>
     
   </channel>
