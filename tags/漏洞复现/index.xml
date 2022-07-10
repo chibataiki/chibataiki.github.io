@@ -5,7 +5,26 @@
     <link>https://chibataiki.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
     <description>Recent content in 漏洞复现 on JiansLife</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 20 Dec 2017 14:59:16 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Mar 2018 15:26:36 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CNVD 2018 01084_D Link_DIR 645_reproduction</title>
+      <link>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</link>
+      <pubDate>Wed, 07 Mar 2018 15:26:36 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</guid>
+      <description>环境:
+ x64 架构kali + qemu user mode mipsel 架构 debian  过程:
+使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
+可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
+cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
+ # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
+CONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示
+可以看到请求为GET和POST请求都需要经过认证。
+然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
+QEMU可以通过 -E 设置环境变量 -0 设置参数
+chroot . ./qemu-mipsel-static -0 &amp;#34;service.cgi&amp;#34; -E REQUEST_METHOD=&amp;#34;POST&amp;#34; - E REQUEST_URI=&amp;#34;service.cgi\?EVENT=CHECKFW%26ls%26&amp;#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&amp;#34;application/x-www-form- urlencoded&amp;#34; -E HTTP_COOKIE=&amp;#34;uid=123456&amp;#34; -E REMOTE_ADDR=&amp;#34;127.</description>
+    </item>
+    
     <item>
       <title>CVE-2017-17562_GoAhead_RCE_漏洞复现.md</title>
       <link>https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/</link>

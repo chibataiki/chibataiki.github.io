@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CNVD 2018 01084_D Link_DIR 645_reproduction | JiansLife</title>
+<meta name="keywords" content="漏洞复现, IoT">
+<meta name="description" content="环境:
+ x64 架构kali &#43; qemu user mode mipsel 架构 debian  过程:
+使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
+可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
+cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
+ # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
+CONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示
+可以看到请求为GET和POST请求都需要经过认证。
+然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
+QEMU可以通过 -E 设置环境变量 -0 设置参数
+chroot . ./qemu-mipsel-static -0 &#34;service.cgi&#34; -E REQUEST_METHOD=&#34;POST&#34; - E REQUEST_URI=&#34;service.cgi\?EVENT=CHECKFW%26ls%26&#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&#34;application/x-www-form- urlencoded&#34; -E HTTP_COOKIE=&#34;uid=123456&#34; -E REMOTE_ADDR=&#34;127.">
+<meta name="author" content="chiba">
+<link rel="canonical" href="https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://chibataiki.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://chibataiki.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://chibataiki.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="CNVD 2018 01084_D Link_DIR 645_reproduction" />
+<meta property="og:description" content="环境:
+ x64 架构kali &#43; qemu user mode mipsel 架构 debian  过程:
+使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
+可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
+cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
+ # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
+CONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示
+可以看到请求为GET和POST请求都需要经过认证。
+然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
+QEMU可以通过 -E 设置环境变量 -0 设置参数
+chroot . ./qemu-mipsel-static -0 &#34;service.cgi&#34; -E REQUEST_METHOD=&#34;POST&#34; - E REQUEST_URI=&#34;service.cgi\?EVENT=CHECKFW%26ls%26&#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&#34;application/x-www-form- urlencoded&#34; -E HTTP_COOKIE=&#34;uid=123456&#34; -E REMOTE_ADDR=&#34;127." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-03-07T15:26:36&#43;08:00" />
+<meta property="article:modified_time" content="2018-03-07T15:26:36&#43;08:00" /><meta property="og:site_name" content="JiansLife" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CNVD 2018 01084_D Link_DIR 645_reproduction"/>
+<meta name="twitter:description" content="环境:
+ x64 架构kali &#43; qemu user mode mipsel 架构 debian  过程:
+使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
+可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
+cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
+ # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
+CONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示
+可以看到请求为GET和POST请求都需要经过认证。
+然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
+QEMU可以通过 -E 设置环境变量 -0 设置参数
+chroot . ./qemu-mipsel-static -0 &#34;service.cgi&#34; -E REQUEST_METHOD=&#34;POST&#34; - E REQUEST_URI=&#34;service.cgi\?EVENT=CHECKFW%26ls%26&#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&#34;application/x-www-form- urlencoded&#34; -E HTTP_COOKIE=&#34;uid=123456&#34; -E REMOTE_ADDR=&#34;127."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://chibataiki.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CNVD 2018 01084_D Link_DIR 645_reproduction",
+      "item": "https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CNVD 2018 01084_D Link_DIR 645_reproduction",
+  "name": "CNVD 2018 01084_D Link_DIR 645_reproduction",
+  "description": "环境:\n x64 架构kali + qemu user mode mipsel 架构 debian  过程:\n使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。\n可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0\ncgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。\n # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL\nCONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示\n可以看到请求为GET和POST请求都需要经过认证。\n然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE\nQEMU可以通过 -E 设置环境变量 -0 设置参数\nchroot . ./qemu-mipsel-static -0 \u0026#34;service.cgi\u0026#34; -E REQUEST_METHOD=\u0026#34;POST\u0026#34; - E REQUEST_URI=\u0026#34;service.cgi\\?EVENT=CHECKFW%26ls%26\u0026#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=\u0026#34;application/x-www-form- urlencoded\u0026#34; -E HTTP_COOKIE=\u0026#34;uid=123456\u0026#34; -E REMOTE_ADDR=\u0026#34;127.",
+  "keywords": [
+    "漏洞复现", "IoT"
+  ],
+  "articleBody": "环境:\n x64 架构kali + qemu user mode mipsel 架构 debian  过程:\n使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。\n可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0\ncgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。\n # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL\nCONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示\n可以看到请求为GET和POST请求都需要经过认证。\n然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE\nQEMU可以通过 -E 设置环境变量 -0 设置参数\nchroot . ./qemu-mipsel-static -0 \"service.cgi\" -E REQUEST_METHOD=\"POST\" - E REQUEST_URI=\"service.cgi\\?EVENT=CHECKFW%26ls%26\" -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=\"application/x-www-form- urlencoded\" -E HTTP_COOKIE=\"uid=123456\" -E REMOTE_ADDR=\"127.0.0.1\" -g 1234 -strace ./htdocs/cgibin 其中我们自己设置的 sess_ispoweruser 是经过不了校验的，不过能够在调试的时候手 动修改return value(v0)\n我们将 EVENT参数设置为CHECKFW\u0026ls\u0026 传递到函数lxmldbc_system 中 system 执行的参数就被注入了命令。\n添加 -strace 查看系统调用， 这里显示 exec format error是因为使用qemu user mode 之后不能够执行原本的execve，一种方式是使用 打过execve patch 的qemu-mipel-static版本。\n另一种是在基于mips架构的debian系统中进行运行,不过IDA远程调试的时候某个指令 SIGTRAP了\n referer:\nhttp://www.freebuf.com/vuls/162627.html http://www.devttys0.com/2015/04/hacking-the-d-link-dir-890l/ http://www.devttys0.com/2011/09/exploiting-embedded-systems-part-3/ https://lists.gnu.org/archive/html/qemu-devel/2016-01/msg03019.html https://github.com/forumi0721/qemu-execve https://blahcat.github.io/2017/07/14/building-a-debian-stretch-qemu-image-for-mipsel/\n",
+  "wordCount" : "107",
+  "inLanguage": "en",
+  "datePublished": "2018-03-07T15:26:36+08:00",
+  "dateModified": "2018-03-07T15:26:36+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "chiba"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "JiansLife",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chibataiki.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://chibataiki.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://chibataiki.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://chibataiki.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      CNVD 2018 01084_D Link_DIR 645_reproduction
+    </h1>
+    <div class="post-meta"><span title='2018-03-07 15:26:36 +0800 CST'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba
+
+</div>
+  </header> 
+  <div class="post-content"><p>环境:</p>
+<ol>
+<li>x64 架构kali + qemu user mode</li>
+<li>mipsel 架构 debian</li>
+</ol>
+<p>过程:</p>
+<p>使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。</p>
+<p><img loading="lazy" src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710142923891.png" alt="image-20220710142923891"  />
+</p>
+<p>可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0</p>
+<p><img loading="lazy" src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710142946622.png" alt="image-20220710142946622"  />
+</p>
+<p><img loading="lazy" src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710142955802.png" alt="image-20220710142955802"  />
+</p>
+<p>cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。</p>
+<ol>
+<li># REQUEST_METHOD</li>
+<li># cgibin_parse_request 中 获取以下参数:</li>
+</ol>
+<p>CONTENT_TYPE CONTENT_LENGTH REQUEST_URL</p>
+<p>CONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示</p>
+<p>可以看到请求为GET和POST请求都需要经过认证。</p>
+<p><img loading="lazy" src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710143019572.png" alt="image-20220710143019572"  />
+</p>
+<p>然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE</p>
+<img src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710143038560.png" alt="image-20220710143038560" style="zoom:50%;" />
+<p>QEMU可以通过 -E 设置环境变量 -0 设置参数</p>
+<pre tabindex="0"><code>chroot . ./qemu-mipsel-static -0 &#34;service.cgi&#34; -E REQUEST_METHOD=&#34;POST&#34; - E REQUEST_URI=&#34;service.cgi\?EVENT=CHECKFW%26ls%26&#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&#34;application/x-www-form- urlencoded&#34; -E HTTP_COOKIE=&#34;uid=123456&#34; -E REMOTE_ADDR=&#34;127.0.0.1&#34; -g 1234 -strace ./htdocs/cgibin
+</code></pre><p>其中我们自己设置的 sess_ispoweruser 是经过不了校验的，不过能够在调试的时候手 动修改return value(v0)</p>
+<p>我们将 EVENT参数设置为CHECKFW&amp;ls&amp; 传递到函数lxmldbc_system 中 system 执行的参数就被注入了命令。</p>
+<img src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710143119248.png" alt="image-20220710143119248" style="zoom:50%;" />
+<img src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710143128817.png" alt="image-20220710143128817" style="zoom:50%;" />
+<img src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710143140916.png" alt="image-20220710143140916" style="zoom:50%;" />
+<p>添加 -strace 查看系统调用， 这里显示 exec format error是因为使用qemu user mode 之后不能够执行原本的execve，一种方式是使用 打过execve patch 的qemu-mipel-static版本。</p>
+<img src="./CNVD-2018-01084_D-Link_DIR-645_reproduction.assets/image-20220710143159833.png" alt="image-20220710143159833" style="zoom:50%;" />
+<p>另一种是在基于mips架构的debian系统中进行运行,不过IDA远程调试的时候某个指令 SIGTRAP了</p>
+<hr>
+<p>referer:</p>
+<p><a href="http://www.freebuf.com/vuls/162627.html">http://www.freebuf.com/vuls/162627.html</a>
+<a href="http://www.devttys0.com/2015/04/hacking-the-d-link-dir-890l/">http://www.devttys0.com/2015/04/hacking-the-d-link-dir-890l/</a>
+<a href="http://www.devttys0.com/2011/09/exploiting-embedded-systems-part-3/">http://www.devttys0.com/2011/09/exploiting-embedded-systems-part-3/</a>
+<a href="https://lists.gnu.org/archive/html/qemu-devel/2016-01/msg03019.html">https://lists.gnu.org/archive/html/qemu-devel/2016-01/msg03019.html</a>
+<a href="https://github.com/forumi0721/qemu-execve">https://github.com/forumi0721/qemu-execve</a>
+<a href="https://blahcat.github.io/2017/07/14/building-a-debian-stretch-qemu-image-for-mipsel/">https://blahcat.github.io/2017/07/14/building-a-debian-stretch-qemu-image-for-mipsel/</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://chibataiki.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></li>
+      <li><a href="https://chibataiki.github.io/tags/iot/">IoT</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://chibataiki.github.io/posts/macos_catalina_sound_redirection/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>macOS soundflower audio input-output</span>
+  </a>
+  <a class="next" href="https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/">
+    <span class="title">Next »</span>
+    <br>
+    <span>CVE-2017-17562_GoAhead_RCE_漏洞复现.md</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://chibataiki.github.io/">JiansLife</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
