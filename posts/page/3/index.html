@@ -334,53 +334,26 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>CNVD-2018-01084_D Link_DIR 645_reproduction
+    <h2>CVE-2017-18046_Dasan_H640X_rce_reproduction
     </h2>
   </header>
   <div class="entry-content">
-    <p>环境:
- x64 架构kali &#43; qemu user mode mipsel 架构 debian  过程:
-使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
-可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
-cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
- # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
-CONTENT_LENGTH 基于POST 数据的长度 所以使用 $LEN 进行表示
-可以看到请求为GET和POST请求都需要经过认证。
-然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
-QEMU可以通过 -E 设置环境变量 -0 设置参数
-chroot . ./qemu-mipsel-static -0 &#34;service.cgi&#34; -E REQUEST_METHOD=&#34;POST&#34; - E REQUEST_URI=&#34;service.cgi\?EVENT=CHECKFW%26ls%26&#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&#34;application/x-www-form- urlencoded&#34; -E HTTP_COOKIE=&#34;uid=123456&#34; -E REMOTE_ADDR=&#34;127....</p>
+    <p>Dasan Networks H640X Unauthenticated Remote Code Execution
+  Affected version:
+H640GR-02 H640GV-03 H640GW-02 H640RW-02 H645G
+  Firmware:
+2.76-9999 2.76-1101 2.67-1070 2.45-1045
+  从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
+Step 1. 尝试使用 firmadyne进行初步仿真，失败。
+[ 1.092000] init/1: potentially unexpected fatal signal 4 ... [ 1.096000] Kernel panic - not syncing: Attempted to kill init! Step 2. 使用qemu的user mode
+ cpio-root chroot . ./qemu-mips-static -g 1234 ./bin/busybox -i -d 10 &gt; debug.log gdb-multiarch 进行远程调试时， 发现其中指向0x7c65180a ，然而查看进程的maps ， 0x7c65180a地址是在范围之外的。 Step 3....</p>
   </div>
-  <footer class="entry-footer"><span title='2018-03-07 15:26:36 +0800 CST'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
-  <a class="entry-link" aria-label="post link to CNVD-2018-01084_D Link_DIR 645_reproduction" href="https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>CVE-2017-17215_HG532e_analysis
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>使⽤用firmadyne 仿真整个⽂文件系统时， ⽆无法进⼊入到console 中，应该是做了了某种限制。
-仿真mips架构的debian系统， 将HG532e的⽂文件系统传到debian中，
-checkpoint 中 https://research.checkpoint.com/good-zero-day-skiddie/ 提到漏洞存在于upup 服务中, 该路由器的UPnP服务中有⼀项为DeviceUpgrade，通过请求 /ctrlt/DeviceUpgrade_1 进行固件的升级
-使⽤chroot 运行upnp ， 没有任何提示，查看端口也并没打开，
-使用 strace(system call trace)进行跟踪，发现缺少⽂件
-搜索一下，应该是依赖于 mic 二进制⽂文件
-继续追溯可以发现 profile 中有mic
-对mic ⼆进制进行 msgsvr 关键字搜索: 可以发现和上面strace 的报错信息对应起来。
-运行 mic 时 ，会⽣成对应 /var/msgsvr 不过会进入 ATP cli 从⽽而导致⽆法执⾏其他命令， 不过我们可以通过新建个ssh session 执行 mic 绕过这个限制。
-补充，bin/下的cli 是 ATP cli ， 运行mic时会执行cli?
-现在回过头来可以发现， 打开37215的端口是⼆进制程序是 mic
-使⽤用exploit上的poc进行尝试后，发现确实可以完成命令注入，但是并不是所有命令都能正确执行.
- ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &#34;GET /a HTTP/1....</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-01-25 16:55:12 +0800 CST'>January 25, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
-  <a class="entry-link" aria-label="post link to CVE-2017-17215_HG532e_analysis" href="https://chibataiki.github.io/posts/cve-2017-17215_hg532e_analysis/"></a>
+  <footer class="entry-footer"><span title='2017-12-20 13:29:11 +0800 CST'>December 20, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to CVE-2017-18046_Dasan_H640X_rce_reproduction" href="https://chibataiki.github.io/posts/cve-2017-18046_dasan_h640x_rce_reproduction/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://chibataiki.github.io/posts/page/2/">« Prev</a>
-    <a class="next" href="https://chibataiki.github.io/posts/page/4/">Next »</a>
   </nav>
 </footer>
     </main>
