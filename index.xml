@@ -497,7 +497,7 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
     </item>
     
     <item>
-      <title>CNVD 2018 01084_D Link_DIR 645_reproduction</title>
+      <title>CNVD-2018-01084_D Link_DIR 645_reproduction</title>
       <link>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</link>
       <pubDate>Wed, 07 Mar 2018 15:26:36 +0800</pubDate>
       
@@ -516,7 +516,7 @@ chroot . ./qemu-mipsel-static -0 &amp;#34;service.cgi&amp;#34; -E REQUEST_METHOD
     </item>
     
     <item>
-      <title>CVE 2017 17215_HG532e_analysis</title>
+      <title>CVE-2017-17215_HG532e_analysis</title>
       <link>https://chibataiki.github.io/posts/cve-2017-17215_hg532e_analysis/</link>
       <pubDate>Thu, 25 Jan 2018 16:55:12 +0800</pubDate>
       
@@ -569,7 +569,7 @@ https://www.anquanke.com/post/id/91454</description>
     </item>
     
     <item>
-      <title>CVE 2017 9675_D Link DIR 605L_DoS_analysis</title>
+      <title>CVE-2017-9675_D Link DIR 605L_DoS_analysis</title>
       <link>https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/</link>
       <pubDate>Wed, 29 Nov 2017 10:27:00 +0800</pubDate>
       
