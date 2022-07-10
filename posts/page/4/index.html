@@ -153,40 +153,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>CVE-2017-17562_GoAhead_RCE_漏洞复现.md
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2017-12-20 shodan结果：  EXPLOITATION 任意环境变量的注入很初步，但是某些特殊的环境变量能导致修改动态链接器的控制流
- referer：
-https://www.elttam.com.au/blog/goahead/ https://github.com/elttam/advisories/tree/master/CVE-2017-17562
-GitHub - embedthis/goahead: GoAhead Web Server
-https://www.exploit-db.com/exploits/43360/
-https://www.anquanke.com/post/id/91318
-https://www.anquanke.com/post/id/91454</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-12-20 14:59:16 +0800 CST'>December 20, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
-  <a class="entry-link" aria-label="post link to CVE-2017-17562_GoAhead_RCE_漏洞复现.md" href="https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>CVE 2017 18046_Dasan_H640X_rce_reproduction
+    <h2>CVE-2017-18046_Dasan_H640X_rce_reproduction
     </h2>
   </header>
   <div class="entry-content">
     <p>Dasan Networks H640X Unauthenticated Remote Code Execution
-看了下，是web server lighttpd 中的login_action.html 中使用的是strcpy，没有检查输入长度导致的栈溢出， 从而引发的RCE。
   Affected version:
- H640GR-02 H640GV-03 H640GW-02 H640RW-02 H645G    Firmware:
- 2.76-9999 2.76-1101 2.67-1070 2.45-1045    从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
-  Step 1. 尝试使用 firmadyne进行初步仿真，失败。
-  [ 1.092000] init/1: potentially unexpected fatal signal 4 …
-  [ 1.096000] Kernel panic - not syncing: Attempted to kill init!
-    Step 2....</p>
+H640GR-02 H640GV-03 H640GW-02 H640RW-02 H645G
+  Firmware:
+2.76-9999 2.76-1101 2.67-1070 2.45-1045
+  从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
+Step 1. 尝试使用 firmadyne进行初步仿真，失败。
+[ 1.092000] init/1: potentially unexpected fatal signal 4 ... [ 1.096000] Kernel panic - not syncing: Attempted to kill init! Step 2. 使用qemu的user mode
+ cpio-root chroot . ./qemu-mips-static -g 1234 ./bin/busybox -i -d 10 &gt; debug.log gdb-multiarch 进行远程调试时， 发现其中指向0x7c65180a ，然而查看进程的maps ， 0x7c65180a地址是在范围之外的。 Step 3....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-12-07 16:46:24 +0800 CST'>December 7, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
-  <a class="entry-link" aria-label="post link to CVE 2017 18046_Dasan_H640X_rce_reproduction" href="https://chibataiki.github.io/posts/cve-2017-18046_dasan_h640x_rce_reproduction/"></a>
+  <footer class="entry-footer"><span title='2017-12-20 13:29:11 +0800 CST'>December 20, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to CVE-2017-18046_Dasan_H640X_rce_reproduction" href="https://chibataiki.github.io/posts/cve-2017-18046_dasan_h640x_rce_reproduction/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -201,18 +183,14 @@ https://www.anquanke.com/post/id/91454</p>
 2.08UIBETA01.
   Attack Vector: Unauthenticated HTTP GET request
   Impact: Denial of service
-  CVE: CVE-2017-9675
-Poc: curl http://192.168.1.1/common/
-  请求 http://192.168.1.1/common/ ， 路由器器会发生重启
-条件: ’/’ 为末位字符串串， Get 请求
-根据这些条件可以得出漏漏洞洞位于 boa web server
-选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
+ CVE: CVE-2017-9675    Poc: curl http://192.168.1.1/common/
+  选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
 根据固件中的boa 的字符串串信息可以获取到boa的版本为 0.94.14rc21
-因为漏洞发⽣生于 GET 请求，那么猜测漏洞位于: 处理GET请求的函数，且为其中处理目录的那些函数。且末位为 / 分隔符，那么修改或使用URL 字符串的那些函数可能存在漏洞。
-boa.conf:
-漏洞成因:...</p>
+因为漏洞发⽣于 GET 请求，，那么猜测漏洞位于处理GET请求的函数，且为其 中处理⽬录的那些函数。且 末位为 / 分隔符，那么 修改或使⽤URL 字符串的那些函数可能存在漏洞。
+漏洞成因:
+execl(dirmaker, dirmaker, req-&gt;pathname, req-&gt;request_uri, (void *) NULL); 可能: dirmaker指针指向的⽂件在⽂件系统中并不存在 man execl 中 参数是 char * 类型的NULL指针，但是上⾯使用的是 void *类型的，...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-11-29 10:27:00 +0800 CST'>November 29, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
+  <footer class="entry-footer"><span title='2017-11-29 15:36:26 +0800 CST'>November 29, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to CVE-2017-9675_D Link DIR 605L_DoS_analysis" href="https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/"></a>
 </article>
 <footer class="page-footer">

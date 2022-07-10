@@ -488,6 +488,40 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
     </item>
     
     <item>
+      <title>CNVD 2018 01084_D Link_DIR 645_reproduction</title>
+      <link>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</link>
+      <pubDate>Wed, 07 Mar 2018 16:36:34 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</guid>
+      <description>环境:
+ x64 架构kali 2 + qemu user mode mipsel 架构 debian  过程:
+使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
+可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
+cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
+ # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
+CONTENT_LENGTH 基于POST 数据的长度
+可以看到请求为GET和POST请求都需要经过认证。
+然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
+QEMU可以通过 -E 设置环境变量 -0 设置参数
+chroot . ./qemu-mipsel-static -0 &amp;#34;service.cgi&amp;#34; -E REQUEST_METHOD=&amp;#34;POST&amp;#34; - E REQUEST_URI=&amp;#34;service.cgi\?EVENT=CHECKFW%26ls%26&amp;#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&amp;#34;application/x-www-form- urlencoded&amp;#34; -E HTTP_COOKIE=&amp;#34;uid=123456&amp;#34; -E REMOTE_ADDR=&amp;#34;127.</description>
+    </item>
+    
+    <item>
+      <title>CVE 2017 17562_GoAhead_RCE_reproduce</title>
+      <link>https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/</link>
+      <pubDate>Wed, 20 Dec 2017 17:36:42 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/</guid>
+      <description>编译运行 GoAhead
+最新版本4.0.0 已修复 ， git checkout 切换漏洞版本
+发现者现实shodan上数量：
+2017-12-20 shodan：
+漏洞位于 cgi.c cgiHandler
+for new process, the function will start by allocating an array point for envp argument. then initials with key-value pairs taken from HTTP request parameters. Finally, lancgCgi function is called ,forks and execve the cgi script. 对于新进程，该函数将从为 envp 参数分配数组点开始。然后使用从 HTTP 请求参数获取的键值对开头的缩写。最后，调用 lancgCgi 函数，并执行 cgi 脚本。cgiHandleri 函数仅过滤 REMOTE_HOST 和 HTTP_AUTHORIZATION，所有其他参数均受信任和传递。因此，攻击者可以控制新 CGI 脚本的任意环境变量.
+Patch : back to the version 4 ➜ goahead-git git:(4f83a6a3) ✗ git checkout tags/v4.</description>
+    </item>
+    
+    <item>
       <title>CVE-2017-18046_Dasan_H640X_rce_reproduction</title>
       <link>https://chibataiki.github.io/posts/cve-2017-18046_dasan_h640x_rce_reproduction/</link>
       <pubDate>Wed, 20 Dec 2017 13:29:11 +0800</pubDate>
@@ -502,6 +536,26 @@ H640GR-02 H640GV-03 H640GW-02 H640RW-02 H645G
 Step 1. 尝试使用 firmadyne进行初步仿真，失败。
 [ 1.092000] init/1: potentially unexpected fatal signal 4 ... [ 1.096000] Kernel panic - not syncing: Attempted to kill init! Step 2. 使用qemu的user mode
  cpio-root chroot . ./qemu-mips-static -g 1234 ./bin/busybox -i -d 10 &amp;gt; debug.log gdb-multiarch 进行远程调试时， 发现其中指向0x7c65180a ，然而查看进程的maps ， 0x7c65180a地址是在范围之外的。 Step 3.</description>
+    </item>
+    
+    <item>
+      <title>CVE-2017-9675_D Link DIR 605L_DoS_analysis</title>
+      <link>https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/</link>
+      <pubDate>Wed, 29 Nov 2017 15:36:26 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/</guid>
+      <description>Details
+  Device: D-Link DIR-605L, Model B
+  Vulnerable Firmware Versions: 2.08UIB01 and prior releases. Fixed in
+2.08UIBETA01.
+  Attack Vector: Unauthenticated HTTP GET request
+  Impact: Denial of service
+ CVE: CVE-2017-9675    Poc: curl http://192.168.1.1/common/
+  选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
+根据固件中的boa 的字符串串信息可以获取到boa的版本为 0.94.14rc21
+因为漏洞发⽣于 GET 请求，，那么猜测漏洞位于处理GET请求的函数，且为其 中处理⽬录的那些函数。且 末位为 / 分隔符，那么 修改或使⽤URL 字符串的那些函数可能存在漏洞。
+漏洞成因:
+execl(dirmaker, dirmaker, req-&amp;gt;pathname, req-&amp;gt;request_uri, (void *) NULL); 可能: dirmaker指针指向的⽂件在⽂件系统中并不存在 man execl 中 参数是 char * 类型的NULL指针，但是上⾯使用的是 void *类型的，</description>
     </item>
     
   </channel>
