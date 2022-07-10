@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>漏洞复现 on JiansLife</title>
+    <link>https://chibataiki.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+    <description>Recent content in 漏洞复现 on JiansLife</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 20 Dec 2017 14:59:16 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2017-17562_GoAhead_RCE_漏洞复现.md</title>
+      <link>https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/</link>
+      <pubDate>Wed, 20 Dec 2017 14:59:16 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/</guid>
+      <description>2017-12-20 shodan结果：  EXPLOITATION 任意环境变量的注入很初步，但是某些特殊的环境变量能导致修改动态链接器的控制流
+ referer：
+https://www.elttam.com.au/blog/goahead/ https://github.com/elttam/advisories/tree/master/CVE-2017-17562
+GitHub - embedthis/goahead: GoAhead Web Server
+https://www.exploit-db.com/exploits/43360/
+https://www.anquanke.com/post/id/91318
+https://www.anquanke.com/post/id/91454</description>
+    </item>
+    
+  </channel>
+</rss>
