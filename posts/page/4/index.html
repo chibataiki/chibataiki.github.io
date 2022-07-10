@@ -153,6 +153,26 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>CVE 2017 18046_Dasan_H640X_rce_reproduction
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Dasan Networks H640X Unauthenticated Remote Code Execution
+看了下，是web server lighttpd 中的login_action.html 中使用的是strcpy，没有检查输入长度导致的栈溢出， 从而引发的RCE。
+  Affected version:
+ H640GR-02 H640GV-03 H640GW-02 H640RW-02 H645G    Firmware:
+ 2.76-9999 2.76-1101 2.67-1070 2.45-1045    从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
+  Step 1. 尝试使用 firmadyne进行初步仿真，失败。
+  [ 1.092000] init/1: potentially unexpected fatal signal 4 …
+  [ 1.096000] Kernel panic - not syncing: Attempted to kill init!
+    Step 2....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-12-07 16:46:24 +0800 CST'>December 7, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to CVE 2017 18046_Dasan_H640X_rce_reproduction" href="https://chibataiki.github.io/posts/cve-2017-18046_dasan_h640x_rce_reproduction/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>CVE 2017 9675_D Link DIR 605L_DoS_analysis
     </h2>
   </header>
