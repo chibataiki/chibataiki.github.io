@@ -149,7 +149,7 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
   "keywords": [
     "tools", "IoT", "qemu"
   ],
-  "articleBody": "主要是对MIPS/ARM架构的嵌入式设备进行仿真\n系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件\n0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 这里大致有三种系统仿真方式\n1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.\n2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.\n3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现\n这里选择第3种.\n0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y (这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化, 但是还有一种说法就是,最好不要自己编译QEMU,因为可能对某些支持不是很好)\n0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/\n一些默认设置:\nRoot password: root\nUser account: user\nUser password: user\n0x03启动qemu 最基础的命令:\nqemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append \"root=/dev/sda1 console=ttyS0\"  不想使用图形模式: -nographic\n默认内存128 可以设置 -m 256M\n0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络\n(! net 参数不提倡,QEMU建议使用netdev)\n1.用户模式- SLIRP 不加任何参数时的默认模式就是用户模式\n默认参数为 -net dev, -net nic\n网络如下图所示\n该模式允许客户机(qemu)和宿主机(ubuntu)进行有限的通讯\n-netdev user 中有一些设置参数比如:\nnet, host,dns,tftp,smb等等\n比较有用的是 hostfwd,允许进行数据转发\nhostfwd= [tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport\n例如宿主机通过ssh访问客户机:\nqemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0' -nographic -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22 其中-device e1000 创建虚拟网络设备\n-netdev user,id=net0,hostfwd=tcp::5555-:22\n创建user 模式的网络,将客户机所有端口22的数据重定向到宿主机端口5555上面\n在宿主机上ssh客户机就是:\nssh [username]@localhost -p 5555\n其他服务端口的开启类似.\n使用方式比较简单, 但是可用性和性能方面都有很有限.\nTAP\u0026 TUN TAP等同于一个以太网设备，它操作第二层数据包(以太网数据帧)。 TUN 模拟了网络层设备,操作第三层数据包(IP数据)\ntap设备比user-mode 有更好的性能\n进行网络设置 先讲一下我的设备环境:\n 宿主机: macOS catalina 虚拟机: ubuntu 18.04.4 in VMware ubuntu 网络: 通过VMWare 的NAT接口连接   设置 bridge\n虚拟网桥工具 sudo apt-get install bridge-utils\n  开启ipv4转发\n sudo sysctl net.ipv4.ip_forward=1\n  qemu-ifup \u0026\u0026 qemu-ifdown\n  一些教程都是直接在 /network/interfaces 中直接修改的, 感觉方式不够优雅, 因为这些设置不是必须的,只有在仿真的时候才需要.\n所以这里设置一个build-bridge脚本执行网桥的设置和连接,一个recover-nerwork 脚本恢复网络,而qemu-ifup qemu-ifdown 设置tap相关设备(有需要优化的地方,因为有些时候ens33的ip存在没有释放的情况,[TODO])\nbuild-bridge\n # 判是否root 权限 if [ \"$(id -u)\" != \"0\" ]; then echo \"This script must be run as root\" 1\u00262 exit 1 fi echo \"[!]Start building bridge... \" dhclient -r ens33 # 释放ip ip addr flush ens33 # 清除 ip #确认ens3 刷新 ip link set dev ens33 down ip link set dev ens33 up ip link add name br0 type bridge #建立网桥 brctl addif br0 ens33 # 连接ens33 到bridge ip link set dev br0 up dhclient br0 # 从 dhcp 服务器获得 br0 的 IP 地址 ip addr flush ens33 echo \"[!] Finisted bridge setting!\"  recover-bridge\n判断root if [ \"$(id -u)\" != \"0\" ]; then echo \"This script must be run as root\" 1\u00262 exit 1 fi echo \"[!]Recover network setting ... \"\tip link set dev br0 down # 解除连接 brctl delif ens33 br0 # 删除tap 和 br0 ip link delete dev br0 dhclient ens33 sleep 1 ip link set dev ens33 up echo \"[!]Finished network setting!\"  qemu-ifup:\n$ip addr add 0.0.0.0 dev $1 $ip link set dev $1 up $brctl addif br0 $1  qemu-ifdown\nip link set dev $1 down btctl delif br0 $1 ip link delete dev $1    初步网络设置 sudo ./build-bridge.sh\n  启动qemu\n  sudo qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0' -nographic -net nic, -net tap 运行完的网络情况: br0和ens33 tap0: qemu虚拟机里网络: 网络测试 Q\u0026A:\nman qemu 中建议使用 netdev ,但是devtype 是什么没说 -net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v] old way to create a new NIC and connect it to VLAN ’n' (use the ‘-device devtype,netdev=str’ option if possible instead)\nA: -net nic表示添加设备 可以使用model=xxxx 指定添加设备的类型 https://en.wikibooks.org/wiki/QEMU/Devices/Network\nreferer: https://people.debian.org/~aurel32/qemu/mipsel/README.txt\nhttps://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html\nhttps://wiki.qemu.org/Documentation/Networking#Tap https://odkq.com/qemukvmtap\n",
+  "articleBody": "主要是对MIPS/ARM架构的嵌入式设备进行仿真\n系统仿真在大多数时候并不是一种很好的选择,因为不能保证完美的仿真硬件\n0x00 QEMU 系统模式的仿真方式 系统模式下的引导需要提供内核,文件系统,文件系统使用binwalk等工具可以相对方便的获取, 但是内核比较麻烦. 这里大致有三种系统仿真方式\n1.从设备中提取内核,并将提取出的文件系统制作成镜像,从镜像中启动. 这种方式最接近物理设备但是内核的提取不容易,是否能成功启动也另说.\n2.使用一个同架构(MIPS,ARM)预编译的内核,使用固件提取的文件做成镜像进行启动. 相对容易,但是让仿真成功进行也比较麻烦.\n3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现\n这里选择第3种.\n0x01 安装qemu sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y (这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x, 里面一些manual 手册内容也发生了变化, 但是还有一种说法就是,最好不要自己编译QEMU,因为可能对某些支持不是很好)\n0x02下载预编译的kernel和系统文件镜像 下载链接: https://people.debian.org/~aurel32/qemu/\n一些默认设置:\nRoot password: root\nUser account: user\nUser password: user\n0x03启动qemu 最基础的命令:\nqemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append \"root=/dev/sda1 console=ttyS0\"  不想使用图形模式: -nographic\n默认内存128 可以设置 -m 256M\n0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络\n(! net 参数不提倡,QEMU建议使用netdev)\n1.用户模式- SLIRP 不加任何参数时的默认模式就是用户模式\n默认参数为 -net dev, -net nic\n网络如下图所示\n该模式允许客户机(qemu)和宿主机(ubuntu)进行有限的通讯\n-netdev user 中有一些设置参数比如:\nnet, host,dns,tftp,smb等等\n比较有用的是 hostfwd,允许进行数据转发\nhostfwd= [tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport\n例如宿主机通过ssh访问客户机:\nqemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0' -nographic -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22 其中-device e1000 创建虚拟网络设备\n-netdev user,id=net0,hostfwd=tcp::5555-:22\n创建user 模式的网络,将客户机所有端口22的数据重定向到宿主机端口5555上面\n在宿主机上ssh客户机就是:\nssh [username]@localhost -p 5555\n其他服务端口的开启类似.\n使用方式比较简单, 但是可用性和性能方面都有很有限.\nTAP\u0026 TUN TAP等同于一个以太网设备，它操作第二层数据包(以太网数据帧)。 TUN 模拟了网络层设备,操作第三层数据包(IP数据)\ntap设备比user-mode 有更好的性能\n进行网络设置 先讲一下我的设备环境:\n 宿主机: macOS catalina 虚拟机: ubuntu 18.04.4 in VMware ubuntu 网络: 通过VMWare 的NAT接口连接   设置 bridge\n虚拟网桥工具 sudo apt-get install bridge-utils\n  开启ipv4转发\n sudo sysctl net.ipv4.ip_forward=1\n  qemu-ifup \u0026\u0026 qemu-ifdown\n  一些教程都是直接在 /network/interfaces 中直接修改的, 感觉方式不够优雅, 因为这些设置不是必须的,只有在仿真的时候才需要.\n所以这里设置一个build-bridge脚本执行网桥的设置和连接,一个recover-nerwork 脚本恢复网络,而qemu-ifup qemu-ifdown 设置tap相关设备(有需要优化的地方,因为有些时候ens33的ip存在没有释放的情况,[TODO])\nbuild-bridge\n # 判是否root 权限 if [ \"$(id -u)\" != \"0\" ]; then echo \"This script must be run as root\" 1\u00262 exit 1 fi echo \"[!]Start building bridge... \" dhclient -r ens33 # 释放ip ip addr flush ens33 # 清除 ip #确认ens3 刷新 ip link set dev ens33 down ip link set dev ens33 up ip link add name br0 type bridge #建立网桥 brctl addif br0 ens33 # 连接ens33 到bridge ip link set dev br0 up dhclient br0 # 从 dhcp 服务器获得 br0 的 IP 地址 ip addr flush ens33 echo \"[!] Finisted bridge setting!\"  recover-bridge\n判断root if [ \"$(id -u)\" != \"0\" ]; then echo \"This script must be run as root\" 1\u00262 exit 1 fi echo \"[!]Recover network setting ... \"\tip link set dev br0 down # 解除连接 brctl delif ens33 br0 # 删除tap 和 br0 ip link delete dev br0 dhclient ens33 sleep 1 ip link set dev ens33 up echo \"[!]Finished network setting!\"  qemu-ifup:\n$ip addr add 0.0.0.0 dev $1 $ip link set dev $1 up $brctl addif br0 $1  qemu-ifdown\nip link set dev $1 down btctl delif br0 $1 ip link delete dev $1    初步网络设置 sudo ./build-bridge.sh\n  启动qemu\n  sudo qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0' -nographic -net nic, -net tap 运行完的网络情况: br0和ens33 tap0: qemu虚拟机里网络: 网络测试 Q\u0026A:\nman qemu 中建议使用 netdev ,但是devtype 是什么没说 -net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v] old way to create a new NIC and connect it to VLAN ‘n’ (use the ‘-device devtype,netdev=str’ option if possible instead)\nA: -net nic表示添加设备 可以使用model=xxxx 指定添加设备的类型 https://en.wikibooks.org/wiki/QEMU/Devices/Network\nreferer: https://people.debian.org/~aurel32/qemu/mipsel/README.txt\nhttps://manpages.debian.org/unstable/qemu-system-mips/qemu-system-mips.1.en.html\nhttps://wiki.qemu.org/Documentation/Networking#Tap https://odkq.com/qemukvmtap\n",
   "wordCount" : "424",
   "inLanguage": "en",
   "datePublished": "2020-02-27T14:03:02+08:00",
@@ -259,7 +259,7 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
 3.使用一个同架构(MIPS,ARM)预编译的内核,以及预编译的系统镜像. 在系统成功启动后,将固件提取的文件系统拷贝到虚拟机中,使用 chroot 进行允许. 虽然不够贴近物理设备但是比较容易实现</p>
 <p>这里选择第3种.</p>
 <h3 id="0x01-安装qemu">0x01 安装qemu<a hidden class="anchor" aria-hidden="true" href="#0x01-安装qemu">#</a></h3>
-<pre tabindex="0"><code>sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y
+<pre><code>sudo apt-get install qemu-system-mips qemu-system-mipsel qemu-system-arm -y
 </code></pre><p>(这里需要说一下的就是,直接使用apt 安装的qemub版本是2.x,但是QEMU官网的版本已经是4.x,
 里面一些manual 手册内容也发生了变化, 但是还有一种说法就是,最好不要自己编译QEMU,因为可能对某些支持不是很好)</p>
 <h3 id="0x02下载预编译的kernel和系统文件镜像">0x02下载预编译的kernel和系统文件镜像<a hidden class="anchor" aria-hidden="true" href="#0x02下载预编译的kernel和系统文件镜像">#</a></h3>
@@ -290,8 +290,8 @@ User password:  user</p>
 比较有用的是 hostfwd,允许进行数据转发<br>
 <code>hostfwd= [tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport</code></p>
 <p>例如宿主机通过ssh访问客户机:</p>
-<pre tabindex="0"><code>qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta  
--hda debian_wheezy_mipsel_standard.qcow2 -append &#39;root=/dev/sda1 console=ttyS0&#39;
+<pre><code>qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta  
+-hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0'
 -nographic -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22    
 </code></pre><p>其中<code>-device e1000</code> 创建虚拟网络设备</p>
 <p><code>-netdev user,id=net0,hostfwd=tcp::5555-:22</code><br>
@@ -307,7 +307,7 @@ TUN 模拟了网络层设备,操作第三层数据包(IP数据)</p>
 <p>tap设备比user-mode 有更好的性能</p>
 <h5 id="进行网络设置">进行网络设置<a hidden class="anchor" aria-hidden="true" href="#进行网络设置">#</a></h5>
 <p>先讲一下我的设备环境:</p>
-<pre tabindex="0"><code>    宿主机: macOS catalina  
+<pre><code>    宿主机: macOS catalina  
     虚拟机: ubuntu 18.04.4 in VMware  
     ubuntu 网络: 通过VMWare 的NAT接口连接  
 </code></pre><ol>
@@ -387,8 +387,8 @@ sudo ./build-bridge.sh</p>
 <p>启动qemu</p>
 </li>
 </ol>
-<pre tabindex="0"><code>sudo qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta
--hda debian_wheezy_mipsel_standard.qcow2 -append &#39;root=/dev/sda1 console=ttyS0&#39;
+<pre><code>sudo qemu-system-mipsel -M malta -m 256M -kernel vmlinux-3.2.0-4-4kc-malta
+-hda debian_wheezy_mipsel_standard.qcow2 -append 'root=/dev/sda1 console=ttyS0'
 -nographic -net nic, -net tap
 </code></pre><p>运行完的网络情况:
 <img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gcc10gmqgrj319q0ecjuw.jpg" alt=""  />
@@ -405,7 +405,7 @@ sudo ./build-bridge.sh</p>
 <p>Q&amp;A:<br>
 man qemu 中建议使用 netdev ,但是devtype 是什么没说
 -net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
-old way to create a new NIC and connect it to VLAN &rsquo;n'
+old way to create a new NIC and connect it to VLAN &lsquo;n&rsquo;
 (use the &lsquo;-device devtype,netdev=str&rsquo; option if possible instead)</p>
 <p>A: -net nic表示添加设备
 可以使用model=xxxx 指定添加设备的类型

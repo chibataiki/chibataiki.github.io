@@ -243,7 +243,7 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
 functions一栏里面很多alpha开头的函数,里面有个权限检查程序<code>alpha_auth_check</code>,可以分析一下.</p>
 <p>通过交叉引用搜索发现 <code>alpha_httpd_parse_request</code>调用了<code>alpha_auth_check</code> :</p>
 <p><code>alpha_httpd_parse_request</code>调用部分:</p>
-<pre tabindex="0"><code>loc_41A420:
+<pre><code>loc_41A420:
 move    $a0, $s2
 la      $t9, alpha_auth_check
 nop
@@ -264,11 +264,11 @@ li      $a0, 0xFFFFFFFF
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gceifspvtjj30sk0e2tb3.jpg" alt=""  />
 </p>
 <p>看一下strstr用法:</p>
-<pre tabindex="0"><code>NAME
+<pre><code>NAME
        strstr, strcasestr - locate a substring
 DESCRIPTION
        The  strstr()  function  finds  the  first  occurrence of the substring needle in the string
-       haystack.  The terminating null bytes (&#39;\0&#39;) are not compared.
+       haystack.  The terminating null bytes ('\0') are not compared.
 
 RETURN VALUE
        These functions return a pointer to the beginning of the located substring, or NULL  if  the
@@ -283,15 +283,15 @@ RETURN VALUE
 <p>分析传入的字符串</p>
 <p><code>0xD0($s0)</code> -&gt; <code>httpd_parse_request $s0</code></p>
 <p>通过搜索0XD0 ,可以追溯到<code>httpd_parse_request</code>内:</p>
-<pre tabindex="0"><code>loc_41488C:
+<pre><code>loc_41488C:
 loc_41488C:
-la      $a1, aNotPermitted  # &#34; not permitted.\n&#34;
+la      $a1, aNotPermitted  # &quot; not permitted.\n&quot;
 nop
-addiu   $a1, (aUserAgent - 0x470000)  # &#34;User-Agent:&#34;
+addiu   $a1, (aUserAgent - 0x470000)  # &quot;User-Agent:&quot;
 li      $a2, 0xB
 la      $t9, strncasecmp
 nop
-jalr    $t9 ; strncasecmp                                  # $v0 =strncasecmp(a0,a1=&#34;User-Agent:&#34;,a2=0xB)
+jalr    $t9 ; strncasecmp                                  # $v0 =strncasecmp(a0,a1=&quot;User-Agent:&quot;,a2=0xB)
 nop
 lw      $gp, 0x48+var_30($sp)
 bnez    $v0, loc_4148EC	                                   # if($v0!=0)	  jmp 	loc_4148EC					
@@ -301,9 +301,9 @@ move    $a0, $s0
 
 addiu   $s0, 0xB                                           # $s0 = $s0+0xB
 move    $a0, $s0                                           # MEM[$a0] = MEM[$s0]
-la      $a1, aNotPermitted  # &#34; not permitted.\n&#34;          # load address to a1?? [TODO]
+la      $a1, aNotPermitted  # &quot; not permitted.\n&quot;          # load address to a1?? [TODO]
 nop
-addiu   $a1, (asc_46EC10 - 0x470000)  # &#34; \t&#34;              # $a1 = &#34;\t&#34;
+addiu   $a1, (asc_46EC10 - 0x470000)  # &quot; \t&quot;              # $a1 = &quot;\t&quot;
 la      $t9, strspn						
 nop
 jalr    $t9 ; strspn                                       #  $v0 = strspn(a0,a1)
@@ -312,6 +312,7 @@ lw      $gp, 0x48+var_30($sp)
 addu    $s0, $v0                                           #  $s0= $s0+ $v0
 b       loc_4150EC
 sw      $s0, 0xD0($s2)                                     # MEM[$s2+0xD0]:4 = $s0     
+
 </code></pre><p>大概分析了下,如果User-Agent里带有xmlset_roodkcableoj28840ybtide, 那么就可以绕过验证</p>
 <p>shodan 关键词:  Server: thttpd-alphanetworks/2.23</p>
 <p>referer:</p>

@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.98.0" /><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.87.0" /><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -144,6 +144,24 @@
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>CVE-2017-17562_GoAhead_RCE_reproduce
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>编译运行 GoAhead
+最新版本4.0.0 已修复 ， git checkout 切换漏洞版本
+发现者现实shodan上数量：
+2017-12-20 shodan：
+漏洞位于 cgi.c cgiHandler
+for new process, the function will start by allocating an array point for envp argument. then initials with key-value pairs taken from HTTP request parameters. Finally, lancgCgi function is called ,forks and execve the cgi script. 对于新进程，该函数将从为 envp 参数分配数组点开始。然后使用从 HTTP 请求参数获取的键值对开头的缩写。最后，调用 lancgCgi 函数，并执行 cgi 脚本。cgiHandleri 函数仅过滤 REMOTE_HOST 和 HTTP_AUTHORIZATION，所有其他参数均受信任和传递。因此，攻击者可以控制新 CGI 脚本的任意环境变量.
+Patch : back to the version 4 ➜ goahead-git git:(4f83a6a3) ✗ git checkout tags/v4....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-12-20 17:36:42 +0800 CST'>December 20, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to CVE-2017-17562_GoAhead_RCE_reproduce" href="https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">

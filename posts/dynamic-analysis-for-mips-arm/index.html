@@ -238,7 +238,7 @@ referer:"/>
 <p><code> apt-get install qemu-user-static</code>
 <code> chroot . ./qemu-[arch]-static [-g port] [program]</code></p>
 <p>2.2. 客户机安装 gdbserver</p>
-<pre tabindex="0"><code>chroot . ./program
+<pre><code>chroot . ./program
 gdbserver --attach pid
 </code></pre><p>调试工具(宿主机):</p>
 <ol>
@@ -246,7 +246,7 @@ gdbserver --attach pid
 debugger里设置一下就行</li>
 <li>gdb-multiatch</li>
 </ol>
-<pre tabindex="0"><code>set architecture mips
+<pre><code>set architecture mips
 target remote [ip]:[port]
 </code></pre><p>gdb可以使用pwngdb,pedagdb等插件</p>
 <p>referer:</p>

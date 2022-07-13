@@ -260,14 +260,14 @@ chroot . ./bin/igdmpt
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gcca3q1p6mj30kg0qgwj8.jpg" alt=""  />
 </p>
 <p>bind:</p>
-<pre tabindex="0"><code>       int bind(int sockfd, const struct sockaddr *addr,
+<pre><code>       int bind(int sockfd, const struct sockaddr *addr,
                 socklen_t addrlen);`
 </code></pre><p>addr =[family][ip][port] = 0xa5d00002</p>
 <p>0xd05a = 53413 :端口号<br>
 0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址<br>
 0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接</p>
 <p>这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.</p>
-<pre tabindex="0"><code>/* Socket types. */
+<pre><code>/* Socket types. */
 #define SOCK_STREAM	1		/* stream (connection) socket	*/
 #define SOCK_DGRAM	2		/* datagram (conn.less) socket	*/
 

@@ -156,7 +156,7 @@ http://www.devttys0.com/2011/07/reverse-engineering-vxworks-firmware-wrt54gv8/</
 binwalk 扫描结果:
 考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.
 但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大. 类似于这样: 真实数据到 0x00b6b2就结束了
-000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. &amp;#39;...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS.</description>
+000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. &#39;...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS.</description>
     </item>
     
     <item>
@@ -250,7 +250,7 @@ banner text为空的时候,hash值为0
 hash:0 Filter: http.html_hash html的hash
 很多header存在Date值,此时使用hash值进行过滤就存在 漏报,可以采用http.html的hash值进行过滤
 http.html_hash:[hash value] 其他过滤规则类似,可以看raw数据进行筛选
-favicon hash值的计算 import mmh3 import requests response = requests.get(&amp;#39;https://website/favicon.ico&amp;#39;) favicon = response.content.encode(&amp;#39;base64&amp;#39;) hash = mmh3.hash(favicon) print(hash)  CLI shodan提供cli接口
+favicon hash值的计算 import mmh3 import requests response = requests.get(&#39;https://website/favicon.ico&#39;) favicon = response.content.encode(&#39;base64&#39;) hash = mmh3.hash(favicon) print(hash)  CLI shodan提供cli接口
 python3 -m pip install shodan shodan download [quary] shodan parse --fields ip_str,port,[fields] --separator , [download_file] shodan search --fields ip_str,port,[fields] [quary] ...  referer:
 https://help.shodan.io/mastery/property-hashes</description>
     </item>
@@ -262,10 +262,10 @@ https://help.shodan.io/mastery/property-hashes</description>
       
       <guid>https://chibataiki.github.io/posts/simple_key_validation/</guid>
       <description>一种简单的密码加密机制:
-#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&amp;#34;Checking License: %s\n&amp;#34;,argv[1]); int sum=0; for(int i=0;i&amp;lt;strlen(argv[1]);i++){ sum += (int)argv[1][i]; } // printf(&amp;#34;%d\n&amp;#34;,sum); if( 1022 == sum){ printf(&amp;#34;Accessed!&amp;#34;); } else { printf(&amp;#34;Wrong!&amp;#34;); } }else { printf(&amp;#34;Usage: %s &amp;lt;key&amp;gt;\n&amp;#34;,argv[0]); } return 0; } 其中1022 是 &amp;ldquo;THIS IS THE KEY&amp;rdquo; 进行简单的ascii值求和的结果.
+#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&amp;quot;Checking License: %s\n&amp;quot;,argv[1]); int sum=0; for(int i=0;i&amp;lt;strlen(argv[1]);i++){ sum += (int)argv[1][i]; } // printf(&amp;quot;%d\n&amp;quot;,sum); if( 1022 == sum){ printf(&amp;quot;Accessed!&amp;quot;); } else { printf(&amp;quot;Wrong!&amp;quot;); } }else { printf(&amp;quot;Usage: %s &amp;lt;key&amp;gt;\n&amp;quot;,argv[0]); } return 0; } 其中1022 是 &amp;ldquo;THIS IS THE KEY&amp;rdquo; 进行简单的ascii值求和的结果.
 可以通过静态分析和逆向工程可以分析出加密机制.
 key generator 根据逆向分析的算法生成注册码
-import random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) return char_sum chars=&amp;#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;#34; key = &amp;#34;&amp;#34; while True: key += random.</description>
+import random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) return char_sum chars=&amp;quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;quot; key = &amp;quot;&amp;quot; while True: key += random.</description>
     </item>
     
     <item>
@@ -281,7 +281,7 @@ LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executa
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;#34;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;amp;&amp;gt; /dev/null
@@ -389,7 +389,7 @@ referer:</description>
 macOS下则使用jenv
 brew tap homebrew/cask-versions brew install jenv 显示java 环境
 /usr/libexec/java_home -V 结果类似于
-13.0.2, x86_64:	&amp;#34;OpenJDK 13.0.2&amp;#34;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;#34;Java SE 8&amp;#34;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
+13.0.2, x86_64:	&amp;quot;OpenJDK 13.0.2&amp;quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;quot;Java SE 8&amp;quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
 jenv add &amp;lt;jdk_path&amp;gt; 显示java版本信息:
 jenv versions jenv version 设置java环境:
 jenv global [jdk version] jenv local [jdk version] 有问题可以运行 jenv doctor
@@ -497,6 +497,25 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
     </item>
     
     <item>
+      <title>CVE-2018-7034_analysis</title>
+      <link>https://chibataiki.github.io/posts/cve-2018-7034_analysis/</link>
+      <pubDate>Mon, 19 Mar 2018 17:50:01 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cve-2018-7034_analysis/</guid>
+      <description>TrendNet TEW-751DR CVE-2018-7034 分析
+基本信息 漏洞类型：认证绕过 CVE-ID: CVE-2018-7034 主要影响版本： •	TEW-751DR – v1.03B03 •	TEW-752DRU – v1.03B01 •	TEW733GR – v1.03B01
+PoC curl -d &amp;#34;SERVICES=DEVICE.ACCOUNT%0aAUTHORIZED_GROUP=1&amp;#34; &amp;#34;http://[IP]/getcfg.php&amp;#34; 除了可以获取 DEVICE.ACCOUNT的信息外，还可以获取其他信息，只要位于 htdocs/webinc/getcfg中的模块都行。
+漏洞细节 当有Admin用户登录 TrendNet 路由器*,*会触发全局变量 *$AUTHORIZED_GROUP &amp;gt;= 1*
+攻击者可以注入 AUTHORIZED_GROUP 全局变量绕过phpcgi模块中的认证.
+刚进入 phpcgi_main 后， 会对参数进行键值对形式的存储,（_TYPE_KEY=VALUE，TYPE 为 GET、POST、SERVER）,并且添加 \n 作为间隔符.
+然后进行认证检测，将检查出的值赋给AUTHORIZED_GROUP，并保存到字符串中作为全局变量传递给 php
+xmldbc_ephp(0, 0, $v0, stdout)
+整个流程中没有对 \n 进行过滤，通过注入 \n 进而注入 AUTHORIZED_GROUP 就可以绕过认证检查，绕过授权执行 php 脚本。
+  /htdocs/web/getcfg.php
+  通过认证后，获取 $_POST[“SERVICES”] , 然后拼接到file 字段，</description>
+    </item>
+    
+    <item>
       <title>CNVD-2018-01084_D Link_DIR 645_reproduction</title>
       <link>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</link>
       <pubDate>Wed, 07 Mar 2018 16:36:34 +0800</pubDate>
@@ -585,7 +604,7 @@ checkpoint 中 https://research.checkpoint.com/good-zero-day-skiddie/ 提到漏�
 补充，bin/下的cli 是 ATP cli ， 运行mic时会执行cli?
 现在回过头来可以发现， 打开37215的端口是⼆进制程序是 mic
 使⽤用exploit上的poc进行尝试后，发现确实可以完成命令注入，但是并不是所有命令都能正确执行.
- ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &amp;#34;GET /a HTTP/1.</description>
+ ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &amp;quot;GET /a HTTP/1.</description>
     </item>
     
     

@@ -334,6 +334,28 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>CVE-2018-7034_analysis
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TrendNet TEW-751DR CVE-2018-7034 分析
+基本信息 漏洞类型：认证绕过 CVE-ID: CVE-2018-7034 主要影响版本： •	TEW-751DR – v1.03B03 •	TEW-752DRU – v1.03B01 •	TEW733GR – v1.03B01
+PoC curl -d &#34;SERVICES=DEVICE.ACCOUNT%0aAUTHORIZED_GROUP=1&#34; &#34;http://[IP]/getcfg.php&#34; 除了可以获取 DEVICE.ACCOUNT的信息外，还可以获取其他信息，只要位于 htdocs/webinc/getcfg中的模块都行。
+漏洞细节 当有Admin用户登录 TrendNet 路由器*,*会触发全局变量 *$AUTHORIZED_GROUP &gt;= 1*
+攻击者可以注入 AUTHORIZED_GROUP 全局变量绕过phpcgi模块中的认证.
+刚进入 phpcgi_main 后， 会对参数进行键值对形式的存储,（_TYPE_KEY=VALUE，TYPE 为 GET、POST、SERVER）,并且添加 \n 作为间隔符.
+然后进行认证检测，将检查出的值赋给AUTHORIZED_GROUP，并保存到字符串中作为全局变量传递给 php
+xmldbc_ephp(0, 0, $v0, stdout)
+整个流程中没有对 \n 进行过滤，通过注入 \n 进而注入 AUTHORIZED_GROUP 就可以绕过认证检查，绕过授权执行 php 脚本。
+  /htdocs/web/getcfg.php
+  通过认证后，获取 $_POST[“SERVICES”] , 然后拼接到file 字段，...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-03-19 17:50:01 +0800 CST'>March 19, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to CVE-2018-7034_analysis" href="https://chibataiki.github.io/posts/cve-2018-7034_analysis/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>CNVD-2018-01084_D Link_DIR 645_reproduction
     </h2>
   </header>
@@ -352,24 +374,6 @@ chroot . ./qemu-mipsel-static -0 &#34;service.cgi&#34; -E REQUEST_METHOD=&#34;PO
   </div>
   <footer class="entry-footer"><span title='2018-03-07 16:36:34 +0800 CST'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to CNVD-2018-01084_D Link_DIR 645_reproduction" href="https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>CVE-2017-17562_GoAhead_RCE_reproduce
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>编译运行 GoAhead
-最新版本4.0.0 已修复 ， git checkout 切换漏洞版本
-发现者现实shodan上数量：
-2017-12-20 shodan：
-漏洞位于 cgi.c cgiHandler
-for new process, the function will start by allocating an array point for envp argument. then initials with key-value pairs taken from HTTP request parameters. Finally, lancgCgi function is called ,forks and execve the cgi script. 对于新进程，该函数将从为 envp 参数分配数组点开始。然后使用从 HTTP 请求参数获取的键值对开头的缩写。最后，调用 lancgCgi 函数，并执行 cgi 脚本。cgiHandleri 函数仅过滤 REMOTE_HOST 和 HTTP_AUTHORIZATION，所有其他参数均受信任和传递。因此，攻击者可以控制新 CGI 脚本的任意环境变量.
-Patch : back to the version 4 ➜ goahead-git git:(4f83a6a3) ✗ git checkout tags/v4....</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-12-20 17:36:42 +0800 CST'>December 20, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;chiba</footer>
-  <a class="entry-link" aria-label="post link to CVE-2017-17562_GoAhead_RCE_reproduce" href="https://chibataiki.github.io/posts/cve-2017-17562_goahead_rce_reproduce/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -21,7 +21,7 @@ banner text为空的时候,hash值为0
 hash:0 Filter: http.html_hash html的hash
 很多header存在Date值,此时使用hash值进行过滤就存在 漏报,可以采用http.html的hash值进行过滤
 http.html_hash:[hash value] 其他过滤规则类似,可以看raw数据进行筛选
-favicon hash值的计算 import mmh3 import requests response = requests.get(&amp;#39;https://website/favicon.ico&amp;#39;) favicon = response.content.encode(&amp;#39;base64&amp;#39;) hash = mmh3.hash(favicon) print(hash)  CLI shodan提供cli接口
+favicon hash值的计算 import mmh3 import requests response = requests.get(&#39;https://website/favicon.ico&#39;) favicon = response.content.encode(&#39;base64&#39;) hash = mmh3.hash(favicon) print(hash)  CLI shodan提供cli接口
 python3 -m pip install shodan shodan download [quary] shodan parse --fields ip_str,port,[fields] --separator , [download_file] shodan search --fields ip_str,port,[fields] [quary] ...  referer:
 https://help.shodan.io/mastery/property-hashes</description>
     </item>

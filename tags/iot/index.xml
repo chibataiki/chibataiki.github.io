@@ -45,7 +45,7 @@ LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executa
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;#34;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;amp;&amp;gt; /dev/null
@@ -140,6 +140,25 @@ bind:
     </item>
     
     <item>
+      <title>CVE-2018-7034_analysis</title>
+      <link>https://chibataiki.github.io/posts/cve-2018-7034_analysis/</link>
+      <pubDate>Mon, 19 Mar 2018 17:50:01 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/cve-2018-7034_analysis/</guid>
+      <description>TrendNet TEW-751DR CVE-2018-7034 分析
+基本信息 漏洞类型：认证绕过 CVE-ID: CVE-2018-7034 主要影响版本： •	TEW-751DR – v1.03B03 •	TEW-752DRU – v1.03B01 •	TEW733GR – v1.03B01
+PoC curl -d &amp;#34;SERVICES=DEVICE.ACCOUNT%0aAUTHORIZED_GROUP=1&amp;#34; &amp;#34;http://[IP]/getcfg.php&amp;#34; 除了可以获取 DEVICE.ACCOUNT的信息外，还可以获取其他信息，只要位于 htdocs/webinc/getcfg中的模块都行。
+漏洞细节 当有Admin用户登录 TrendNet 路由器*,*会触发全局变量 *$AUTHORIZED_GROUP &amp;gt;= 1*
+攻击者可以注入 AUTHORIZED_GROUP 全局变量绕过phpcgi模块中的认证.
+刚进入 phpcgi_main 后， 会对参数进行键值对形式的存储,（_TYPE_KEY=VALUE，TYPE 为 GET、POST、SERVER）,并且添加 \n 作为间隔符.
+然后进行认证检测，将检查出的值赋给AUTHORIZED_GROUP，并保存到字符串中作为全局变量传递给 php
+xmldbc_ephp(0, 0, $v0, stdout)
+整个流程中没有对 \n 进行过滤，通过注入 \n 进而注入 AUTHORIZED_GROUP 就可以绕过认证检查，绕过授权执行 php 脚本。
+  /htdocs/web/getcfg.php
+  通过认证后，获取 $_POST[“SERVICES”] , 然后拼接到file 字段，</description>
+    </item>
+    
+    <item>
       <title>CNVD-2018-01084_D Link_DIR 645_reproduction</title>
       <link>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</link>
       <pubDate>Wed, 07 Mar 2018 16:36:34 +0800</pubDate>
@@ -228,7 +247,7 @@ checkpoint 中 https://research.checkpoint.com/good-zero-day-skiddie/ 提到漏�
 补充，bin/下的cli 是 ATP cli ， 运行mic时会执行cli?
 现在回过头来可以发现， 打开37215的端口是⼆进制程序是 mic
 使⽤用exploit上的poc进行尝试后，发现确实可以完成命令注入，但是并不是所有命令都能正确执行.
- ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &amp;#34;GET /a HTTP/1.</description>
+ ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &amp;quot;GET /a HTTP/1.</description>
     </item>
     
   </channel>
