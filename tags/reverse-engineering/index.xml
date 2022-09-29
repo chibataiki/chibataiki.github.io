@@ -12,20 +12,20 @@
       <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
       
       <guid>https://chibataiki.github.io/posts/normal-binary-analysis-tools/</guid>
-      <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb  pwngdb gef peda   burpsuite  linux command
-  file
-  readelf
-  strings
-  objdump
-  hexdump
-  strace
-  ltrace
-     binwalk
-  checksec
-  qemu
-  dockerhub： https://hub.docker.com/u/waveburst
+      <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb pwngdb gef peda burpsuite linux command
+file
+readelf
+strings
+objdump
+hexdump
+strace
+ltrace
+binwalk
+checksec
+qemu
+dockerhub： https://hub.docker.com/u/waveburst
 封装了QEMU system模式的arm,mips的docker镜像
-    参考链接:
+参考链接:
 https://reverseengineering.stackexchange.com/questions/1817/is-there-any-disassembler-to-rival-ida-pro</description>
     </item>
     

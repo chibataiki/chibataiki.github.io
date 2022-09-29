@@ -10,19 +10,20 @@
 <meta name="description" content="netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.
 使用固件版本: V1.0.1.42
 固件信息:
-LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
+LZMA compressed data Squashfs filesystem, little endian ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;&gt; /dev/null
 那么执行完ping6 后,就会执行恶意命令.
-那么就要看如何控制传入cmd_ping6 的参数.">
+那么就要看如何控制传入cmd_ping6 的参数.
+交叉引用发现cgi_commit 调用了cmd_ping6">
 <meta name="author" content="chiba">
 <link rel="canonical" href="https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
@@ -72,36 +73,38 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
 <meta property="og:description" content="netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.
 使用固件版本: V1.0.1.42
 固件信息:
-LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
+LZMA compressed data Squashfs filesystem, little endian ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;&gt; /dev/null
 那么执行完ping6 后,就会执行恶意命令.
-那么就要看如何控制传入cmd_ping6 的参数." />
+那么就要看如何控制传入cmd_ping6 的参数.
+交叉引用发现cgi_commit 调用了cmd_ping6" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chibataiki.github.io/posts/netgear_command_injection_vule_analysis/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-04T13:48:11&#43;08:00" />
-<meta property="article:modified_time" content="2020-03-04T13:48:11&#43;08:00" /><meta property="og:site_name" content="JiansLife" />
+<meta property="article:published_time" content="2020-03-04T13:48:11+08:00" />
+<meta property="article:modified_time" content="2020-03-04T13:48:11+08:00" /><meta property="og:site_name" content="JiansLife" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Netgear-命令注入漏洞分析"/>
 <meta name="twitter:description" content="netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.
 使用固件版本: V1.0.1.42
 固件信息:
-LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
+LZMA compressed data Squashfs filesystem, little endian ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;&gt; /dev/null
 那么执行完ping6 后,就会执行恶意命令.
-那么就要看如何控制传入cmd_ping6 的参数."/>
+那么就要看如何控制传入cmd_ping6 的参数.
+交叉引用发现cgi_commit 调用了cmd_ping6"/>
 
 
 <script type="application/ld+json">
@@ -130,11 +133,11 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
   "@type": "BlogPosting",
   "headline": "Netgear-命令注入漏洞分析",
   "name": "Netgear-命令注入漏洞分析",
-  "description": "netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.\n使用固件版本: V1.0.1.42\n固件信息:\nLZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)\n使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口\n固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:\n反编译一下大概就是:\nvoid cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,\u0026quot;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,\u0026quot;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026quot;,target)\n因为sprintf 不检验长度,所以存在缓冲区溢出\n但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.\nsystem()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command \u0026amp;\u0026gt; /dev/null\n那么执行完ping6 后,就会执行恶意命令.\n那么就要看如何控制传入cmd_ping6 的参数.",
+  "description": "netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.\n使用固件版本: V1.0.1.42\n固件信息:\nLZMA compressed data Squashfs filesystem, little endian ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)\n使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口\n固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:\n反编译一下大概就是:\nvoid cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,\u0026#34;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,\u0026quot;ping6 -c 1 %s \u0026gt; /tmp/ping6_result 2\u0026gt;\u0026amp;1\u0026quot;,target)\n因为sprintf 不检验长度,所以存在缓冲区溢出\n但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.\nsystem()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command \u0026amp;\u0026gt; /dev/null\n那么执行完ping6 后,就会执行恶意命令.\n那么就要看如何控制传入cmd_ping6 的参数.\n交叉引用发现cgi_commit 调用了cmd_ping6",
   "keywords": [
     "IoT"
   ],
-  "articleBody": "netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.\n使用固件版本: V1.0.1.42\n固件信息:\nLZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)\n使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口\n固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:\n反编译一下大概就是:\nvoid cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,\"ping6 -c 1 %s  /tmp/ping6_result 2\u00261\",target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,\"ping6 -c 1 %s  /tmp/ping6_result 2\u00261\",target)\n因为sprintf 不检验长度,所以存在缓冲区溢出\n但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.\nsystem()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command \u0026 /dev/null\n那么执行完ping6 后,就会执行恶意命令.\n那么就要看如何控制传入cmd_ping6 的参数.\n交叉引用发现cgi_commit 调用了cmd_ping6\n而cgi_commit 则由loc_40535C: 调用, 而loc_40535C是apply.cgi MIME处理函数的一个输出. 所以当向apply.cgi进行post请求,并且post数据包含submit_flag=ping6时,cgi_commit()就会调用cmd_ping6()\nCGI MIME:[TODO] http://speed.eik.bme.hu/help/html/Special_Edition-Using_CGI/ch10.htm#WhatisMIME\nreferer: https://shadow-file.blogspot.com/2013/10/complete-persistent-compromise-of.html https://shadow-file.blogspot.com/2013/10/netgear-root-compromise-via-command.html\n",
+  "articleBody": "netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.\n使用固件版本: V1.0.1.42\n固件信息:\nLZMA compressed data Squashfs filesystem, little endian ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)\n使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口\n固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:\n反编译一下大概就是:\nvoid cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,\"ping6 -c 1 %s \u003e /tmp/ping6_result 2\u003e\u00261\",target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,\"ping6 -c 1 %s \u003e /tmp/ping6_result 2\u003e\u00261\",target)\n因为sprintf 不检验长度,所以存在缓冲区溢出\n但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.\nsystem()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command \u0026\u003e /dev/null\n那么执行完ping6 后,就会执行恶意命令.\n那么就要看如何控制传入cmd_ping6 的参数.\n交叉引用发现cgi_commit 调用了cmd_ping6\n而cgi_commit 则由loc_40535C: 调用, 而loc_40535C是apply.cgi MIME处理函数的一个输出. 所以当向apply.cgi进行post请求,并且post数据包含submit_flag=ping6时,cgi_commit()就会调用cmd_ping6()\nCGI MIME:[TODO] http://speed.eik.bme.hu/help/html/Special_Edition-Using_CGI/ch10.htm#WhatisMIME\nreferer: https://shadow-file.blogspot.com/2013/10/complete-persistent-compromise-of.html https://shadow-file.blogspot.com/2013/10/netgear-root-compromise-via-command.html\n",
   "wordCount" : "83",
   "inLanguage": "en",
   "datePublished": "2020-03-04T13:48:11+08:00",
@@ -245,12 +248,12 @@ system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gchzkctptpj30o60msq79.jpg" alt=""  />
 </p>
 <p>反编译一下大概就是:</p>
-<pre><code>void cmd_ping6(char *target)
+<pre tabindex="0"><code>void cmd_ping6(char *target)
 
 {
   char cmd [132];
   memset(cmd,0,0x80);
-  sprintf(cmd,&quot;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&quot;,target);
+  sprintf(cmd,&#34;ping6 -c 1 %s &gt; /tmp/ping6_result 2&gt;&amp;1&#34;,target);
   system(cmd);
   return;
 }

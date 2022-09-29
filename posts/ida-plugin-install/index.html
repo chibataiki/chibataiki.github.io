@@ -7,12 +7,12 @@
 <meta name="robots" content="index, follow">
 <title>macOS下IDA插件安装 | JiansLife</title>
 <meta name="keywords" content="tools, ida">
-<meta name="description" content=" IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
- 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
+<meta name="description" content=" IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
 chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til ">
 <meta name="author" content="chiba">
 <link rel="canonical" href="https://chibataiki.github.io/posts/ida-plugin-install/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
@@ -59,18 +59,18 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
 
     </style>
 </noscript><meta property="og:title" content="macOS下IDA插件安装" />
-<meta property="og:description" content=" IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
- 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
+<meta property="og:description" content=" IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
 chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chibataiki.github.io/posts/ida-plugin-install/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-01T14:30:18&#43;08:00" />
-<meta property="article:modified_time" content="2020-03-01T14:30:18&#43;08:00" /><meta property="og:site_name" content="JiansLife" />
+<meta property="article:published_time" content="2020-03-01T14:30:18+08:00" />
+<meta property="article:modified_time" content="2020-03-01T14:30:18+08:00" /><meta property="og:site_name" content="JiansLife" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="macOS下IDA插件安装"/>
-<meta name="twitter:description" content=" IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
- 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
+<meta name="twitter:description" content=" IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
 chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til "/>
 
 
@@ -100,11 +100,11 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
   "@type": "BlogPosting",
   "headline": "macOS下IDA插件安装",
   "name": "macOS下IDA插件安装",
-  "description": " IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步\n 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:\nchibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til ",
+  "description": " IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步\n将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:\nchibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til ",
   "keywords": [
     "tools", "ida"
   ],
-  "articleBody": " IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步\n 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:\nchibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til ",
+  "articleBody": " IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步\n将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:\nchibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til ",
   "wordCount" : "49",
   "inLanguage": "en",
   "datePublished": "2020-03-01T14:30:18+08:00",
@@ -215,7 +215,7 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
 <li>将ida_fuzzy.py 所依赖的包放到 python 目录下</li>
 </ol>
 <p>可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:</p>
-<pre><code>chibataiki@chibataikis-MBP MacOS % tree -d -L 1 .
+<pre tabindex="0"><code>chibataiki@chibataikis-MBP MacOS % tree -d -L 1 .
 .
 ├── cfg
 ├── dbgsrv

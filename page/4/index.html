@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.87.0" /><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.104.1" /><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="JiansLife Blog">
 <meta name="author" content="chiba">
 <link rel="canonical" href="https://chibataiki.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://chibataiki.github.io/favicon-32x32.png">
@@ -170,14 +170,14 @@ Patch : back to the version 4 ➜ goahead-git git:(4f83a6a3) ✗ git checkout ta
   </header>
   <div class="entry-content">
     <p>Dasan Networks H640X Unauthenticated Remote Code Execution
-  Affected version:
+Affected version:
 H640GR-02 H640GV-03 H640GW-02 H640RW-02 H645G
-  Firmware:
+Firmware:
 2.76-9999 2.76-1101 2.67-1070 2.45-1045
-  从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
+从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
 Step 1. 尝试使用 firmadyne进行初步仿真，失败。
 [ 1.092000] init/1: potentially unexpected fatal signal 4 ... [ 1.096000] Kernel panic - not syncing: Attempted to kill init! Step 2. 使用qemu的user mode
- cpio-root chroot . ./qemu-mips-static -g 1234 ./bin/busybox -i -d 10 &gt; debug.log gdb-multiarch 进行远程调试时， 发现其中指向0x7c65180a ，然而查看进程的maps ， 0x7c65180a地址是在范围之外的。 Step 3....</p>
+cpio-root chroot . ./qemu-mips-static -g 1234 ./bin/busybox -i -d 10 &gt; debug.log gdb-multiarch 进行远程调试时， 发现其中指向0x7c65180a ，然而查看进程的maps ， 0x7c65180a地址是在范围之外的。 Step 3....</p>
   </div>
   <footer class="entry-footer"><span title='2017-12-20 13:29:11 +0800 CST'>December 20, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to CVE-2017-18046_Dasan_H640X_rce_reproduction" href="https://chibataiki.github.io/posts/cve-2017-18046_dasan_h640x_rce_reproduction/"></a>
@@ -190,17 +190,18 @@ Step 1. 尝试使用 firmadyne进行初步仿真，失败。
   </header>
   <div class="entry-content">
     <p>Details
-  Device: D-Link DIR-605L, Model B
-  Vulnerable Firmware Versions: 2.08UIB01 and prior releases. Fixed in
+Device: D-Link DIR-605L, Model B
+Vulnerable Firmware Versions: 2.08UIB01 and prior releases. Fixed in
 2.08UIBETA01.
-  Attack Vector: Unauthenticated HTTP GET request
-  Impact: Denial of service
- CVE: CVE-2017-9675    Poc: curl http://192.168.1.1/common/
-  选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
+Attack Vector: Unauthenticated HTTP GET request
+Impact: Denial of service
+CVE: CVE-2017-9675 Poc: curl http://192.168.1.1/common/
+选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
 根据固件中的boa 的字符串串信息可以获取到boa的版本为 0.94.14rc21
 因为漏洞发⽣于 GET 请求，，那么猜测漏洞位于处理GET请求的函数，且为其 中处理⽬录的那些函数。且 末位为 / 分隔符，那么 修改或使⽤URL 字符串的那些函数可能存在漏洞。
 漏洞成因:
-execl(dirmaker, dirmaker, req-&gt;pathname, req-&gt;request_uri, (void *) NULL); 可能: dirmaker指针指向的⽂件在⽂件系统中并不存在 man execl 中 参数是 char * 类型的NULL指针，但是上⾯使用的是 void *类型的，...</p>
+execl(dirmaker, dirmaker, req-&gt;pathname, req-&gt;request_uri, (void *) NULL); 可能: dirmaker指针指向的⽂件在⽂件系统中并不存在 man execl 中 参数是 char * 类型的NULL指针，但是上⾯使用的是 void *类型的，
+execl(const char *path, const char *arg0, ....</p>
   </div>
   <footer class="entry-footer"><span title='2017-11-29 15:36:26 +0800 CST'>November 29, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to CVE-2017-9675_D Link DIR 605L_DoS_analysis" href="https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/"></a>
@@ -224,14 +225,16 @@ checkpoint 中 https://research.checkpoint.com/good-zero-day-skiddie/ 提到漏�
 补充，bin/下的cli 是 ATP cli ， 运行mic时会执行cli?
 现在回过头来可以发现， 打开37215的端口是⼆进制程序是 mic
 使⽤用exploit上的poc进行尝试后，发现确实可以完成命令注入，但是并不是所有命令都能正确执行.
- ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &#34;GET /a HTTP/1....</p>
+➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &#34;GET /a HTTP/1....</p>
   </div>
   <footer class="entry-footer"><span title='2017-11-28 11:16:23 +0800 CST'>November 28, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to CVE-2017-17215_HG532e_analysis" href="https://chibataiki.github.io/posts/cve-2017-17215_hg532e_analysis/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="https://chibataiki.github.io/page/3/">« Prev</a>
+    <a class="prev" href="https://chibataiki.github.io/page/3/">
+      «&nbsp;Prev&nbsp;
+    </a>
   </nav>
 </footer>
     </main>

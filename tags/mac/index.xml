@@ -17,7 +17,7 @@
 macOS下则使用jenv
 brew tap homebrew/cask-versions brew install jenv 显示java 环境
 /usr/libexec/java_home -V 结果类似于
-13.0.2, x86_64:	&amp;quot;OpenJDK 13.0.2&amp;quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;quot;Java SE 8&amp;quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
+13.0.2, x86_64:	&amp;#34;OpenJDK 13.0.2&amp;#34;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;#34;Java SE 8&amp;#34;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
 jenv add &amp;lt;jdk_path&amp;gt; 显示java版本信息:
 jenv versions jenv version 设置java环境:
 jenv global [jdk version] jenv local [jdk version] 有问题可以运行 jenv doctor
@@ -32,10 +32,10 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</descri
       <guid>https://chibataiki.github.io/posts/macos_catalina_sound_redirection/</guid>
       <description>因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
 工具： Soundflower
-  安装 https://github.com/mattingalls/Soundflower/releases
-  打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
-  chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
-  referer: https://github.com/mattingalls/Soundflower/releases</description>
+安装 https://github.com/mattingalls/Soundflower/releases
+打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
+chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
+referer: https://github.com/mattingalls/Soundflower/releases</description>
     </item>
     
   </channel>

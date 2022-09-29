@@ -12,9 +12,9 @@
 仿真:
 使用qemu 系统模式作为测试环境
 固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
-scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt 可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
 bind:
- int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
+int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
 0xd05a = 53413 :端口号
 0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
 0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
@@ -22,7 +22,7 @@ bind:
 /* Socket types. */ #define SOCK_STREAM	1	/* stream (connection) socket	*/ #define SOCK_DGRAM	2	/* datagram (conn.">
 <meta name="author" content="chiba">
 <link rel="canonical" href="https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
@@ -74,9 +74,9 @@ bind:
 仿真:
 使用qemu 系统模式作为测试环境
 固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
-scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt 可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
 bind:
- int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
+int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
 0xd05a = 53413 :端口号
 0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
 0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
@@ -84,8 +84,8 @@ bind:
 /* Socket types. */ #define SOCK_STREAM	1	/* stream (connection) socket	*/ #define SOCK_DGRAM	2	/* datagram (conn." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chibataiki.github.io/posts/netcore_igdmptd_backdoor_analysis/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-02-27T13:53:04&#43;08:00" />
-<meta property="article:modified_time" content="2020-02-27T13:53:04&#43;08:00" /><meta property="og:site_name" content="JiansLife" />
+<meta property="article:published_time" content="2020-02-27T13:53:04+08:00" />
+<meta property="article:modified_time" content="2020-02-27T13:53:04+08:00" /><meta property="og:site_name" content="JiansLife" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Netcore-igdmptd-后门漏洞分析"/>
@@ -94,9 +94,9 @@ bind:
 仿真:
 使用qemu 系统模式作为测试环境
 固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
-scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt 可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
 bind:
- int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
+int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
 0xd05a = 53413 :端口号
 0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
 0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
@@ -130,11 +130,11 @@ bind:
   "@type": "BlogPosting",
   "headline": "Netcore-igdmptd-后门漏洞分析",
   "name": "Netcore-igdmptd-后门漏洞分析",
-  "description": "磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.\n知道了这些之后,进行分析\n仿真:\n使用qemu 系统模式作为测试环境\n固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz\nscp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中\nbind:\n int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002\n0xd05a = 53413 :端口号\n0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址\n0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接\n这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.\n/* Socket types. */ #define SOCK_STREAM\t1\t/* stream (connection) socket\t*/ #define SOCK_DGRAM\t2\t/* datagram (conn.",
+  "description": "磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.\n知道了这些之后,进行分析\n仿真:\n使用qemu 系统模式作为测试环境\n固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz\nscp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt 可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中\nbind:\nint bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002\n0xd05a = 53413 :端口号\n0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址\n0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接\n这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.\n/* Socket types. */ #define SOCK_STREAM\t1\t/* stream (connection) socket\t*/ #define SOCK_DGRAM\t2\t/* datagram (conn.",
   "keywords": [
     "IoT"
   ],
-  "articleBody": "磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.\n知道了这些之后,进行分析\n仿真:\n使用qemu 系统模式作为测试环境\n固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz\nscp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中\nbind:\n int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002\n0xd05a = 53413 :端口号\n0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址\n0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接\n这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.\n/* Socket types. */ #define SOCK_STREAM\t1\t/* stream (connection) socket\t*/ #define SOCK_DGRAM\t2\t/* datagram (conn.less) socket\t*/ # define INADDR_ANY ((unsigned long int) 0x00000000) ... # define INADDR_NONE 0xffffffff ... # define INPORT_ANY 0 ... 敏感功能:\nPoc脚本:https://github.com/h00die/MSF-Testing-Scripts/blob/master/netis_backdoor.py\n参考链接: https://blog.trendmicro.com/trendlabs-security-intelligence/netis-router-backdoor-patched-but-not-really/ https://blog.knownsec.com/wp-content/uploads/2015/01/NetcoreNetis-%E8%B7%AF%E7%94%B1%E5%99%A8%E5%90%8E%E9%97%A8%E5%BA%94%E6%80%A5%E6%A6%82%E8%A6%81.pdf https://github.com/h00die/MSF-Testing-Scripts/blob/master/netis_backdoor.py\n",
+  "articleBody": "磊科路由器中内置了一个IGDMPTD的程序, 在外网上打开UDP端口53413 并进行监听. 后门采用硬编码的密码,允许攻击者在路由器上执行任意代码.\n知道了这些之后,进行分析\n仿真:\n使用qemu 系统模式作为测试环境\n固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz\nscp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt 可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中\nbind:\nint bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002\n0xd05a = 53413 :端口号\n0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址\n0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接\n这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.\n/* Socket types. */ #define SOCK_STREAM\t1\t/* stream (connection) socket\t*/ #define SOCK_DGRAM\t2\t/* datagram (conn.less) socket\t*/ # define INADDR_ANY ((unsigned long int) 0x00000000) ... # define INADDR_NONE 0xffffffff ... # define INPORT_ANY 0 ... 敏感功能:\nPoc脚本:https://github.com/h00die/MSF-Testing-Scripts/blob/master/netis_backdoor.py\n参考链接: https://blog.trendmicro.com/trendlabs-security-intelligence/netis-router-backdoor-patched-but-not-really/ https://blog.knownsec.com/wp-content/uploads/2015/01/NetcoreNetis-%E8%B7%AF%E7%94%B1%E5%99%A8%E5%90%8E%E9%97%A8%E5%BA%94%E6%80%A5%E6%A6%82%E8%A6%81.pdf https://github.com/h00die/MSF-Testing-Scripts/blob/master/netis_backdoor.py\n",
   "wordCount" : "106",
   "inLanguage": "en",
   "datePublished": "2020-02-27T13:53:04+08:00",
@@ -260,14 +260,14 @@ chroot . ./bin/igdmpt
 <p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gcca3q1p6mj30kg0qgwj8.jpg" alt=""  />
 </p>
 <p>bind:</p>
-<pre><code>       int bind(int sockfd, const struct sockaddr *addr,
+<pre tabindex="0"><code>       int bind(int sockfd, const struct sockaddr *addr,
                 socklen_t addrlen);`
 </code></pre><p>addr =[family][ip][port] = 0xa5d00002</p>
 <p>0xd05a = 53413 :端口号<br>
 0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址<br>
 0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接</p>
 <p>这里ip设置为监听所有地址,所以设备会被暴露在公网上,很危险.</p>
-<pre><code>/* Socket types. */
+<pre tabindex="0"><code>/* Socket types. */
 #define SOCK_STREAM	1		/* stream (connection) socket	*/
 #define SOCK_DGRAM	2		/* datagram (conn.less) socket	*/
 

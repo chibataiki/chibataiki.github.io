@@ -19,7 +19,7 @@ MIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.
 MIPS &amp;hellip;
 指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits
 MIPS架构中, 指令分为三种类型,R型、I型和J型.
-寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]</description>
+寄存器 Register Number Conventional Name Usage $0 $zero 硬编码为0 $1 $at 保留给汇编器 $2 - $3 $v0, $v1 保存函数返回值 $4 - $7 $a0 - $a3 存储参数 $8 - $15 $t0 - $t7 存储临时数据 $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据 $24 - $25 $t8 - $t9 存储临时数据 $26 - $27 $k0 - $k1 为内核保留 $28 $gp 全局指针 $29 $sp 堆栈指针 $30 $fp 保存栈指针 $31 $ra 返回地址 算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]</description>
     </item>
     
   </channel>

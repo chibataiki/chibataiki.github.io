@@ -14,10 +14,10 @@ MIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.
 MIPS &hellip;
 指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits
 MIPS架构中, 指令分为三种类型,R型、I型和J型.
-寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src &#43; [xx]">
+寄存器 Register Number Conventional Name Usage $0 $zero 硬编码为0 $1 $at 保留给汇编器 $2 - $3 $v0, $v1 保存函数返回值 $4 - $7 $a0 - $a3 存储参数 $8 - $15 $t0 - $t7 存储临时数据 $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据 $24 - $25 $t8 - $t9 存储临时数据 $26 - $27 $k0 - $k1 为内核保留 $28 $gp 全局指针 $29 $sp 堆栈指针 $30 $fp 保存栈指针 $31 $ra 返回地址 算数指令 opt $dst, $src, [xx] : $dst = $src &#43; [xx]">
 <meta name="author" content="chiba">
 <link rel="canonical" href="https://chibataiki.github.io/posts/mips-assembly-note/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
@@ -71,11 +71,11 @@ MIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.
 MIPS &hellip;
 指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits
 MIPS架构中, 指令分为三种类型,R型、I型和J型.
-寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src &#43; [xx]" />
+寄存器 Register Number Conventional Name Usage $0 $zero 硬编码为0 $1 $at 保留给汇编器 $2 - $3 $v0, $v1 保存函数返回值 $4 - $7 $a0 - $a3 存储参数 $8 - $15 $t0 - $t7 存储临时数据 $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据 $24 - $25 $t8 - $t9 存储临时数据 $26 - $27 $k0 - $k1 为内核保留 $28 $gp 全局指针 $29 $sp 堆栈指针 $30 $fp 保存栈指针 $31 $ra 返回地址 算数指令 opt $dst, $src, [xx] : $dst = $src &#43; [xx]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chibataiki.github.io/posts/mips-assembly-note/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-01T16:07:18&#43;08:00" />
-<meta property="article:modified_time" content="2020-03-01T16:07:18&#43;08:00" /><meta property="og:site_name" content="JiansLife" />
+<meta property="article:published_time" content="2020-03-01T16:07:18+08:00" />
+<meta property="article:modified_time" content="2020-03-01T16:07:18+08:00" /><meta property="og:site_name" content="JiansLife" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MIPS汇编note"/>
@@ -86,7 +86,7 @@ MIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.
 MIPS &hellip;
 指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits
 MIPS架构中, 指令分为三种类型,R型、I型和J型.
-寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src &#43; [xx]"/>
+寄存器 Register Number Conventional Name Usage $0 $zero 硬编码为0 $1 $at 保留给汇编器 $2 - $3 $v0, $v1 保存函数返回值 $4 - $7 $a0 - $a3 存储参数 $8 - $15 $t0 - $t7 存储临时数据 $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据 $24 - $25 $t8 - $t9 存储临时数据 $26 - $27 $k0 - $k1 为内核保留 $28 $gp 全局指针 $29 $sp 堆栈指针 $30 $fp 保存栈指针 $31 $ra 返回地址 算数指令 opt $dst, $src, [xx] : $dst = $src &#43; [xx]"/>
 
 
 <script type="application/ld+json">
@@ -115,11 +115,11 @@ MIPS架构中, 指令分为三种类型,R型、I型和J型.
   "@type": "BlogPosting",
   "headline": "MIPS汇编note",
   "name": "MIPS汇编note",
-  "description": "特性 MIPS和ARM 一样是RISC精简指令集\n延迟槽 MIPS I 引入了延迟槽机制,以减少各种指令后流水线的阻塞.\nMIPS II 取消了延迟槽机制\nMIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.\nMIPS \u0026hellip;\n指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits\nMIPS架构中, 指令分为三种类型,R型、I型和J型.\n寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]",
+  "description": "特性 MIPS和ARM 一样是RISC精简指令集\n延迟槽 MIPS I 引入了延迟槽机制,以减少各种指令后流水线的阻塞.\nMIPS II 取消了延迟槽机制\nMIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.\nMIPS \u0026hellip;\n指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits\nMIPS架构中, 指令分为三种类型,R型、I型和J型.\n寄存器 Register Number Conventional Name Usage $0 $zero 硬编码为0 $1 $at 保留给汇编器 $2 - $3 $v0, $v1 保存函数返回值 $4 - $7 $a0 - $a3 存储参数 $8 - $15 $t0 - $t7 存储临时数据 $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据 $24 - $25 $t8 - $t9 存储临时数据 $26 - $27 $k0 - $k1 为内核保留 $28 $gp 全局指针 $29 $sp 堆栈指针 $30 $fp 保存栈指针 $31 $ra 返回地址 算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]",
   "keywords": [
     "assembly"
   ],
-  "articleBody": "特性 MIPS和ARM 一样是RISC精简指令集\n延迟槽 MIPS I 引入了延迟槽机制,以减少各种指令后流水线的阻塞.\nMIPS II 取消了延迟槽机制\nMIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.\nMIPS …\n指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits\nMIPS架构中, 指令分为三种类型,R型、I型和J型.\n寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]\nxxu : unsgined integers xxi : immediate\n控制指令 分支 bxx $t0, $t1, lable: xx: eq : equal\nlt : larger than\nle : less than\ngt : greater than\nge : greater equal\nne : not equal\n跳转 j lable : 无条件跳转到lable\njr $t3 : jump register ,跳转到$t3所存地址上.\n子程序调用\n  jal sub_label : jump and link\n$ra  jalr register : 跳转地址来自于寄存器\n$ra  load/ store 指令 只有load /store 可以访问内存\n其他指令都是通过寄存器寻址\n  load: lw register_dst ,RAM_src # RAM_source所在的word加载到寄存器中\nlb register_dst ,RAM_src # byte\nli\tregister_dst, value\n  store\nsw register_dst ,RAM_dst # 将寄存器值存到对应内存中\nsb register_source, RAM_dst\n  参考链接: https://uweb.engr.arizona.edu/~ece369/Resources/spim/MIPSReference.pdf\n",
+  "articleBody": "特性 MIPS和ARM 一样是RISC精简指令集\n延迟槽 MIPS I 引入了延迟槽机制,以减少各种指令后流水线的阻塞.\nMIPS II 取消了延迟槽机制\nMIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.\nMIPS …\n指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits\nMIPS架构中, 指令分为三种类型,R型、I型和J型.\n寄存器 Register Number Conventional Name Usage $0 $zero 硬编码为0 $1 $at 保留给汇编器 $2 - $3 $v0, $v1 保存函数返回值 $4 - $7 $a0 - $a3 存储参数 $8 - $15 $t0 - $t7 存储临时数据 $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据 $24 - $25 $t8 - $t9 存储临时数据 $26 - $27 $k0 - $k1 为内核保留 $28 $gp 全局指针 $29 $sp 堆栈指针 $30 $fp 保存栈指针 $31 $ra 返回地址 算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]\nxxu : unsgined integers xxi : immediate\n控制指令 分支 bxx $t0, $t1, lable: xx: eq : equal\nlt : larger than\nle : less than\ngt : greater than\nge : greater equal\nne : not equal\n跳转 j lable : 无条件跳转到lable\njr $t3 : jump register ,跳转到$t3所存地址上.\n子程序调用\njal sub_label : jump and link\n$ra \u003c— PC+4\nPC = sub_label\njalr register : 跳转地址来自于寄存器\n$ra \u003c— PC+4\nPC \u003c— $register\nload/ store 指令 只有load /store 可以访问内存\n其他指令都是通过寄存器寻址\nload: lw register_dst ,RAM_src # RAM_source所在的word加载到寄存器中\nlb register_dst ,RAM_src # byte\nli\tregister_dst, value\nstore\nsw register_dst ,RAM_dst # 将寄存器值存到对应内存中\nsb register_source, RAM_dst\n参考链接: https://uweb.engr.arizona.edu/~ece369/Resources/spim/MIPSReference.pdf\n",
   "wordCount" : "206",
   "inLanguage": "en",
   "datePublished": "2020-03-01T16:07:18+08:00",

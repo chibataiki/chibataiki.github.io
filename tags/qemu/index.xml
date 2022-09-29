@@ -26,10 +26,11 @@ Root password: root
 User account: user
 User password: user
 0x03启动qemu 最基础的命令:
-qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot;  不想使用图形模式: -nographic
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot; 不想使用图形模式: -nographic
 默认内存128 可以设置 -m 256M
 0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络
-(! net 参数不提倡,QEMU建议使用netdev)</description>
+(! net 参数不提倡,QEMU建议使用netdev)
+1.用户模式- SLIRP 不加任何参数时的默认模式就是用户模式</description>
     </item>
     
   </channel>

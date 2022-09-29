@@ -12,8 +12,8 @@
       <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
       
       <guid>https://chibataiki.github.io/posts/ida-plugin-install/</guid>
-      <description> IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
- 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
+      <description> IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
 chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til </description>
     </item>
     
@@ -28,7 +28,7 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
 macOS下则使用jenv
 brew tap homebrew/cask-versions brew install jenv 显示java 环境
 /usr/libexec/java_home -V 结果类似于
-13.0.2, x86_64:	&amp;quot;OpenJDK 13.0.2&amp;quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;quot;Java SE 8&amp;quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
+13.0.2, x86_64:	&amp;#34;OpenJDK 13.0.2&amp;#34;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;#34;Java SE 8&amp;#34;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
 jenv add &amp;lt;jdk_path&amp;gt; 显示java版本信息:
 jenv versions jenv version 设置java环境:
 jenv global [jdk version] jenv local [jdk version] 有问题可以运行 jenv doctor
@@ -41,20 +41,20 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</descri
       <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
       
       <guid>https://chibataiki.github.io/posts/normal-binary-analysis-tools/</guid>
-      <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb  pwngdb gef peda   burpsuite  linux command
-  file
-  readelf
-  strings
-  objdump
-  hexdump
-  strace
-  ltrace
-     binwalk
-  checksec
-  qemu
-  dockerhub： https://hub.docker.com/u/waveburst
+      <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb pwngdb gef peda burpsuite linux command
+file
+readelf
+strings
+objdump
+hexdump
+strace
+ltrace
+binwalk
+checksec
+qemu
+dockerhub： https://hub.docker.com/u/waveburst
 封装了QEMU system模式的arm,mips的docker镜像
-    参考链接:
+参考链接:
 https://reverseengineering.stackexchange.com/questions/1817/is-there-any-disassembler-to-rival-ida-pro</description>
     </item>
     
@@ -78,10 +78,11 @@ Root password: root
 User account: user
 User password: user
 0x03启动qemu 最基础的命令:
-qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot;  不想使用图形模式: -nographic
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot; 不想使用图形模式: -nographic
 默认内存128 可以设置 -m 256M
 0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络
-(! net 参数不提倡,QEMU建议使用netdev)</description>
+(! net 参数不提倡,QEMU建议使用netdev)
+1.用户模式- SLIRP 不加任何参数时的默认模式就是用户模式</description>
     </item>
     
     <item>
@@ -91,13 +92,13 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
       
       <guid>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</guid>
       <description>环境： macOS catalina vim: macvim
-设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
+设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
 需要将
-&amp;quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &amp;quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
+&amp;quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &amp;quot; List ends here. Plugins become visible to Vim after this call. call plug#end() 添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
 安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim
 在vimrc Plug区域添加
-call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
-:MarkdownPreview :MarkdownPreviewStop  </description>
+call plug#begin(&#39;~/.vim/plugged&#39;) 预览:
+:MarkdownPreview :MarkdownPreviewStop </description>
     </item>
     
     <item>
@@ -108,10 +109,10 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
       <guid>https://chibataiki.github.io/posts/macos_catalina_sound_redirection/</guid>
       <description>因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
 工具： Soundflower
-  安装 https://github.com/mattingalls/Soundflower/releases
-  打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
-  chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
-  referer: https://github.com/mattingalls/Soundflower/releases</description>
+安装 https://github.com/mattingalls/Soundflower/releases
+打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
+chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
+referer: https://github.com/mattingalls/Soundflower/releases</description>
     </item>
     
   </channel>

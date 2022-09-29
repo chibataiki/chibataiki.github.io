@@ -8,16 +8,16 @@
 <title>Vim-Markdown-插件安装 | JiansLife</title>
 <meta name="keywords" content="tools">
 <meta name="description" content="环境： macOS catalina vim: macvim
-设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
+设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
 需要将
-&quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
+&quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &quot; List ends here. Plugins become visible to Vim after this call. call plug#end() 添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
 安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim
 在vimrc Plug区域添加
-call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
-:MarkdownPreview :MarkdownPreviewStop  ">
+call plug#begin(&#39;~/.vim/plugged&#39;) 预览:
+:MarkdownPreview :MarkdownPreviewStop ">
 <meta name="author" content="chiba">
 <link rel="canonical" href="https://chibataiki.github.io/posts/vim-markdown-plugin-install/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8b523f1730c922e314350296d83fd666efa16519ca136320a93df674d00b6325.css" integrity="sha256-i1I/FzDJIuMUNQKW2D/WZu&#43;hZRnKE2MgqT32dNALYyU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://chibataiki.github.io/favicon.ico">
@@ -65,28 +65,28 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
     </style>
 </noscript><meta property="og:title" content="Vim-Markdown-插件安装" />
 <meta property="og:description" content="环境： macOS catalina vim: macvim
-设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
+设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
 需要将
-&quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
+&quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &quot; List ends here. Plugins become visible to Vim after this call. call plug#end() 添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
 安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim
 在vimrc Plug区域添加
-call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
-:MarkdownPreview :MarkdownPreviewStop  " />
+call plug#begin(&#39;~/.vim/plugged&#39;) 预览:
+:MarkdownPreview :MarkdownPreviewStop " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chibataiki.github.io/posts/vim-markdown-plugin-install/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-02-25T00:23:10&#43;08:00" />
-<meta property="article:modified_time" content="2020-02-25T00:23:10&#43;08:00" /><meta property="og:site_name" content="JiansLife" />
+<meta property="article:published_time" content="2020-02-25T00:23:10+08:00" />
+<meta property="article:modified_time" content="2020-02-25T00:23:10+08:00" /><meta property="og:site_name" content="JiansLife" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vim-Markdown-插件安装"/>
 <meta name="twitter:description" content="环境： macOS catalina vim: macvim
-设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
+设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
 需要将
-&quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
+&quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &quot; List ends here. Plugins become visible to Vim after this call. call plug#end() 添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
 安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim
 在vimrc Plug区域添加
-call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
-:MarkdownPreview :MarkdownPreviewStop  "/>
+call plug#begin(&#39;~/.vim/plugged&#39;) 预览:
+:MarkdownPreview :MarkdownPreviewStop "/>
 
 
 <script type="application/ld+json">
@@ -115,11 +115,11 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
   "@type": "BlogPosting",
   "headline": "Vim-Markdown-插件安装",
   "name": "Vim-Markdown-插件安装",
-  "description": "环境： macOS catalina vim: macvim\n设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug\n需要将\n\u0026quot; Plugins will be downloaded under the specified directory. call plug#begin('~/.vim/plugged') \u0026quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件\n安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim\n在vimrc Plug区域添加\ncall plug#begin('~/.vim/plugged')  预览:\n:MarkdownPreview :MarkdownPreviewStop  ",
+  "description": "环境： macOS catalina vim: macvim\n设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug\n需要将\n\u0026quot; Plugins will be downloaded under the specified directory. call plug#begin('~/.vim/plugged') \u0026quot; List ends here. Plugins become visible to Vim after this call. call plug#end() 添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件\n安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim\n在vimrc Plug区域添加\ncall plug#begin('~/.vim/plugged') 预览:\n:MarkdownPreview :MarkdownPreviewStop ",
   "keywords": [
     "tools"
   ],
-  "articleBody": "环境： macOS catalina vim: macvim\n设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug\n需要将\n\" Plugins will be downloaded under the specified directory. call plug#begin('~/.vim/plugged') \" List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件\n安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim\n在vimrc Plug区域添加\ncall plug#begin('~/.vim/plugged')  预览:\n:MarkdownPreview :MarkdownPreviewStop  ",
+  "articleBody": "环境： macOS catalina vim: macvim\n设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug\n需要将\n\" Plugins will be downloaded under the specified directory. call plug#begin('~/.vim/plugged') \" List ends here. Plugins become visible to Vim after this call. call plug#end() 添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件\n安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim\n在vimrc Plug区域添加\ncall plug#begin('~/.vim/plugged') 预览:\n:MarkdownPreview :MarkdownPreviewStop ",
   "wordCount" : "56",
   "inLanguage": "en",
   "datePublished": "2020-02-25T00:23:10+08:00",

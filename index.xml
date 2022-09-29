@@ -14,7 +14,7 @@
       <guid>https://chibataiki.github.io/posts/firmware_emulation_tools/</guid>
       <description>Collect some firmware emulation tools. Add some more analysis later.
 [TOC]
-QEMU  user mode system mode  Firmadyne  https://github.com/firmadyne/firmadyne a research-paper project  FirmAE  https://github.com/pr0v3rbs/FirmAE  EMUX (formerly ARMX)  https://github.com/therealsaumil/emux  Firmware Analysis Toolkit  https://github.com/attify/firmware-analysis-toolkit  Qiling  https://github.com/qilingframework/qiling  unicorn  https://github.com/unicorn-engine/unicorn  basesafe  https://github.com/fgsect/BaseSAFE a research-paper project  FirmWire  https://github.com/FirmWire/FirmWire.git for smartphone baseband firmwares  usercore  https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019  binee  https://github.</description>
+QEMU user mode system mode Firmadyne https://github.com/firmadyne/firmadyne a research-paper project FirmAE https://github.com/pr0v3rbs/FirmAE EMUX (formerly ARMX) https://github.com/therealsaumil/emux Firmware Analysis Toolkit https://github.com/attify/firmware-analysis-toolkit Qiling https://github.com/qilingframework/qiling unicorn https://github.com/unicorn-engine/unicorn basesafe https://github.com/fgsect/BaseSAFE a research-paper project FirmWire https://github.com/FirmWire/FirmWire.git for smartphone baseband firmwares usercore https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019 binee https://github.com/carbonblack/binee no more commits since 15 Jun 2020 </description>
     </item>
     
     <item>
@@ -36,19 +36,6 @@ USB descriptor:
 剩下部分为加密固件
 0x03 读取分区 使用lexar 原装的 usb-to-sata bridge，可以发现只能识别256GB的块区
 usb 2-4.3: New USB device found, idVendor=21c4, idProduct=b061, bcdDevice= 3.06 usb 2-4.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3 usb 2-4.3: Product: HL260S usb 2-4.</description>
-    </item>
-    
-    <item>
-      <title>Gdb Script</title>
-      <link>https://chibataiki.github.io/posts/gdb-script/</link>
-      <pubDate>Thu, 15 Apr 2021 19:11:58 +0800</pubDate>
-      
-      <guid>https://chibataiki.github.io/posts/gdb-script/</guid>
-      <description>a sample example
-set pagination off set logging file gdb.output set logging on break xxxx.c:[line number] commands silent p p p eod bt c end run set logging off quit run : gdb -x gdb_script -args [program] [program arguments]
-reference:
-https://sdimitro.github.io/post/scripting-gdb/
-https://sourceware.org/gdb/current/onlinedocs/gdb/Break-Commands.html</description>
     </item>
     
     <item>
@@ -75,11 +62,11 @@ https://www.ted.com/talks/michael_bierut_the_genius_of_the_london_tube_map/trans
       <description>introduction FREAK:(Factoring RSA Export Keys ) 在SSL/TLS协议中存在一种漏洞,允许中间人将ciphersuite中的RSA强度降低为EXPORT-grade(出口级别).
 早期由于二战的因素,许多国家出于国家安全因素的考虑,从而限制加密技术的出口;美国政府对出口的加密算法存在限制, 根据法律将出口的RSA密钥长度减少为512bits.而512bit的RSA密钥解密的代价很小,允许美国可以解密国外的加密通讯.
 受漏洞影响的相关库:
- OpenSSL :CVE-2015-0204 1.0.1-1.0.1j, 1.0.0-1.0.0o,0.9.8-0.9.8zc BoringSSL: versions before Nov 10, 2014 are vulnerable &amp;hellip;  在 OpenSSL 库中，s3_clnt.c 文件中的 ssl3_get_key_exchange 函数允许客户端使用弱RSA密钥对。攻击者可拦截受影响的客户端与服务器之间的HTTPS连接，并强制其使用弱加密。
+OpenSSL :CVE-2015-0204 1.0.1-1.0.1j, 1.0.0-1.0.0o,0.9.8-0.9.8zc BoringSSL: versions before Nov 10, 2014 are vulnerable &amp;hellip; 在 OpenSSL 库中，s3_clnt.c 文件中的 ssl3_get_key_exchange 函数允许客户端使用弱RSA密钥对。攻击者可拦截受影响的客户端与服务器之间的HTTPS连接，并强制其使用弱加密。
 patch部分: https://github.com/openssl/openssl/commit/ce325c60c74b0fa784f5872404b722e120e5cab0
-攻击流程  client在发送的client hello中使用标准的RSA加密请求 MITM 劫持client hello,并将cipher suite 更改为 export-grade RSA,比如TLS_RSA_EXPORT_WITH_RC4_MD5,并传给server server在ServerCertificate中发送2048bits的公钥，接受export级别的cipher suite,并临时生成512bit的RSA公钥, 通过发送ServerKeyExchange message通知client,并使用证书的密钥对公钥进行签名 client端接受消息,验证证书, 生成 premaster key并通过server端的公钥进行加密 mitm attacker需要将512bit的公钥进行因数分解获得临时私钥, mitm 此时可以从clientkeyexchange中解密出pre-master secret 成功解密后attacker可以明文查看所有信息  检测方式:
- 服务端:
-openssl s_client -connect [server ip] -cipher EXPORT 客户端 https://clienttest.</description>
+攻击流程 client在发送的client hello中使用标准的RSA加密请求 MITM 劫持client hello,并将cipher suite 更改为 export-grade RSA,比如TLS_RSA_EXPORT_WITH_RC4_MD5,并传给server server在ServerCertificate中发送2048bits的公钥，接受export级别的cipher suite,并临时生成512bit的RSA公钥, 通过发送ServerKeyExchange message通知client,并使用证书的密钥对公钥进行签名 client端接受消息,验证证书, 生成 premaster key并通过server端的公钥进行加密 mitm attacker需要将512bit的公钥进行因数分解获得临时私钥, mitm 此时可以从clientkeyexchange中解密出pre-master secret 成功解密后attacker可以明文查看所有信息 检测方式:
+服务端:
+openssl s_client -connect [server ip] -cipher EXPORT 客户端 https://clienttest.ssllabs.com:8443/ssltest/viewMyClient.html 实验 使用 netfilterqueue 能够劫持TLS/SSL 握手包，可以通过scapy对数据包进行过滤和修改，可以将ciphersuite 更换为自己想要的版本</description>
     </item>
     
     <item>
@@ -91,7 +78,7 @@ openssl s_client -connect [server ip] -cipher EXPORT 客户端 https://clienttes
       <description>sslstrip is a MITM tool.
 how it works People may not type https:// (http://) in the address bar.
 offen encouter SSL with this two types:
- 301/302 redirection click links with https://  sslstrip can watch http traffic and change all https links to http
+301/302 redirection click links with https:// sslstrip can watch http traffic and change all https links to http
 arpspoof send ARP messages on LAN associate the attacker&amp;rsquo;s Mac address with the gateway ip, then all traffic will send too attacker&amp;rsquo;s machine
 sudo arpspoof -i [interface] -t [target mac] -r [gataway mac] traffic redirect sudo iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000 referer:</description>
     </item>
@@ -107,7 +94,7 @@ sudo arpspoof -i [interface] -t [target mac] -r [gataway mac] traffic redirect s
 安装 坑: pip安装存在问题, 需要pipx
 how mitm works https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/
 certificate 安装mitmproxy的时候会在 .mitmproxy中默认生产很多认证相关的文件. ubuntu需要手动信任一下
- 放到/usr/share/ca-certificates目录下 sudo dpkg-reconfigure ca-certificates  流量转发 开启转发:
+放到/usr/share/ca-certificates目录下 sudo dpkg-reconfigure ca-certificates 流量转发 开启转发:
 sysctl -w net.ipv4.ip_forward=1 sysctl -w net.ipv6.conf.all.forwarding=1 关闭 ICMP包的转发
 sysctl -w net.ipv4.conf.all.send_redirects=0 流量转发存在很多形式: https://docs.mitmproxy.org/stable/concepts-modes/
 这里讲一下 Transparent的相关问题
@@ -123,7 +110,7 @@ sudo useradd mitmproxyuser passwd mitmproxyuser iptables -t nat -A OUTPUT -p tcp
       
       <guid>https://chibataiki.github.io/posts/ghidra-usage-note/</guid>
       <description>Ghidra plugin for ida ghidra包含了一些用于IDA的插件: 位于 ${GHIDRA_DIR}/Extensions/IDAPro/Python/
-mac下插件位置:  /Users/$USER/.idapro/plugins/
+mac下插件位置: /Users/$USER/.idapro/plugins/
 xml_exporter.py: 1.a plugin to export an IDA database as an XML file.
 2.Place in the IDA plugins folder.
 xml_loader.py 1.an IDA loader to build a new database using an XML file.
@@ -139,7 +126,7 @@ xml_loader.py 1.an IDA loader to build a new database using an XML file.
       <guid>https://chibataiki.github.io/posts/ida_usage_note/</guid>
       <description>对于IDA不能识别的二进制文件, 可以选择作为binary file 进行加载.
 需要:
- 手动设置CPU架构 手动设置加载基址  一旦IDA加载了文件,那么首先做的就是在最开头按下c, 将其转为code.
+手动设置CPU架构 手动设置加载基址 一旦IDA加载了文件,那么首先做的就是在最开头按下c, 将其转为code.
 IDA会将二进制文件的bytes转为code然后进行分析, 但是任然会存在很多没有解析的code.
 自动分析binary file 从固件中找到对应的符号文件, 使用IDApython进行符号的修复
 TODO referer:
@@ -156,7 +143,7 @@ http://www.devttys0.com/2011/07/reverse-engineering-vxworks-firmware-wrt54gv8/</
 binwalk 扫描结果:
 考虑到wr886nv6的内存空间, 这个解压大小2M左右的lzma压缩文件就可能比较有意思.
 但是根据binwalk的两个文件初始位置进行分割会有点小问题,所以需要通过hex查看一下真实的有效数据是多大. 类似于这样: 真实数据到 0x00b6b2就结束了
-000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. &#39;...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS.</description>
+000b6280: 500f 1765 1fee 46eb f9ca c213 2911 9afe P..e..F.....)... 000b6290: 3930 5afb 6f5c 6563 9742 d169 e313 e5ba 90Z.o\ec.B.i.... 000b62a0: 030b ba40 fb20 2705 c2c4 64d9 fe98 78de ...@. &amp;#39;...d...x. 000b62b0: be68 ffff ffff ffff ffff ffff ffff ffff .h.............. ... 000b6ff0: ffff ffff ffff ffff ffff ffff ffff ffff ................ 000b7000: 4d49 4e49 4653 0000 0000 0000 0000 0000 MINIFS.</description>
     </item>
     
     <item>
@@ -175,10 +162,10 @@ Amnesia: ?
 Amnesia在找到很多函数的同时也找到了很多的误报. 但是,很多函数初试时设置的栈桢可能是相似的. 因此Polypyus有个设置: 可以通过带有注释的二进制输入文件去学习通用的函数起始地址,并在其他二进制文件中用来识别函数,而不需要匹配函数名.不过该设置只适用于之前没有确认出函数的区域,这样可以避免冲突.
 如何工作 Polypyus 收集带有注释的固件二进制文件,通过对共有的函数进行二进制模糊匹配.
 支持带注释的文件:
- WICED Studio 的 patch.elf 文件,包含symbol definition most ARM compilers 生成的 .symdefs 文件 .csv 文件  输入的二进制文件的共性越多,polypyus的效果越好.
+WICED Studio 的 patch.elf 文件,包含symbol definition most ARM compilers 生成的 .symdefs 文件 .csv 文件 输入的二进制文件的共性越多,polypyus的效果越好.
 安装和使用 效果图:
 问题在于: annotated binary 哪来!
- referer:
+referer:
 https://github.com/seemoo-lab/polypyus</description>
     </item>
     
@@ -189,20 +176,38 @@ https://github.com/seemoo-lab/polypyus</description>
       
       <guid>https://chibataiki.github.io/posts/linux-users-groups/</guid>
       <description>登陆机制相关文件:
-  groups
-  passwd
-  shaodow
-  /etc/group : user group file 用来分配用户组的文件权限?,通过:分为四个部分
- group name group password, x表示密码为空 group ID group包含的用户  Samples: root:\x:0: daemon:\x:1: adm:\x:4:root,syslog /etc/passwd: use names 分为7个部分,通过:分隔
-  username
-  密码的hash值,或者 x表示密码存储在/etc/shadow中,! 表示passwd被锁定,不能通过密码登陆,但是可以通过(ssh key)登陆, *表示不允许登陆
-  uid
-  gid
-  注释
-  用户的home目录
-  (可选项) 用户的shell
-  sample:
-root:\x:0:0:Linux User,,,:/usr/share/ftp_server:/bin/sh ftp:*:95:95::/usr/share/ftp_server:/bin/sh sync:\x:4:65534:sync:/bin:/bin/sync root:!:0:0:root:/tmp:/bin/ash games:\x:5:60:games:/usr/games:/usr/sbin/nologin admin:$1$G555555$99999999999999/:500:500:admin:/tmp:/usr/bin/clish /etc/shadow : user password 只有特权用户可以访问,所以提高了密码的安全性,(这一点上很多嵌入式设备是直接将密码hash嵌入/etc/passwd中,所以不够安全)</description>
+groups
+passwd
+shaodow
+/etc/group : user group file 用来分配用户组的文件权限?,通过:分为四个部分
+group name group password, x表示密码为空 group ID group包含的用户 Samples: root:\x:0: daemon:\x:1: adm:\x:4:root,syslog /etc/passwd: use names 分为7个部分,通过:分隔
+username
+密码的hash值,或者 x表示密码存储在/etc/shadow中,! 表示passwd被锁定,不能通过密码登陆,但是可以通过(ssh key)登陆, *表示不允许登陆
+uid
+gid
+注释
+用户的home目录
+(可选项) 用户的shell
+sample:
+root:\x:0:0:Linux User,,,:/usr/share/ftp_server:/bin/sh ftp:*:95:95::/usr/share/ftp_server:/bin/sh sync:\x:4:65534:sync:/bin:/bin/sync root:!:0:0:root:/tmp:/bin/ash games:\x:5:60:games:/usr/games:/usr/sbin/nologin admin:$1$G555555$99999999999999/:500:500:admin:/tmp:/usr/bin/clish /etc/shadow : user password 只有特权用户可以访问,所以提高了密码的安全性,(这一点上很多嵌入式设备是直接将密码hash嵌入/etc/passwd中,所以不够安全)
+login name
+算法,salt和hash值 或者 特殊字符
+$id$salt$hashed
+id:
+$1$ – MD5 $2a$ – Blowfish $2y$ – Eksblowfish $5$ – SHA-256 $6$ – SHA-512 &amp;hellip; 和密码日期相关 略</description>
+    </item>
+    
+    <item>
+      <title>Gdb Script</title>
+      <link>https://chibataiki.github.io/posts/gdb-script/</link>
+      <pubDate>Wed, 15 Apr 2020 19:11:58 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/gdb-script/</guid>
+      <description>a sample example
+set pagination off set logging file gdb.output set logging on break xxxx.c:[line number] commands silent p p p eod bt c end run set logging off quit run : gdb -x gdb_script -args [program] [program arguments]
+reference:
+https://sdimitro.github.io/post/scripting-gdb/
+https://sourceware.org/gdb/current/onlinedocs/gdb/Break-Commands.html</description>
     </item>
     
     <item>
@@ -232,7 +237,7 @@ show the main benefits of look- ing at many different devices at the same time
 discovered a total of 38 previously unknown vulnerabilities in over 693 firmware images.
 correlating similar files inside apparently unrelated firmware images
 1. Introduction IoT devices:
-  Common- Off-The-Shelf (COTS) devices : printers, mobile phones, home routers, and computer components and peripherals.</description>
+Common- Off-The-Shelf (COTS) devices : printers, mobile phones, home routers, and computer components and peripherals.</description>
     </item>
     
     <item>
@@ -250,9 +255,10 @@ banner text为空的时候,hash值为0
 hash:0 Filter: http.html_hash html的hash
 很多header存在Date值,此时使用hash值进行过滤就存在 漏报,可以采用http.html的hash值进行过滤
 http.html_hash:[hash value] 其他过滤规则类似,可以看raw数据进行筛选
-favicon hash值的计算 import mmh3 import requests response = requests.get(&#39;https://website/favicon.ico&#39;) favicon = response.content.encode(&#39;base64&#39;) hash = mmh3.hash(favicon) print(hash)  CLI shodan提供cli接口
-python3 -m pip install shodan shodan download [quary] shodan parse --fields ip_str,port,[fields] --separator , [download_file] shodan search --fields ip_str,port,[fields] [quary] ...  referer:
-https://help.shodan.io/mastery/property-hashes</description>
+favicon hash值的计算 import mmh3 import requests response = requests.get(&amp;#39;https://website/favicon.ico&amp;#39;) favicon = response.content.encode(&amp;#39;base64&amp;#39;) hash = mmh3.hash(favicon) print(hash) CLI shodan提供cli接口
+python3 -m pip install shodan shodan download [quary] shodan parse --fields ip_str,port,[fields] --separator , [download_file] shodan search --fields ip_str,port,[fields] [quary] ... referer:
+https://help.shodan.io/mastery/property-hashes
+https://cli.shodan.io/</description>
     </item>
     
     <item>
@@ -262,10 +268,10 @@ https://help.shodan.io/mastery/property-hashes</description>
       
       <guid>https://chibataiki.github.io/posts/simple_key_validation/</guid>
       <description>一种简单的密码加密机制:
-#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&amp;quot;Checking License: %s\n&amp;quot;,argv[1]); int sum=0; for(int i=0;i&amp;lt;strlen(argv[1]);i++){ sum += (int)argv[1][i]; } // printf(&amp;quot;%d\n&amp;quot;,sum); if( 1022 == sum){ printf(&amp;quot;Accessed!&amp;quot;); } else { printf(&amp;quot;Wrong!&amp;quot;); } }else { printf(&amp;quot;Usage: %s &amp;lt;key&amp;gt;\n&amp;quot;,argv[0]); } return 0; } 其中1022 是 &amp;ldquo;THIS IS THE KEY&amp;rdquo; 进行简单的ascii值求和的结果.
+#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; int main(int argc, char *argv[]){ if(argc==2){ printf(&amp;#34;Checking License: %s\n&amp;#34;,argv[1]); int sum=0; for(int i=0;i&amp;lt;strlen(argv[1]);i++){ sum += (int)argv[1][i]; } // printf(&amp;#34;%d\n&amp;#34;,sum); if( 1022 == sum){ printf(&amp;#34;Accessed!&amp;#34;); } else { printf(&amp;#34;Wrong!&amp;#34;); } }else { printf(&amp;#34;Usage: %s &amp;lt;key&amp;gt;\n&amp;#34;,argv[0]); } return 0; } 其中1022 是 &amp;ldquo;THIS IS THE KEY&amp;rdquo; 进行简单的ascii值求和的结果.
 可以通过静态分析和逆向工程可以分析出加密机制.
 key generator 根据逆向分析的算法生成注册码
-import random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) return char_sum chars=&amp;quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;quot; key = &amp;quot;&amp;quot; while True: key += random.</description>
+import random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) return char_sum chars=&amp;#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;#34; key = &amp;#34;&amp;#34; while True: key += random.</description>
     </item>
     
     <item>
@@ -277,16 +283,17 @@ import random def check_key(key): char_sum=0 for c in key: char_sum += ord(c) re
       <description>netgear WNDR3700v4 存在命令注入漏洞,和认证绕过漏洞,相结合就可以未授权任意命令执行.
 使用固件版本: V1.0.1.42
 固件信息:
-LZMA compressed data  Squashfs filesystem, little endian  ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
+LZMA compressed data Squashfs filesystem, little endian ELF 32-bit MSB executable, MIPS, MIPS32 version 1 (SYSV)
 使用LZMA进行压缩,文件系统为Squashfs, MIPS32,big-end,使用system V 接口
 固件里一个/usr/sbin/net-cgi 程序里包含了很多功能,其中一个是 cmd_ping6(),如下:
 反编译一下大概就是:
-void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
+void cmd_ping6(char *target) { char cmd [132]; memset(cmd,0,0x80); sprintf(cmd,&amp;#34;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;#34;,target); system(cmd); return; } 这里先将参数target格式化到命令字符串内,并存储在栈中 sprintf(target,&amp;quot;ping6 -c 1 %s &amp;gt; /tmp/ping6_result 2&amp;gt;&amp;amp;1&amp;quot;,target)
 因为sprintf 不检验长度,所以存在缓冲区溢出
 但是因为下面system函数直接调用了命令字符串,所以可以利用命令注入漏洞而不需要构造ROP链.
 system()将参数给/bin/sh进行调用, 所以target设置为: ; evid_command &amp;amp;&amp;gt; /dev/null
 那么执行完ping6 后,就会执行恶意命令.
-那么就要看如何控制传入cmd_ping6 的参数.</description>
+那么就要看如何控制传入cmd_ping6 的参数.
+交叉引用发现cgi_commit 调用了cmd_ping6</description>
     </item>
     
     <item>
@@ -316,7 +323,7 @@ MIPS III 是MIPS II的一个后向兼容的扩展,并支持64位.
 MIPS &amp;hellip;
 指令格式 指令:32bits byte : 8bits word: 4bits, halfword: 2bits
 MIPS架构中, 指令分为三种类型,R型、I型和J型.
-寄存器    Register Number Conventional Name Usage     $0 $zero 硬编码为0   $1 $at 保留给汇编器   $2 - $3 $v0, $v1 保存函数返回值   $4 - $7 $a0 - $a3 存储参数   $8 - $15 $t0 - $t7 存储临时数据   $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据   $24 - $25 $t8 - $t9 存储临时数据   $26 - $27 $k0 - $k1 为内核保留   $28 $gp 全局指针   $29 $sp 堆栈指针   $30 $fp 保存栈指针   $31 $ra 返回地址    算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]</description>
+寄存器 Register Number Conventional Name Usage $0 $zero 硬编码为0 $1 $at 保留给汇编器 $2 - $3 $v0, $v1 保存函数返回值 $4 - $7 $a0 - $a3 存储参数 $8 - $15 $t0 - $t7 存储临时数据 $16 - $23 $s0 - $s7 保存寄存器,存储后面用到的数据 $24 - $25 $t8 - $t9 存储临时数据 $26 - $27 $k0 - $k1 为内核保留 $28 $gp 全局指针 $29 $sp 堆栈指针 $30 $fp 保存栈指针 $31 $ra 返回地址 算数指令 opt $dst, $src, [xx] : $dst = $src + [xx]</description>
     </item>
     
     <item>
@@ -325,8 +332,8 @@ MIPS架构中, 指令分为三种类型,R型、I型和J型.
       <pubDate>Sun, 01 Mar 2020 14:30:18 +0800</pubDate>
       
       <guid>https://chibataiki.github.io/posts/ida-plugin-install/</guid>
-      <description> IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy  IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
- 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下  可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
+      <description> IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
+将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
 chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgsrv ├── idc ├── ids ├── loaders ├── plugins ├── procs ├── python ├── sig └── til </description>
     </item>
     
@@ -344,8 +351,8 @@ Craig Heffner 进行分析的时候,就首先将 /bin/webs 拖进IDA进行分析
 functions一栏里面很多alpha开头的函数,里面有个权限检查程序alpha_auth_check,可以分析一下.
 通过交叉引用搜索发现 alpha_httpd_parse_request调用了alpha_auth_check :
 alpha_httpd_parse_request调用部分:
-loc_41A420: move $a0, $s2 la $t9, alpha_auth_check nop jalr $t9 ; alpha_auth_check nop lw $gp, 0x2830+var_2820($sp) li $v1, 0xFFFFFFFF beq $v0, $v1, loc_41A4B0 li $a0, 0xFFFFFFFF 分析一下参数: alpha_auth_check的传入参数$a0在$s2中,而 alpha_auth_check返回值存储在$v0中, 然后  $v0和$v1 (0xFFFFFFFF :-1)会进行比较, 相等就跳转到loc_41A4B0 结束函数.
- alpha_auth_check内:
+loc_41A420: move $a0, $s2 la $t9, alpha_auth_check nop jalr $t9 ; alpha_auth_check nop lw $gp, 0x2830+var_2820($sp) li $v1, 0xFFFFFFFF beq $v0, $v1, loc_41A4B0 li $a0, 0xFFFFFFFF 分析一下参数: alpha_auth_check的传入参数$a0在$s2中,而 alpha_auth_check返回值存储在$v0中, 然后 $v0和$v1 (0xFFFFFFFF :-1)会进行比较, 相等就跳转到loc_41A4B0 结束函数.
+alpha_auth_check内:
 存在strstr,strcmp 和以及一个明显的硬编码字符串
 看一下strstr用法:
 NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function finds the first occurrence of the substring needle in the string haystack.</description>
@@ -360,12 +367,12 @@ NAME strstr, strcasestr - locate a substring DESCRIPTION The strstr() function f
       <description>环境
 宿主机: ubuntu 18.04 x86_64 客户机: qemu运行的debian(wheey)
 MIPS/ARM的程序调试方式:
- 直接在宿主机上使用qemu 用户模式 在对应架构的debian虚拟机上运行,使用qemu-[mips/arm]-static的调试模式或者gdbserver都行  这里选择第二种
+直接在宿主机上使用qemu 用户模式 在对应架构的debian虚拟机上运行,使用qemu-[mips/arm]-static的调试模式或者gdbserver都行 这里选择第二种
 2.1. 客户机安装qemu-user-static
- apt-get install qemu-user-static  chroot . ./qemu-[arch]-static [-g port] [program]
+apt-get install qemu-user-static chroot . ./qemu-[arch]-static [-g port] [program]
 2.2. 客户机安装 gdbserver
 chroot . ./program gdbserver --attach pid 调试工具(宿主机):
- IDA debugger里设置一下就行 gdb-multiatch  set architecture mips target remote [ip]:[port] gdb可以使用pwngdb,pedagdb等插件
+IDA debugger里设置一下就行 gdb-multiatch set architecture mips target remote [ip]:[port] gdb可以使用pwngdb,pedagdb等插件
 referer:</description>
     </item>
     
@@ -389,7 +396,7 @@ referer:</description>
 macOS下则使用jenv
 brew tap homebrew/cask-versions brew install jenv 显示java 环境
 /usr/libexec/java_home -V 结果类似于
-13.0.2, x86_64:	&amp;quot;OpenJDK 13.0.2&amp;quot;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;quot;Java SE 8&amp;quot;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
+13.0.2, x86_64:	&amp;#34;OpenJDK 13.0.2&amp;#34;	/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home 1.8.0_231, x86_64:	&amp;#34;Java SE 8&amp;#34;	/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home 添加 jdk ,路径为就是上面现实的路径
 jenv add &amp;lt;jdk_path&amp;gt; 显示java版本信息:
 jenv versions jenv version 设置java环境:
 jenv global [jdk version] jenv local [jdk version] 有问题可以运行 jenv doctor
@@ -402,20 +409,20 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e</descri
       <pubDate>Fri, 28 Feb 2020 13:29:32 +0800</pubDate>
       
       <guid>https://chibataiki.github.io/posts/normal-binary-analysis-tools/</guid>
-      <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb  pwngdb gef peda   burpsuite  linux command
-  file
-  readelf
-  strings
-  objdump
-  hexdump
-  strace
-  ltrace
-     binwalk
-  checksec
-  qemu
-  dockerhub： https://hub.docker.com/u/waveburst
+      <description>IDA hopper radare2 ghidra JEB-MIPS ollydbg gdb pwngdb gef peda burpsuite linux command
+file
+readelf
+strings
+objdump
+hexdump
+strace
+ltrace
+binwalk
+checksec
+qemu
+dockerhub： https://hub.docker.com/u/waveburst
 封装了QEMU system模式的arm,mips的docker镜像
-    参考链接:
+参考链接:
 https://reverseengineering.stackexchange.com/questions/1817/is-there-any-disassembler-to-rival-ida-pro</description>
     </item>
     
@@ -439,10 +446,11 @@ Root password: root
 User account: user
 User password: user
 0x03启动qemu 最基础的命令:
-qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot;  不想使用图形模式: -nographic
+qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append &amp;quot;root=/dev/sda1 console=ttyS0&amp;quot; 不想使用图形模式: -nographic
 默认内存128 可以设置 -m 256M
 0x04 网络配置 qemu支持设置usr,tap,bridge,l2tp,socket等类型的网络
-(! net 参数不提倡,QEMU建议使用netdev)</description>
+(! net 参数不提倡,QEMU建议使用netdev)
+1.用户模式- SLIRP 不加任何参数时的默认模式就是用户模式</description>
     </item>
     
     <item>
@@ -456,9 +464,9 @@ qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy
 仿真:
 使用qemu 系统模式作为测试环境
 固件: https://github.com/rapid7/metasploit-framework/files/267284/vuln_squashfs-root.tar.gz
-scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt  可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
+scp -P 22 vuln_squashfs-root.tar.gz root@[target_ip]:/root tar xvf vuln_squashfs-root.tar.gz cd squashfs-root chroot . ./bin/igdmpt 可以看到端口已经打开 使用poc可以发现确实存在漏洞 create_server 函数中
 bind:
- int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
+int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);` addr =[family][ip][port] = 0xa5d00002
 0xd05a = 53413 :端口号
 0x00 = 0 : ip , INADDR_ANY =0 ,监听所有地址
 0x02 = 2 :sa_family = 2,即SOCK_DGRAM ,表示UDP连接
@@ -473,13 +481,13 @@ bind:
       
       <guid>https://chibataiki.github.io/posts/vim-markdown-plugin-install/</guid>
       <description>环境： macOS catalina vim: macvim
-设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc  vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
+设置vim初始化环境 mkdir ~/.vim mv .vimrc ~/.vim/vimrc vim的初始化环境在macOS上最初是～/.vimrc, 因为需要安装插件新建了.vim文件夹，所以想将.vimrc文件放入.vim目录下,这个时候需要重命名.vimrc为vimrc. 可以在:h viminfo 中查看 安装插件 这里使用的是vim-plug :https://github.com/junegunn/vim-plug
 需要将
-&amp;quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &amp;quot; List ends here. Plugins become visible to Vim after this call. call plug#end()  添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
+&amp;quot; Plugins will be downloaded under the specified directory. call plug#begin(&#39;~/.vim/plugged&#39;) &amp;quot; List ends here. Plugins become visible to Vim after this call. call plug#end() 添加到vimrc中,然后vim下执行:PlugInstall 就可以安装配置中的插件
 安装markdown预览插件 https://github.com/iamcco/markdown-preview.nvim
 在vimrc Plug区域添加
-call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
-:MarkdownPreview :MarkdownPreviewStop  </description>
+call plug#begin(&#39;~/.vim/plugged&#39;) 预览:
+:MarkdownPreview :MarkdownPreviewStop </description>
     </item>
     
     <item>
@@ -490,10 +498,10 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
       <guid>https://chibataiki.github.io/posts/macos_catalina_sound_redirection/</guid>
       <description>因为有时候英文视频没有字幕，所以需要将视频的音频输出转为输入，这样可以借助一些翻译工具进行翻译。
 工具： Soundflower
-  安装 https://github.com/mattingalls/Soundflower/releases
-  打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
-  chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
-  referer: https://github.com/mattingalls/Soundflower/releases</description>
+安装 https://github.com/mattingalls/Soundflower/releases
+打开audio midi setup create Multi-Output Device，选中 Build-in Output 和SoundFlower(2ch), 此时，sound中的Output就多了Multi-Output Device 项
+chrome 浏览器下，translate.google.com 地址栏右侧microphone 设置可以选择 Internal-Microphone(Build-in)，以及Soundflower(2ch),此时 谷歌页面输入的声音就是此时电脑输出的声音
+referer: https://github.com/mattingalls/Soundflower/releases</description>
     </item>
     
     <item>
@@ -505,14 +513,16 @@ call plug#begin(&#39;~/.vim/plugged&#39;)  预览:
       <description>TrendNet TEW-751DR CVE-2018-7034 分析
 基本信息 漏洞类型：认证绕过 CVE-ID: CVE-2018-7034 主要影响版本： •	TEW-751DR – v1.03B03 •	TEW-752DRU – v1.03B01 •	TEW733GR – v1.03B01
 PoC curl -d &amp;#34;SERVICES=DEVICE.ACCOUNT%0aAUTHORIZED_GROUP=1&amp;#34; &amp;#34;http://[IP]/getcfg.php&amp;#34; 除了可以获取 DEVICE.ACCOUNT的信息外，还可以获取其他信息，只要位于 htdocs/webinc/getcfg中的模块都行。
-漏洞细节 当有Admin用户登录 TrendNet 路由器*,*会触发全局变量 *$AUTHORIZED_GROUP &amp;gt;= 1*
+漏洞细节 当有Admin用户登录 TrendNet 路由器*,*会触发全局变量 $AUTHORIZED_GROUP &amp;gt;= 1
 攻击者可以注入 AUTHORIZED_GROUP 全局变量绕过phpcgi模块中的认证.
 刚进入 phpcgi_main 后， 会对参数进行键值对形式的存储,（_TYPE_KEY=VALUE，TYPE 为 GET、POST、SERVER）,并且添加 \n 作为间隔符.
 然后进行认证检测，将检查出的值赋给AUTHORIZED_GROUP，并保存到字符串中作为全局变量传递给 php
 xmldbc_ephp(0, 0, $v0, stdout)
 整个流程中没有对 \n 进行过滤，通过注入 \n 进而注入 AUTHORIZED_GROUP 就可以绕过认证检查，绕过授权执行 php 脚本。
-  /htdocs/web/getcfg.php
-  通过认证后，获取 $_POST[“SERVICES”] , 然后拼接到file 字段，</description>
+/htdocs/web/getcfg.php
+通过认证后，获取 $_POST[“SERVICES”] , 然后拼接到file 字段，
+Referer:
+https://blogs.securiteam.com/index.php/archives/3627#more-3627</description>
     </item>
     
     <item>
@@ -522,16 +532,16 @@ xmldbc_ephp(0, 0, $v0, stdout)
       
       <guid>https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/</guid>
       <description>环境:
- x64 架构kali 2 + qemu user mode mipsel 架构 debian  过程:
+x64 架构kali 2 + qemu user mode mipsel 架构 debian 过程:
 使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
 可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
 cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
- # REQUEST_METHOD # cgibin_parse_request 中 获取以下参数:  CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
+# REQUEST_METHOD # cgibin_parse_request 中 获取以下参数: CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
 CONTENT_LENGTH 基于POST 数据的长度
 可以看到请求为GET和POST请求都需要经过认证。
 然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
 QEMU可以通过 -E 设置环境变量 -0 设置参数
-chroot . ./qemu-mipsel-static -0 &amp;#34;service.cgi&amp;#34; -E REQUEST_METHOD=&amp;#34;POST&amp;#34; - E REQUEST_URI=&amp;#34;service.cgi\?EVENT=CHECKFW%26ls%26&amp;#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&amp;#34;application/x-www-form- urlencoded&amp;#34; -E HTTP_COOKIE=&amp;#34;uid=123456&amp;#34; -E REMOTE_ADDR=&amp;#34;127.</description>
+chroot . ./qemu-mipsel-static -0 &amp;#34;service.cgi&amp;#34; -E REQUEST_METHOD=&amp;#34;POST&amp;#34; - E REQUEST_URI=&amp;#34;service.cgi\?EVENT=CHECKFW%26ls%26&amp;#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&amp;#34;application/x-www-form- urlencoded&amp;#34; -E HTTP_COOKIE=&amp;#34;uid=123456&amp;#34; -E REMOTE_ADDR=&amp;#34;127.0.0.1&amp;#34; -g 1234 -strace .</description>
     </item>
     
     <item>
@@ -556,14 +566,14 @@ Patch : back to the version 4 ➜ goahead-git git:(4f83a6a3) ✗ git checkout ta
       
       <guid>https://chibataiki.github.io/posts/cve-2017-18046_dasan_h640x_rce_reproduction/</guid>
       <description>Dasan Networks H640X Unauthenticated Remote Code Execution
-  Affected version:
+Affected version:
 H640GR-02 H640GV-03 H640GW-02 H640RW-02 H645G
-  Firmware:
+Firmware:
 2.76-9999 2.76-1101 2.67-1070 2.45-1045
-  从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
+从某个ftp服务器中找到了部分影响的固件，下载了 G_ONU_N_2.45- 1045.01.H640GW.x 进行进一步的分析。
 Step 1. 尝试使用 firmadyne进行初步仿真，失败。
 [ 1.092000] init/1: potentially unexpected fatal signal 4 ... [ 1.096000] Kernel panic - not syncing: Attempted to kill init! Step 2. 使用qemu的user mode
- cpio-root chroot . ./qemu-mips-static -g 1234 ./bin/busybox -i -d 10 &amp;gt; debug.log gdb-multiarch 进行远程调试时， 发现其中指向0x7c65180a ，然而查看进程的maps ， 0x7c65180a地址是在范围之外的。 Step 3.</description>
+cpio-root chroot . ./qemu-mips-static -g 1234 ./bin/busybox -i -d 10 &amp;gt; debug.log gdb-multiarch 进行远程调试时， 发现其中指向0x7c65180a ，然而查看进程的maps ， 0x7c65180a地址是在范围之外的。 Step 3.</description>
     </item>
     
     <item>
@@ -573,17 +583,18 @@ Step 1. 尝试使用 firmadyne进行初步仿真，失败。
       
       <guid>https://chibataiki.github.io/posts/cve-2017-9675_d-link-dir-605l_dos_analysis/</guid>
       <description>Details
-  Device: D-Link DIR-605L, Model B
-  Vulnerable Firmware Versions: 2.08UIB01 and prior releases. Fixed in
+Device: D-Link DIR-605L, Model B
+Vulnerable Firmware Versions: 2.08UIB01 and prior releases. Fixed in
 2.08UIBETA01.
-  Attack Vector: Unauthenticated HTTP GET request
-  Impact: Denial of service
- CVE: CVE-2017-9675    Poc: curl http://192.168.1.1/common/
-  选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
+Attack Vector: Unauthenticated HTTP GET request
+Impact: Denial of service
+CVE: CVE-2017-9675 Poc: curl http://192.168.1.1/common/
+选择固件版本: DIR-605L_REVB_FIRMWARE_206b01
 根据固件中的boa 的字符串串信息可以获取到boa的版本为 0.94.14rc21
 因为漏洞发⽣于 GET 请求，，那么猜测漏洞位于处理GET请求的函数，且为其 中处理⽬录的那些函数。且 末位为 / 分隔符，那么 修改或使⽤URL 字符串的那些函数可能存在漏洞。
 漏洞成因:
-execl(dirmaker, dirmaker, req-&amp;gt;pathname, req-&amp;gt;request_uri, (void *) NULL); 可能: dirmaker指针指向的⽂件在⽂件系统中并不存在 man execl 中 参数是 char * 类型的NULL指针，但是上⾯使用的是 void *类型的，</description>
+execl(dirmaker, dirmaker, req-&amp;gt;pathname, req-&amp;gt;request_uri, (void *) NULL); 可能: dirmaker指针指向的⽂件在⽂件系统中并不存在 man execl 中 参数是 char * 类型的NULL指针，但是上⾯使用的是 void *类型的，
+execl(const char *path, const char *arg0, .</description>
     </item>
     
     <item>
@@ -604,7 +615,7 @@ checkpoint 中 https://research.checkpoint.com/good-zero-day-skiddie/ 提到漏�
 补充，bin/下的cli 是 ATP cli ， 运行mic时会执行cli?
 现在回过头来可以发现， 打开37215的端口是⼆进制程序是 mic
 使⽤用exploit上的poc进行尝试后，发现确实可以完成命令注入，但是并不是所有命令都能正确执行.
- ➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &amp;quot;GET /a HTTP/1.</description>
+➜ Documents Serving HTTP on 0.0.0.0 port 8000 ... 192.168.1.108 - - [24/Jan/2018 09:17:42] &amp;#34;GET /a HTTP/1.</description>
     </item>
     
     

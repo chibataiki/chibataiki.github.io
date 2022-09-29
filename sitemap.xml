@@ -23,12 +23,6 @@
     <loc>https://chibataiki.github.io/posts/ssd%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</loc>
     <lastmod>2022-01-21T15:13:32+08:00</lastmod>
   </url><url>
-    <loc>https://chibataiki.github.io/tags/gdb/</loc>
-    <lastmod>2021-04-15T19:11:58+08:00</lastmod>
-  </url><url>
-    <loc>https://chibataiki.github.io/posts/gdb-script/</loc>
-    <lastmod>2021-04-15T19:11:58+08:00</lastmod>
-  </url><url>
     <loc>https://chibataiki.github.io/tags/design/</loc>
     <lastmod>2020-08-22T20:24:49+08:00</lastmod>
   </url><url>
@@ -67,6 +61,12 @@
   </url><url>
     <loc>https://chibataiki.github.io/posts/linux-users-groups/</loc>
     <lastmod>2020-05-08T19:39:41+08:00</lastmod>
+  </url><url>
+    <loc>https://chibataiki.github.io/tags/gdb/</loc>
+    <lastmod>2020-04-15T19:11:58+08:00</lastmod>
+  </url><url>
+    <loc>https://chibataiki.github.io/posts/gdb-script/</loc>
+    <lastmod>2020-04-15T19:11:58+08:00</lastmod>
   </url><url>
     <loc>https://chibataiki.github.io/posts/embedded_device_filesystem_analyze/</loc>
     <lastmod>2020-04-07T22:56:58+08:00</lastmod>

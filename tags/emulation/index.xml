@@ -14,7 +14,7 @@
       <guid>https://chibataiki.github.io/posts/firmware_emulation_tools/</guid>
       <description>Collect some firmware emulation tools. Add some more analysis later.
 [TOC]
-QEMU  user mode system mode  Firmadyne  https://github.com/firmadyne/firmadyne a research-paper project  FirmAE  https://github.com/pr0v3rbs/FirmAE  EMUX (formerly ARMX)  https://github.com/therealsaumil/emux  Firmware Analysis Toolkit  https://github.com/attify/firmware-analysis-toolkit  Qiling  https://github.com/qilingframework/qiling  unicorn  https://github.com/unicorn-engine/unicorn  basesafe  https://github.com/fgsect/BaseSAFE a research-paper project  FirmWire  https://github.com/FirmWire/FirmWire.git for smartphone baseband firmwares  usercore  https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019  binee  https://github.</description>
+QEMU user mode system mode Firmadyne https://github.com/firmadyne/firmadyne a research-paper project FirmAE https://github.com/pr0v3rbs/FirmAE EMUX (formerly ARMX) https://github.com/therealsaumil/emux Firmware Analysis Toolkit https://github.com/attify/firmware-analysis-toolkit Qiling https://github.com/qilingframework/qiling unicorn https://github.com/unicorn-engine/unicorn basesafe https://github.com/fgsect/BaseSAFE a research-paper project FirmWire https://github.com/FirmWire/FirmWire.git for smartphone baseband firmwares usercore https://github.com/lunixbochs/usercorn no more commits since 20 Mar 2019 binee https://github.com/carbonblack/binee no more commits since 15 Jun 2020 </description>
     </item>
     
   </channel>
