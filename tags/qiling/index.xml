@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>qiling on JiansLife</title>
+    <link>https://chibataiki.github.io/tags/qiling/</link>
+    <description>Recent content in qiling on JiansLife</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 07 Oct 2022 21:39:26 +0800</lastBuildDate><atom:link href="https://chibataiki.github.io/tags/qiling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emulate_iot_programs_with_qiling_1</title>
+      <link>https://chibataiki.github.io/posts/emulate_iot_programs_with_qiling_1/</link>
+      <pubDate>Fri, 07 Oct 2022 21:39:26 +0800</pubDate>
+      
+      <guid>https://chibataiki.github.io/posts/emulate_iot_programs_with_qiling_1/</guid>
+      <description>[TOC]
+前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。
+漏洞简要描述 device_discover 监听 udp端口5001, 处理接收到的数据。
+在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。
+在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。
+copy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。
+int __fastcall copy_msg_element(int a1, void *a2, signed int a3) { if ( !a1 || !a2 || a3 &amp;lt; 0 ) return 1; memcpy(a2, (const void *)(a1 + 4), a3); return 0; } 使用qiling进行仿真 具体实现放在github 上 https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover
+大概需要hook 的一些点：
+device_discover 会 bind br0，这里可以patch 为 lo, 或者添加个虚拟网络接口 br0
+patch
+ql.patch(0x0040BAC0, b&amp;#39;lo\x00&amp;#39;) add br0
+sudo modprobe dummy sudo ip link add br0 type dummy sudo ip addr change dev br0 192.</description>
+    </item>
+    
+  </channel>
+</rss>

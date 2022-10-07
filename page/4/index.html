@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.104.1" /><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.101.0" /><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -144,6 +144,28 @@
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>CNVD-2018-01084_D Link_DIR 645_reproduction
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>环境:
+x64 架构kali 2 &#43; qemu user mode mipsel 架构 debian 过程:
+使用IDA 打开 cgibin，main函数里第一步是把argc[0]和各个cgi模块名进行cmp操作， 然后根据 cmp结果进入各个模块。
+可以使用 -0 argv0 强制将目标的 argv[0] 设置为 argv0
+cgi 脚本通常通过环境变量/标准输入 获取输入，为了单独运行CGI脚本， 需要构造 相对应的请求参数。
+# REQUEST_METHOD # cgibin_parse_request 中 获取以下参数: CONTENT_TYPE CONTENT_LENGTH REQUEST_URL
+CONTENT_LENGTH 基于POST 数据的长度
+可以看到请求为GET和POST请求都需要经过认证。
+然后从环境变量中获取三个参数: EVENT，ACTION，SERVICE
+QEMU可以通过 -E 设置环境变量 -0 设置参数
+chroot . ./qemu-mipsel-static -0 &#34;service.cgi&#34; -E REQUEST_METHOD=&#34;POST&#34; - E REQUEST_URI=&#34;service.cgi\?EVENT=CHECKFW%26ls%26&#34; -E CONTENT_LENGTH=$LEN -E CONTENT_TYPE=&#34;application/x-www-form- urlencoded&#34; -E HTTP_COOKIE=&#34;uid=123456&#34; -E REMOTE_ADDR=&#34;127.0.0.1&#34; -g 1234 -strace ....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-03-07 16:36:34 +0800 CST'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba</footer>
+  <a class="entry-link" aria-label="post link to CNVD-2018-01084_D Link_DIR 645_reproduction" href="https://chibataiki.github.io/posts/cnvd-2018-01084_d-link_dir-645_reproduction/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
