@@ -30,34 +30,6 @@ QEMU user mode system mode Firmadyne https://github.com/firmadyne/firmadyne a re
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
 </noscript><meta property="og:title" content="Firmware emulation tools" />
 <meta property="og:description" content="Collect some firmware emulation tools. Add some more analysis later.
 [TOC]
@@ -129,14 +101,10 @@ QEMU user mode system mode Firmadyne https://github.com/firmadyne/firmadyne a re
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -203,7 +171,35 @@ QEMU user mode system mode Firmadyne https://github.com/firmadyne/firmadyne a re
     <div class="post-meta"><span title='2022-02-16 15:00:44 +0800 CST'>February 16, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#qemu">QEMU</a></li>
+        <li><a href="#firmadyne">Firmadyne</a></li>
+        <li><a href="#firmae">FirmAE</a></li>
+        <li><a href="#emux-formerly-armx">EMUX (formerly ARMX)</a></li>
+        <li><a href="#firmware-analysis-toolkit">Firmware Analysis Toolkit</a></li>
+        <li><a href="#qiling">Qiling</a></li>
+        <li><a href="#unicorn">unicorn</a></li>
+        <li><a href="#basesafe">basesafe</a></li>
+        <li><a href="#firmwire">FirmWire</a></li>
+        <li><a href="#usercore">usercore</a></li>
+        <li><a href="#binee">binee</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>Collect some firmware emulation tools.
 Add some more analysis later.</p>
 <p>[TOC]</p>

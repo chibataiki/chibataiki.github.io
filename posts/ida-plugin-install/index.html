@@ -30,34 +30,6 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
 </noscript><meta property="og:title" content="macOS下IDA插件安装" />
 <meta property="og:description" content=" IDAFuzzy : https://github.com/Ga-ryo/IDAFuzzy 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy IDA pro 在macOS下安装的坑 和Windows中直接将插件拖到plugin目录不同, macOS的插件安装需要两步
 将ida_fuzzy.py 文件放到 plugins 目录下 将ida_fuzzy.py 所依赖的包放到 python 目录下 可以看到/Applications/IDA Pro 7.0/ida.app/Contents/MacOS中的目录结构:
@@ -129,14 +101,10 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -203,7 +171,21 @@ chibataiki@chibataikis-MBP MacOS % tree -d -L 1 . . ├── cfg ├── dbgs
     <div class="post-meta"><span title='2020-03-01 14:30:18 +0800 CST'>March 1, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#ida-pro-在macos下安装的坑">IDA pro 在macOS下安装的坑</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><ul>
 <li>IDAFuzzy : <a href="https://github.com/Ga-ryo/IDAFuzzy">https://github.com/Ga-ryo/IDAFuzzy</a>
 在IDA中,对函数进行模糊搜索不是由友好,所以搜了一下,发现了IDAFuzzy</li>

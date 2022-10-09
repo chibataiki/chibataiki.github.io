@@ -37,34 +37,6 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e">
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
 </noscript><meta property="og:title" content="MacOS 多版本java管理" />
 <meta property="og:description" content="之前安装 Burpsuite的时候,使用的是旧版本JDK1.8,这次ghida需要新版本
 在linux中可以使用sudo update-alternatives --config java 进行java版本的选择
@@ -150,14 +122,10 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e"/>
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -225,6 +193,7 @@ referer: https://gist.github.com/ntamvl/5f4dbaa8f68e6897b99682a395a44c2e"/>
 
 </div>
   </header> 
+
   <div class="post-content"><p>之前安装 Burpsuite的时候,使用的是旧版本JDK1.8,这次ghida需要新版本</p>
 <p>在linux中可以使用<code>sudo update-alternatives --config java</code> 进行java版本的选择</p>
 <p>macOS下则使用jenv</p>

@@ -47,34 +47,6 @@ $1$ – MD5 $2a$ – Blowfish $2y$ – Eksblowfish $5$ – SHA-256 $6$ – SHA-5
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
 </noscript><meta property="og:title" content="Linux Login" />
 <meta property="og:description" content="登陆机制相关文件:
 groups
@@ -180,14 +152,10 @@ $1$ – MD5 $2a$ – Blowfish $2y$ – Eksblowfish $5$ – SHA-256 $6$ – SHA-5
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -254,7 +222,27 @@ $1$ – MD5 $2a$ – Blowfish $2y$ – Eksblowfish $5$ – SHA-256 $6$ – SHA-5
     <div class="post-meta"><span title='2020-05-08 19:39:41 +0800 CST'>May 8, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;chiba
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#etcgroup---user-group-file">/etc/group :  user group file</a></li>
+        <li><a href="#etcpasswd--use-names">/etc/passwd:  use names</a></li>
+        <li><a href="#etcshadow---user-password">/etc/shadow  : user password</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>登陆机制相关文件:</p>
 <ul>
 <li>

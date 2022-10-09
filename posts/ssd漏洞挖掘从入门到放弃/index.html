@@ -40,34 +40,6 @@ usb 2-4.3: New USB device found, idVendor=21c4, idProduct=b061, bcdDevice= 3.06 
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
 </noscript><meta property="og:title" content="SSD漏洞挖掘从入门到放弃" />
 <meta property="og:description" content="0x00 前研 参加了 “雷克沙杯”HL260s移动硬盘破解挑战赛，记录一下整个过程。
 0x01 SSD 组成部分 包含存储芯片部分和USB-to-SATA 转接器两个部分。
@@ -159,14 +131,10 @@ usb 2-4.3: New USB device found, idVendor=21c4, idProduct=b061, bcdDevice= 3.06 
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -233,7 +201,31 @@ usb 2-4.3: New USB device found, idVendor=21c4, idProduct=b061, bcdDevice= 3.06 
     <div class="post-meta"><span title='2022-01-21 15:13:32 +0800 CST'>January 21, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;chiba
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#0x00-前研">0x00 前研</a></li>
+        <li><a href="#0x01-ssd-组成部分">0x01 SSD 组成部分</a></li>
+        <li><a href="#0x02-flash-固件-分析">0x02 flash 固件 分析</a></li>
+        <li><a href="#0x03-读取分区">0x03 读取分区</a></li>
+        <li><a href="#0x04-filedog-接口测试"><strong>0x04 filedog</strong> 接口测试</a></li>
+        <li><a href="#0x05漏洞--对加密分区部分可进行数据写入">0x05漏洞 ： 对加密分区部分可进行数据写入</a></li>
+        <li><a href="#0x06-总结">0x06 总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><h3 id="0x00-前研">0x00 前研<a hidden class="anchor" aria-hidden="true" href="#0x00-前研">#</a></h3>
 <p>参加了 “雷克沙杯”HL260s移动硬盘破解挑战赛，记录一下整个过程。</p>
 <h3 id="0x01-ssd-组成部分">0x01 SSD 组成部分<a hidden class="anchor" aria-hidden="true" href="#0x01-ssd-组成部分">#</a></h3>
